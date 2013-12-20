@@ -895,6 +895,6 @@ $barbox add $estatustable
 $mainBox add [list $headerLabel $table]
 $mainBox add $barbox -align bottom -expand 1
 
-gnocl::window -title "CRESMET Video Kiosk" -widthRequest 1280 -heightRequest 1024 -child $mainBox -onDestroy exit
+gnocl::window -title "Video Kiosk" -widthRequest 1280 -heightRequest 1024 -child $mainBox -onDestroy exit
 
 gnocl::mainLoop
