@@ -1,0 +1,436 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>fileSelection</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Deprecated"
+HREF="x351.html#AEN10731"><LINK
+REL="PREVIOUS"
+TITLE="Commands"
+HREF="x351.html"><LINK
+REL="NEXT"
+TITLE="combo"
+HREF="r10843.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r10843.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="FILESELECTION"
+></A
+>fileSelection</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN10737"
+></A
+><H2
+>Name</H2
+>fileSelection&nbsp;--&nbsp;A standard dialog to choose a file (DEPRECATED since GTK+ 2.4).</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN10740"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>fileSelection</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10746"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/fileSelection.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10750"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-title</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Title of the fileSelection.</P
+></DD
+><DT
+>-modal</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the window is modal, i.e. it grabs all GTK+ events.
+If the dialog is created modal, the command returns a
+list of chosen files instead of the usual widget ID.</P
+></DD
+><DT
+>-selectMultiple</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether one or more files can be selected.</P
+></DD
+><DT
+>-showFileOps</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether to show buttons for file operations.</P
+></DD
+><DT
+>-file</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Default file or path for the dialog.</P
+></DD
+><DT
+>-onClicked</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Command to execute in the global scope when the Ok or
+Cancel button is chosen.
+Before evaluation the following percent strings
+are substituted:
+TABLE
+%% | %
+%w | widget name
+%x | button chosen: OK or CANCEL
+%f | list of files chosen
+/TABLE</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-onDestroy</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the widget is destroyed.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10801"
+></A
+><H2
+>Description</H2
+><P
+>This command is deprecated since GTK+ 2.4.
+Use <A
+HREF="r6543.html"
+><B
+CLASS="COMMAND"
+>fileChooser</B
+></A
+> instead.
+A fileSelection is used to let the user choose a directory
+or one or more files in a standardized way. If the dialog
+is created modal, the commands returns a list of files.
+Otherwise it returns a widget ID in the
+usual way. The files and buttons chosen can be retrieved
+via the onClicked command.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10806"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10828"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set file [gnocl::fileSelection -title "Please choose a file" -modal 1 -file "/etc/host.conf"]</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/fileSelection.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10835"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r6423.html"
+><B
+CLASS="COMMAND"
+>colorSelection</B
+></A
+>,
+   <A
+HREF="r6897.html"
+><B
+CLASS="COMMAND"
+>fontSelection</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkFileSelection</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r10843.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Commands</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN10731"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>combo</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

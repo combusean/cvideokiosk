@@ -1,0 +1,22 @@
+These are the steps to run the Gnocl test panel applet:
+
+- Find out the GNOME installation directories GDIR, that may be "/usr",
+   "/opt/gnome" or "/opt/gnome2/" (try "echo $GNOME2_PATH")
+
+TODO: `pkg-config --variable libdir libpanelapplet-2.0`
+
+- adapt in gnocl_test_applet.server
+      location="/opt/gnome/lib/bonobo/gnocl-applet">
+   acordingly
+
+- Copy gnocl_test_applet.server to $GDIR/lib/bonobo/servers
+
+- Copy test-applet.tcl to $GDIR/lib/bonobo. Make sure it is executable
+
+- Restart the panel:
+
+	killall gnome-panel
+
+- Right-click on the panel, select "Add To Panel" -> "Utility" ->
+  "Gnocl Test Applet"
+

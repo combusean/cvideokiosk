@@ -1,0 +1,85 @@
+#!/bin/sh
+# the next line restarts using tclsh \
+exec tclsh "$0" "$@"
+
+# this example shows different widgets
+
+# ensure that "." is the decimal point
+set ::env(LC_NUMERIC) "C"
+
+set auto_path [linsert $auto_path 0 [file join [file dirname [info script]] ../src]]
+package require Gnocl
+
+# -------------
+# setup GUI
+# -------------
+set optTable [gnocl::table -homogeneous 1]
+$optTable addColumn [list \
+      [gnocl::checkButton -variable optCase -text "%__case sensitive" \
+            -onToggled doMatch -active 1] \
+      [gnocl::checkButton -variable optAll -text "%__all" \
+            -onToggled doMatch] \
+      ] -fill 1
+
+set table [gnocl::table -homogeneous 0 -borderWidth 3]
+$table addColumn [list \
+      [gnocl::label -text "Regexp"] \
+      "" \
+      [gnocl::label -text "Test string"] \
+      [gnocl::label -text "Match"] \
+      ] -align left -expand 0 
+set matchLabel [gnocl::label -selectable 1 -align left] 
+$table addColumn [list \
+      [gnocl::entry -variable regTxt -onChanged doMatch] \
+      $optTable \
+      [gnocl::entry -variable testTxt -onChanged doMatch] \
+      $matchLabel \
+      ] -expand {1 0} -fill 1
+
+$table addRow [list \
+      [gnocl::label -text "Submatches"] \
+      ] -align topLeft -expand 0 -fill 0 
+set subList [gnocl::list -headersVisible 0 -columns 1] 
+$table add $subList 1 end-1 -expand 1 -fill 1
+
+gnocl::window -child $table -onDestroy exit -title "Tcl Regexp Testing"
+
+# -------------
+# do the real work
+# -------------
+proc doMatch { } {
+   global regTxt testTxt matchLabel subList optCase optAll
+   set match ""
+   $subList erase 0 end
+
+   set exec "regexp -inline"
+   if { !$optCase } {
+      lappend exec -nocase
+   }
+   if { $optAll } {
+      lappend exec -all
+   }
+   lappend exec -- $regTxt $testTxt 
+   if { [catch $exec error] == 1 } {
+      # set match {%<<span color=\"red\">}${error}
+      set match %<<span\ color=\"red\">${error}</span>
+   } else {
+      if { [llength $error] > 0 } {
+         set match [lindex $error 0]
+         $subList add [lrange $error 1 end] -singleColumn 1
+      }
+   }
+   $matchLabel configure -text $match 
+}
+
+# -------------
+# initialize for tests
+# -------------
+set testTxt "Hello gnocl 12345.678"
+set regTxt {(l.+l) (\w+)}
+doMatch
+
+gnocl::mainLoop
+
+# vim: set syn=tcl
+

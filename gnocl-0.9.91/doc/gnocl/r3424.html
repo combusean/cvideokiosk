@@ -1,0 +1,625 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>scale</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Entries"
+HREF="x351.html#AEN3022"><LINK
+REL="PREVIOUS"
+TITLE="comboEntry"
+HREF="r3218.html"><LINK
+REL="NEXT"
+TITLE="spinButton"
+HREF="r3625.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r3218.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r3625.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="SCALE"
+></A
+>scale</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN3427"
+></A
+><H2
+>Name</H2
+>scale&nbsp;--&nbsp;A slider widget for selecting a value from a range.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN3430"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>scale</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3436"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/scale.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3440"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-data</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>User defined data which can be retrieved via the cget subcommand.</P
+></DD
+><DT
+>-digits</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+> (default: 1)
+            </P
+><P
+>The number of decimal places to display. If set to 0 the
+value of the scale will be returned as integer.</P
+></DD
+><DT
+>-drawValue</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether to draw the value at one side of the slider.</P
+></DD
+><DT
+>-hasFocus</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>1</SPAN
+>
+            </P
+><P
+>This sets the focus to the widget. To unset the focus it
+must be set to another widet.</P
+></DD
+><DT
+>-inverted</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the minimum and maximum are swapped.</P
+></DD
+><DT
+>-lower</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+> (default: 0)
+            </P
+><P
+>The lower limit of the scale.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onRealize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command whih is executed in the global scope if
+the widget has been realized.
+Before evaluation the following percent strings are
+substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+><DT
+>-onShowHelp</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed in the global scope
+if the "show-help" signal
+is recieved, which is normally the case if the user presses
+F1 or Ctrl-F1.
+Before evaluation the following percent strings are
+substituated
+TABLE
+%% | %
+%w | widget name
+%h | help type: either "whatsThis" or "tooltip"
+TABLE</P
+></DD
+><DT
+>-onValueChanged</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the scale changes its value.
+Before evaluation the
+following percent strings are substituted:
+TABLE
+%% | %
+%w | widget name
+%v | current value
+/TABLE</P
+></DD
+><DT
+>-orientation</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF vertical, horizontal</SPAN
+> (default: vertical)
+            </P
+><P
+>Orientation of the slider. This cannot be changed after creation.</P
+></DD
+><DT
+>-pageInc</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+> (default: 10)
+            </P
+><P
+>The increment to use to make major changes to the value.</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-stepInc</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+> (default: 1)
+            </P
+><P
+>The increment to use to make minor changes to the value.</P
+></DD
+><DT
+>-tooltip</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Message that appear next to this widget when the mouse
+pointer is held over it for a short amount of time.</P
+></DD
+><DT
+>-updatePolicy</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF continuous discontinuous delayed</SPAN
+> (default: continuous)
+            </P
+><P
+>Determines when the associated variable is changed and command
+executed.</P
+></DD
+><DT
+>-upper</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+> (default: 100)
+            </P
+><P
+>The upper limit of the scale.</P
+></DD
+><DT
+>-value</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+> (default: 0)
+            </P
+><P
+>The value of the scale.</P
+></DD
+><DT
+>-valuePos</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF top, bottom, left, right</SPAN
+> (default: top)
+            </P
+><P
+>At which side of the slider the value is drawn.</P
+></DD
+><DT
+>-variable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Name of a (global) variable which is changed whenever
+the scale is changed.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3569"
+></A
+><H2
+>Description</H2
+><P
+>A scale widgets lets the user input numerical values.
+If digits is zero, the value is an integer, else it is
+a float.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3572"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cget   <TT
+CLASS="REPLACEABLE"
+><I
+>option</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the value for one option. The option may have any of
+the values accepted by configure.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   onValueChanged </P
+></DT
+><DD
+><P
+>     Executes the associated command.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3612"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set scale [gnocl::scale -orientation horizontal -digits 0 -variable var -onValueChanged {puts "value is now %v == $var"} -value 32]
+gnocl::window -title "Scale" -child $scale</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/scale.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3619"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r3625.html"
+><B
+CLASS="COMMAND"
+>spinButton</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkScale</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r3218.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r3625.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>comboEntry</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN3022"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>spinButton</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

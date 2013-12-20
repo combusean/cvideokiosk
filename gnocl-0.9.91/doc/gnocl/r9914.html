@@ -1,0 +1,400 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>gconf</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Gnome Gconf"
+HREF="x351.html#AEN9911"><LINK
+REL="PREVIOUS"
+TITLE="Commands"
+HREF="x351.html"><LINK
+REL="NEXT"
+TITLE="file"
+HREF="r10031.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r10031.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="GCONF"
+></A
+>gconf</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN9917"
+></A
+><H2
+>Name</H2
+>gconf&nbsp;--&nbsp;Manipulate the Gnome GConf database.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN9920"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>gconf</B
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>subcommand</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9928"
+></A
+><H2
+>Description</H2
+><P
+>   The gconf command manipulates the Gnome GConf database, which is used
+   to store configuration information.
+   </P
+><P
+>   Configureation information consist always of a key 
+   (e.g. "/extra/test/value1") and
+   a value (e.g. "5.9"). 
+   With the help of the key a hierachical system is implemented. 
+   Values are typed. The default type is string.
+   Other types are "integer", "float", "boolean", "list", "pair" and
+   "schema". "list" is a list of string values (if a list of another
+   type is required, please mail the author!). "pair" are two string
+   values (if a pair of other types is required, please mail the
+   author!). A "schema" describes an entry and is normally stored
+   below the directory "/schemas". A schema is a list of five or six 
+   elements: a type (e.g. float), a default value, a short description,
+   a long description, an owner and a locale, which defaults to "C".
+   </P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9932"
+></A
+><H2
+>Subcommands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+>gconf</B
+>   version </P
+></DT
+><DD
+><P
+>                  Returns the version of the gconf library in a string of 
+                  the form 
+                  MajorNumber.PatchLevel.SubLevel (for example "1.0.4")
+                  </P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>gconf</B
+>   sync </P
+></DT
+><DD
+><P
+>Suggests that the database should be synced.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>gconf</B
+>   get   key  [-mode <TT
+CLASS="REPLACEABLE"
+><I
+>mode</I
+></TT
+>]</P
+></DT
+><DD
+><P
+>Returns the value of the entry key. An empty value is
+                     returned if the value is not set. The optional mode
+                     can be 
+                     "value" (which is the default) in which case
+                     either the value of key, or, if key is
+                     not set, the default value is returned,
+                     "default" in which case the default value is returned or 
+                     "noDefault" in which case either the value of key is
+                     returned or the empty string if the key is not set.
+                     </P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>gconf</B
+>   set   key   value  [-type <TT
+CLASS="REPLACEABLE"
+><I
+>type</I
+></TT
+>]</P
+></DT
+><DD
+><P
+>                  Sets key to the value value. The optional type can be 
+                  "string" which is the default, "float", "boolean",
+                  "integer", "list", "pair" or "schema". If type is "schema"
+                  value must be a list of 5 or 6 elements: type of the entry, 
+                  default value, short description, long description, owner
+                  and optional locale which defaults to "C".
+               </P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>gconf</B
+>   unset   key   value  [-recursive
+                     <TT
+CLASS="REPLACEABLE"
+><I
+>recursive</I
+></TT
+>]</P
+></DT
+><DD
+><P
+>                  Unset the entry key. If key is a directory,
+                  the option recursive is given and its value is true,
+                  the unset is done recursively.
+               </P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>gconf</B
+>   getEntry   key </P
+></DT
+><DD
+><P
+>Returns a list of four elements for the entry given
+                     by key: the key itself, the value (the empty string
+                     if not set), the type of the entry and a boolean
+                     value whether the entry is a directory.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>gconf</B
+>   getEntries   key </P
+></DT
+><DD
+><P
+>Returns a list of all entries in 
+                     the directory given by key, each element of the list
+                     consisting of a list of the key, the value and the
+                     type of the entry.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>gconf</B
+>   getDirs   key </P
+></DT
+><DD
+><P
+>Returns a list with the keys of all subdirectories in 
+                     the directory given by key.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>gconf</B
+>   onChanged   key   command </P
+></DT
+><DD
+><P
+>                  Registers a command which is called if key or an entry
+                  below it is changed.
+                  Before evaluation the following percent strings are
+                  substituated:
+                  TABLE
+                  %% | %
+                  %k | key of the entry changed
+                  %t | type of the entry
+                  %v | new value of the entry
+                  /TABLE
+               </P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>gconf</B
+>   associateSchema   key   schema-key </P
+></DT
+><DD
+><P
+>Associates a schema with an entry. 
+                  Instead of executing this command it is recommended to 
+                  ship a
+                  special file with an application and to use gconftool
+                  to install schema associations durint "make install".
+                  </P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10023"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>gnocl::gconf set /extra/test/gnocl/val 0 -type boolean</PRE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r10031.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Commands</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN9911"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>file</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

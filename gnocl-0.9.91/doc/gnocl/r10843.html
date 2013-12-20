@@ -1,0 +1,576 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>combo</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Deprecated"
+HREF="x351.html#AEN10731"><LINK
+REL="PREVIOUS"
+TITLE="fileSelection"
+HREF="r10734.html"><LINK
+REL="NEXT"
+TITLE="optionMenu"
+HREF="r11010.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r10734.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r11010.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="COMBO"
+></A
+>combo</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN10846"
+></A
+><H2
+>Name</H2
+>combo&nbsp;--&nbsp;A widget that allows the user to input a small amount of text. (DEPRECATED since GTK+ 2.4).</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN10849"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>combo</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10855"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/combo.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10859"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-allowEmtpty</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the entry may be empty.</P
+></DD
+><DT
+>-caseSensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the contents of the entry is matched case sensitive
+to the elements of the drop down list.</P
+></DD
+><DT
+>-data</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>User defined data which can be retrieved via the cget subcommand.</P
+></DD
+><DT
+>-editable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the text in the entry is editable. To follow the Gnome
+Human Interface Guidelines (HIG) it is strongly recommended not
+to use this option. Instead of a combo with non editable entry
+widget an optionMenu should be used.</P
+></DD
+><DT
+>-enableArrowsAlways</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the arrow keys can be used to step through the items
+in the list even if the content of the entry does not match
+to one of the items.</P
+></DD
+><DT
+>-enableArrowKeys</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the arrow keys can be used to step through the items
+in the list.</P
+></DD
+><DT
+>-hasFocus</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>1</SPAN
+>
+            </P
+><P
+>This sets the focus to the widget. To unset the focus it
+must be set to another widet.</P
+></DD
+><DT
+>-items</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list of strings</SPAN
+>
+            </P
+><P
+>The entries of the drop down list.</P
+></DD
+><DT
+>-mustMatch</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the contents of the entry must match one of the elements
+of the drop down list.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onChanged</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the value of the
+combo is changed via the GUI.
+Before evaluation the
+following percent strings are substituted:
+TABLE
+%% | %
+%w | widget name.
+%v | value of the active item
+TABLE
+This command is not called if the value is changed
+via the option -value.</P
+></DD
+><DT
+>-onShowHelp</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed in the global scope
+if the "show-help" signal
+is recieved, which is normally the case if the user presses
+F1 or Ctrl-F1.
+Before evaluation the following percent strings are
+substituated
+TABLE
+%% | %
+%w | widget name
+%h | help type: either "whatsThis" or "tooltip"
+TABLE</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-tooltip</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Message that appear next to this widget when the mouse
+pointer is held over it for a short amount of time.</P
+></DD
+><DT
+>-value</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Value of the item which shall be activated</P
+></DD
+><DT
+>-variable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>name of a (global) variable which is changed whenever
+the entry is changed</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10964"
+></A
+><H2
+>Description</H2
+><P
+>The combo widget consists of a single-line text entry field
+and a drop-down list. The drop-down list is displayed
+when the user clicks on a small arrow button to the right
+of the entry field. Instead of a combo widget with
+non-editable entry field, the use of the optionMenu
+is recommended.
+This widget is deprecated since GTK+ 2.4
+Use <A
+HREF="r3218.html"
+><B
+CLASS="COMMAND"
+>comboEntry</B
+></A
+> instead.
+.CMD:       cget option
+.CMDDESCR:  Returns the value for one option. The option may have any of
+the values accepted by configure.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10969"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10991"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set combo [gnocl::combo -variable var -items {"Cat" "Dog" "Bird"}]
+gnocl::window -title "Combo" -child $combo</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/combo.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10998"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r11010.html"
+><B
+CLASS="COMMAND"
+>optionMenu</B
+></A
+>,
+   <A
+HREF="r3025.html"
+><B
+CLASS="COMMAND"
+>entry</B
+></A
+>,
+   <A
+HREF="r3834.html"
+><B
+CLASS="COMMAND"
+>text</B
+></A
+>,
+   <A
+HREF="r3625.html"
+><B
+CLASS="COMMAND"
+>spinButton</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkCombo</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r10734.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r11010.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>fileSelection</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN10731"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>optionMenu</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

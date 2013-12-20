@@ -1,0 +1,1106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>text</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Entries"
+HREF="x351.html#AEN3022"><LINK
+REL="PREVIOUS"
+TITLE="spinButton"
+HREF="r3625.html"><LINK
+REL="NEXT"
+TITLE="label"
+HREF="r4259.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r3625.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r4259.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="TEXT"
+></A
+>text</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN3837"
+></A
+><H2
+>Name</H2
+>text&nbsp;--&nbsp;A widget for multi line formatted text editing.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN3840"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>text</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3846"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/text.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3850"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-scrollbar</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>always, never, automatic</SPAN
+> (default: automatic)
+            </P
+><P
+>When to show scrollbars. If the value is a list of
+two elements, the first value is for the horizontal
+scrollbar and the second value for the vertical scrollbar.</P
+></DD
+><DT
+>-pixelsInsideWrap</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Pixels between lines after wrap.</P
+></DD
+><DT
+>-pixelsBelowLines</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Pixels below lines.</P
+></DD
+><DT
+>-pixelsAboveLines</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Pixels above lines.</P
+></DD
+><DT
+>-editable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the text in the widget is editable.</P
+></DD
+><DT
+>-wrapMode</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF none, char, word</SPAN
+>
+            </P
+><P
+>Wrap mode used for the rendering of the cells.</P
+></DD
+><DT
+>-justify</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF left, right, center, fill</SPAN
+>
+            </P
+><P
+>Justification of the lines in one cell.</P
+></DD
+><DT
+>-leftMargin</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+></DD
+><DT
+>-rightMargin</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+></DD
+><DT
+>-indent</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+></DD
+><DT
+>-cursorVisible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the cursor is visible.</P
+></DD
+><DT
+>-hasFocus</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>1</SPAN
+>
+            </P
+><P
+>This sets the focus to the widget. To unset the focus it
+must be set to another widet.</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onShowHelp</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed in the global scope
+if the "show-help" signal
+is recieved, which is normally the case if the user presses
+F1 or Ctrl-F1.
+Before evaluation the following percent strings are
+substituated
+TABLE
+%% | %
+%w | widget name
+%h | help type: either "whatsThis" or "tooltip"
+TABLE</P
+></DD
+><DT
+>-tooltip</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Message that appear next to this widget when the mouse
+pointer is held over it for a short amount of time.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3952"
+></A
+><H2
+>Description</H2
+><P
+>A text widget is used to input and show formatted text. Some
+text commands need an index as parameter. An index can be either
+a list of the row and the column, both starting at 0, for
+example "1 7", or a keyword like end, cursor, selectionStart,
+selectionEnd with an (without space) appended
+character offset, for example "selectionStart+3".</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3955"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   erase   <TT
+CLASS="REPLACEABLE"
+><I
+>startIndex</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?endIndex?</I
+></TT
+> </P
+></DT
+><DD
+><P
+>     Removes all text between startIndex and endIndex. endIndex defaults to end.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   select   <TT
+CLASS="REPLACEABLE"
+><I
+>startIndex</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?endIndex?</I
+></TT
+> </P
+></DT
+><DD
+><P
+>     Select the text between startIndex and endIndex. endIndex defaults to end.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   get   <TT
+CLASS="REPLACEABLE"
+><I
+>startIndex</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?endIndex?</I
+></TT
+> </P
+></DT
+><DD
+><P
+>     Returns the text between startIndex and endIndex. endIndex defaults to end.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cut </P
+></DT
+><DD
+><P
+>     Copies all text to the clipboard and removes it from the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   copy </P
+></DT
+><DD
+><P
+>     Copies all text to the clipboard.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   paste </P
+></DT
+><DD
+><P
+>     Pastes text from the clipboard at the current cursor position.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   getLength </P
+></DT
+><DD
+><P
+>     Returns the number of characters in the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   getCursor </P
+></DT
+><DD
+><P
+>     Returns the position position of the cursor as list of its row and column.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   setCursor   <TT
+CLASS="REPLACEABLE"
+><I
+>index</I
+></TT
+> </P
+></DT
+><DD
+><P
+>     Sets the cursor to position index.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   insert   <TT
+CLASS="REPLACEABLE"
+><I
+>index</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>text</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?-tags</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>taglist?</I
+></TT
+> </P
+></DT
+><DD
+><P
+>     Inserts and position indext the text text.
+If taglist is given the text is taged with each element
+of the list.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   tag   <TT
+CLASS="REPLACEABLE"
+><I
+>create</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>tagName</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>     Creates a tag with name tagName and configures it dependent of the options given. The options are the same as with tag configure.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   scrollToPosition   <TT
+CLASS="REPLACEABLE"
+><I
+>index</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>   Scrolls the widget so that the specified index is visible.</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-align</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>a list of the horizontal and vertical alignment or one of topLeft, top, topRight, left, center, right, bottomLeft, bottom, or bottomRight</SPAN
+>
+                  </P
+><P
+>Specifies where the index shall be shown.</P
+></DD
+><DT
+>-margin</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>0 lt float lt 1</SPAN
+>
+                  </P
+><P
+>Specifies the margin.</P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   tag   <TT
+CLASS="REPLACEABLE"
+><I
+>configure</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>tagName</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>     Configures the existing tag tagName.</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-background</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color</SPAN
+></A
+>
+                  </P
+><P
+>Background color of the text.</P
+></DD
+><DT
+>-foreground</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color</SPAN
+></A
+>
+                  </P
+><P
+>Foreground color of the text.</P
+></DD
+><DT
+>-font</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>FONT</SPAN
+>
+                  </P
+><P
+>Font of the text.</P
+></DD
+><DT
+>-fontFamily</DT
+><DD
+><P
+>Font family of the text.</P
+></DD
+><DT
+>-fontStyle</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF normal, oblique, italic</SPAN
+> (default: normal)
+                  </P
+><P
+>Font style of the text.</P
+></DD
+><DT
+>-fontVariant</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF normal, smallCaps</SPAN
+> (default: normal)
+                  </P
+><P
+>Font variant of the text.</P
+></DD
+><DT
+>-fontWeight</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF ultralight, light, normal, bold, ultrabold, heavy</SPAN
+> (default: normal)
+                  </P
+><P
+>Font weight of the text.</P
+></DD
+><DT
+>-fontRise</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+> (default: 0)
+                  </P
+><P
+>How many pixels the text should be risen.</P
+></DD
+><DT
+>-fontStretch</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF ultraCondensed, extraCondensed, condensed, semiCondensed, normal, semiExpanded, expanded, extraExpanded, ultraExpanded</SPAN
+> (default: normal)
+                  </P
+><P
+>Font stretch of the text.</P
+></DD
+><DT
+>-fontSize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+                  </P
+><P
+>Font size of the text.</P
+></DD
+><DT
+>-fontScale</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float ORONEOF xx-small, x-small, small, medium, large, x-large, xx-large</SPAN
+> (default: normal)
+                  </P
+><P
+>Font scale used.</P
+></DD
+><DT
+>-wrapMode</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF none, char, word</SPAN
+>
+                  </P
+><P
+>Wrap mode used.</P
+></DD
+><DT
+>-justify</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF left, right, center, fill</SPAN
+>
+                  </P
+><P
+>Justification of the lines.</P
+></DD
+><DT
+>-strikethrough</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+                  </P
+><P
+>Whether the text is struck through.</P
+></DD
+><DT
+>-underline</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF none, single, double, low</SPAN
+> (default: none)
+                  </P
+><P
+>How the text should be underlined.</P
+></DD
+><DT
+>-editable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+                  </P
+><P
+>Whether the text can be edited.</P
+></DD
+><DT
+>-invisible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+                  </P
+><P
+>Whether the text is invisible.</P
+></DD
+></DL
+></DIV
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4240"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set text [gnocl::text]
+$text tag create bold -fontWeight bold -foreground blue
+$text insert end "This is "
+$text insert end "Gnocl" -tags bold
+$text insert end "!"
+gnocl::window -title "Text" -child $text</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/text.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4247"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r3025.html"
+><B
+CLASS="COMMAND"
+>entry</B
+></A
+>,
+   <A
+HREF="r4259.html"
+><B
+CLASS="COMMAND"
+>label</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkTextBuffer</CODE
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkTextView</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r3625.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r4259.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>spinButton</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN3022"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>label</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

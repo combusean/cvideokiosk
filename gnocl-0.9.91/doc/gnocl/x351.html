@@ -1,0 +1,815 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Commands</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+HREF="t118.html"><LINK
+REL="PREVIOUS"
+TITLE="Concepts"
+HREF="x165.html"><LINK
+REL="NEXT"
+TITLE="callback"
+HREF="r355.html"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x165.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r355.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="AEN351"
+>3. Commands</A
+></H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN353"
+>3.1. Non Widget Related Commands</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r355.html"
+>callback</A
+>&nbsp;--&nbsp;Manipulate callback functions.</DT
+><DT
+><A
+HREF="r408.html"
+>configure</A
+>&nbsp;--&nbsp;Change global gnocl settings.</DT
+><DT
+><A
+HREF="r438.html"
+>clipboard</A
+>&nbsp;--&nbsp;Manipulate the clipboard.</DT
+><DT
+><A
+HREF="r499.html"
+>info</A
+>&nbsp;--&nbsp;Retrieve different information.</DT
+><DT
+><A
+HREF="r547.html"
+>mainLoop</A
+>&nbsp;--&nbsp;Enter the GTK+ event loop.</DT
+><DT
+><A
+HREF="r571.html"
+>update</A
+>&nbsp;--&nbsp;Process pending GTK+ events.</DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN583"
+>3.2. Top Level Windows</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r586.html"
+>dialog</A
+>&nbsp;--&nbsp;A top level window with standard layout.</DT
+><DT
+><A
+HREF="r796.html"
+>window</A
+>&nbsp;--&nbsp;A standard top level window.</DT
+></DL
+></DIV
+><P
+>To be displayed every widget must be a direct or indirect 
+      child of a top level window. 
+      </P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN1072"
+>3.3. Container</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r1075.html"
+>box</A
+>&nbsp;--&nbsp;A widget which arranges its children horizontal or vertical.</DT
+><DT
+><A
+HREF="r1365.html"
+>expander</A
+>&nbsp;--&nbsp;A container, which can hide its child widget.</DT
+><DT
+><A
+HREF="r1461.html"
+>notebook</A
+>&nbsp;--&nbsp;A widget which allows to interactively select which of its children is visible.</DT
+><DT
+><A
+HREF="r1656.html"
+>paned</A
+>&nbsp;--&nbsp;A widget which allows to interactively resize two children.</DT
+><DT
+><A
+HREF="r1765.html"
+>scrolledWindow</A
+>&nbsp;--&nbsp;A window which adds scrollbars to its child.</DT
+><DT
+><A
+HREF="r1926.html"
+>separator</A
+>&nbsp;--&nbsp;A widget which groups widgets horizontal or vertical.</DT
+><DT
+><A
+HREF="r1987.html"
+>table</A
+>&nbsp;--&nbsp;A widget which arranges its children in rows and columns.</DT
+></DL
+></DIV
+><P
+>Container are widgets which arrange their children
+      in certain manner. The separator widget does not have children,
+      but helps to group widgets.
+      </P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN2253"
+>3.4. Buttons</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r2256.html"
+>button</A
+>&nbsp;--&nbsp;A widget which executes a command when clicked.</DT
+><DT
+><A
+HREF="r2464.html"
+>checkButton</A
+>&nbsp;--&nbsp;A widget which changes between two states when clicked.</DT
+><DT
+><A
+HREF="r2671.html"
+>comboBox</A
+>&nbsp;--&nbsp;A widget with which one of several alternatives can be chosen.</DT
+><DT
+><A
+HREF="r2842.html"
+>radioButton</A
+>&nbsp;--&nbsp;A widget from which only one of a group can be selected.</DT
+></DL
+></DIV
+><P
+>Buttons are widgets that enables the user to initiate an action
+         or to make a choice.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN3022"
+>3.5. Entries</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r3025.html"
+>entry</A
+>&nbsp;--&nbsp;A widget which allows the user to input a small amount of text.</DT
+><DT
+><A
+HREF="r3218.html"
+>comboEntry</A
+>&nbsp;--&nbsp;A widget which allows to input a small amount of text.</DT
+><DT
+><A
+HREF="r3424.html"
+>scale</A
+>&nbsp;--&nbsp;A slider widget for selecting a value from a range.</DT
+><DT
+><A
+HREF="r3625.html"
+>spinButton</A
+>&nbsp;--&nbsp;A widget which allows the user to input a number.</DT
+><DT
+><A
+HREF="r3834.html"
+>text</A
+>&nbsp;--&nbsp;A widget for multi line formatted text editing.</DT
+></DL
+></DIV
+><P
+>Entries are used for getting user input.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN4256"
+>3.6. Display widgets</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r4259.html"
+>label</A
+>&nbsp;--&nbsp;A widget which shows a small amount of text.</DT
+><DT
+><A
+HREF="r4423.html"
+>image</A
+>&nbsp;--&nbsp;A widget which shows an image.</DT
+><DT
+><A
+HREF="r4533.html"
+>progressBar</A
+>&nbsp;--&nbsp;A widget which gives the user feedback of background work.</DT
+><DT
+><A
+HREF="r4668.html"
+>statusBar</A
+>&nbsp;--&nbsp;A widget which reports messages of minor importance to the user.</DT
+></DL
+></DIV
+><P
+>Display widgets display information 
+            or give the user feedback.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN4861"
+>3.7. Menu widgets</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r4864.html"
+>menuBar</A
+>&nbsp;--&nbsp;A menu container widget.</DT
+><DT
+><A
+HREF="r4983.html"
+>menu</A
+>&nbsp;--&nbsp;A menu container widget.</DT
+><DT
+><A
+HREF="r5114.html"
+>menuItem</A
+>&nbsp;--&nbsp;A menu item which executes a command when clicked.</DT
+><DT
+><A
+HREF="r5240.html"
+>menuCheckItem</A
+>&nbsp;--&nbsp;A menu item which changes between two states when clicked.</DT
+><DT
+><A
+HREF="r5400.html"
+>menuRadioItem</A
+>&nbsp;--&nbsp;A menu item from which only one of a group can be selected.</DT
+><DT
+><A
+HREF="r5554.html"
+>menuSeparator</A
+>&nbsp;--&nbsp;A menu item which visually separates different items.</DT
+></DL
+></DIV
+><P
+>Menu widgets are used for creating menus.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN5635"
+>3.8. Toolbar widgets</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r5638.html"
+>toolBar</A
+>&nbsp;--&nbsp;A toolbar container widget.</DT
+><DT
+><A
+HREF="r5768.html"
+>toolBar item</A
+>&nbsp;--&nbsp;A button like item in a toolbar.</DT
+><DT
+><A
+HREF="r5890.html"
+>toolBar checkItem</A
+>&nbsp;--&nbsp;A toolbar item which changes between two states when clicked.</DT
+><DT
+><A
+HREF="r6060.html"
+>toolBar radioItem</A
+>&nbsp;--&nbsp;A toolbar item from which only one of a group can be selected.</DT
+></DL
+></DIV
+><P
+>Toolbar widgets are used for creating toolbars.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN6224"
+>3.9. Special Selectors</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r6227.html"
+>colorButton</A
+>&nbsp;--&nbsp;A button to launch a color selection dialog.</DT
+><DT
+><A
+HREF="r6423.html"
+>colorSelection</A
+>&nbsp;--&nbsp;A standard dialog to choose a color.</DT
+><DT
+><A
+HREF="r6543.html"
+>fileChooser</A
+>&nbsp;--&nbsp;A standard dialog to choose a file</DT
+><DT
+><A
+HREF="r6702.html"
+>fontButton</A
+>&nbsp;--&nbsp;A button to launch a font selection dialog.</DT
+><DT
+><A
+HREF="r6897.html"
+>fontSelection</A
+>&nbsp;--&nbsp;A standard dialog to choose a font.</DT
+></DL
+></DIV
+><P
+>Special selectors get user input in a standardized way.
+      </P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN7004"
+>3.10. Tree and List Widgets</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r7006.html"
+>tree</A
+>&nbsp;--&nbsp;A widget which displays text or other items arranged in a tree.</DT
+><DT
+><A
+HREF="r7725.html"
+>list</A
+>&nbsp;--&nbsp;A widget which displays text or other items arranged in rows and columns.</DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN7758"
+>3.11. Misc. Widgets</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r7760.html"
+>eventBox</A
+>&nbsp;--&nbsp;A widget which catches events for its child widget.</DT
+><DT
+><A
+HREF="r7952.html"
+>plug</A
+>&nbsp;--&nbsp;Toplevel to embed into another process</DT
+><DT
+><A
+HREF="r8030.html"
+>socket</A
+>&nbsp;--&nbsp;Container for embedding windows of other processes</DT
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN8125"
+>3.12. Gnome Canvas Widget</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r8128.html"
+>canvas</A
+>&nbsp;--&nbsp;A widget which displays graphic objects (in gnoclCanvas).</DT
+><DT
+><A
+HREF="r8563.html"
+>canvas bPath</A
+>&nbsp;--&nbsp;A canvas item which consists of line and bezier segments. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r8704.html"
+>canvas clipGroup</A
+>&nbsp;--&nbsp;A canvas item which implements clipping. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r8793.html"
+>canvas ellipse</A
+>&nbsp;--&nbsp;A canvas ellipse item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r8902.html"
+>canvas image</A
+>&nbsp;--&nbsp;A canvas item which shows an image. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r8984.html"
+>canvas line</A
+>&nbsp;--&nbsp;A canvas line item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r9102.html"
+>canvas polygon</A
+>&nbsp;--&nbsp;A canvas polygon item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r9219.html"
+>canvas rectangle</A
+>&nbsp;--&nbsp;A canvas rectangle item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r9330.html"
+>canvas richText</A
+>&nbsp;--&nbsp;A canvas rich text item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r9674.html"
+>canvas text</A
+>&nbsp;--&nbsp;A canvas text item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r9824.html"
+>canvas widget</A
+>&nbsp;--&nbsp;A canvas item which shows a normal widget. (in gnoclCanvas)</DT
+></DL
+></DIV
+><P
+>The canvas widget displays graphic objects like lines,
+         circles or text. It is available as separate library 
+         gnoclCanvas.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN9911"
+>3.13. Gnome Gconf</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r9914.html"
+>gconf</A
+>&nbsp;--&nbsp;Manipulate the Gnome GConf database.</DT
+></DL
+></DIV
+><P
+>The gconf command allows to store configuration information in
+         a Gnome complient way.
+         It is available as separate library gnoclGconf.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN10027"
+>3.14. Gnome VFS</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r10031.html"
+>file</A
+>&nbsp;--&nbsp;Implement virtual file system commands</DT
+><DT
+><A
+HREF="r10267.html"
+>mime</A
+>&nbsp;--&nbsp;Retrieve information about files based on their 
+            MIME type.</DT
+></DL
+></DIV
+><P
+>The separate library gnoclVFS allows to retrieve MIME 
+         information and implements commands to use the Gnome 
+         virtual file system.
+         </P
+><P
+>Syntax and semantic of these commands is not yet stable.
+            Please mail the author if you have suggestions for
+            improvements.
+         </P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN10419"
+>3.15. Gnome</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r10422.html"
+>appletFactory</A
+>&nbsp;--&nbsp;A command which creates a Gnome panel applet.</DT
+><DT
+><A
+HREF="r10639.html"
+>session</A
+>&nbsp;--&nbsp;A command which implements an interface to the Gnome session manager.</DT
+></DL
+></DIV
+><P
+>The separate library gnoclGnome implements different Gnome
+         specific widgets and commands.</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="AEN10731"
+>3.16. Deprecated</A
+></H2
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="r10734.html"
+>fileSelection</A
+>&nbsp;--&nbsp;A standard dialog to choose a file (DEPRECATED since GTK+ 2.4).</DT
+><DT
+><A
+HREF="r10843.html"
+>combo</A
+>&nbsp;--&nbsp;A widget that allows the user to input a small amount of text. (DEPRECATED since GTK+ 2.4).</DT
+><DT
+><A
+HREF="r11010.html"
+>optionMenu</A
+>&nbsp;--&nbsp;A widget with which one of several alternatives can be chosen. (DEPRECATED since GTK+ 2.4)</DT
+></DL
+></DIV
+><P
+>These are commands, which are deprecated since a specific
+         GTK+ version.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x165.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r355.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Concepts</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="t118.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>callback</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,336 @@
+<refentry id="callback">
+   <refmeta> 
+      <refentrytitle>callback</refentrytitle>
+   </refmeta>
+
+   <refnamediv>
+      <refname>callback</refname>
+      <refpurpose>Manipulate callback functions.</refpurpose>
+   </refnamediv>
+
+   <refsynopsisdiv>
+      <cmdsynopsis>
+         <command>callback</command>
+         <arg><replaceable>subcommand</replaceable></arg>
+         <arg rep="repeat" choice="opt"><replaceable>-option</replaceable> <replaceable>value</replaceable></arg>
+      </cmdsynopsis>
+   </refsynopsisdiv>
+
+   <refsect1><title>Description</title>
+   <para>
+   With the callback command callback functions can be set or removed.
+   </para>
+   </refsect1>
+
+   <refsect1><title>Subcommands</title>
+      <variablelist>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>callback</command>
+               <arg choice="plain">create</arg>
+               <arg>script</arg>
+               <arg rep="repeat" choice="opt"><replaceable>-option</replaceable> <replaceable>value</replaceable></arg>
+               </cmdsynopsis></term>
+            <listitem>
+               <para>Create a callback function and returns its ID.
+                  The function is called until it returns another code
+                  than ok (e.g. return -code break) or until it is
+                  deleted with the delete subcommand.</para>
+               <variablelist><title>Options</title>
+               <varlistentry>
+                  <term>-interval</term>
+                  <listitem>
+                     <para>type: <type>integer or "idle"</type> (default: idle)
+                     </para>
+                     <para>If interval is an integer, script
+                        is called every interval milliseconds. If its
+                        "idle" script is called whenever
+                        there are no other events pending.</para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term>-priority</term>
+                  <listitem>
+                     <para>type: <type>integer</type> (default: 0)
+                     </para>
+                     <para>Priority with which this callback is handled.
+                        Negativ values mean lower priority than normal,
+                        positiv values mean higher priority than normal.</para>
+                  </listitem>
+               </varlistentry>
+               </variablelist>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>callback</command>
+               <arg choice="plain">delete</arg>
+               <arg>ID</arg>
+               </cmdsynopsis></term>
+            <listitem>
+               <para>Deletes the callback function with the ID ID.</para>
+            </listitem>
+         </varlistentry>
+      </variablelist>
+   </refsect1>
+</refentry>
+
+<refentry id="configure">
+   <refmeta> 
+      <refentrytitle>configure</refentrytitle>
+   </refmeta>
+
+   <refnamediv>
+      <refname>configure</refname>
+      <refpurpose>Change global gnocl settings.</refpurpose>
+   </refnamediv>
+
+   <refsynopsisdiv>
+      <cmdsynopsis>
+         <command>configure</command> 
+         <arg rep="repeat" choice="opt"><replaceable>-option</replaceable> <replaceable>value</replaceable></arg>
+      </cmdsynopsis>
+   </refsynopsisdiv>
+
+   <refsect1><title>Description</title>
+   <para>
+   With the configure command global gnocl settings can be changed.
+   </para>
+   </refsect1>
+
+   <refsect1><title>Options</title>
+      <variablelist>
+      <varlistentry>
+         <term>-defaultIcon</term>
+         <listitem>
+            <para>type: <type>PERCENTSTRING</type> 
+            </para>
+            <para>Sets the default icon for windows whose icon is
+                  not explicitely set. This must be either a file
+                  name (prefix "%/") or empty.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-tooltip</term>
+         <listitem>
+            <para>type: <type>boolean</type> 
+            </para>
+            <para>Set globaly if the tooltips are shown.</para>
+         </listitem>
+      </varlistentry>
+      </variablelist>
+   </refsect1>
+</refentry>
+
+
+<refentry id="clipboard">
+   <refmeta> 
+      <refentrytitle>clipboard</refentrytitle>
+   </refmeta>
+
+   <refnamediv>
+      <refname>clipboard</refname>
+      <refpurpose>Manipulate the clipboard.</refpurpose>
+   </refnamediv>
+
+   <refsynopsisdiv>
+      <cmdsynopsis>
+         <command>clipboard</command>
+         <arg><replaceable>subcommand</replaceable></arg>
+         <arg rep="repeat" choice="opt"><replaceable>-option</replaceable> <replaceable>value</replaceable></arg>
+      </cmdsynopsis>
+   </refsynopsisdiv>
+
+   <refsect1><title>Description</title>
+   <para>
+   With the clipboard command the clipboard can be manipulated. XWindow 
+   has different clipboards. As default gnocl uses CLIPBOARD, which
+   is the clipboard used by GTK and Gnome programs for copy, paste and
+   cut operations. PRIMARY is the clipboard which contains the currently
+   selected text. It can be selected by setting the -primary option to 1.
+   </para>
+   </refsect1>
+
+   <refsect1><title>Subcommands</title>
+      <variablelist>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>clipboard</command>
+               <arg choice="plain">hasText</arg>
+               <arg choice="opt"><replaceable>-primary</replaceable> <replaceable>boolean</replaceable></arg>
+               </cmdsynopsis></term>
+            <listitem>
+            <para>Returns a boolean whether the clipboard contains text.</para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>clipboard</command>
+               <arg choice="plain">setText</arg>
+               <arg>text</arg>
+               <arg choice="opt"><replaceable>-primary</replaceable> <replaceable>boolean</replaceable></arg>
+               </cmdsynopsis></term>
+            <listitem>
+            <para>Sets the content of the clipboard to text.</para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>clipboard</command>
+               <arg choice="plain">getText</arg>
+               <arg choice="opt"><replaceable>-primary</replaceable> <replaceable>boolean</replaceable></arg>
+               </cmdsynopsis></term>
+            <listitem>
+            <para>Returns the content of the clipboard if it contains text.
+                  Otherwise returns the empty string.</para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>clipboard</command>
+               <arg choice="plain">clear</arg>
+               <arg choice="opt"><replaceable>-primary</replaceable> <replaceable>boolean</replaceable></arg>
+               </cmdsynopsis></term>
+            <listitem>
+            <para>Clears the clipboard.</para>
+            </listitem>
+         </varlistentry>
+      </variablelist>
+   </refsect1>
+</refentry>
+
+<refentry id="info">
+   <refmeta> 
+      <refentrytitle>info</refentrytitle>
+   </refmeta>
+
+   <refnamediv>
+      <refname>info</refname>
+      <refpurpose>Retrieve different information.</refpurpose>
+   </refnamediv>
+
+   <refsynopsisdiv>
+      <cmdsynopsis>
+         <command>info</command>
+         <arg><replaceable>subcommand</replaceable></arg>
+         <arg rep="repeat" choice="opt"><replaceable>-option</replaceable><replaceable>value</replaceable></arg>
+      </cmdsynopsis>
+   </refsynopsisdiv>
+
+   <refsect1><title>Description</title>
+   <para>
+   The info command gives different information.
+   </para>
+   </refsect1>
+
+   <refsect1><title>Subcommands</title>
+      <variablelist>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>info</command>
+               <arg choice="plain">version</arg>
+               </cmdsynopsis></term>
+            <listitem>
+            <para> Returns the gnocl version in a string of the form 
+                  MajorNumber.PatchLevel.SubLevel (for example "1.0.4").</para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>info</command>
+               <arg choice="plain">gtkVersion</arg>
+               </cmdsynopsis></term>
+            <listitem>
+            <para> Returns the GTK version in a string of the form 
+                  MajorNumber.PatchLevel.SubLevel (for example "2.0.5").</para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>info</command>
+               <arg choice="plain">hasGnomeSupport</arg>
+               </cmdsynopsis></term>
+            <listitem>
+            <para> Returns a boolean whether the gnocl library has
+                  been compiled with gnome support.</para>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>info</command>
+               <arg choice="plain">allStockItems</arg>
+               </cmdsynopsis></term>
+            <listitem>
+            <para> Returns a list with the name of all stock items.</para>
+            </listitem>
+         </varlistentry>
+      </variablelist>
+   </refsect1>
+</refentry>
+
+<refentry id="mainLoop">
+   <refmeta> 
+      <refentrytitle>mainLoop</refentrytitle>
+   </refmeta>
+
+   <refnamediv>
+      <refname>mainLoop</refname>
+      <refpurpose>Enter the GTK+ event loop.</refpurpose>
+   </refnamediv>
+
+   <refsynopsisdiv>
+      <cmdsynopsis>
+         <command>mainLoop</command> 
+         <arg rep="repeat" choice="opt"><replaceable>-option</replaceable> <replaceable>value</replaceable></arg>
+      </cmdsynopsis>
+   </refsynopsisdiv>
+
+   <refsect1><title>Description</title>
+   <para>
+   With the mainLoop the GTK+ event loop is entered. This command does
+   not return!
+   </para>
+   </refsect1>
+
+   <refsect1><title>Options</title>
+      <variablelist>
+      <varlistentry>
+         <term>-timeout</term>
+         <listitem>
+            <para>type: <type>integer</type> 
+            </para>
+            <para>Timeout is the time in milliseconds the tcl event loop
+            is checked. If timeout is equal to zero, the tcl event loop
+            is never called. In this case several Tcl commands like
+            vwait or after do not work anymore.</para>
+         </listitem>
+      </varlistentry>
+      </variablelist>
+   </refsect1>
+</refentry>
+
+<refentry id="update">
+   <refmeta> 
+      <refentrytitle>update</refentrytitle>
+   </refmeta>
+
+   <refnamediv>
+      <refname>update</refname>
+      <refpurpose>Process pending GTK+ events.</refpurpose>
+   </refnamediv>
+
+   <refsynopsisdiv>
+      <cmdsynopsis>
+         <command>update</command> 
+      </cmdsynopsis>
+   </refsynopsisdiv>
+
+   <refsect1><title>Description</title>
+   <para>
+   Update processes pending GTK+ and Tcl events. It returns the number of
+   processed events.
+   </para>
+   </refsect1>
+
+</refentry>
+

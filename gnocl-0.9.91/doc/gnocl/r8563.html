@@ -1,0 +1,569 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>canvas bPath</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Gnome Canvas Widget"
+HREF="x351.html#AEN8125"><LINK
+REL="PREVIOUS"
+TITLE="canvas "
+HREF="r8128.html"><LINK
+REL="NEXT"
+TITLE="canvas clipGroup"
+HREF="r8704.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r8128.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r8704.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="CANVASBPATH"
+></A
+>canvas bPath</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN8566"
+></A
+><H2
+>Name</H2
+>canvas bPath&nbsp;--&nbsp;A canvas item which consists of line and bezier segments. (in gnoclCanvas)</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN8569"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   create   bPath  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8578"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-capStyle</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF notLast, but, round, projecting</SPAN
+>
+            </P
+><P
+>Defines the cap style.</P
+></DD
+><DT
+>-coords</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list-of-graphic-commands-and-floats</SPAN
+>
+            </P
+><P
+>List of graphic commands and corresponding coordinates. Valid
+graphic commands are "lineTo", "lineToMoving", "moveTo",
+"curveTo", "close" and "closeCurrent".
+The list must start with either the "moveTo" graphic
+command followed by an x and an y coordinate, or by
+an x and an y coordinate.
+"lineTo" must be followed by an x and an y coordinate. It draws
+a straight line from the last point to (x,y). And makes (x,y)
+the current point.
+"lineToMoving" is the same as "lineTo" apart from that
+if several "lineToMoving" commands follow each other, only the
+last one is actually drawn. This is for example usefull in
+interactive drawing.
+"moveTo" must be followed by an x and an y coordinate. It makes
+(x,y) the current point.
+"curveTo" must be followed by six coordinates. It draws a
+Bezier curve. And make the last point the current point.
+"close" must not be followed by any coordinates. It closes the
+current figure with a straight line to the last point set by
+the "moveTo" command.
+"closeCurrent" must not be followed by any coordinates.
+It closes the current figure by changing the current point to the
+last point set by the "moveTo" command.
+A path may contain multiple "moveTo" and "close" commands,
+so that it is possible to draw multiple figures with one
+canvasBPath item.
+Examples:
+"100 100 lineTo 150 50 lineTo 200 100 close" draws a triangle;
+"moveTo 10 120 curveTo 10 220 110 220 110 120" draws a Bezier curve.</P
+></DD
+><DT
+>-dash</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list</SPAN
+> (default: "")
+            </P
+><P
+>Dash pattern used for this item. The list must contain an
+even number of integer. The odd elements of this list give
+the length in pixel of the line segements, the even elements
+give the length of the space between these line segements.</P
+></DD
+><DT
+>-fill</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color with transparancy</SPAN
+></A
+> (default: black)
+            </P
+><P
+>Color of the curve.</P
+></DD
+><DT
+>-joinStyle</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF miter, round, bevel</SPAN
+>
+            </P
+><P
+>Defines the join style.</P
+></DD
+><DT
+>-onButtonPress</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is press
+inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: one of buttonPress, button2Press or button3Press
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onButtonRelease</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is released
+if it has been pressed inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: always buttonRelease
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onEnter</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onLeave</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onMotion</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the mouse is moved inside
+the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-outline</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color with transparancy</SPAN
+></A
+> (default: black)
+            </P
+><P
+>Outline color of the curve.</P
+></DD
+><DT
+>-parent</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>tag-or-id</SPAN
+>
+            </P
+><P
+>This option sets the parent of the item. The parent must be
+a clipGroup item, which implements clipping for its
+children.</P
+></DD
+><DT
+>-pixelWidth</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Width of the line, does not change, if the line is scaled.</P
+></DD
+><DT
+>-tags</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list</SPAN
+> (default: "")
+            </P
+><P
+>List of tags to be associated with this item.
+A tag must start with a alphabetic character which
+is followed by zero or more alphabetic or numeric characters.</P
+></DD
+><DT
+>-width</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+>
+            </P
+><P
+>Width of the line, changes, if the line is scaled.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8673"
+></A
+><H2
+>Description</H2
+><P
+>A bezier path consists of one or more elements consisting
+of lines and bezier curves. The elements may be open or closed.
+In the latter case they may be filled with a color.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8676"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   appendCoords   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-graphic-commands-and-floats</I
+></TT
+> </P
+></DT
+><DD
+><P
+>  Adds list-of-graphic-commands-and-floats to the existing
+coordinates. See option "-coords" for a description of
+valid graphic commands. This command is especially usefull
+for interactive drawing, where the graphic command
+"lineToMoving" draws a line from the last current point
+set by "lineTo", "curveTo" or "moveTo" and each appended
+"lineToMoving" replaces its successor.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8692"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r8793.html"
+><B
+CLASS="COMMAND"
+>canvas ellipse</B
+></A
+>,
+   <A
+HREF="r8984.html"
+><B
+CLASS="COMMAND"
+>canvas line</B
+></A
+>,
+   <A
+HREF="r9102.html"
+><B
+CLASS="COMMAND"
+>canvas polygon</B
+></A
+>,
+   <A
+HREF="r9219.html"
+><B
+CLASS="COMMAND"
+>canvas rectangle</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GnomeCanvasBPath</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r8128.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r8704.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>canvas</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN8125"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>canvas clipGroup</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

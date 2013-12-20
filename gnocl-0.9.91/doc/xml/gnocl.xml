@@ -1,0 +1,588 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN"
+          "http://www.oasis-open.org/docbook/sgml/3.1/docbookx.dtd" [
+<!ENTITY testTree SYSTEM "testTree.xml"> 
+<!ENTITY gnoclConcepts SYSTEM "concepts.xml">
+<!ENTITY gnoclNonWidgetCmds SYSTEM "nonwidgetcmds.xml">
+<!ENTITY gnoclGconf SYSTEM "gconf.xml">
+<!ENTITY gnoclFile SYSTEM "file.xml">
+<!ENTITY gnoclMime SYSTEM "mime.xml">
+<!-- these are created from manpages.txt -->
+<!ENTITY gnoclAppletFactory SYSTEM "appletfactory.xml">
+<!ENTITY gnoclBox SYSTEM "box.xml">
+<!ENTITY gnoclButton SYSTEM "button.xml">
+<!ENTITY gnoclCanvasBPath SYSTEM "canvasbpath.xml">
+<!ENTITY gnoclCanvasClipGroup SYSTEM "canvasclipgroup.xml">
+<!ENTITY gnoclCanvasEllipse SYSTEM "canvasellipse.xml">
+<!ENTITY gnoclCanvasImage SYSTEM "canvasimage.xml">
+<!ENTITY gnoclCanvasLine SYSTEM "canvasline.xml">
+<!ENTITY gnoclCanvasPolygon SYSTEM "canvaspolygon.xml">
+<!ENTITY gnoclCanvasRectangle SYSTEM "canvasrectangle.xml">
+<!ENTITY gnoclCanvasRichText SYSTEM "canvasrichtext.xml">
+<!ENTITY gnoclCanvas SYSTEM "canvas.xml">
+<!ENTITY gnoclCanvasText SYSTEM "canvastext.xml">
+<!ENTITY gnoclCanvasWidget SYSTEM "canvaswidget.xml">
+<!ENTITY gnoclCheckButton SYSTEM "checkbutton.xml">
+<!ENTITY gnoclColorButton SYSTEM "colorbutton.xml">
+<!ENTITY gnoclColorSelection SYSTEM "colorselection.xml">
+<!ENTITY gnoclCombo SYSTEM "combo.xml">
+<!ENTITY gnoclComboBox SYSTEM "combobox.xml">
+<!ENTITY gnoclComboEntry SYSTEM "comboentry.xml">
+<!ENTITY gnoclDialog SYSTEM "dialog.xml">
+<!ENTITY gnoclEntry SYSTEM "entry.xml">
+<!ENTITY gnoclExpander SYSTEM "expander.xml">
+<!ENTITY gnoclEventBox SYSTEM "eventbox.xml">
+<!ENTITY gnoclFileSelection SYSTEM "fileselection.xml">
+<!ENTITY gnoclFileChooser SYSTEM "filechooser.xml">
+<!ENTITY gnoclFontButton SYSTEM "fontbutton.xml">
+<!ENTITY gnoclFontSelection SYSTEM "fontselection.xml">
+<!ENTITY gnoclImage SYSTEM "image.xml">
+<!ENTITY gnoclLabel SYSTEM "label.xml">
+<!ENTITY gnoclList SYSTEM "list.xml">
+<!ENTITY gnoclMenuBar SYSTEM "menubar.xml">
+<!ENTITY gnoclMenuCheckItem SYSTEM "menucheckitem.xml">
+<!ENTITY gnoclMenuItem SYSTEM "menuitem.xml">
+<!ENTITY gnoclMenuRadioItem SYSTEM "menuradioitem.xml">
+<!ENTITY gnoclMenuSeparator SYSTEM "menuseparator.xml">
+<!ENTITY gnoclMenu SYSTEM "menu.xml">
+<!ENTITY gnoclNotebook SYSTEM "notebook.xml">
+<!ENTITY gnoclOptionMenu SYSTEM "optionmenu.xml">
+<!ENTITY gnoclPaned SYSTEM "paned.xml">
+<!ENTITY gnoclPlug SYSTEM "plug.xml">
+<!ENTITY gnoclProgressBar SYSTEM "progressbar.xml">
+<!ENTITY gnoclRadioButton SYSTEM "radiobutton.xml">
+<!ENTITY gnoclScale SYSTEM "scale.xml">
+<!ENTITY gnoclScrolledWindow SYSTEM "scrolledwindow.xml">
+<!ENTITY gnoclSeparator SYSTEM "separator.xml">
+<!ENTITY gnoclSession SYSTEM "session.xml">
+<!ENTITY gnoclSocket SYSTEM "socket.xml">
+<!ENTITY gnoclSpinButton SYSTEM "spinbutton.xml">
+<!ENTITY gnoclStatusBar SYSTEM "statusbar.xml">
+<!ENTITY gnoclTable SYSTEM "table.xml">
+<!ENTITY gnoclText SYSTEM "text.xml">
+<!ENTITY gnoclToolBarCheckItem SYSTEM "toolbarcheckitem.xml">
+<!ENTITY gnoclToolBarItem SYSTEM "toolbaritem.xml">
+<!ENTITY gnoclToolBarRadioItem SYSTEM "toolbarradioitem.xml">
+<!ENTITY gnoclToolBar SYSTEM "toolbar.xml">
+<!ENTITY gnoclTree SYSTEM "tree.xml">
+<!ENTITY gnoclWindow SYSTEM "window.xml">
+]>
+
+<book>
+<bookinfo>
+   <title>Gnocl</title>
+   <author>
+      <firstname>Peter</firstname>
+      <othername role="middle">G.</othername>
+      <surname>Baum</surname>
+      <affiliation>
+         <address><email>peter@dr-baum.net</email></address>
+      </affiliation>
+   </author>
+   <copyright>
+      <year>2001</year>
+      <year>2002</year>
+      <year>2003</year>
+      <year>2004</year>
+      <year>2005</year>
+      <year>2006</year>
+      <holder>Peter G. Baum</holder>
+   </copyright>
+   <legalnotice>
+      <para>
+      This software is copyrighted by Peter G. Baum, and other parties.  
+      The following terms apply to all files associated with the
+      software unless explicitly disclaimed in individual files.
+      </para>
+
+      <para>
+      The authors hereby grant permission to use, copy, modify, distribute,
+      and license this software and its documentation for any purpose, provided
+      that existing copyright notices are retained in all copies and that this
+      notice is included verbatim in any distributions. No written agreement,
+      license, or royalty fee is required for any of the authorized uses.
+      Modifications to this software may be copyrighted by their authors
+      and need not follow the licensing terms described here, provided that
+      the new terms are clearly indicated on the first page of each file where
+      they apply.
+      </para>
+
+      <para>
+      IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY
+      FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+      ARISING OUT OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY
+      DERIVATIVES THEREOF, EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE
+      POSSIBILITY OF SUCH DAMAGE.
+      </para>
+
+      <para>
+      THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES,
+      INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  THIS SOFTWARE
+      IS PROVIDED ON AN "AS IS" BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE
+      NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR
+      MODIFICATIONS.
+      </para>
+
+      <para>
+      GOVERNMENT USE: If you are acquiring this software on behalf of the
+      U.S. government, the Government shall have only "Restricted Rights"
+      in the software and related documentation as defined in the Federal 
+      Acquisition Regulations (FARs) in Clause 52.227.19 (c) (2).  If you
+      are acquiring the software on behalf of the Department of Defense, the
+      software shall be classified as "Commercial Computer Software" and the
+      Government shall have only "Restricted Rights" as defined in Clause
+      252.227-7013 (c) (1) of DFARs.  Notwithstanding the foregoing, the
+      authors grant the U.S. Government and others acting in its behalf
+      permission to use and distribute the software in accordance with the
+      terms specified in this license. 
+      </para>
+   </legalnotice>
+   <revhistory>
+   <revision> 
+      <revnumber>0.18</revnumber> <date>2006-02-27</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.9.91, small adaptations
+            for docbook2html
+            </revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.17</revnumber> <date>2005-02-23</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.9.90, added deprecated, some
+            new widgets for GTK+ 2.4, some cleanups.
+            </revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.16</revnumber> <date>2004-12-02</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.18, added file and mime,
+            tag expression for canvas
+            </revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.15</revnumber> <date>2004-07-10</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.17, added description of colors,
+            much work on canvas: added polygon, clipGroup extended bPath.
+            </revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.14</revnumber> <date>2004-01-11</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.15, added example.</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.13</revnumber> <date>2003-12-22</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.14, added appletFactory.</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.12</revnumber> <date>2003-11-08</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.13, added percent and markup string,
+         many small fixes</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.11</revnumber> <date>2003-09-29</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.12, added cget,
+         many small fixes</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.10</revnumber> <date>2003-08-25</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.11, added gconf,
+         many small fixes</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.9</revnumber> <date>2003-07-21</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.10, added separator,
+         renamed messageDialog to dialog, many small fixes</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.8</revnumber> <date>2003-06-16</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.9, many small fixes</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.7</revnumber> <date>2003-04-16</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.8, especially callback,
+      clipboard and info</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.6</revnumber> <date>2003-03-03</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.7, especially fileSelection,
+            colorSelection, fontSelection, image and info.</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.5</revnumber> <date>2003-02-11</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.6, especially statusBar,
+            messageDialog, eventBox, plug and socket</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.4</revnumber> <date>2003-01-15</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.5, especially toolbar widget</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.3</revnumber> <date>2002-12-15</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.4, especially canvas widget</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.2</revnumber> <date>2002-11-10</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>Updates for Gnocl 0.5.3</revremark>
+   </revision>
+   <revision> 
+      <revnumber>0.1</revnumber> <date>2002-07-31</date>
+      <authorinitials>pgb</authorinitials>
+      <revremark>First version based on DocBook</revremark>
+   </revision>
+   </revhistory>
+</bookinfo>
+<dedication><para>To Berit</para></dedication>
+
+<article>
+
+<section><title>Introduction</title>
+   <para>
+   Gnocl implements GTK+ and Gnome bindings for the programming language Tcl
+   with emphasize on ease of use, following the example of Tk. 
+   It provides commands to build quickly GTK+ / Gnome compliant 
+   applications including the canvas widget, GConf and the Gnome applet.
+   Gnocl is split in several libraries, which can be loaded on demand.
+   </para>
+
+   <para>
+   The newest version of Gnocl can be found at
+   <ulink url="http://www.dr-baum.net/gnocl/"></ulink>.
+   </para>
+
+   <para>
+   Please send feedback, suggestions, bug reports to
+   <email>peter@dr-baum.net</email>.
+   </para>
+
+   <para>
+      The mandatory "Hello World" example looks like this:
+<programlisting><![CDATA[
+#!/bin/sh
+# the next line restarts using tclsh \
+exec tclsh "$0" "$@"
+
+package require Gnocl
+set but [gnocl::button -text "Hello World" -onClicked {puts "Hello World"}]
+gnocl::window -title "Hello World Example" -child $but
+gnocl::mainLoop
+]]>
+</programlisting>
+<screenshot><graphic fileref="../pics/helloWorld.png"></graphic></screenshot>
+   </para>
+
+   <para>
+   A more complex example which produces a GUI like the following,
+   is explained in more detail.
+   <screenshot><graphic fileref="../pics/simple.png"></graphic></screenshot>
+
+<programlistingco>
+<areaspec>
+<area id="ex.simple.package" coords='2'>
+<area id="ex.simple.menu" coords='4'>
+<area id="ex.simple.new" coords='5'>
+<area id="ex.simple.toolBar" coords='19'>
+<area id="ex.simple.toolBarItem" coords='20'>
+<area id="ex.simple.window" coords='27'>
+<area id="ex.simple.markUp" coords='30'>
+<area id="ex.simple.mainLoop" coords='35'>
+</areaspec>
+<programlisting><![CDATA[
+package require Gnocl
+
+set menu [gnocl::menu]
+$menu add [gnocl::menuItem -text "%#New" -tooltip "Make new" \
+      -onClicked {puts "That's new"}]
+$menu add [gnocl::menuSeparator]
+$menu add [gnocl::menuItem -text "%#Quit" -onClicked exit \
+      -tooltip "Quit program"]
+
+set file [gnocl::menuItem -text "%__File" -submenu $menu]
+
+set menu [gnocl::menu]
+$menu add [gnocl::menuItem -text "%__About" \
+      -tooltip "Show about dialog" \
+      -onClicked {puts "Mini example (c) 2001 P.G. Baum"}]
+set help [gnocl::menuItem -text "%__Help" -submenu $menu]
+
+set toolBar [gnocl::toolBar -style both]
+$toolBar add item -text "%#Quit" -tooltip "Tooltip Quit" \
+      -onClicked exit
+$toolBar add space
+$toolBar add item -text "%#New" -tooltip "Tooltip new" \
+      -onClicked {puts "That's new"}
+
+set box [gnocl::box -orientation vertical -borderWidth 0 -spacing 0]
+set win [gnocl::window -child $box -title "Test Application"]
+$box add [gnocl::menuBar -children [list $file $help]]
+$box add $toolBar 
+$box add [gnocl::label -text \
+      {%<<span foreground="blue" size="large">Hello</span>\
+      <span foreground="red" size="large">World</span>}] -expand 1
+$box add [gnocl::statusBar] 
+
+gnocl::mainLoop
+]]>
+</programlisting>
+<calloutlist>
+   <callout arearefs="ex.simple.package"><para>Load the Gnocl package 
+         to be able to use the Gnocl commands.</para></callout>
+   <callout arearefs="ex.simple.menu"><para>Create a menu to which 
+         different menu entries are added 
+         in the following lines.</para></callout>
+   <callout arearefs="ex.simple.new"><para>A standard New entry is 
+      created and added to the menu. The percent sign as first character
+      of the test string gives, together with the next character, the
+      string a special meaning 
+      (see <link linkend='percentString'>Percent String</link>). 
+      In this case "%#" means that "New" is used as stock item, which means
+      that not only a standard text is used, but also if available the 
+      standard icon and a standard accelerator are added.</para> 
+      <para>The string that follows the onClicked option is executed 
+      whenever the menu is clicked or its accelerator pressed.</para>
+      </callout>
+   <callout arearefs="ex.simple.toolBar"><para>A toolBar is created similar
+      to the menu above. With the -type option a syle with text
+      and icons is used.</para></callout>
+   <callout arearefs="ex.simple.toolBarItem"><para>A toolBar items is
+      added to the toolBar. The syntax is similar to menu entries. Again
+      a percent string is used to select a standard text and 
+      icon.</para></callout>
+   <callout arearefs="ex.simple.window"><para>To be visible each widget
+      must be a direct or indirect ancestor of a top level widget.
+      The standard top level widget is window.</para></callout>
+   <callout arearefs="ex.simple.markUp"><para>As main widget of the
+      application a simple label is used. This one demonstrates another
+      <link linkend='percentString'>Percent String</link>: the 
+      <link linkend='markupString'>Markup String</link>. It contains
+      not only the text, but also the formatting of the text. This is
+      very convenient and has huge advantages for internationalization 
+      of applications.</para></callout>
+   <callout arearefs="ex.simple.mainLoop"><para>Since Gnocl is event
+      based the GTK main loop has to be called. This function never
+      returns. From now on the GUI reacts on user input or other events
+      like timers and the associated callback functions are called.
+      </para></callout>
+</calloutlist>
+</programlistingco>
+</para>
+
+</section> <!-- End Introduction -->
+
+&gnoclConcepts;
+
+<section><title>Commands</title>
+   <section><title>Non Widget Related Commands</title>
+      &gnoclNonWidgetCmds;
+   </section>
+
+   <section><title>Top Level Windows</title>
+      <para>To be displayed every widget must be a direct or indirect 
+      child of a top level window. 
+      </para>
+      &gnoclDialog;
+      &gnoclWindow;
+   </section>
+
+   <section><title>Container</title>
+      <para>Container are widgets which arrange their children
+      in certain manner. The separator widget does not have children,
+      but helps to group widgets.
+      </para>
+      &gnoclBox;
+      &gnoclExpander;
+      &gnoclNotebook;
+      &gnoclPaned;
+      &gnoclScrolledWindow;
+      &gnoclSeparator;
+      &gnoclTable;
+   </section>
+
+   <section><title>Buttons</title>
+      <para>Buttons are widgets that enables the user to initiate an action
+         or to make a choice.</para>
+      &gnoclButton;
+      &gnoclCheckButton;
+      &gnoclComboBox;
+      &gnoclRadioButton;
+   </section>
+
+   <section><title>Entries</title>
+      <para>Entries are used for getting user input.</para>
+      &gnoclEntry;
+      &gnoclComboEntry;
+      &gnoclScale;
+      &gnoclSpinButton;
+      &gnoclText;
+   </section>
+
+   <section><title>Display widgets</title>
+      <para>Display widgets display information 
+            or give the user feedback.</para>
+      &gnoclLabel;
+      &gnoclImage;
+      &gnoclProgressBar;
+      &gnoclStatusBar;
+   </section>
+
+   <section><title>Menu widgets</title>
+      <para>Menu widgets are used for creating menus.</para>
+      &gnoclMenuBar;
+      &gnoclMenu;
+      &gnoclMenuItem;
+      &gnoclMenuCheckItem;
+      &gnoclMenuRadioItem;
+      &gnoclMenuSeparator;
+   </section>
+
+   <section><title>Toolbar widgets</title>
+      <para>Toolbar widgets are used for creating toolbars.</para>
+      &gnoclToolBar;
+      &gnoclToolBarItem;
+      &gnoclToolBarCheckItem;
+      &gnoclToolBarRadioItem;
+   </section>
+
+   <section><title>Special Selectors</title>
+      <para>Special selectors get user input in a standardized way.
+      </para>
+      &gnoclColorButton;
+      &gnoclColorSelection;
+      &gnoclFileChooser;
+      &gnoclFontButton;
+      &gnoclFontSelection;
+   </section>
+
+   <section><title>Tree and List Widgets</title>
+      &gnoclTree;
+      &gnoclList;
+   </section>
+
+
+   <section><title>Misc. Widgets</title>
+      &gnoclEventBox;
+      &gnoclPlug;
+      &gnoclSocket;
+   </section>
+
+   <section><title>Gnome Canvas Widget</title>
+      <para>The canvas widget displays graphic objects like lines,
+         circles or text. It is available as separate library 
+         gnoclCanvas.</para>
+      &gnoclCanvas;
+      &gnoclCanvasBPath;
+      &gnoclCanvasClipGroup;
+      &gnoclCanvasEllipse;
+      &gnoclCanvasImage;
+      &gnoclCanvasLine;
+      &gnoclCanvasPolygon;
+      &gnoclCanvasRectangle;
+      &gnoclCanvasRichText;
+      &gnoclCanvasText;
+      &gnoclCanvasWidget;
+   </section>
+
+   <section><title>Gnome Gconf</title>
+      <para>The gconf command allows to store configuration information in
+         a Gnome complient way.
+         It is available as separate library gnoclGconf.</para>
+      &gnoclGconf;
+   </section>
+
+   <section><title>Gnome VFS</title>
+      <para>The separate library gnoclVFS allows to retrieve MIME 
+         information and implements commands to use the Gnome 
+         virtual file system.
+         </para>
+      <para>Syntax and semantic of these commands is not yet stable.
+            Please mail the author if you have suggestions for
+            improvements.
+         </para>
+      &gnoclFile;
+      &gnoclMime;
+   </section>
+
+   <section><title>Gnome</title>
+      <para>The separate library gnoclGnome implements different Gnome
+         specific widgets and commands.</para>
+      &gnoclAppletFactory;
+      &gnoclSession;
+   </section>
+
+   <section><title>Deprecated</title>
+      <para>These are commands, which are deprecated since a specific
+         GTK+ version.</para>
+      &gnoclFileSelection;
+      &gnoclCombo;
+      &gnoclOptionMenu;
+   </section>
+
+</section> <!-- End Commands -->
+
+<appendix><title>License Terms</title>
+<para>
+This software is copyrighted by Peter G. Baum, and other parties.  
+The following terms apply to all files associated with the
+software unless explicitly disclaimed in individual files.
+</para>
+
+<para>
+The authors hereby grant permission to use, copy, modify, distribute,
+and license this software and its documentation for any purpose, provided
+that existing copyright notices are retained in all copies and that this
+notice is included verbatim in any distributions. No written agreement,
+license, or royalty fee is required for any of the authorized uses.
+Modifications to this software may be copyrighted by their authors
+and need not follow the licensing terms described here, provided that
+the new terms are clearly indicated on the first page of each file where
+they apply.
+</para>
+
+<para>
+IN NO EVENT SHALL THE AUTHORS OR DISTRIBUTORS BE LIABLE TO ANY PARTY
+FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+ARISING OUT OF THE USE OF THIS SOFTWARE, ITS DOCUMENTATION, OR ANY
+DERIVATIVES THEREOF, EVEN IF THE AUTHORS HAVE BEEN ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+</para>
+
+<para>
+THE AUTHORS AND DISTRIBUTORS SPECIFICALLY DISCLAIM ANY WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  THIS SOFTWARE
+IS PROVIDED ON AN "AS IS" BASIS, AND THE AUTHORS AND DISTRIBUTORS HAVE
+NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR
+MODIFICATIONS.
+</para>
+
+<para>
+GOVERNMENT USE: If you are acquiring this software on behalf of the
+U.S. government, the Government shall have only "Restricted Rights"
+in the software and related documentation as defined in the Federal 
+Acquisition Regulations (FARs) in Clause 52.227.19 (c) (2).  If you
+are acquiring the software on behalf of the Department of Defense, the
+software shall be classified as "Commercial Computer Software" and the
+Government shall have only "Restricted Rights" as defined in Clause
+252.227-7013 (c) (1) of DFARs.  Notwithstanding the foregoing, the
+authors grant the U.S. Government and others acting in its behalf
+permission to use and distribute the software in accordance with the
+terms specified in this license. 
+</para>
+</appendix>
+
+</article>
+</book>
+

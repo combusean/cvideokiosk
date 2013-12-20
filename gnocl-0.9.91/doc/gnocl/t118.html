@@ -1,0 +1,959 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="PREVIOUS"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="NEXT"
+TITLE="Concepts"
+HREF="x165.html"></HEAD
+><BODY
+CLASS="ARTICLE"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="index.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x165.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="ARTICLE"
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="t118.html#AEN119"
+>Introduction</A
+></DT
+><DT
+>2. <A
+HREF="x165.html"
+>Concepts</A
+></DT
+><DD
+><DL
+><DT
+>2.1. <A
+HREF="x165.html#PERCENTSTRING"
+>Percent String</A
+></DT
+><DT
+>2.2. <A
+HREF="x165.html#MARKUPSTRING"
+>Markup String</A
+></DT
+><DT
+>2.3. <A
+HREF="x165.html#COLOR"
+>Colors</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="x351.html"
+>Commands</A
+></DT
+><DD
+><DL
+><DT
+>3.1. <A
+HREF="x351.html#AEN353"
+>Non Widget Related Commands</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r355.html"
+>callback</A
+>&nbsp;--&nbsp;Manipulate callback functions.</DT
+><DT
+><A
+HREF="r408.html"
+>configure</A
+>&nbsp;--&nbsp;Change global gnocl settings.</DT
+><DT
+><A
+HREF="r438.html"
+>clipboard</A
+>&nbsp;--&nbsp;Manipulate the clipboard.</DT
+><DT
+><A
+HREF="r499.html"
+>info</A
+>&nbsp;--&nbsp;Retrieve different information.</DT
+><DT
+><A
+HREF="r547.html"
+>mainLoop</A
+>&nbsp;--&nbsp;Enter the GTK+ event loop.</DT
+><DT
+><A
+HREF="r571.html"
+>update</A
+>&nbsp;--&nbsp;Process pending GTK+ events.</DT
+></DL
+></DD
+><DT
+>3.2. <A
+HREF="x351.html#AEN583"
+>Top Level Windows</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r586.html"
+>dialog</A
+>&nbsp;--&nbsp;A top level window with standard layout.</DT
+><DT
+><A
+HREF="r796.html"
+>window</A
+>&nbsp;--&nbsp;A standard top level window.</DT
+></DL
+></DD
+><DT
+>3.3. <A
+HREF="x351.html#AEN1072"
+>Container</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r1075.html"
+>box</A
+>&nbsp;--&nbsp;A widget which arranges its children horizontal or vertical.</DT
+><DT
+><A
+HREF="r1365.html"
+>expander</A
+>&nbsp;--&nbsp;A container, which can hide its child widget.</DT
+><DT
+><A
+HREF="r1461.html"
+>notebook</A
+>&nbsp;--&nbsp;A widget which allows to interactively select which of its children is visible.</DT
+><DT
+><A
+HREF="r1656.html"
+>paned</A
+>&nbsp;--&nbsp;A widget which allows to interactively resize two children.</DT
+><DT
+><A
+HREF="r1765.html"
+>scrolledWindow</A
+>&nbsp;--&nbsp;A window which adds scrollbars to its child.</DT
+><DT
+><A
+HREF="r1926.html"
+>separator</A
+>&nbsp;--&nbsp;A widget which groups widgets horizontal or vertical.</DT
+><DT
+><A
+HREF="r1987.html"
+>table</A
+>&nbsp;--&nbsp;A widget which arranges its children in rows and columns.</DT
+></DL
+></DD
+><DT
+>3.4. <A
+HREF="x351.html#AEN2253"
+>Buttons</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r2256.html"
+>button</A
+>&nbsp;--&nbsp;A widget which executes a command when clicked.</DT
+><DT
+><A
+HREF="r2464.html"
+>checkButton</A
+>&nbsp;--&nbsp;A widget which changes between two states when clicked.</DT
+><DT
+><A
+HREF="r2671.html"
+>comboBox</A
+>&nbsp;--&nbsp;A widget with which one of several alternatives can be chosen.</DT
+><DT
+><A
+HREF="r2842.html"
+>radioButton</A
+>&nbsp;--&nbsp;A widget from which only one of a group can be selected.</DT
+></DL
+></DD
+><DT
+>3.5. <A
+HREF="x351.html#AEN3022"
+>Entries</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r3025.html"
+>entry</A
+>&nbsp;--&nbsp;A widget which allows the user to input a small amount of text.</DT
+><DT
+><A
+HREF="r3218.html"
+>comboEntry</A
+>&nbsp;--&nbsp;A widget which allows to input a small amount of text.</DT
+><DT
+><A
+HREF="r3424.html"
+>scale</A
+>&nbsp;--&nbsp;A slider widget for selecting a value from a range.</DT
+><DT
+><A
+HREF="r3625.html"
+>spinButton</A
+>&nbsp;--&nbsp;A widget which allows the user to input a number.</DT
+><DT
+><A
+HREF="r3834.html"
+>text</A
+>&nbsp;--&nbsp;A widget for multi line formatted text editing.</DT
+></DL
+></DD
+><DT
+>3.6. <A
+HREF="x351.html#AEN4256"
+>Display widgets</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r4259.html"
+>label</A
+>&nbsp;--&nbsp;A widget which shows a small amount of text.</DT
+><DT
+><A
+HREF="r4423.html"
+>image</A
+>&nbsp;--&nbsp;A widget which shows an image.</DT
+><DT
+><A
+HREF="r4533.html"
+>progressBar</A
+>&nbsp;--&nbsp;A widget which gives the user feedback of background work.</DT
+><DT
+><A
+HREF="r4668.html"
+>statusBar</A
+>&nbsp;--&nbsp;A widget which reports messages of minor importance to the user.</DT
+></DL
+></DD
+><DT
+>3.7. <A
+HREF="x351.html#AEN4861"
+>Menu widgets</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r4864.html"
+>menuBar</A
+>&nbsp;--&nbsp;A menu container widget.</DT
+><DT
+><A
+HREF="r4983.html"
+>menu</A
+>&nbsp;--&nbsp;A menu container widget.</DT
+><DT
+><A
+HREF="r5114.html"
+>menuItem</A
+>&nbsp;--&nbsp;A menu item which executes a command when clicked.</DT
+><DT
+><A
+HREF="r5240.html"
+>menuCheckItem</A
+>&nbsp;--&nbsp;A menu item which changes between two states when clicked.</DT
+><DT
+><A
+HREF="r5400.html"
+>menuRadioItem</A
+>&nbsp;--&nbsp;A menu item from which only one of a group can be selected.</DT
+><DT
+><A
+HREF="r5554.html"
+>menuSeparator</A
+>&nbsp;--&nbsp;A menu item which visually separates different items.</DT
+></DL
+></DD
+><DT
+>3.8. <A
+HREF="x351.html#AEN5635"
+>Toolbar widgets</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r5638.html"
+>toolBar</A
+>&nbsp;--&nbsp;A toolbar container widget.</DT
+><DT
+><A
+HREF="r5768.html"
+>toolBar item</A
+>&nbsp;--&nbsp;A button like item in a toolbar.</DT
+><DT
+><A
+HREF="r5890.html"
+>toolBar checkItem</A
+>&nbsp;--&nbsp;A toolbar item which changes between two states when clicked.</DT
+><DT
+><A
+HREF="r6060.html"
+>toolBar radioItem</A
+>&nbsp;--&nbsp;A toolbar item from which only one of a group can be selected.</DT
+></DL
+></DD
+><DT
+>3.9. <A
+HREF="x351.html#AEN6224"
+>Special Selectors</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r6227.html"
+>colorButton</A
+>&nbsp;--&nbsp;A button to launch a color selection dialog.</DT
+><DT
+><A
+HREF="r6423.html"
+>colorSelection</A
+>&nbsp;--&nbsp;A standard dialog to choose a color.</DT
+><DT
+><A
+HREF="r6543.html"
+>fileChooser</A
+>&nbsp;--&nbsp;A standard dialog to choose a file</DT
+><DT
+><A
+HREF="r6702.html"
+>fontButton</A
+>&nbsp;--&nbsp;A button to launch a font selection dialog.</DT
+><DT
+><A
+HREF="r6897.html"
+>fontSelection</A
+>&nbsp;--&nbsp;A standard dialog to choose a font.</DT
+></DL
+></DD
+><DT
+>3.10. <A
+HREF="x351.html#AEN7004"
+>Tree and List Widgets</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r7006.html"
+>tree</A
+>&nbsp;--&nbsp;A widget which displays text or other items arranged in a tree.</DT
+><DT
+><A
+HREF="r7725.html"
+>list</A
+>&nbsp;--&nbsp;A widget which displays text or other items arranged in rows and columns.</DT
+></DL
+></DD
+><DT
+>3.11. <A
+HREF="x351.html#AEN7758"
+>Misc. Widgets</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r7760.html"
+>eventBox</A
+>&nbsp;--&nbsp;A widget which catches events for its child widget.</DT
+><DT
+><A
+HREF="r7952.html"
+>plug</A
+>&nbsp;--&nbsp;Toplevel to embed into another process</DT
+><DT
+><A
+HREF="r8030.html"
+>socket</A
+>&nbsp;--&nbsp;Container for embedding windows of other processes</DT
+></DL
+></DD
+><DT
+>3.12. <A
+HREF="x351.html#AEN8125"
+>Gnome Canvas Widget</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r8128.html"
+>canvas</A
+>&nbsp;--&nbsp;A widget which displays graphic objects (in gnoclCanvas).</DT
+><DT
+><A
+HREF="r8563.html"
+>canvas bPath</A
+>&nbsp;--&nbsp;A canvas item which consists of line and bezier segments. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r8704.html"
+>canvas clipGroup</A
+>&nbsp;--&nbsp;A canvas item which implements clipping. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r8793.html"
+>canvas ellipse</A
+>&nbsp;--&nbsp;A canvas ellipse item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r8902.html"
+>canvas image</A
+>&nbsp;--&nbsp;A canvas item which shows an image. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r8984.html"
+>canvas line</A
+>&nbsp;--&nbsp;A canvas line item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r9102.html"
+>canvas polygon</A
+>&nbsp;--&nbsp;A canvas polygon item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r9219.html"
+>canvas rectangle</A
+>&nbsp;--&nbsp;A canvas rectangle item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r9330.html"
+>canvas richText</A
+>&nbsp;--&nbsp;A canvas rich text item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r9674.html"
+>canvas text</A
+>&nbsp;--&nbsp;A canvas text item. (in gnoclCanvas)</DT
+><DT
+><A
+HREF="r9824.html"
+>canvas widget</A
+>&nbsp;--&nbsp;A canvas item which shows a normal widget. (in gnoclCanvas)</DT
+></DL
+></DD
+><DT
+>3.13. <A
+HREF="x351.html#AEN9911"
+>Gnome Gconf</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r9914.html"
+>gconf</A
+>&nbsp;--&nbsp;Manipulate the Gnome GConf database.</DT
+></DL
+></DD
+><DT
+>3.14. <A
+HREF="x351.html#AEN10027"
+>Gnome VFS</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r10031.html"
+>file</A
+>&nbsp;--&nbsp;Implement virtual file system commands</DT
+><DT
+><A
+HREF="r10267.html"
+>mime</A
+>&nbsp;--&nbsp;Retrieve information about files based on their 
+            MIME type.</DT
+></DL
+></DD
+><DT
+>3.15. <A
+HREF="x351.html#AEN10419"
+>Gnome</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r10422.html"
+>appletFactory</A
+>&nbsp;--&nbsp;A command which creates a Gnome panel applet.</DT
+><DT
+><A
+HREF="r10639.html"
+>session</A
+>&nbsp;--&nbsp;A command which implements an interface to the Gnome session manager.</DT
+></DL
+></DD
+><DT
+>3.16. <A
+HREF="x351.html#AEN10731"
+>Deprecated</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="r10734.html"
+>fileSelection</A
+>&nbsp;--&nbsp;A standard dialog to choose a file (DEPRECATED since GTK+ 2.4).</DT
+><DT
+><A
+HREF="r10843.html"
+>combo</A
+>&nbsp;--&nbsp;A widget that allows the user to input a small amount of text. (DEPRECATED since GTK+ 2.4).</DT
+><DT
+><A
+HREF="r11010.html"
+>optionMenu</A
+>&nbsp;--&nbsp;A widget with which one of several alternatives can be chosen. (DEPRECATED since GTK+ 2.4)</DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>A. <A
+HREF="a11173.html"
+>License Terms</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="AEN119"
+>1. Introduction</A
+></H1
+><P
+>   Gnocl implements GTK+ and Gnome bindings for the programming language Tcl
+   with emphasize on ease of use, following the example of Tk. 
+   It provides commands to build quickly GTK+ / Gnome compliant 
+   applications including the canvas widget, GConf and the Gnome applet.
+   Gnocl is split in several libraries, which can be loaded on demand.
+   </P
+><P
+>   The newest version of Gnocl can be found at
+   <A
+HREF="http://www.dr-baum.net/gnocl/"
+TARGET="_top"
+>http://www.dr-baum.net/gnocl/</A
+>.
+   </P
+><P
+>   Please send feedback, suggestions, bug reports to
+   <CODE
+CLASS="EMAIL"
+>&#60;<A
+HREF="mailto:peter@dr-baum.net"
+>peter@dr-baum.net</A
+>&#62;</CODE
+>.
+   </P
+><P
+>      The mandatory "Hello World" example looks like this:
+<PRE
+CLASS="PROGRAMLISTING"
+>#!/bin/sh
+# the next line restarts using tclsh \
+exec tclsh "$0" "$@"
+
+package require Gnocl
+set but [gnocl::button -text "Hello World" -onClicked {puts "Hello World"}]
+gnocl::window -title "Hello World Example" -child $but
+gnocl::mainLoop</PRE
+>
+<P
+><IMG
+SRC="../pics/helloWorld.png"></P
+>
+   </P
+><P
+>   A more complex example which produces a GUI like the following,
+   is explained in more detail.
+   <P
+><IMG
+SRC="../pics/simple.png"></P
+>
+
+<PRE
+CLASS="PROGRAMLISTING"
+>package require Gnocl
+                                                           <A
+NAME="EX.SIMPLE.PACKAGE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+>
+set menu [gnocl::menu]
+$menu add [gnocl::menuItem -text "%#New" -tooltip "Make new" \<A
+NAME="EX.SIMPLE.MENU"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+>
+      -onClicked {puts "That's new"}]                      <A
+NAME="EX.SIMPLE.NEW"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+>
+$menu add [gnocl::menuSeparator]
+$menu add [gnocl::menuItem -text "%#Quit" -onClicked exit \
+      -tooltip "Quit program"]
+
+set file [gnocl::menuItem -text "%__File" -submenu $menu]
+
+set menu [gnocl::menu]
+$menu add [gnocl::menuItem -text "%__About" \
+      -tooltip "Show about dialog" \
+      -onClicked {puts "Mini example (c) 2001 P.G. Baum"}]
+set help [gnocl::menuItem -text "%__Help" -submenu $menu]
+
+set toolBar [gnocl::toolBar -style both]
+$toolBar add item -text "%#Quit" -tooltip "Tooltip Quit" \ <A
+NAME="EX.SIMPLE.TOOLBAR"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+>
+      -onClicked exit                                      <A
+NAME="EX.SIMPLE.TOOLBARITEM"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+>
+$toolBar add space
+$toolBar add item -text "%#New" -tooltip "Tooltip new" \
+      -onClicked {puts "That's new"}
+
+set box [gnocl::box -orientation vertical -borderWidth 0 -spacing 0]
+set win [gnocl::window -child $box -title "Test Application"]
+$box add [gnocl::menuBar -children [list $file $help]]     <A
+NAME="EX.SIMPLE.WINDOW"
+><IMG
+SRC="../images/callouts/6.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(6)"></A
+>
+$box add $toolBar 
+$box add [gnocl::label -text \
+      {%&#60;&#60;span foreground="blue" size="large"&#62;Hello&#60;/span&#62;\<A
+NAME="EX.SIMPLE.MARKUP"
+><IMG
+SRC="../images/callouts/7.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(7)"></A
+>
+      &#60;span foreground="red" size="large"&#62;World&#60;/span&#62;}] -expand 1
+$box add [gnocl::statusBar] 
+
+gnocl::mainLoop</PRE
+><DIV
+CLASS="CALLOUTLIST"
+><DL
+COMPACT="COMPACT"
+><DT
+><A
+HREF="t118.html#EX.SIMPLE.PACKAGE"
+><IMG
+SRC="../images/callouts/1.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(1)"></A
+></DT
+><DD
+>Load the Gnocl package 
+         to be able to use the Gnocl commands.</DD
+><DT
+><A
+HREF="t118.html#EX.SIMPLE.MENU"
+><IMG
+SRC="../images/callouts/2.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(2)"></A
+></DT
+><DD
+>Create a menu to which 
+         different menu entries are added 
+         in the following lines.</DD
+><DT
+><A
+HREF="t118.html#EX.SIMPLE.NEW"
+><IMG
+SRC="../images/callouts/3.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(3)"></A
+></DT
+><DD
+>A standard New entry is 
+      created and added to the menu. The percent sign as first character
+      of the test string gives, together with the next character, the
+      string a special meaning 
+      (see <A
+HREF="x165.html#PERCENTSTRING"
+>Percent String</A
+>). 
+      In this case "%#" means that "New" is used as stock item, which means
+      that not only a standard text is used, but also if available the 
+      standard icon and a standard accelerator are added.</DD
+><DD
+><P
+>The string that follows the onClicked option is executed 
+      whenever the menu is clicked or its accelerator pressed.</P
+></DD
+><DT
+><A
+HREF="t118.html#EX.SIMPLE.TOOLBAR"
+><IMG
+SRC="../images/callouts/4.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(4)"></A
+></DT
+><DD
+>A toolBar is created similar
+      to the menu above. With the -type option a syle with text
+      and icons is used.</DD
+><DT
+><A
+HREF="t118.html#EX.SIMPLE.TOOLBARITEM"
+><IMG
+SRC="../images/callouts/5.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(5)"></A
+></DT
+><DD
+>A toolBar items is
+      added to the toolBar. The syntax is similar to menu entries. Again
+      a percent string is used to select a standard text and 
+      icon.</DD
+><DT
+><A
+HREF="t118.html#EX.SIMPLE.WINDOW"
+><IMG
+SRC="../images/callouts/6.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(6)"></A
+></DT
+><DD
+>To be visible each widget
+      must be a direct or indirect ancestor of a top level widget.
+      The standard top level widget is window.</DD
+><DT
+><A
+HREF="t118.html#EX.SIMPLE.MARKUP"
+><IMG
+SRC="../images/callouts/7.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(7)"></A
+></DT
+><DD
+>As main widget of the
+      application a simple label is used. This one demonstrates another
+      <A
+HREF="x165.html#PERCENTSTRING"
+>Percent String</A
+>: the 
+      <A
+HREF="x165.html#MARKUPSTRING"
+>Markup String</A
+>. It contains
+      not only the text, but also the formatting of the text. This is
+      very convenient and has huge advantages for internationalization 
+      of applications.</DD
+><DT
+><A
+HREF="t118.html#EX.SIMPLE.MAINLOOP"
+><IMG
+SRC="../images/callouts/8.gif"
+HSPACE="0"
+VSPACE="0"
+BORDER="0"
+ALT="(8)"></A
+></DT
+><DD
+>Since Gnocl is event
+      based the GTK main loop has to be called. This function never
+      returns. From now on the GUI reacts on user input or other events
+      like timers and the associated callback functions are called.
+      </DD
+></DL
+></DIV
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x165.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Gnocl</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Concepts</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

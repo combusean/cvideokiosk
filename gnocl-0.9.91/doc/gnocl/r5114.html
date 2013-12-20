@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>menuItem</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Menu widgets"
+HREF="x351.html#AEN4861"><LINK
+REL="PREVIOUS"
+TITLE="menu"
+HREF="r4983.html"><LINK
+REL="NEXT"
+TITLE="menuCheckItem"
+HREF="r5240.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r4983.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r5240.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="MENUITEM"
+></A
+>menuItem</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN5117"
+></A
+><H2
+>Name</H2
+>menuItem&nbsp;--&nbsp;A menu item which executes a command when clicked.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN5120"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>menuItem</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5126"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/menuItem.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5130"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-text</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#PERCENTSTRING"
+><SPAN
+CLASS="TYPE"
+>percent-string</SPAN
+></A
+> (default: "")
+            </P
+><P
+>Text or icon of the item.</P
+></DD
+><DT
+>-accelerator</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Accelerator for this item, like "&lt;Ctrl&gt;A" or "&lt;Shift&gt;&lt;Alt&gt;B".</P
+></DD
+><DT
+>-icon</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Name of the icon TODO.</P
+></DD
+><DT
+>-submenu</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>widget-ID</SPAN
+>
+            </P
+><P
+>Width-ID of a submenu.</P
+></DD
+><DT
+>-onClicked</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command to be executed if the item is clicked.
+Before evaluation the
+following percent strings are substituted:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-tooltip</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Message that appear next to this widget when the mouse
+pointer is held over it for a short amount of time.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5188"
+></A
+><H2
+>Description</H2
+><P
+>A menu item executes a command when clicked. Additionally
+another menu can be attached to a menu item, which is
+automatically show, if the mouse moves to this item.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5191"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   onClicked </P
+></DT
+><DD
+><P
+> Executes the command given by the -onClicked option.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5221"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set menu [gnocl::menu -title "menuItem"]
+$menu add [gnocl::menuItem -text "%_Use _Bird" -onClicked {puts "use bird"}]
+$menu add [gnocl::menuItem -text "%_Use _Dog" -onClicked {puts "use dog"}]
+$menu add [gnocl::menuItem -text "%#Quit" -onClicked exit]
+$menu popup</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/menuItem.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5228"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r4983.html"
+><B
+CLASS="COMMAND"
+>menu</B
+></A
+>,
+   <A
+HREF="r5240.html"
+><B
+CLASS="COMMAND"
+>menuCheckItem</B
+></A
+>,
+   <A
+HREF="r5400.html"
+><B
+CLASS="COMMAND"
+>menuRadioItem</B
+></A
+>,
+   <A
+HREF="r5554.html"
+><B
+CLASS="COMMAND"
+>menuSeparator</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkMenuItem</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r4983.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r5240.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>menu</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN4861"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>menuCheckItem</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

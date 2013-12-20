@@ -1,0 +1,536 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>label</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Display widgets"
+HREF="x351.html#AEN4256"><LINK
+REL="PREVIOUS"
+TITLE="Commands"
+HREF="x351.html"><LINK
+REL="NEXT"
+TITLE="image"
+HREF="r4423.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r4423.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="LABEL"
+></A
+>label</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN4262"
+></A
+><H2
+>Name</H2
+>label&nbsp;--&nbsp;A widget which shows a small amount of text.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN4265"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>label</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4271"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/label.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4275"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-align</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>a list of the horizontal and vertical alignment or one of topLeft, top, topRight, left, center, right, bottomLeft, bottom, or bottomRight</SPAN
+>
+            </P
+><P
+>Alignment of the text.</P
+></DD
+><DT
+>-data</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>User defined data which can be retrieved via the cget subcommand.</P
+></DD
+><DT
+>-heightGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>heightGroup can be an arbitrary string.
+All widgets with the same heightGroup request the
+same height. If packed with the fill flag set, they
+will have nevertheless different heights.</P
+></DD
+><DT
+>-justify</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF left, right, center, fill</SPAN
+> (default: left)
+            </P
+><P
+>Determines the justification of the text lines. Has
+no effect if the label has only one line of text.</P
+></DD
+><DT
+>-maxWidthChars</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>The maximum size of the widget in characters.
+This option is available since GTK+ 2.6.0</P
+></DD
+><DT
+>-mnemonicWidget</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>Wiget-ID</SPAN
+> (default: "")
+            </P
+><P
+>Widget which is activated for keyboard navigation.</P
+></DD
+><DT
+>-selectable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the text can be selected.</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-sizeGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>sizeGroup can be an arbitrary string.
+All widgets with the same sizeGroup request the
+same size. If packed with the fill flag set, they
+will have nevertheless different sizes.</P
+></DD
+><DT
+>-text</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#PERCENTSTRING"
+><SPAN
+CLASS="TYPE"
+>percent-string</SPAN
+></A
+> (default: "")
+            </P
+><P
+>Text of the label.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-widthGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>widthGroup can be an arbitrary string.
+All widgets with the same widthGroup request the
+same width. If packed with the fill flag set, they
+will have nevertheless different widths.</P
+></DD
+><DT
+>-widthChars</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Size of the widget in characters.
+This option is available since GTK+ 2.6.0</P
+></DD
+><DT
+>-wrap</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the text should be automatically wrapped.</P
+></DD
+><DT
+>-xPad</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+> (default: 0)
+            </P
+><P
+>Horizontal padding.</P
+></DD
+><DT
+>-yPad</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+> (default: 0)
+            </P
+><P
+>Vertical padding.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4375"
+></A
+><H2
+>Description</H2
+><P
+>A label displays a small to medium amount of text.
+With the help of
+embedded markup commands the text inside a label can even
+have different fonts, colors etc.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4378"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cget   <TT
+CLASS="REPLACEABLE"
+><I
+>option</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the value for one option. The option may have any of
+the values accepted by configure.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4410"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set label [gnocl::label -text {%&#60;&#60;span foreground="blue"&#62;Hello&#60;/span&#62;&#60;span foreground="red"&#62;World&#60;/span&#62;}]
+gnocl::window -title "Label" -child $label</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/label.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4417"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r3834.html"
+><B
+CLASS="COMMAND"
+>text</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkLabel</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r4423.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Commands</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN4256"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>image</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

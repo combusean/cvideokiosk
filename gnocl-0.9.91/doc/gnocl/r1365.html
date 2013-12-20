@@ -1,0 +1,395 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>expander</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Container"
+HREF="x351.html#AEN1072"><LINK
+REL="PREVIOUS"
+TITLE="box"
+HREF="r1075.html"><LINK
+REL="NEXT"
+TITLE="notebook"
+HREF="r1461.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r1075.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r1461.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="EXPANDER"
+></A
+>expander</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN1368"
+></A
+><H2
+>Name</H2
+>expander&nbsp;--&nbsp;A container, which can hide its child widget.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN1371"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>expander</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1377"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/expander.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1381"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-child</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>widget-ID</SPAN
+>
+            </P
+><P
+>Widget ID of the child.</P
+></DD
+><DT
+>-expand</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the child is expanded (shown).</P
+></DD
+><DT
+>-label</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#PERCENTSTRING"
+><SPAN
+CLASS="TYPE"
+>percent-string</SPAN
+></A
+> (default: "")
+            </P
+><P
+>Label of the expander.</P
+></DD
+><DT
+>-onDestroy</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the widget is destroyed.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1415"
+></A
+><H2
+>Description</H2
+><P
+>A expander widget allows the user to hide or show
+its child. This is for example useful to hide initially
+advanced option in a dialog.
+This command is available since GTK+ 2.4.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1418"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cget   <TT
+CLASS="REPLACEABLE"
+><I
+>option</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the value for one option. The option may have any of
+the values accepted by configure.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1450"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set child [gnocl::button -text "Button 1"]
+set expander [gnocl::expander -label "%_E_xpander" -child $child]
+set box [gnocl::box -orientation vertical]
+$box add [gnocl::button -text "Button 2"]
+$box add $expander
+gnocl::window -title "Expander" -child $box </PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/expander.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1457"
+></A
+><H2
+>See also</H2
+><P
+>   <CODE
+CLASS="FUNCTION"
+>GtkExpander</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r1075.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r1461.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>box</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN1072"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>notebook</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

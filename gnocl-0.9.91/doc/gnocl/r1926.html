@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>separator</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Container"
+HREF="x351.html#AEN1072"><LINK
+REL="PREVIOUS"
+TITLE="scrolledWindow"
+HREF="r1765.html"><LINK
+REL="NEXT"
+TITLE="table"
+HREF="r1987.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r1765.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r1987.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="SEPARATOR"
+></A
+>separator</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN1929"
+></A
+><H2
+>Name</H2
+>separator&nbsp;--&nbsp;A widget which groups widgets horizontal or vertical.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN1932"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>separator</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1938"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/separator.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1942"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-orientation</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF vertical, horizontal</SPAN
+> (default: horizontal)
+            </P
+><P
+>Orientation of the separator.
+This cannot be changed after creation.</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1969"
+></A
+><H2
+>Description</H2
+><P
+>A separator is a widget which groups widgets horizontal
+or vertical. This is similar to the frame of a box or table
+widget.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1972"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set box [gnocl::box -orientation vertical]
+$box add [gnocl::label -text "above"]
+$box add [gnocl::separator]
+$box add [gnocl::label -text "below"]
+gnocl::window -title "Separator" -child $box </PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/separator.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1979"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r1075.html"
+><B
+CLASS="COMMAND"
+>box</B
+></A
+>,
+   <A
+HREF="r1987.html"
+><B
+CLASS="COMMAND"
+>table</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkSeparator</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r1765.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r1987.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>scrolledWindow</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN1072"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>table</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

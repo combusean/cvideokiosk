@@ -1,0 +1,421 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>paned</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Container"
+HREF="x351.html#AEN1072"><LINK
+REL="PREVIOUS"
+TITLE="notebook"
+HREF="r1461.html"><LINK
+REL="NEXT"
+TITLE="scrolledWindow"
+HREF="r1765.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r1461.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r1765.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PANED"
+></A
+>paned</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN1659"
+></A
+><H2
+>Name</H2
+>paned&nbsp;--&nbsp;A widget which allows to interactively resize two children.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN1662"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>paned</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1668"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/paned.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1672"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-orientation</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF vertical, horizontal</SPAN
+> (default: horizontal)
+            </P
+><P
+>Orientation of the box, i.e. the placement of its children.
+This cannot be changed after creation.</P
+></DD
+><DT
+>-children</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list one or two widget-IDs</SPAN
+> (default: "")
+            </P
+><P
+>List of IDs of widgets which are placed inside the panes. If
+the widget-ID is the empty string this pane is skipped.</P
+></DD
+><DT
+>-resize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean or list of two booleans</SPAN
+> (default: 1)
+            </P
+><P
+>Whether this child are resized, if the paned widget is resized.</P
+></DD
+><DT
+>-shrink</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean or list of two booleans</SPAN
+> (default: 1)
+            </P
+><P
+>Whether this child can be made smaller by the user than its
+requisition.</P
+></DD
+><DT
+>-position</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Position of the slider.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1723"
+></A
+><H2
+>Description</H2
+><P
+>The paned widget has two children which are placed side by
+side either horizontally or vertically. The division between
+the two children can be adjusted by the user.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1726"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1748"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set but1 [gnocl::button -text "Button left"]
+set but2 [gnocl::button -text "Button right"]
+set paned [gnocl::paned -orientation horizontal -children "$but1 $but2"]
+gnocl::window -title "Paned" -child $paned </PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/paned.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1755"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r1075.html"
+><B
+CLASS="COMMAND"
+>box</B
+></A
+>,
+   <A
+HREF="r1987.html"
+><B
+CLASS="COMMAND"
+>table</B
+></A
+>,
+   <A
+HREF="r1461.html"
+><B
+CLASS="COMMAND"
+>notebook</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkPaned</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r1461.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r1765.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>notebook</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN1072"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>scrolledWindow</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

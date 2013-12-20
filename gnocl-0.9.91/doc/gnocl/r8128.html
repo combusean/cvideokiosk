@@ -1,0 +1,1277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>canvas </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Gnome Canvas Widget"
+HREF="x351.html#AEN8125"><LINK
+REL="PREVIOUS"
+TITLE="Commands"
+HREF="x351.html"><LINK
+REL="NEXT"
+TITLE="canvas bPath"
+HREF="r8563.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r8563.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="CANVAS"
+></A
+>canvas</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN8131"
+></A
+><H2
+>Name</H2
+>canvas &nbsp;--&nbsp;A widget which displays graphic objects (in gnoclCanvas).</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN8134"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>canvas</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8140"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/canvas.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8144"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-antialiased</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the canvas is antialiased. This cannot be changed after
+creation.</P
+></DD
+><DT
+>-background</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color</SPAN
+></A
+>
+            </P
+><P
+>Background color of the canvas.</P
+></DD
+><DT
+>-centerScroll</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+>
+            </P
+><P
+>Whether to center the scrolling region in the canvas window when
+it is smaller than the canvas' allocation.</P
+></DD
+><DT
+>-data</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>User defined data which can be retrieved via the cget subcommand.</P
+></DD
+><DT
+>-hasFocus</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>1</SPAN
+>
+            </P
+><P
+>This sets the focus to the widget. To unset the focus it
+must be set to another widet.</P
+></DD
+><DT
+>-height</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Height of the widget.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onButtonPress</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is press
+inside the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%t | type of event: one of buttonPress, button2Press or button3Press
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onButtonRelease</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is released
+inside the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%t | type of event: always buttonRelease
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onEnter</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the mouse enters
+the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onKeyPress</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a key is pressed
+while the widget is having the focus.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%k | key code as integer
+%K | key code as symbol
+%a | unicode unicode character, or the empty string if there is no corresponding character.
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onKeyRelease</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a key is released
+while the widget is having the focus.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%k | key code as integer
+%K | key code as symbol
+%a | unicode unicode character, or the empty string if there is no corresponding character.
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onLeave</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the mouse leaves
+the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onMap</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the widget is mapped to the
+screen, i.e. if it appears on the screen.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+TABLE</P
+></DD
+><DT
+>-onMotion</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the mouse is moved inside
+the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onResize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the widget resized.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%x | x coordinate
+%y | y coordinate
+%W | new width
+%H | new height
+TABLE</P
+></DD
+><DT
+>-onUnmap</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the widget is unmapped,
+i.e. it disappears from the screen.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+TABLE</P
+></DD
+><DT
+>-pixelPerUnit</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+> (default: 1.)
+            </P
+><P
+>Zoom factor of the canvas.</P
+></DD
+><DT
+>-scrollRegion</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list-of-four-floats</SPAN
+>
+            </P
+><P
+>Region in which the canvas will then be able to scroll. The view of
+the canvas is adjusted as appropriate to display as much of the new
+region as possible.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-width</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Width of the widget.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8274"
+></A
+><H2
+>Description</H2
+><P
+>Canvas widgets implement structured graphics. A canvas
+displays any number of items, which may be
+rectangles, circles, lines, text, bezier paths or standard
+widgets. Items may be manipulated
+(e.g. moved, scaled, rotated or re-colored) and commands may be
+associated with items with the bind
+command. For example, a particular command may be associated
+with the &lt;button&gt;-event so that the command is invoked
+whenever
+a button is pressed with the mouse cursor over an item. This
+means that items in a canvas can have behaviors defined by
+the Tcl scripts bound to them.
+Each canvas item has an integer value as uniq ID, which is
+returned on item creation. Furthermore each item may
+be associated with one or more tags.
+All canvas commands which operate on canvas items accept
+a tag-or-id-expression. This expression may contain tags or IDs
+combined with the operators (in descending order) ! (not),
+&#38; (and), ^ (xor), | (or) and parenthezised subexpressions. E.g.
+"t1|(t2^t3)" or "!t2".</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8277"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   affine   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-coordinates</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Makes and affine transformation of id.
+Length of list-of-coordinates
+must be 6. The new coordinates are calculated by
+x_new = af[0] * x_old + af[2] * y_old + af[4];
+y_new = af[1] * x_old + af[3] * y_old + af[5];</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   canvasToWindow   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-coordinates</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Converts canvas coordinates to window coordinates. This takes
+scrollRegion and pixelPerUnit into account.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cget   <TT
+CLASS="REPLACEABLE"
+><I
+>option</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the value for one option. The option may have any of
+the values accepted by configure.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   create   <TT
+CLASS="REPLACEABLE"
+><I
+>type</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Create a new item of type type. Type can be one of
+"line", "rectangle", "ellipse", "image", "bPath", "text",
+"richText",
+or "widget". Options are dependent on the type. Returns
+a numerical id with which this item can be identified.
+IDs are guaranteed to be unique during the lifetime of a canvas.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   findItemAt   <TT
+CLASS="REPLACEABLE"
+><I
+>x</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>y</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns ID of item at the world coordinates x and y.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   findWithTag   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the IDs of items matching tag-or-id-expr.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   getBounds   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the bounds (x1, y1, x2, y2) that enclose all items
+with tag-or-id-expr in world coordinates.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   getCurrentSize </P
+></DT
+><DD
+><P
+> Returns the current size of the widget as list of 4 integer:
+x coordinate, y coordinate, width and height.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   isMapped </P
+></DT
+><DD
+><P
+> Returns whether the canvas is mapped.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>cmd</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Calls a subcommand for all items with tag-or-id-expr.
+The subcommand and the options are dependent on the
+type of the items.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   itemConfigure   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures all items with tag-or-id-expr. Valid options are
+dependent on the type of the items.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   itemCget   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?option?</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the value of option for tag-or-id-expr. Valid options
+are dependent on the type of the items.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   itemDelete   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Deletes all items with tag-or-id-expr.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   itemHide   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Hides all items with tag-or-id-expr.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   itemShow   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Shows all items with tag-or-id-expr.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   lower   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?level?</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Lowers tag-or-id-expr in the drawing stack. If no level is given,
+tag-or-id-expr is lowered to the bottom.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   move   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-coordinates</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Moves tag-or-id-expr. Length of list-of-coordinates must
+be 2 (delta x and delta y).</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   raise   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?level?</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Raises tag-or-id-expr in the drawing stack. If no level is given,
+tag-or-id-expr is raised to the top.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   rotate   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-coordinates</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Rotates tag-or-id-expr. Length of list-of-coordinates must
+be 3 (center point and angle).</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   scale   <TT
+CLASS="REPLACEABLE"
+><I
+>tag-or-id-expr</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-coordinates</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Scales tag-or-id-expr. Length of list-of-coordinates must
+be 3 (center point and scale) or 4 (center point, x scale, and
+y scale).</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   update </P
+></DT
+><DD
+><P
+> Forces an immediate update and redraw of a canvas. This is
+not needed by normal applications.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   windowToCanvas   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-coordinates</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Converts window coordinates to canvas coordinates. This takes
+scrollRegion and pixelPerUnit into account.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8540"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set canv [gnocl::canvas -background white -antialiased 1]
+set coords {10 100 30 60 50 20 110 20 150 60 190 100}
+foreach {x y} $coords {
+   $canv create ellipse -coords [list $x $y 3] -centerRadius 1 -tags dots
+}
+$canv create bPath -coords {30 60 curveTo 50 20 110 20 150 60} -outline red -width 2 -tags "path t2"
+$canv create line -coords [lrange $coords 0 5] -fill blue
+$canv create line -coords [lrange $coords 6 11] -fill blue
+$canv create ellipse -coords {70 140 50} -centerRadius 1 -fill "" -outline mediumOrchid -width 3 -dash {16 4}
+$canv create rectangle -coords {90 110 180 180} -fill "blue 0.2" -outline green -width 3
+$canv create text -coords {105 80} -text "gnocl" -font "Utopia 14"
+$canv itemConfigure dots -fill darkgreen 
+$canv itemConfigure "dots|path" -onButtonPress "puts pressed" -onButtonRelease "puts released" 
+gnocl::window -title "Canvas" -child $canv -onDestroy exit</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/canvas.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8547"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r8984.html"
+><B
+CLASS="COMMAND"
+>canvas line</B
+></A
+>,
+   <A
+HREF="r9219.html"
+><B
+CLASS="COMMAND"
+>canvas rectangle</B
+></A
+>,
+   <A
+HREF="r8793.html"
+><B
+CLASS="COMMAND"
+>canvas ellipse</B
+></A
+>,
+   <A
+HREF="r9674.html"
+><B
+CLASS="COMMAND"
+>canvas text</B
+></A
+>,
+   <A
+HREF="r9330.html"
+><B
+CLASS="COMMAND"
+>canvas richText</B
+></A
+>,
+   <A
+HREF="r9824.html"
+><B
+CLASS="COMMAND"
+>canvas widget</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GnomeCanvas</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r8563.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Commands</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN8125"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>canvas bPath</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

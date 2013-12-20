@@ -1,0 +1,892 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>box</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Container"
+HREF="x351.html#AEN1072"><LINK
+REL="PREVIOUS"
+TITLE="Commands"
+HREF="x351.html"><LINK
+REL="NEXT"
+TITLE="expander"
+HREF="r1365.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r1365.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="BOX"
+></A
+>box</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN1078"
+></A
+><H2
+>Name</H2
+>box&nbsp;--&nbsp;A widget which arranges its children horizontal or vertical.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN1081"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>box</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1087"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/box.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1091"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-align</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>a list of the horizontal and vertical alignment or one of topLeft, top, topRight, left, center, right, bottomLeft, bottom, or bottomRight</SPAN
+> (default: center)
+            </P
+><P
+>This option influences only the widget given by -children.
+Alignment of of the widgets given by the -children option
+in the space allocated in the box.</P
+></DD
+><DT
+>-borderWidth</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer or one of small, normal or big</SPAN
+>
+            </P
+><P
+>Space in pixel between the children and the border of the widget.</P
+></DD
+><DT
+>-buttonType</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: false)
+            </P
+><P
+>Whether the box has button type.
+This cannot be changed after creation.</P
+></DD
+><DT
+>-children</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list-of-widget-IDs</SPAN
+> (default: "")
+            </P
+><P
+>List of IDs of widgets which are placed inside the box. All
+existing children are removed from the box.</P
+></DD
+><DT
+>-dragTargets</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list of strings</SPAN
+>
+            </P
+><P
+>List of source targets
+(e.g. text/plain or application/x-color)
+which are supported.</P
+></DD
+><DT
+>-dropTargets</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list of strings</SPAN
+>
+            </P
+><P
+>List of destination targets
+(e.g. text/plain or application/x-color)
+which are supported.</P
+></DD
+><DT
+>-expand</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>This option influences only the widget given by -children.
+Whether the widgets allocate the free space
+in packing direction (vertical for vertical boxes, horizontal
+for horizontal boxes ).</P
+></DD
+><DT
+>-fill</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float or list of two floats ( 0 lt fill tl 1)</SPAN
+> (default: {0 1} (horizontal), {1 0} vertical)
+            </P
+><P
+>This option influences only the widget given by -children.
+Determines whether the allocated space is actually used.
+The values can range from 0
+(meaning the child uses its minimum size) to 1 (meaning
+the child fills all of the available space). If
+fill is a list, the first value is for the horizontal
+and the second for the vertical expansion.</P
+></DD
+><DT
+>-heightGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>heightGroup can be an arbitrary string.
+All widgets with the same heightGroup request the
+same height. If packed with the fill flag set, they
+will have nevertheless different heights.</P
+></DD
+><DT
+>-homogeneous</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether all children of the box are given equal space. This
+is only useful if the children are not scaled, i.e. a fill
+factor other than 0 or 1.</P
+></DD
+><DT
+>-label</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Label of the frame.</P
+></DD
+><DT
+>-labelAlign</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float (0 lt xAlign lt 1) or one of left, center or right</SPAN
+> (default: 0)
+            </P
+><P
+>Alignment of the label.</P
+></DD
+><DT
+>-layout</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF default, spread, edge, start or end</SPAN
+> (default: default)
+            </P
+><P
+>Layout of the buttons in a button box. This option is only
+valid for boxes of buttonType.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onDragData</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if data is draged from
+this the widget to another. This command must return
+the data to be draged.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%t | time
+%T | type of data
+TABLE</P
+></DD
+><DT
+>-onDropData</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if data is dropped on the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%d | data
+%l | length of data
+%t | time
+%T | type of data
+%x | x coordinate
+%y | y coordinate
+TABLE</P
+></DD
+><DT
+>-onPopupMenu</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the "popup-menu" signal
+is recieved, which is normally the case if the user presses
+Shift-F10.
+Before evaluation the
+following percent strings are substituated:
+%w by widget name.</P
+></DD
+><DT
+>-onShowHelp</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed in the global scope
+if the "show-help" signal
+is recieved, which is normally the case if the user presses
+F1 or Ctrl-F1.
+Before evaluation the following percent strings are
+substituated
+TABLE
+%% | %
+%w | widget name
+%h | help type: either "whatsThis" or "tooltip"
+TABLE</P
+></DD
+><DT
+>-orientation</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF vertical, horizontal</SPAN
+> (default: horizontal)
+            </P
+><P
+>Orientation of the box, i.e. the placement of its children.
+This cannot be changed after creation.</P
+></DD
+><DT
+>-padding</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer or one of small, normal or big</SPAN
+> (default: 0)
+            </P
+><P
+>This option influences only the widget given by -children.
+Space in pixel between the children. This is
+added to the global -spacing option.</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-shadow</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF none, in, out, etchedIn, etchedOut</SPAN
+> (default: none)
+            </P
+><P
+>Shadow type of the frame.</P
+></DD
+><DT
+>-sizeGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>sizeGroup can be an arbitrary string.
+All widgets with the same sizeGroup request the
+same size. If packed with the fill flag set, they
+will have nevertheless different sizes.</P
+></DD
+><DT
+>-spacing</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer or one of small, normal or big</SPAN
+> (default: normal)
+            </P
+><P
+>Space in pixel between the children of the box. This is added
+to the -padding option, which can be set for each child
+individually.</P
+></DD
+><DT
+>-tooltip</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Message that appear next to this widget when the mouse
+pointer is held over it for a short amount of time.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-widthGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>widthGroup can be an arbitrary string.
+All widgets with the same widthGroup request the
+same width. If packed with the fill flag set, they
+will have nevertheless different widths.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1256"
+></A
+><H2
+>Description</H2
+><P
+>The Gnocl box widget is a combination of the GtkBox
+(or button box) and, if necessary, the GtkFrame widget.
+The frame options can only changed via configure if at
+least one frame option was given on creation of the box.
+If the children are scaled with the fill option by a factor
+different then the default or 1, or aligned each child is
+embedded in a GtkAlignment widget.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1259"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   addBegin   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-widget-Ids</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Add widgets at the left, respectively top side of the box.</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-expand</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+                  </P
+><P
+>Whether the widgets allocate the free space
+in packing direction (vertical for vertical boxes, horizontal
+for horizontal boxes ).</P
+></DD
+><DT
+>-fill</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float or list of two floats ( 0 lt fill tl 1)</SPAN
+> (default: {0 1} (horizontal), {1 0} vertical)
+                  </P
+><P
+>Determines whether the allocated space is actually used.
+The values can range from 0
+(meaning the child uses its minimum size) to 1 (meaning
+the child fills all of the available space). If
+fill is a list, the first value is for the horizontal
+and the second for the vertical expansion.</P
+></DD
+><DT
+>-padding</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer or one of small, normal or big</SPAN
+> (default: 0)
+                  </P
+><P
+>Space in pixel between the widgets. This is
+added to the global -spacing option.</P
+></DD
+><DT
+>-align</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>a list of the horizontal and vertical alignment or one of topLeft, top, topRight, left, center, right, bottomLeft, bottom, or bottomRight</SPAN
+> (default: center)
+                  </P
+><P
+>Alignment of of the widgets in the space allocated in the box.</P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   add   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-widget-Ids</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Synonym for addBegin.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   addEnd   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-widget-Ids</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Add widgets at the right, respectively bottom side of the box.
+The same options as in the add command are valid.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1346"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set box1 [gnocl::box -label "horizontal" -children [gnocl::button -text "1"]]
+set box2 [gnocl::box -label "vertical" -orientation vertical]
+$box1 add $box2
+$box2 add [list [gnocl::button -text "2"] [gnocl::button -text "3"]]
+gnocl::window -title "Box" -child $box1 -defaultWidth 100 -defaultHeight 100 </PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/box.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1353"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r1987.html"
+><B
+CLASS="COMMAND"
+>table</B
+></A
+>,
+   <A
+HREF="r1656.html"
+><B
+CLASS="COMMAND"
+>paned</B
+></A
+>,
+   <A
+HREF="r1461.html"
+><B
+CLASS="COMMAND"
+>notebook</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkBox</CODE
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkFrame</CODE
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkAlignment</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r1365.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Commands</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN1072"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>expander</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

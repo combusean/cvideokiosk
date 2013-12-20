@@ -1,0 +1,839 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>window</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Top Level Windows"
+HREF="x351.html#AEN583"><LINK
+REL="PREVIOUS"
+TITLE="dialog"
+HREF="r586.html"><LINK
+REL="NEXT"
+TITLE="box"
+HREF="r1075.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r586.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r1075.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="WINDOW"
+></A
+>window</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN799"
+></A
+><H2
+>Name</H2
+>window&nbsp;--&nbsp;A standard top level window.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN802"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>windows</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN808"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/window.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN812"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-allowGrow</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+>
+            </P
+><P
+>Whether the window may be greater than its children
+require.</P
+></DD
+><DT
+>-allowShrink</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+>
+            </P
+><P
+>Whether the window can be made smaller than the place that
+its children require.</P
+></DD
+><DT
+>-borderWidth</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer or one of small, normal or big</SPAN
+>
+            </P
+><P
+>Space in pixel between the children and the border of the widget.</P
+></DD
+><DT
+>-child</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>widget-ID</SPAN
+>
+            </P
+><P
+>Widget ID of the child.</P
+></DD
+><DT
+>-data</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>User defined data which can be retrieved via the cget subcommand.</P
+></DD
+><DT
+>-decorated</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+>
+            </P
+><P
+>Whether the window should be decorated or not.</P
+></DD
+><DT
+>-defaultHeight</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Default height of the window.</P
+></DD
+><DT
+>-defaultWidth</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Default width of the window.</P
+></DD
+><DT
+>-dragTargets</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list of strings</SPAN
+>
+            </P
+><P
+>List of source targets
+(e.g. text/plain or application/x-color)
+which are supported.</P
+></DD
+><DT
+>-dropTargets</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list of strings</SPAN
+>
+            </P
+><P
+>List of destination targets
+(e.g. text/plain or application/x-color)
+which are supported.</P
+></DD
+><DT
+>-height</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Height of the window.</P
+></DD
+><DT
+>-heightRequest</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Requested height of the window.</P
+></DD
+><DT
+>-icon</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#PERCENTSTRING"
+><SPAN
+CLASS="TYPE"
+>percent-string</SPAN
+></A
+> (default: "")
+            </P
+><P
+>Sets the icon of the window which is shown, depending on
+the window manager, in the window decoration, the window list,
+and/or if the window is iconified. This must be either a file
+name (prefix "%/") or empty.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onDelete</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the widget shall be deleted.
+If the command returns 0, the widget is not deleted.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+><DT
+>-onDestroy</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the widget is destroyed.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+><DT
+>-onDragData</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if data is draged from
+this the widget to another. This command must return
+the data to be draged.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%t | time
+%T | type of data
+TABLE</P
+></DD
+><DT
+>-onDropData</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if data is dropped on the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%d | data
+%l | length of data
+%t | time
+%T | type of data
+%x | x coordinate
+%y | y coordinate
+TABLE</P
+></DD
+><DT
+>-onKeyPress</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a key is pressed
+while the widget is having the focus.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%k | key code as integer
+%K | key code as symbol
+%a | unicode unicode character, or the empty string if there is no corresponding character.
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onKeyRelease</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a key is released
+while the widget is having the focus.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%k | key code as integer
+%K | key code as symbol
+%a | unicode unicode character, or the empty string if there is no corresponding character.
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onPopupMenu</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the "popup-menu" signal
+is recieved, which is normally the case if the user presses
+Shift-F10.
+Before evaluation the
+following percent strings are substituated:
+%w by widget name.</P
+></DD
+><DT
+>-onRealize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command whih is executed in the global scope if
+the widget has been realized.
+Before evaluation the following percent strings are
+substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+><DT
+>-onShowHelp</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed in the global scope
+if the "show-help" signal
+is recieved, which is normally the case if the user presses
+F1 or Ctrl-F1.
+Before evaluation the following percent strings are
+substituated
+TABLE
+%% | %
+%w | widget name
+%h | help type: either "whatsThis" or "tooltip"
+TABLE</P
+></DD
+><DT
+>-resizable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the user can change the size of the window.</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-title</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Title of the window.</P
+></DD
+><DT
+>-tooltip</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Message that appear next to this widget when the mouse
+pointer is held over it for a short amount of time.</P
+></DD
+><DT
+>-modal</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the window is modal, i.e. it grabs all GTK+ events.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-width</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Width of the window.</P
+></DD
+><DT
+>-widthRequest</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Requested width of the window.</P
+></DD
+><DT
+>-x</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>X position of the window.</P
+></DD
+><DT
+>-y</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Y position of the window.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1014"
+></A
+><H2
+>Description</H2
+><P
+>To be visible each widget must be a direct or indirect
+children of a top level window. The window widget is the
+standard top level window. Its appearance is dependent
+of the window manager.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1017"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cget   <TT
+CLASS="REPLACEABLE"
+><I
+>option</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the value for one option. The option may have any of
+the values accepted by configure.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   iconify   <TT
+CLASS="REPLACEABLE"
+><I
+>?state?</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Iconifies or deiconifies the window dependent on the value
+of state. The default value for state is true.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1059"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set label [gnocl::label -text "Simple Window"]
+gnocl::window -title "Window" -child $label -defaultWidth 200</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/window.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1066"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r586.html"
+><B
+CLASS="COMMAND"
+>dialog</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkWindow</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r586.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r1075.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>dialog</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN583"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>box</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

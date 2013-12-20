@@ -1,0 +1,461 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>colorSelection</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Special Selectors"
+HREF="x351.html#AEN6224"><LINK
+REL="PREVIOUS"
+TITLE="colorButton"
+HREF="r6227.html"><LINK
+REL="NEXT"
+TITLE="fileChooser"
+HREF="r6543.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r6227.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r6543.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="COLORSELECTION"
+></A
+>colorSelection</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN6426"
+></A
+><H2
+>Name</H2
+>colorSelection&nbsp;--&nbsp;A standard dialog to choose a color.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN6429"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>colorSelection</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6435"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/colorSelection.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6439"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-title</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Title of the colorSelection.</P
+></DD
+><DT
+>-modal</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the window is modal, i.e. it grabs all GTK+ events.
+If the dialog is created modal, the command returns the
+chosen color as list of rgba values or the empty string
+instead of the usual widget ID.</P
+></DD
+><DT
+>-palette</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the dialog has a palette.</P
+></DD
+><DT
+>-opacity</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the dialog has a control for opacity.</P
+></DD
+><DT
+>-color</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color</SPAN
+></A
+>
+            </P
+><P
+>Default color for the dialog.</P
+></DD
+><DT
+>-alpha</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Default alpha value.</P
+></DD
+><DT
+>-onClicked</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Command to be executed in the global scope if the Ok or
+Cancel button is chosen.
+Before evaluation the following percent strings
+are substituted:
+TABLE
+%% | %
+%w | widget name
+%x | button chosen: OK or CANCEL
+%r | red value
+%g | green value
+%b | blue value
+%a | alpha value
+/TABLE</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onDestroy</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the widget is destroyed.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6503"
+></A
+><H2
+>Description</H2
+><P
+>A colorSelection is used to let the user choose a color
+in a standardized way. If the dialog
+is created modal, the commands returns a list of the
+red, blue, green and alpha, or the empty string if
+Cancel is chosen.
+Otherwise it returns a widget ID in the
+usual way. The files and buttons chosen can be retrieved
+via the onClicked command.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6506"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6528"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set color [gnocl::colorSelection -title "Please choose a color" -modal 1 -color lightblue]</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/colorSelection.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6535"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r10734.html"
+><B
+CLASS="COMMAND"
+>fileSelection</B
+></A
+>,
+   <A
+HREF="r6897.html"
+><B
+CLASS="COMMAND"
+>fontSelection</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkColorSelectionDialog</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r6227.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r6543.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>colorButton</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN6224"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>fileChooser</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

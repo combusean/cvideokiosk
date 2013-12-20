@@ -1,0 +1,667 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>comboEntry</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Entries"
+HREF="x351.html#AEN3022"><LINK
+REL="PREVIOUS"
+TITLE="entry"
+HREF="r3025.html"><LINK
+REL="NEXT"
+TITLE="scale"
+HREF="r3424.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r3025.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r3424.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="COMBOENTRY"
+></A
+>comboEntry</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN3221"
+></A
+><H2
+>Name</H2
+>comboEntry&nbsp;--&nbsp;A widget which allows to input a small amount of text.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN3224"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>comboEntry</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3230"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/comboEntry.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3234"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-data</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>User defined data which can be retrieved via the cget subcommand.</P
+></DD
+><DT
+>-hasFocus</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>1</SPAN
+>
+            </P
+><P
+>This sets the focus to the widget. To unset the focus it
+must be set to another widet.</P
+></DD
+><DT
+>-items</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list of strings</SPAN
+> (default: "")
+            </P
+><P
+>Creates for each element of this list a new item. The
+string value of the element is used as text and value
+of the item.</P
+></DD
+><DT
+>-itemValueList</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list of two-element-lists</SPAN
+>
+            </P
+><P
+>Creates for each element of this list a new item. The
+first element of each element is used as text and
+the second element is used as value of the item.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onChanged</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the value of the
+option menu is changed via the GUI.
+Before evaluation the
+following percent strings are substituted:
+TABLE
+%% | %
+%w | widget name.
+%v | value of the active item
+TABLE
+This command is not called if the value is changed
+via the option -value.</P
+></DD
+><DT
+>-onShowHelp</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed in the global scope
+if the "show-help" signal
+is recieved, which is normally the case if the user presses
+F1 or Ctrl-F1.
+Before evaluation the following percent strings are
+substituated
+TABLE
+%% | %
+%w | widget name
+%h | help type: either "whatsThis" or "tooltip"
+TABLE</P
+></DD
+><DT
+>-onPopupMenu</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the "popup-menu" signal
+is recieved, which is normally the case if the user presses
+Shift-F10.
+Before evaluation the
+following percent strings are substituated:
+%w by widget name.</P
+></DD
+><DT
+>-onRealize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command whih is executed in the global scope if
+the widget has been realized.
+Before evaluation the following percent strings are
+substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-tooltip</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Message that appear next to this widget when the mouse
+pointer is held over it for a short amount of time.</P
+></DD
+><DT
+>-value</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Value of the item which shall be activated</P
+></DD
+><DT
+>-variable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Name of a (global) variable which is changed whenever
+the option menu is changed.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3321"
+></A
+><H2
+>Description</H2
+><P
+>This command is available since GTK+ 2.4.
+The comboEntry widget consists of a single-line text entry field
+and a drop-down list. The drop-down list is displayed
+when the user clicks on a small arrow button to the right
+of the entry field. Instead of a comboEntry widget with
+non-editable entry field, the use of the optionMenu
+is recommended.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3324"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   add   <TT
+CLASS="REPLACEABLE"
+><I
+>text</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?option?</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Adds the given text to the current item list.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cget   <TT
+CLASS="REPLACEABLE"
+><I
+>option</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the value for one option. The option may have any of
+the values accepted by configure.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   onChanged </P
+></DT
+><DD
+><P
+> Executes the command given by the -onChanged option.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cget   <TT
+CLASS="REPLACEABLE"
+><I
+>option</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the value for one option. The option may have any of
+the values accepted by configure.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3405"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set comboEntry [gnocl::comboEntry -variable var -items {"Cat" "Dog" "Bird"}]
+gnocl::window -title "ComboEntry" -child $comboEntry</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/comboEntry.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN3412"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r2671.html"
+><B
+CLASS="COMMAND"
+>comboBox</B
+></A
+>,
+   <A
+HREF="r3025.html"
+><B
+CLASS="COMMAND"
+>entry</B
+></A
+>,
+   <A
+HREF="r3834.html"
+><B
+CLASS="COMMAND"
+>text</B
+></A
+>,
+   <A
+HREF="r3625.html"
+><B
+CLASS="COMMAND"
+>spinButton</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkComboBox</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r3025.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r3424.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>entry</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN3022"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>scale</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

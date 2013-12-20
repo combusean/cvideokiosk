@@ -1,0 +1,294 @@
+<section><title>Concepts</title>
+<section id="percentString"><title>Percent String</title>
+<para>
+   Some widget options expect a percent string as value. A percent string
+   is a string which starts with a percent sign (%). The second character
+   determines the type of percent string. The following types are defined:
+
+   <variablelist><title>Types of Percentstring</title>
+      <varlistentry><term>!</term>
+         <listitem>
+            <para>Simple string which is not further parsed.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry><term>%</term>
+         <listitem>
+            <para>Simple string which starts with a percent string and
+               which is not further parsed.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry><term>_ (underline)</term>
+         <listitem>
+            <para>The next underline is removed and the following
+            character is underlined and used as keyboard accelerator.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry><term>#</term>
+         <listitem>
+            <para>The following string is used as name of a stock
+            item. Dependent on the widget the name, accelerator and/or
+            image of the stock item is used.</para>
+            <para>Not every stock item is valid in every context. The 
+            following example shows all items which are valid as text
+            option of the button widget.
+<programlisting>
+<![CDATA[
+set table [gnocl::table -borderWidth 0 -rowSpacing 0 -columnSpacing 0]
+set items ""
+set stocks [lsort [gnocl::info allStockItems]]
+foreach el $stocks {
+   if { [catch {set but [gnocl::button -text "%#$el"]} ] == 0 } {
+      lappend items [gnocl::box -label "$el" -children $but -fill 1 -expand 1]
+      if { [llength $items] == 6 } {
+         $table addRow $items -fill 1
+         set items ""
+      }
+   }
+}
+if { [llength $items] > 0 } {
+   $table addRow $items -fill 1
+}
+gnocl::window -title "Stock Buttons" -child $table
+]]>
+</programlisting>
+<screenshot><graphic fileref="../pics/stockButtons.png"></graphic></screenshot>
+         </para>
+         </listitem>
+      </varlistentry>
+      <varlistentry><term>&lt;</term>
+         <listitem>
+            <para>The following string is parsed as 
+                  <link linkend='markupString'>markup string</link>.
+                  Additional the next underline is removed and the following
+                  character is underlined and used as keyboard accelerator.
+            </para>
+         </listitem>
+      </varlistentry>
+      <varlistentry><term>/</term>
+         <listitem>
+            <para>The following string is interpreted as file name.</para>
+         </listitem>
+      </varlistentry>
+   </variablelist>
+</para>
+
+<para>
+Example:
+<programlisting>
+<![CDATA[
+set box [gnocl::box -orientation vertical]
+$box add [gnocl::button -text "Simple String"]
+$box add [gnocl::button -text "%!Another Simple String"]
+$box add [gnocl::button -text "%%Simple String which starts with %"]
+$box add [gnocl::button -text "%_Underlined _String"]
+$box add [gnocl::button -text "%#Quit"]
+$box add [gnocl::button -text "%<n_ormal <b>bold</b> <big>big</big>"]
+$box add [gnocl::button -icon "%/./three.png" -text "%__Three"]
+gnocl::window -title "Percent String Example" -child $box
+]]>
+</programlisting>
+<screenshot><graphic fileref="../pics/percentString.png"></graphic></screenshot>
+
+</para>
+</section> <!-- End Percentstring -->
+
+<section id="markupString"><title>Markup String</title>
+<para>
+A markup string contains not only the text but also its formatting,
+which has huge advantages for internationalization of applications.
+</para>
+
+<para>
+Copyright notice: the following two tables are copies of the Pango
+gtk documentation.
+</para>
+
+<para>
+The most general markup tag is &lt;span&gt;, then there are some convenience tags.
+&lt;span&gt; has the following attributes:
+
+<variablelist><title>&lt;span&gt; attributes</title>
+   <varlistentry><term>font_desc</term> 
+      <listitem><para>
+      A font description string, such as "Sans Italic 12"; note that any other
+      span attributes will override this description. So if you have "Sans
+      Italic" and also a style="normal" attribute, you will get Sans normal,
+      not italic.
+      </para></listitem>
+   </varlistentry>
+   <varlistentry><term>font_family</term> 
+      <listitem><para> A font family name </para></listitem>
+   </varlistentry>
+   <varlistentry><term>face</term> 
+      <listitem><para> Synonym for font_family </para></listitem>
+   </varlistentry>
+   <varlistentry><term>size</term> 
+      <listitem><para>
+      Font size in 1000ths of a point, one of the absolute sizes 'xx-small',
+      'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large', or one of
+      the relative sizes 'smaller' or 'larger'.
+      </para></listitem>
+   </varlistentry>
+   <varlistentry><term>style</term> 
+      <listitem><para> One of 'normal', 'oblique', 'italic' </para></listitem>
+   </varlistentry>
+   <varlistentry><term>weight</term> 
+      <listitem><para>
+      One of 'ultralight', 'light', 'normal', 'bold', 'ultrabold', 'heavy', or
+      a numeric weight
+      </para></listitem>
+   </varlistentry>
+   <varlistentry><term>variant</term> 
+      <listitem><para> 'normal' or 'smallcaps' </para></listitem>
+   </varlistentry>
+   <varlistentry><term>stretch</term> 
+      <listitem><para>
+      One of 'ultracondensed', 'extracondensed', 'condensed', 'semicondensed',
+      'normal', 'semiexpanded', 'expanded', 'extraexpanded', 'ultraexpanded'
+      </para></listitem>
+   </varlistentry>
+   <varlistentry><term>foreground</term> 
+      <listitem><para>
+      An RGB color specification such as '#00FF00' or a color name such as 'red'
+      </para></listitem>
+   </varlistentry>
+   <varlistentry><term>background</term> 
+      <listitem><para>
+      An RGB color specification such as '#00FF00' or a color name such as 'red'
+      </para></listitem>
+   </varlistentry>
+   <varlistentry><term>underline</term> 
+      <listitem><para> One of 'single', 'double', 'low', 'none'
+      </para></listitem>
+   </varlistentry>
+   <varlistentry><term>rise</term> 
+      <listitem><para>
+      Vertical displacement, in 10000ths of an em. Can be negative for
+      subscript, positive for superscript.
+      </para></listitem>
+   </varlistentry>
+   <varlistentry><term>strikethrough</term> 
+      <listitem><para>
+      'true' or 'false' whether to strike through the text
+      </para></listitem>
+   </varlistentry>
+   <varlistentry><term>lang</term> 
+      <listitem><para> A language code, indicating the text language
+      </para></listitem>
+   </varlistentry>
+</variablelist>
+</para>
+
+<para>
+The following convenience tags are provided:
+
+<variablelist><title> Convenience tags </title>
+   <varlistentry><term>b</term> 
+      <listitem><para>Bold</para></listitem>
+   </varlistentry>
+   <varlistentry><term>big</term> 
+      <listitem><para>Makes font relatively larger, equivalent to 
+      <markup>&lt;span size="larger"&gt;</markup></para></listitem>
+   </varlistentry>
+   <varlistentry><term>i</term> 
+      <listitem><para>Italic</para></listitem>
+   </varlistentry>
+   <varlistentry><term>s</term> 
+      <listitem><para>Strikethrough</para></listitem>
+   </varlistentry>
+   <varlistentry><term>sub</term> 
+      <listitem><para>Subscript</para></listitem>
+   </varlistentry>
+   <varlistentry><term>sup</term> 
+      <listitem><para>Superscript</para></listitem>
+   </varlistentry>
+   <varlistentry><term>small</term> 
+      <listitem><para>Makes font relatively smaller, equivalent to 
+      <markup>&lt;span size="smaller"&gt;</markup></para></listitem>
+   </varlistentry>
+   <varlistentry><term>tt</term> 
+      <listitem><para>Monospace font</para></listitem>
+   </varlistentry>
+   <varlistentry><term>u</term> 
+      <listitem><para>Underline</para></listitem>
+   </varlistentry>
+</variablelist>
+</para>
+</section> <!-- End Markup String -->
+
+<section id="color"><title>Colors</title>
+<para>
+Some widget options expect a color as value. A color can be given
+in several different formats.
+
+<variablelist><title>Color formats</title>
+   <varlistentry><term>Color Name</term> 
+      <listitem><para>A color name from <filename>rgb.txt</filename> like
+         red, LightPink, or DarkKhaki</para></listitem>
+   </varlistentry>
+   <varlistentry><term>RGB values as integer</term> 
+      <listitem><para>A list of the red, green and blue components. Each value
+         must be an integer between 0 and 65535. 
+         It may be convenient to use the hexadecimal format, in which
+         the maximum is 0xFFFF.</para></listitem>
+   </varlistentry>
+   <varlistentry><term>RGB values as float</term> 
+      <listitem><para>A list of the red, green and blue components. Each value
+         must be an float between 0 and 1.
+         <note><para>The values are tested first for an integer format. Only if
+         a value does not have an integer format, the float format is
+         tested. That means, that "1" is an integer with a value
+         corresponding to "0.000015", whereas "1." is interpreted
+         as a floating point number with a value corresponding to
+         integer 65535 </para></note>
+         </para></listitem>
+   </varlistentry>
+</variablelist>
+</para>
+
+<para>
+Some widget options expect a color with transparency 
+(also called alpha blending) as value. An alpha value of 0 means that
+the color is completely transparent, 1.0 in float or 65535 as integer
+means it covers its background completely.
+The same formats than above are
+excepted, in which case the color has no transparency, plus the following
+ones.
+
+<variablelist><title>Color formats with transparency </title>
+   <varlistentry><term>Color Name plus transparency</term> 
+      <listitem><para>A list of a color name from 
+         <filename>rgb.txt</filename> 
+         and a transparency value between 0 and 65535 as integer
+         or 0 and 1.0 as float
+         like "red 32768", "LightPink 0x1000", or "DarkKhaki 0.9".
+         </para></listitem>
+   </varlistentry>
+   <varlistentry><term>RGBA values as integer</term> 
+      <listitem><para>A list of the red, green, blue and alpha components. 
+         Each value must be an integer between 0 and 65535, for example
+         "3000 10000 20000 15000".
+         It may be convenient to use the hexadecimal format, in which
+         the maximum is 0xFFFF.</para></listitem>
+   </varlistentry>
+   <varlistentry><term>RGBA values as float</term> 
+      <listitem><para>A list of the red, green, blue and alpha components. 
+         Each value must be an integer between 0 and 1.0, for example
+         "0.1 0.3 0.3 0.5".
+         <note><para>The values are tested first for an integer format. Only if
+         a value does not have an integer format, the float format is
+         tested. That means, that "1" is an integer with a value
+         corresponding to "0.000015", whereas "1." is interpreted
+         as a floating point number with a value corresponding to
+         integer 65535 </para></note>
+         </para></listitem>
+   </varlistentry>
+   <varlistentry><term>Empty string</term> 
+      <listitem><para>The empty string means full transparency.
+         </para></listitem>
+   </varlistentry>
+</variablelist>
+</para>
+</section> <!-- End Color -->
+
+</section> <!-- End Concepts  -->

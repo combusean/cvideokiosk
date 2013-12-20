@@ -1,0 +1,220 @@
+<refentry id="mime">
+   <refmeta> 
+      <refentrytitle>mime</refentrytitle>
+   </refmeta>
+
+   <refnamediv>
+      <refname>mime</refname>
+      <refpurpose>Retrieve information about files based on their 
+            MIME type.</refpurpose>
+   </refnamediv>
+
+   <refsynopsisdiv>
+      <cmdsynopsis>
+         <command>mime</command>
+         <arg><replaceable>subcommand</replaceable></arg>
+         <arg rep="repeat" choice="opt"><replaceable>-option</replaceable> <replaceable>value</replaceable></arg>
+      </cmdsynopsis>
+   </refsynopsisdiv>
+
+   <refsect1><title>Description</title>
+   <para>
+   The mime command retrieves information about files based on their MIME type.
+   </para>
+   </refsect1>
+
+   <refsect1><title>Subcommands</title>
+      <variablelist>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>mime</command>
+               <arg choice="plain">getApplicationInfo</arg>
+               <arg>application-ID</arg>
+               <arg><replaceable>-option</replaceable></arg>
+               </cmdsynopsis>
+               <cmdsynopsis>
+               <command>mime</command>
+               <arg choice="plain">getApplicationInfo</arg>
+               <arg>application-ID</arg>
+               <arg rep="repeat" choice="opt"><replaceable>-option
+                     </replaceable> <replaceable>value</replaceable></arg>
+               </cmdsynopsis></term>
+            <listitem>
+               <para>
+                  In its first form the command returns information
+                  about the application with this ID. The option
+                  determine which information are retrieved. 
+               </para>
+               <para>
+                  In its second form the value of
+                  a given option must be the name of a global variable in which
+                  the corresponding information is stored. In this case
+                  the empty string is returned.
+               </para>
+               <para>
+                  Examples:
+                  <programlisting>getApplicationInfo gimp-2.0 -canOpenMultipleFiles</programlisting>
+                  returns whether the gimp-2.0 can open multiple files.
+                  <programlisting>getApplicationInfo gimp-2.0 -canOpenMultipleFiles multiFiles -requiresTerminal terminal</programlisting>
+                  returns the empty string. The value of the global variable
+                  <varname>multiFiles</varname> is a boolean whether gimp-2.0
+                  can open multiple files and the value of the variable
+                  <varname>terminal</varname> is a boolean whether it requires a
+                  terminal.
+               </para>
+               <variablelist><title>Options</title>
+               <varlistentry>
+                  <term>-canOpenMultipleFiles</term>
+                  <listitem>
+                     <para>type: <type>string</type></para>
+                     <para>Return whether the application can open multiple files.</para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term>-command</term>
+                  <listitem>
+                     <para>type: <type>string</type></para>
+                     <para>Return the string to start the application.</para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term>-expectURIs</term>
+                  <listitem>
+                     <para>type: <type>string</type></para>
+                     <para>Return whether the application expects URIs instead 
+                     of normal path names.</para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term>-name</term>
+                  <listitem>
+                     <para>type: <type>string</type></para>
+                     <para>Return the name of the application.
+                     </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term>-requiresTerminal</term>
+                  <listitem>
+                     <para>type: <type>string</type></para>
+                     <para>Return whether the application requires
+                     a terminal.</para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term>-URISchemes</term>
+                  <listitem>
+                     <para>type: <type>string</type></para>
+                     <para>Return a list of supported URI schemes.
+                     </para>
+                  </listitem>
+               </varlistentry>
+               </variablelist>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>mime</command>
+               <arg choice="plain">getApplicationList</arg>
+               <arg>mime-type</arg>
+               <arg rep="repeat" choice="opt"><replaceable>-option</replaceable> <replaceable>value</replaceable></arg>
+               </cmdsynopsis></term>
+            <listitem>
+               <para>
+                  Return a list of IDs of applications, which are able to handle this
+                  MIME type.
+               </para>
+               <variablelist><title>Options</title>
+               <varlistentry>
+                  <term>-all</term>
+                  <listitem>
+                     <para>type: <type>boolean</type> (default: false)
+                     </para>
+                     <para>Return all applications instead of the preferred ones.
+                     </para>
+                  </listitem>
+               </varlistentry>
+               </variablelist>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>mime</command>
+               <arg choice="plain">getMimeInfo</arg>
+               <arg>mime-type</arg>
+               <arg rep="repeat" choice="opt"><replaceable>-option</replaceable> <replaceable>value</replaceable></arg>
+               </cmdsynopsis></term>
+            <listitem>
+               <para>
+                  Return information about a MIME type.
+                  Options determine which information are retrieved. See
+                  getApplicationInfo for a detailed explanation.
+               </para>
+               <variablelist><title>Options</title>
+               <varlistentry>
+                  <term>-canBeExecutable</term>
+                  <listitem>
+                     <para>type: <type>string</type></para>
+                     <para>
+                     Return whether this MIME type can be executable.
+                     </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term>-defaultAction</term>
+                  <listitem>
+                     <para>type: <type>string</type></para>
+                     <para>
+                     Return "Application", "Component" or "None" depending
+                     on the default action for this MIME type.
+                     </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term>-defaultApplication</term>
+                  <listitem>
+                     <para>type: <type>string</type></para>
+                     <para>
+                     Return the application ID of the default application.
+                     </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term>-description</term>
+                  <listitem>
+                     <para>type: <type>string</type> </para>
+                     <para>
+                     Return a description of this MIME type.
+                     </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term>-icon</term>
+                  <listitem>
+                     <para>type: <type>string</type> </para>
+                     <para>
+                     Return the default icon of this MIME type.
+                     </para>
+                  </listitem>
+               </varlistentry>
+               </variablelist>
+            </listitem>
+         </varlistentry>
+         <varlistentry>
+            <term><cmdsynopsis>
+               <command>mime</command>
+               <arg choice="plain">launch</arg>
+               <arg>application-ID</arg>
+               <arg>URI-list</arg>
+               </cmdsynopsis></term>
+            <listitem>
+               <para>
+                  Launch the given application with the files given in the
+                  URI-list.
+               </para>
+            </listitem>
+         </varlistentry>
+      </variablelist>
+   </refsect1>
+</refentry>
+

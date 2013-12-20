@@ -1,0 +1,421 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>canvas clipGroup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Gnome Canvas Widget"
+HREF="x351.html#AEN8125"><LINK
+REL="PREVIOUS"
+TITLE="canvas bPath"
+HREF="r8563.html"><LINK
+REL="NEXT"
+TITLE="canvas ellipse"
+HREF="r8793.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r8563.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r8793.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="CANVASCLIPGROUP"
+></A
+>canvas clipGroup</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN8707"
+></A
+><H2
+>Name</H2
+>canvas clipGroup&nbsp;--&nbsp;A canvas item which implements clipping. (in gnoclCanvas)</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN8710"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   create   clipGroup  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8719"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-onButtonPress</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is press
+inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: one of buttonPress, button2Press or button3Press
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onButtonRelease</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is released
+if it has been pressed inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: always buttonRelease
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onEnter</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onLeave</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onMotion</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the mouse is moved inside
+the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-path</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list-of-graphic-commands-and-floats</SPAN
+>
+            </P
+><P
+>The path describing the bounds of the clipping region.
+Its syntax is the same as for
+<A
+HREF="r8563.html"
+><B
+CLASS="COMMAND"
+>canvas bPath</B
+></A
+>.</P
+></DD
+><DT
+>-tags</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list</SPAN
+> (default: "")
+            </P
+><P
+>List of tags to be associated with this item.
+A tag must start with a alphabetic character which
+is followed by zero or more alphabetic or numeric characters.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8766"
+></A
+><H2
+>Description</H2
+><P
+>A clip group implements clipping for its children.
+A child is added to the clipg roup via its -parent option.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8769"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   appendPath   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-graphic-commands-and-floats</I
+></TT
+> </P
+></DT
+><DD
+><P
+> See command "appendCoords" of the
+<A
+HREF="r8563.html"
+><B
+CLASS="COMMAND"
+>canvas bPath</B
+></A
+>.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8787"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r8563.html"
+><B
+CLASS="COMMAND"
+>canvas bPath</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GnomeCanvasClipGroup</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r8563.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r8793.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>canvas bPath</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN8125"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>canvas ellipse</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

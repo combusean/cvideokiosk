@@ -1,0 +1,939 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>canvas richText</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Gnome Canvas Widget"
+HREF="x351.html#AEN8125"><LINK
+REL="PREVIOUS"
+TITLE="canvas rectangle"
+HREF="r9219.html"><LINK
+REL="NEXT"
+TITLE="canvas text"
+HREF="r9674.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r9219.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r9674.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="CANVASRICHTEXT"
+></A
+>canvas richText</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN9333"
+></A
+><H2
+>Name</H2
+>canvas richText&nbsp;--&nbsp;A canvas rich text item. (in gnoclCanvas)</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN9336"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   create   richText  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9345"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-coords</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list-of-floats</SPAN
+>
+            </P
+><P
+>X and y coordinates of the item.</P
+></DD
+><DT
+>-text</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Text to be displayed.</P
+></DD
+><DT
+>-width</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Width of of the item in pixel.</P
+></DD
+><DT
+>-height</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Height of of the item in pixel.</P
+></DD
+><DT
+>-editable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the the text is editable.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the text is visible.</P
+></DD
+><DT
+>-cursorVisible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the cursor is visible.</P
+></DD
+><DT
+>-cursorBlink</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the cursor is blinking.</P
+></DD
+><DT
+>-growHeight</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the the height of the item should increase if there is
+not enough space to display the whole text.</P
+></DD
+><DT
+>-wrapMode</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF none, char, word</SPAN
+>
+            </P
+><P
+>Wrap mode used for the rendering of the cells.</P
+></DD
+><DT
+>-justify</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF left, right, center, fill</SPAN
+>
+            </P
+><P
+>Justification of the lines in one cell.</P
+></DD
+><DT
+>-anchor</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF center, N, NW, NE, S, SW, SE, W, E</SPAN
+> (default: center)
+            </P
+><P
+>Position of the anchor relative to the text.</P
+></DD
+><DT
+>-pixelsBelowLines</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Pixels below lines.</P
+></DD
+><DT
+>-pixelsInsideWrap</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Pixels between lines after wrap.</P
+></DD
+><DT
+>-pixelsAboveLines</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Pixels above lines.</P
+></DD
+><DT
+>-leftMargin</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+> (default: 0)
+            </P
+><P
+>Left margin of the text inside the item.</P
+></DD
+><DT
+>-rightMargin</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+> (default: 0)
+            </P
+><P
+>Right margin of the text inside the item.</P
+></DD
+><DT
+>-indent</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+> (default: 0)
+            </P
+><P
+>Indention</P
+></DD
+><DT
+>-onButtonPress</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is press
+inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: one of buttonPress, button2Press or button3Press
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onButtonRelease</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is released
+if it has been pressed inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: always buttonRelease
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onEnter</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onLeave</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onMotion</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the mouse is moved inside
+the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-tags</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list</SPAN
+> (default: "")
+            </P
+><P
+>List of tags to be associated with this item.
+A tag must start with a alphabetic character which
+is followed by zero or more alphabetic or numeric characters.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9492"
+></A
+><H2
+>Description</H2
+><P
+>The richText item is the adaption of the text widget
+to the canvas.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9495"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   erase   <TT
+CLASS="REPLACEABLE"
+><I
+>startIndex</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?endIndex?</I
+></TT
+> </P
+></DT
+><DD
+><P
+>     Removes all text between startIndex and endIndex. endIndex defaults to end.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   select   <TT
+CLASS="REPLACEABLE"
+><I
+>startIndex</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?endIndex?</I
+></TT
+> </P
+></DT
+><DD
+><P
+>     Select the text between startIndex and endIndex. endIndex defaults to end.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   get   <TT
+CLASS="REPLACEABLE"
+><I
+>startIndex</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?endIndex?</I
+></TT
+> </P
+></DT
+><DD
+><P
+>     Returns the text between startIndex and endIndex. endIndex defaults to end.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   cut </P
+></DT
+><DD
+><P
+>     Copies all text to the clipboard and removes it from the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   copy </P
+></DT
+><DD
+><P
+>     Copies all text to the clipboard.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   paste </P
+></DT
+><DD
+><P
+>     Pastes text from the clipboard at the current cursor position.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   getLength </P
+></DT
+><DD
+><P
+>     Returns the number of characters in the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   getCursor </P
+></DT
+><DD
+><P
+>     Returns the position position of the cursor as list of its row and column.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   setCursor   <TT
+CLASS="REPLACEABLE"
+><I
+>index</I
+></TT
+> </P
+></DT
+><DD
+><P
+>     Sets the cursor to position index.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   insert   <TT
+CLASS="REPLACEABLE"
+><I
+>index</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>text</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?-tags</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>taglist?</I
+></TT
+> </P
+></DT
+><DD
+><P
+>     Inserts and position indext the text text. If taglist is given the text is taged with each element of the list.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   tag   <TT
+CLASS="REPLACEABLE"
+><I
+>create</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>tagName</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>     Creates a tag with name tagName and configures it dependent of the options given. The options are the same as with tag configure.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   itemCommand   <TT
+CLASS="REPLACEABLE"
+><I
+>tagOrId</I
+></TT
+>   tag   <TT
+CLASS="REPLACEABLE"
+><I
+>configure</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>tagName</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>     Configures the existing tag tagName. See text for options.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9666"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r9674.html"
+><B
+CLASS="COMMAND"
+>canvas text</B
+></A
+>,
+   <A
+HREF="r3834.html"
+><B
+CLASS="COMMAND"
+>text</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GnomeCanvasRichText</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r9219.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r9674.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>canvas rectangle</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN8125"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>canvas text</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

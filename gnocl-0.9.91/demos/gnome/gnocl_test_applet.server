@@ -1,0 +1,31 @@
+<oaf_info>
+
+<oaf_server iid="OAFIID:gnocl_test_applet_factory"
+	type="exe"
+	location="/opt/gnome/lib/bonobo/gnocl-applet">
+       	<oaf_attribute name="repo_ids" type="stringv">
+               	<item value="IDL:Bonobo/GenericFactory:1.0"/>
+               	<item value="IDL:Bonobo/Unknown:1.0"/>
+       	</oaf_attribute>
+       	<oaf_attribute name="name" type="string" 
+		value="Gnocl Test Applet Factory"/>
+       	<oaf_attribute name="description" type="string"
+		value="Factory for creating the Gnocl test applets"/>
+</oaf_server>
+
+<oaf_server iid="OAFIID:gnocl_test_applet"
+	type="factory"
+       	location="OAFIID:gnocl_test_applet_factory">
+        <oaf_attribute name="repo_ids" type="stringv">
+                <item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
+       	        <item value="IDL:Bonobo/Control:1.0"/>
+               	<item value="IDL:Bonobo/Unknown:1.0"/>
+        </oaf_attribute>
+       	<oaf_attribute name="name" type="string" value="Gnocl Test Applet"/>
+        <oaf_attribute name="description" type="string"
+		value="Example panel applet written in Tcl with Gnocl"/>
+        <oaf_attribute name="panel:category" type="string" value="Utility"/>
+        <oaf_attribute name="panel:icon" type="string" value="gnome-util.png"/>
+</oaf_server>
+
+</oaf_info>

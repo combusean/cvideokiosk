@@ -1,0 +1,544 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>menuRadioItem</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Menu widgets"
+HREF="x351.html#AEN4861"><LINK
+REL="PREVIOUS"
+TITLE="menuCheckItem"
+HREF="r5240.html"><LINK
+REL="NEXT"
+TITLE="menuSeparator"
+HREF="r5554.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r5240.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r5554.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="MENURADIOITEM"
+></A
+>menuRadioItem</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN5403"
+></A
+><H2
+>Name</H2
+>menuRadioItem&nbsp;--&nbsp;A menu item from which only one of a group can be selected.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN5406"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>menuRadioItem</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5412"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/menuRadioItem.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5416"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-accelerator</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Accelerator for this item, like "&lt;Ctrl&gt;A" or "&lt;Shift&gt;&lt;Alt&gt;B".</P
+></DD
+><DT
+>-active</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the widget is active. This overrides the value
+of the associated variable. If set to 1, the associated
+variable is set accordingly.</P
+></DD
+><DT
+>-data</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>User defined data which can be retrieved via the cget subcommand.</P
+></DD
+><DT
+>-inconsistent</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the widget state is rendered inconsistent, for
+example if multiple items in an application are
+selected which do not have all the same state.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onToggled</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the radio button is
+toggled.
+Before evaluation the
+following percent strings are substituted:
+TABLE
+%% | %
+%w | widget name.
+%v | value of the radio group
+TABLE</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-text</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#PERCENTSTRING"
+><SPAN
+CLASS="TYPE"
+>percent-string</SPAN
+></A
+> (default: "")
+            </P
+><P
+>Text or icon of the button</P
+></DD
+><DT
+>-tooltip</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Message that appear next to this widget when the mouse
+pointer is held over it for a short amount of time.</P
+></DD
+><DT
+>-value</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>(Required option)
+Value to store in the button's associated variable
+whenever this button is selected.</P
+></DD
+><DT
+>-variable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>(Required option)
+Name of a (global) variable which is changed when the state
+of the item changes. All radio items with the
+same variable are in one group. If the variable does
+not exist and the option -active is not set to 0,
+it is created and set to the value of the
+first item in the group. If the variable does exist
+and its value corresponds to the value of a button in
+this group, this button is selected. If the value of
+variable is set externally (e.g. via the set),
+the corresponding button in the group is selected and
+its associated command executed.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5492"
+></A
+><H2
+>Description</H2
+><P
+>A radio item is like a check item, but in a group of
+radio items only one can be selected. All radio items of
+one group share one variable. This variable contains always
+the value of the active radio item.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5495"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cget   <TT
+CLASS="REPLACEABLE"
+><I
+>option</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the value for one option. The option may have any of
+the values accepted by configure.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   onToggled </P
+></DT
+><DD
+><P
+> Executes the command given by the -onToggled option of the
+active item in the group.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5535"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set animal dog
+set menu [gnocl::menu -title "menuRadioItem"]
+$menu add [gnocl::menuRadioItem -text "%_Has _Bird" -variable animal -onValue bird]
+$menu add [gnocl::menuRadioItem -text "%_Has _Dog" -variable animal -onValue dog]
+$menu add [gnocl::menuRadioItem -text "%_Has _Cat" -variable animal -onValue cat]
+$menu popup</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/menuRadioItem.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5542"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r4983.html"
+><B
+CLASS="COMMAND"
+>menu</B
+></A
+>,
+   <A
+HREF="r5114.html"
+><B
+CLASS="COMMAND"
+>menuItem</B
+></A
+>,
+   <A
+HREF="r5240.html"
+><B
+CLASS="COMMAND"
+>menuCheckItem</B
+></A
+>,
+   <A
+HREF="r5554.html"
+><B
+CLASS="COMMAND"
+>menuSeparator</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkRadioMenuItem</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r5240.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r5554.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>menuCheckItem</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN4861"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>menuSeparator</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

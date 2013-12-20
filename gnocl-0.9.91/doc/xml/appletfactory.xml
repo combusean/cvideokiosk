@@ -1,0 +1,415 @@
+
+<refentry id="appletFactory">
+<refmeta> 
+   <refentrytitle>appletFactory</refentrytitle>
+</refmeta>
+
+<refnamediv>
+   <refname>appletFactory</refname>
+   <refpurpose>A command which creates a Gnome panel applet.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+   <cmdsynopsis>
+      <command>appletFactory</command>
+      <arg choice="plain"><replaceable>iid</replaceable></arg>
+      <arg choice="plain"><replaceable>command</replaceable></arg>
+   </cmdsynopsis>
+</refsynopsisdiv>
+
+<refsect1><title>Screenshot</title>
+   <screenshot><graphic fileref="../pics/appletFactory.png"></graphic></screenshot>
+</refsect1>
+<refsect1><title>Options</title>
+   <variablelist>
+      <varlistentry>
+         <term>-background</term>
+         <listitem>
+            <para>type: <link linkend='color'><type>color</type></link>
+            </para>
+            <para>Background color of the widget.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-child</term>
+         <listitem>
+            <para>type: <type>widget-ID</type>
+            </para>
+            <para>Widget ID of the child.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-dragTargets</term>
+         <listitem>
+            <para>type: <type>list of strings</type>
+            </para>
+            <para>List of source targets
+(e.g. text/plain or application/x-color)
+which are supported.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-dropTargets</term>
+         <listitem>
+            <para>type: <type>list of strings</type>
+            </para>
+            <para>List of destination targets
+(e.g. text/plain or application/x-color)
+which are supported.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-name</term>
+         <listitem>
+            <para>type: <type>string</type>
+            </para>
+            <para>Name of the widget, can be used to set options in an rc file.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-onButtonPress</term>
+         <listitem>
+            <para>type: <type>string</type> (default: "")
+            </para>
+            <para>Tcl command which is executed if a mouse button is press
+inside the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%t | type of event: one of buttonPress, button2Press or button3Press
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-onButtonRelease</term>
+         <listitem>
+            <para>type: <type>string</type> (default: "")
+            </para>
+            <para>Tcl command which is executed if a mouse button is released
+inside the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%t | type of event: always buttonRelease
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-onChangeOrientation</term>
+         <listitem>
+            <para>type: <type>string</type> (default: "")
+            </para>
+            <para>Command to be executed in the global scope if the panel including
+the applet changes its orientation.
+Before evaluation the
+following percent strings are substituted:
+TABLE
+%% | %
+%w | widget name.
+TABLE</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-onChangeSize</term>
+         <listitem>
+            <para>type: <type>string</type> (default: "")
+            </para>
+            <para>Command to be executed in the global scope if the panel including
+the applet changes its size.
+Before evaluation the
+following percent strings are substituted:
+TABLE
+%% | %
+%w | widget name.
+TABLE</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-onDestroy</term>
+         <listitem>
+            <para>type: <type>string</type> (default: "")
+            </para>
+            <para>Tcl command which is executed if the widget is destroyed.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-onDragData</term>
+         <listitem>
+            <para>type: <type>string</type> (default: "")
+            </para>
+            <para>Tcl command which is executed if data is draged from
+this the widget to another. This command must return
+the data to be draged.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%t | time
+%T | type of data
+TABLE</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-onDropData</term>
+         <listitem>
+            <para>type: <type>string</type> (default: "")
+            </para>
+            <para>Tcl command which is executed if data is dropped on the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%d | data
+%l | length of data
+%t | time
+%T | type of data
+%x | x coordinate
+%y | y coordinate
+TABLE</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-onMotion</term>
+         <listitem>
+            <para>type: <type>string</type> (default: "")
+            </para>
+            <para>Tcl command which is executed if the mouse is moved inside
+the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-onPopupMenu</term>
+         <listitem>
+            <para>type: <type>string</type> (default: "")
+            </para>
+            <para>Tcl command which is executed if the "popup-menu" signal
+is recieved, which is normally the case if the user presses
+Shift-F10.
+Before evaluation the
+following percent strings are substituated:
+%w by widget name.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-onRealize</term>
+         <listitem>
+            <para>type: <type>string</type> (default: "")
+            </para>
+            <para>Tcl command whih is executed in the global scope if
+the widget has been realized.
+Before evaluation the following percent strings are
+substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-onShowHelp</term>
+         <listitem>
+            <para>type: <type>string</type> (default: "")
+            </para>
+            <para>Tcl command which is executed in the global scope
+if the "show-help" signal
+is recieved, which is normally the case if the user presses
+F1 or Ctrl-F1.
+Before evaluation the following percent strings are
+substituated
+TABLE
+%% | %
+%w | widget name
+%h | help type: either "whatsThis" or "tooltip"
+TABLE</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-sensitive</term>
+         <listitem>
+            <para>type: <type>boolean</type> (default: 1)
+            </para>
+            <para>Whether or not the item is sensitve to user input.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-tooltip</term>
+         <listitem>
+            <para>type: <type>string</type>
+            </para>
+            <para>Message that appear next to this widget when the mouse
+pointer is held over it for a short amount of time.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term>-visible</term>
+         <listitem>
+            <para>type: <type>boolean</type> (default: 1)
+            </para>
+            <para>Whether or not the item is visible.</para>
+         </listitem>
+      </varlistentry>
+   </variablelist>
+</refsect1>
+
+<refsect1><title>Description</title>
+<para>
+The appletFactory creates a Gnome panel applet. An additional
+matching Bonobo Activation server file is needed. The appletFactory
+command has two parameters. iid is the ID which must correspond to
+the oaf_server iid entry in the server file. command is executed
+when gnome creates the applet.
+The following percent strings are substituted:
+TABLE
+%% | %
+%i | iid
+%w | name of the newly created applet
+/TABLE
+The above widget commands and options are applicable to this newly
+created applet.
+</para>
+</refsect1>
+
+<refsect1><title>Commands</title>
+   <variablelist>
+      <varlistentry>
+         <term><cmdsynopsis>
+            <command><replaceable>id</replaceable></command>
+            <arg choice="plain">addMenuItem</arg>
+            <arg rep="repeat" choice="opt"><replaceable>-option</replaceable> <replaceable>value</replaceable></arg>
+            </cmdsynopsis></term>
+         <listitem>
+         <para>Adds an entry to the panel menu.</para>
+         <variablelist><title>Options</title>
+            <varlistentry>
+               <term>-text</term>
+               <listitem>
+                  <para>type: <link linkend='percentString'><type>percent-string</type></link> (default: "")
+                  </para>
+                  <para>Text or stock item of the entry.</para>
+               </listitem>
+            </varlistentry>
+            <varlistentry>
+               <term>-onClicked</term>
+               <listitem>
+                  <para>type: <type>string</type> (default: "")
+                  </para>
+                  <para>Command to be executed in the global scope if
+entry is chosen.
+Before evaluation the following percent strings
+are substituted:
+TABLE
+%% | %
+/TABLE</para>
+               </listitem>
+            </varlistentry>
+         </variablelist>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term><cmdsynopsis>
+            <command><replaceable>id</replaceable></command>
+            <arg choice="plain">addMenuSeparator</arg>
+            </cmdsynopsis></term>
+         <listitem>
+         <para>Adds a separator to the panel menu.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term><cmdsynopsis>
+            <command><replaceable>id</replaceable></command>
+            <arg choice="plain">getSize</arg>
+            </cmdsynopsis></term>
+         <listitem>
+         <para>Returns the size of the applet in pixel.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term><cmdsynopsis>
+            <command><replaceable>id</replaceable></command>
+            <arg choice="plain">getOrientation</arg>
+            </cmdsynopsis></term>
+         <listitem>
+         <para>Returns the orientation of the panel as one of
+up, down, left or right. The orientation is not the
+same as the side on the screen the panel is on.
+If the panel is for
+example on the right side of the screen, the orientation
+is left.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term><cmdsynopsis>
+            <command><replaceable>id</replaceable></command>
+            <arg choice="plain">configure</arg>
+            <arg rep="repeat" choice="opt"><replaceable>-option</replaceable> <replaceable>value</replaceable></arg>
+            </cmdsynopsis></term>
+         <listitem>
+         <para> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</para>
+         </listitem>
+      </varlistentry>
+      <varlistentry>
+         <term><cmdsynopsis>
+            <command><replaceable>id</replaceable></command>
+            <arg choice="plain">delete</arg>
+            </cmdsynopsis></term>
+         <listitem>
+         <para> Deletes the widget and the associated tcl command.</para>
+         </listitem>
+      </varlistentry>
+   </variablelist>
+</refsect1>
+
+<refsect1><title>Example</title>
+<para>
+<programlisting><![CDATA[
+namespace eval gnocl {
+   set appName "gnocl_test_applet"
+}
+package require gnoclGnome
+proc makeMenu { w } {
+   $w addMenuItem -text "%#About" -onClicked {gnocl::dialog -text "About"}
+}
+proc createApplet {w iid} {
+   set box [gnocl::box -orientation vertical]
+   $box add [gnocl::button -text "Hello, world!" -onClicked "puts onClicked"]
+   $w configure -child $box -onRealize "makeMenu %w"
+}
+gnocl::appletFactory OAFIID:gnocl_test_applet_factory {createApplet %w %i}
+]]></programlisting>
+</para>
+<para>results in</para>
+<screenshot><graphic fileref="../pics/appletFactory.png"></graphic></screenshot>
+</refsect1>
+
+</refentry>
+

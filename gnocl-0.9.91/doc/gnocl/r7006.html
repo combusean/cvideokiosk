@@ -1,0 +1,1930 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>tree</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Tree and List Widgets"
+HREF="x351.html#AEN7004"><LINK
+REL="PREVIOUS"
+TITLE="Commands"
+HREF="x351.html"><LINK
+REL="NEXT"
+TITLE="list"
+HREF="r7725.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r7725.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="TREE"
+></A
+>tree</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN7009"
+></A
+><H2
+>Name</H2
+>tree&nbsp;--&nbsp;A widget which displays text or other items arranged in a tree.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN7012"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>tree</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN7018"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/tree.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN7022"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-children</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list</SPAN
+> (default: "")
+            </P
+><P
+>List of rows. Each row consists of a list of cell entries.</P
+></DD
+><DT
+>-columns</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Number of columns</P
+></DD
+><DT
+>-hasFocus</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>1</SPAN
+>
+            </P
+><P
+>This sets the focus to the widget. To unset the focus it
+must be set to another widet.</P
+></DD
+><DT
+>-headersClickable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: true)
+            </P
+><P
+>Whether the headers are clickable.</P
+></DD
+><DT
+>-headersVisible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: true)
+            </P
+><P
+>Whether to show the headers.</P
+></DD
+><DT
+>-heightGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>heightGroup can be an arbitrary string.
+All widgets with the same heightGroup request the
+same height. If packed with the fill flag set, they
+will have nevertheless different heights.</P
+></DD
+><DT
+>-heightRequest</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>int</SPAN
+>
+            </P
+><P
+>Height which is requested in the parent widget. The actual
+height can be larger.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onButtonPress</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is press
+inside the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%t | type of event: one of buttonPress, button2Press or button3Press
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onButtonRelease</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is released
+inside the widget.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name
+%t | type of event: always buttonRelease
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onPopupMenu</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the "popup-menu" signal
+is recieved, which is normally the case if the user presses
+Shift-F10.
+Before evaluation the
+following percent strings are substituated:
+%w by widget name.</P
+></DD
+><DT
+>-onRowCollapsed</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Command to execute in the global scope if a row is collapsed.
+Before evaluation the following percent strings
+are substituted:
+TABLE
+%% | %
+%w | widget name
+%p | list of paths of the collapsed row
+/TABLE</P
+></DD
+><DT
+>-onRowExpanded</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Command to execute in the global scope if a row is expanded.
+Before evaluation the following percent strings
+are substituted:
+TABLE
+%% | %
+%w | widget name
+%p | list of paths of the expanded row
+/TABLE</P
+></DD
+><DT
+>-onSelectionChanged</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Command to execute in the global scope if the selection
+could be changed. Occasionaly
+it is executed, if the selection has not changed.
+Therefor the "%p" parameter can also be the empty string,
+which is not a valid path.
+Before evaluation the following percent strings
+are substituted:
+TABLE
+%% | %
+%w | widget name
+%p | list of paths of the selection
+/TABLE</P
+></DD
+><DT
+>-selectionMode</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF single, browse, multiple, extended</SPAN
+>
+            </P
+><P
+>Selection mode</P
+></DD
+><DT
+>-sizeGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>sizeGroup can be an arbitrary string.
+All widgets with the same sizeGroup request the
+same size. If packed with the fill flag set, they
+will have nevertheless different sizes.</P
+></DD
+><DT
+>-titles</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Titles of the columns</P
+></DD
+><DT
+>-types</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF boolean, integer, float, string, markup, image</SPAN
+> (default: string)
+            </P
+><P
+>Types of column entries. If type is markup the cell content
+is interpreted as
+<A
+HREF="x165.html#MARKUPSTRING"
+><SPAN
+CLASS="TYPE"
+>markup-string</SPAN
+></A
+>.
+For special formatting of the other types the -onCellData
+callback can be used.</P
+></DD
+><DT
+>-scrollbar</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>always, never, automatic</SPAN
+> (default: automatic)
+            </P
+><P
+>When to show scrollbars. If the value is a list of
+two elements, the first value is for the horizontal
+scrollbar and the second value for the vertical scrollbar.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-widthGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>widthGroup can be an arbitrary string.
+All widgets with the same widthGroup request the
+same width. If packed with the fill flag set, they
+will have nevertheless different widths.</P
+></DD
+><DT
+>-widthRequest</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>int</SPAN
+>
+            </P
+><P
+>Width which is requested in the parent widget. The actual
+width can be larger.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN7159"
+></A
+><H2
+>Description</H2
+><P
+>The tree command creates a new tree widget.
+On creation at least on of the options
+<CODE
+CLASS="OPTION"
+>-columns</CODE
+>,
+<CODE
+CLASS="OPTION"
+>-children</CODE
+>,
+<CODE
+CLASS="OPTION"
+>-titles</CODE
+> or
+<CODE
+CLASS="OPTION"
+>-types</CODE
+> must be given. The number
+of columns of the created tree is the maximum of
+these four values. This number cannot be changed
+after creation, but hiding columns should do the
+job in most cases.</P
+><P
+>Each row can be identified by its path. A path
+is a list of integers which describe recursively
+the position of the row relative to its parent:
+the highest level rows have the path 0, 1 etc.;
+the children of the second row the path {1 0}, {1 1},
+{1 2} etc.; the children of the first child of the
+second child of the second row have the path
+{1 1 0 0}, {1 1 0 1}, {1 1 0 2} etc. The level
+above the first level has the empty path {}. Each
+element in a path may also be "end" which is equivalent
+to the last element in this level.
+A given path may point to different rows during the lifetime
+of a tree, since the position of a row is dependent on the sort
+order and changes if rows are inserted or deleted before
+the referenced row.</P
+><P
+>A path may be converted to a reference. A reference points
+during the lifetime of the tree and the lifetime of the
+referenced row to the same row, independent of sort order
+or insertion or deletion. Since a reference has to be stored
+inside the tree widget, it should be deleted if it is not
+needed anymore.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN7168"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   add   <TT
+CLASS="REPLACEABLE"
+><I
+>pathOrReference</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>row-list</I
+></TT
+> </P
+></DT
+><DD
+><P
+>    Add rows as children to the pathOrReference
+<CODE
+CLASS="OPTION"
+><TT
+CLASS="REPLACEABLE"
+><I
+>pathOrReference</I
+></TT
+></CODE
+>.
+The new rows are placed behind existing rows.
+Use the empty path {} to add toplevel rows. The
+command returns a list of paths to every new row.
+If the column type is "image", the entry must be
+a percent string of type file which determines the
+image file to be loaded (e.g. ("%/./gnocl.png")</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-singleRow</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: false)
+                  </P
+><P
+>If set to true, row-list is not a list of rows but only
+a list of elements for a single row.
+This option exists only to simplify
+the addition of one single row.</P
+></DD
+><DT
+>-singleColumn</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: false)
+                  </P
+><P
+>If set to true, row-list is not a list of rows but only
+a list of one element for every row.
+This option exists only to simplify
+the addition of one single column.</P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   addBegin   <TT
+CLASS="REPLACEABLE"
+><I
+>pathOrReference</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>row-list</I
+></TT
+> </P
+></DT
+><DD
+><P
+>    Same as <CODE
+CLASS="OPTION"
+>add</CODE
+>, but adds the new
+rows before existing rows.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   addEnd   <TT
+CLASS="REPLACEABLE"
+><I
+>pathOrReference</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>row-list</I
+></TT
+> </P
+></DT
+><DD
+><P
+>    Same as <CODE
+CLASS="OPTION"
+>add</CODE
+>.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cellConfigure   <TT
+CLASS="REPLACEABLE"
+><I
+>pathOrReference</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>column</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>    Configure a cell.</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-value</DT
+><DD
+><P
+>Value of the cell. The type must correspond to the
+type of the column.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+                  </P
+><P
+>Whether this cell is visible.</P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   collapse  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>   Collapse a row.</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-path</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>pathOrReference</SPAN
+> (default: 0)
+                  </P
+><P
+>Which row to collapse.</P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   columnCget   <TT
+CLASS="REPLACEABLE"
+><I
+>column</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>option</I
+></TT
+> </P
+></DT
+><DD
+><P
+>    Returns the value for one column option.
+The option may have any of the values accepted
+by columnConfigure.
+TODO: not yet all options implemented.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   columnConfigure   <TT
+CLASS="REPLACEABLE"
+><I
+>column</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>    Configure a column</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-autoResize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: true)
+                  </P
+><P
+>Whether the width of the column should automatically
+increase if necessary</P
+></DD
+><DT
+>-onCellData</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+                  </P
+><P
+>Command which is executed, before the content of a cell
+is rendered. This can be used to configure the cells
+dependent on their content. The command must return
+valid row configuration options (e.g. "-foreground red").
+Before evaluation the
+following percent strings are substituted
+TABLE
+%% | %
+%w | widget name
+%p | path of the cell
+%v | value (content) of the cell
+/TABLE</P
+></DD
+><DT
+>-onEdited</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+                  </P
+><P
+>Only valid for editable columns. Command which is
+executed, if a cell in this column is edited.
+Before evaluation the
+following percent strings are substituted
+TABLE
+%% | %
+%w | widget name
+%p | path of selected cell
+%v | new text (value)
+/TABLE</P
+></DD
+><DT
+>-onToggled</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+                  </P
+><P
+>Only valid for boolean columns. Command which is
+executed, if it a cell in this column is toggled.
+Before evaluation the
+following percent strings are substituted
+TABLE
+%% | %
+%w | widget name
+%p | path of selected cell
+/TABLE</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+                  </P
+><P
+>Whether this column is visible.</P
+></DD
+><DT
+>-clickable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+>
+                  </P
+><P
+>Whether it can be clicked on the column header and
+sort this column.</P
+></DD
+><DT
+>-title</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+                  </P
+><P
+>Title of the column.</P
+></DD
+><DT
+>-resizable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+                  </P
+><P
+>Whether the column can be resized by the user.</P
+></DD
+><DT
+>-reorderable</DT
+><DD
+><P
+>Whether the column can be moved to another place in the tree.</P
+></DD
+><DT
+>-minWidth</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+                  </P
+><P
+>Minimum width of the column in pixel.</P
+></DD
+><DT
+>-maxWidth</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+                  </P
+><P
+>Maximum width of the column in pixel.</P
+></DD
+><DT
+>-titleAlign</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>left, center, right or a float between 0 and 1</SPAN
+>
+                  </P
+><P
+>Horizontal alignment of the title.</P
+></DD
+><DT
+>-align</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>a list of the horizontal and vertical alignment or one of topLeft, top, topRight, left, center, right, bottomLeft, bottom, or bottomRight</SPAN
+>
+                  </P
+><P
+>Alignment of the cells.</P
+></DD
+><DT
+>-width</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+                  </P
+><P
+>Width of the cells.</P
+></DD
+><DT
+>-height</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+                  </P
+><P
+>Height of the cells.</P
+></DD
+><DT
+>-xPad</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+                  </P
+><P
+>Horizontal padding of the column.</P
+></DD
+><DT
+>-yPad</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+                  </P
+><P
+>Vertical padding of the column.</P
+></DD
+><DT
+>-background</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color</SPAN
+></A
+>
+                  </P
+><P
+>Background color of the cells.</P
+></DD
+><DT
+>-foreground</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color</SPAN
+></A
+>
+                  </P
+><P
+>Foreground color of the cells.</P
+></DD
+><DT
+>-font</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>FONT</SPAN
+>
+                  </P
+><P
+>Font used for the rendering of the cells.</P
+></DD
+><DT
+>-fontFamily</DT
+><DD
+><P
+>Font family used for the rendering of the cells.</P
+></DD
+><DT
+>-fontStyle</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF normal, oblique, italic</SPAN
+> (default: normal)
+                  </P
+><P
+>Font style used for the rendering of the cells.</P
+></DD
+><DT
+>-fontVariant</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF normal, smallCaps</SPAN
+> (default: normal)
+                  </P
+><P
+>Font variant used for the rendering of the cells.</P
+></DD
+><DT
+>-fontWeight</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF ultralight, light, normal, bold, ultrabold, heavy</SPAN
+> (default: normal)
+                  </P
+><P
+>Font weight used for the rendering of the cells.</P
+></DD
+><DT
+>-fontRise</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+> (default: 0)
+                  </P
+><P
+>How many pixels the text should be risen.</P
+></DD
+><DT
+>-fontStretch</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF ultraCondensed, extraCondensed, condensed, semiCondensed, normal, semiExpanded, expanded, extraExpanded, ultraExpanded</SPAN
+> (default: normal)
+                  </P
+><P
+>Font stretch used for the rendering of the cells.</P
+></DD
+><DT
+>-fontSize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+                  </P
+><P
+>Font size used for the rendering of the cells.</P
+></DD
+><DT
+>-fontScale</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float ORONEOF xx-small, x-small, small, medium, large, x-large, xx-large</SPAN
+> (default: normal)
+                  </P
+><P
+>Font scale used for the rendering of the cells.</P
+></DD
+><DT
+>-strikethrough</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+                  </P
+><P
+>Whether the text is struck through.</P
+></DD
+><DT
+>-underline</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF none, single, float, low</SPAN
+> (default: none)
+                  </P
+><P
+>How the text in the cells should be underlined.</P
+></DD
+><DT
+>-editable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+                  </P
+><P
+>Whether the text in the cells can be edited.</P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>    Configure the widget. Option may have any of
+the values accepted by the tree command except from
+<CODE
+CLASS="OPTION"
+>columns</CODE
+> and <CODE
+CLASS="OPTION"
+>-types</CODE
+>.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   coordsToPath   <TT
+CLASS="REPLACEABLE"
+><I
+>x</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>y</I
+></TT
+> </P
+></DT
+><DD
+><P
+>    Calculates from the given windows coordinates x and y
+(for example aquired from the onButtonPress callback)
+to a path. Returns a
+list of four elements: a path, a column, x cell coordinate and
+y cell coordinate.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   deleteReference   <TT
+CLASS="REPLACEABLE"
+><I
+>reference</I
+></TT
+> </P
+></DT
+><DD
+><P
+>    Deletes a reference. The reference may not be used after
+it has been deleted.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   erase   <TT
+CLASS="REPLACEABLE"
+><I
+>startPathOrReference</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>?endPathOrReference?</I
+></TT
+> </P
+></DT
+><DD
+><P
+>    Deletes all rows between startPathOrReference and
+endPathOrReference.
+Deletes only one row if only startPathOrReference is given.
+If endPathOrReference is "end" deletes all child rows of
+the parent of startPathOrReference starting
+at startPathOrReference.
+"erase 0 end" deletes all rows.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   expand  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>   Expand a row.</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-path</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>pathOrReference</SPAN
+> (default: 0)
+                  </P
+><P
+>Which row to expand.</P
+></DD
+><DT
+>-recursive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+                  </P
+><P
+>Whether to expand all children recursively.</P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   get   <TT
+CLASS="REPLACEABLE"
+><I
+>pathOrReference</I
+></TT
+>   <TT
+CLASS="REPLACEABLE"
+><I
+>column</I
+></TT
+> </P
+></DT
+><DD
+><P
+>    Get the value of one cell.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   getNumChildren   <TT
+CLASS="REPLACEABLE"
+><I
+>?pathOrReference?</I
+></TT
+> </P
+></DT
+><DD
+><P
+>   Returns the number of children for the given pathOrReference. If
+no pathOrReference is given the number of top level rows
+is returned.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   getReference   <TT
+CLASS="REPLACEABLE"
+><I
+>path</I
+></TT
+> </P
+></DT
+><DD
+><P
+>    Returns a reference to path.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   getSelection </P
+></DT
+><DD
+><P
+>    Returns a list of the paths of the selected rows.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   onSelectionChanged </P
+></DT
+><DD
+><P
+>    Executes the onSelectionChanged command, if there
+is any. Otherwise does nothing.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   setSelection   <TT
+CLASS="REPLACEABLE"
+><I
+>pathOrReference-list</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>    Selects each row that is given in pathOrReference-list.
+The onSelectionChanged callback is not called.
+If pathOrReference is "all" all rows are selected.
+To select more than one row, selectionMode must be
+set to multiple or extended.</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-add</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: false)
+                  </P
+><P
+>If set to true, the given rows are added to the
+selection, else the selection contains only
+the given rows.</P
+></DD
+><DT
+>-unselect</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: false)
+                  </P
+><P
+>If set to true, the selection is removed from the given
+rows.</P
+></DD
+><DT
+>-single</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: false)
+                  </P
+><P
+>If set to true, pathOrReference-list is not a list of paths but only
+one single pathOrReference. This option exists only to simplify
+the selection of one single row.</P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   referenceToPath   <TT
+CLASS="REPLACEABLE"
+><I
+>reference</I
+></TT
+> </P
+></DT
+><DD
+><P
+>    Returns the path of reference.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   scrollToPosition  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>   Scrolls the widget so that the specified row is visible. If
+only "-column" is given, the widget is scrolled only horizontal
+so that this column is visible. If neither "-column" nor
+"-path" is given, the widget is scrolled to the last
+expanded row.</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-align</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>a list of the horizontal and vertical alignment or one of topLeft, top, topRight, left, center, right, bottomLeft, bottom, or bottomRight</SPAN
+>
+                  </P
+><P
+>Specifies where the row shall be shown.</P
+></DD
+><DT
+>-path</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>pathOrReference</SPAN
+>
+                  </P
+><P
+>Specifies which row shall be shown.</P
+></DD
+><DT
+>-column</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+                  </P
+><P
+>Specifies which column shall be shown.</P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   setCursor   <TT
+CLASS="REPLACEABLE"
+><I
+>pathOrReference</I
+></TT
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>   Sets the cursor to a specific row.</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-column</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+                  </P
+><P
+>Sets the cursor to a specific column in the row</P
+></DD
+><DT
+>-startEdit</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+                  </P
+><P
+>Whether to start editing the cell given by column and row.
+The column has to be editable and the tree has to be realized.</P
+></DD
+></DL
+></DIV
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN7711"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set tree [gnocl::tree -types {string integer} -titles {"" "# of Legs"}]
+$tree add {} {Mamals Birds Bugs}
+$tree add 0 {{Cat 4} {Dog 4} {Human 2}}
+foreach {paro pred} [$tree add 1 {Parrots Predator}] break
+$tree add $paro {{Cockatoo 2} {Amazone 2}}
+$tree add $pred {{Hawk 2} {Eagle 2}}
+$tree expand -path "1" -recursive 1
+gnocl::window -title "Tree" -child $tree -defaultWidth 300 -defaultHeight 200</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/tree.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN7718"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r7725.html"
+><B
+CLASS="COMMAND"
+>list</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkTreeView</CODE
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkTreeStore</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r7725.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Commands</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN7004"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>list</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

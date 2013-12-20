@@ -1,0 +1,418 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>socket</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Misc. Widgets"
+HREF="x351.html#AEN7758"><LINK
+REL="PREVIOUS"
+TITLE="plug"
+HREF="r7952.html"><LINK
+REL="NEXT"
+TITLE="canvas "
+HREF="r8128.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r7952.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r8128.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="SOCKET"
+></A
+>socket</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN8033"
+></A
+><H2
+>Name</H2
+>socket&nbsp;--&nbsp;Container for embedding windows of other processes</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN8036"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>socket</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8042"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/socket.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8046"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-plugID</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>WindowID</SPAN
+>
+            </P
+><P
+>ID of the window to be embedded.</P
+></DD
+><DT
+>-onPlugAdded</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the plug window is added.
+Before evaluation the
+following percent strings are substituted:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+><DT
+>-onPlugRemoved</DT
+><DD
+><P
+>Tcl command which is executed if the plug window is removed.
+Before evaluation the
+following percent strings are substituted:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8071"
+></A
+><H2
+>Description</H2
+><P
+>A socket can embed a window from another process using
+the XEMBED protocol. The GUI
+of the other process does not have to be written in GTK+
+or Gnocl. Qt, Tcl/Tk or pure X should work just fine.
+If the other side uses Gnocl, it should use the plug
+widget. The plug widget can either be embedded by setting
+the -socketID option, or by setting the -plugID option
+of the socket.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8074"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   getID </P
+></DT
+><DD
+><P
+>Returns the window ID of the socket widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   getPlugID </P
+></DT
+><DD
+><P
+>Returns the window ID of the plug widget.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8112"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>exec wish "$0" "$@"
+   
+package require Gnocl
+wm state . withdrawn    ;# hide tk main window
+  
+set box [gnocl::box -orientation vertical]
+gnocl::window -title "Socket" -child $box 
+ 
+set menubar [gnocl::menuBar]
+set menu [gnocl::menu]
+$menu add [gnocl::menuItem -text "%#Quit" -onClicked exit]
+$menubar add [gnocl::menuItem -text "%__File" -submenu $menu]
+$box add $menubar -expand 0
+ 
+set socket [gnocl::socket]
+$box add $socket
+gnocl::update
+ 
+toplevel .embed -use [format "0x%x" [$socket getID]]
+button .embed.but -text "tk in Gnocl" -command {puts "Hello tk!"}
+pack .embed.but
+update 
+wm minsize .embed [winfo reqwidth .embed] [winfo reqheight .embed]</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/socket.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8119"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r7952.html"
+><B
+CLASS="COMMAND"
+>plug</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkSocket</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r7952.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r8128.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>plug</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN7758"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>canvas</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

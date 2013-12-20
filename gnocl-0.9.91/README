@@ -1,0 +1,53 @@
+gnocl is a GTK+ / Gnome extension for the programming language Tcl,
+loosely modeled after the Tk package.  It provides easy to use
+commands to build quickly GTK+ / Gnome compliant applications
+including canvas widget, GConf and drag and drop. It consists of
+several libraries: one for GTK+ widgets, one for the Gnome canvas
+widget and one for the GConf database.
+
+"make" compiles all libraries. With "make gnocl", "make canvas"
+and "make gconf" only these libraries are build.
+
+This release is tested with GTK+ version 2.2.4, gnome version 2.4.0
+and Tcl version 8.4.6 under Linux.
+
+Homepage of gnocl is http://www.dr-baum.net/gnocl/ 
+Please see there for newer versions.
+
+License is BSD type which basically means that you can use and modify
+the software and sources in open or closed-source projects without
+royalities as long as the copyright notices remain unchanged.  See the
+file license.terms for details.
+
+To start:
+   - cd src; make 
+   - as superuser: make install 
+     (makes a new directory in the tcl libary directory and copies the
+      gnocl libaries into it. If another directory than the standard 
+      tcl directory should be used, use 
+      "make DESTDIR=/special/directory install")
+   - (as normal user) 
+      cd ../demos/; ./doTests 
+      or
+      cd ../demos/; for el in test-*.tcl; do ./$el; done
+
+If you have problems, please first run gtk-demo to test if GTK+ realy
+works. If you have still problems please mail with a full error
+description.
+
+Homepage:    http://www.dr-baum.net/gnocl/ 
+Comments to: Peter G. Baum (peter@dr-baum.net)
+
+----------------------------- FAQ -------------------------------------
+
+1) Q: Does gnocl work with MS Windows?
+   A: Since Gtk as well as Tcl work with MS Windows, gnocl should work,
+      too. But until now, nobody stepped in to try it out and send me
+      a success report. If you want to try it, or are willing to 
+      sponsor the development, I'll give you all the support I can.
+
+2) Q: Why is feature XXX not implemented?
+   A: Gnocl is still under active developement. By writing a feature 
+      request by email it is however possible to influence the priority 
+      in which features are implemented.
+

@@ -1,0 +1,97 @@
+#!/bin/sh
+# the next line restarts using tclsh \
+exec tclsh "$0" "$@"
+
+# $Id: doTests,v 1.4 2003/11/17 20:36:10 baum Exp $
+
+# ensure that "." is the decimal point
+set ::env(LC_NUMERIC) "C"
+
+lappend auto_path [file join [file dirname [info script]] ../src]
+package require Gnocl
+
+# set files "test-plug.tcl test-box.tcl test-buttonBox.tcl"
+set files [lsort [glob "test-*.tcl"]]
+if { [catch {package require GnoclCanvas}] == 0 } {
+   eval lappend files [lsort [glob "./canvas/test-*.tcl"]]
+}
+set no 0
+set pid ""
+set showInline 1
+
+set mainBox [gnocl::box -orientation vertical]
+set menuBar [gnocl::menuBar]
+set menu [gnocl::menu]
+$menu add [gnocl::menuItem -text "%#Quit" -onClicked exit]
+$menuBar add [gnocl::menuItem -text "%__File" -submenu $menu]
+
+$mainBox add $menuBar 
+
+set socket [gnocl::socket]
+set socketBox [gnocl::box -borderWidth 0 -label ""]
+set message [gnocl::label]
+
+set optionBox [gnocl::box -borderWidth 0 -orientation vertical]
+$optionBox add [gnocl::checkButton -text "Show Inline" \
+      -variable showInline]
+$optionBox add [gnocl::button -text "Show Source" -onClicked showSource]
+
+set first [gnocl::button -text "%#GotoFirst" -sensitive 0 \
+      -onClicked {set no 0; loadFile}]
+set prev [gnocl::button -text "%#GoBack" -sensitive 0 \
+      -onClicked {incr no -1; loadFile}]
+set next [gnocl::button -text "%#GoForward" -sensitive 0 \
+      -onClicked {incr no; loadFile}]
+set last [gnocl::button -text "%#GotoLast" -sensitive 0 \
+      -onClicked {set no [expr {[llength $files]-1}]; loadFile}]
+set buttonBox [gnocl::box -borderWidth 0 -buttonType 1 -orientation horizontal \
+      -layout start -children [list $first $prev $next $last]]
+$mainBox add $socketBox -fill 1 -expand 1
+$mainBox add [list $message $optionBox $buttonBox]
+
+gnocl::window -title "Gnocl Test Application" -child $mainBox -onDestroy exit
+
+# gnocl::app testApp -title "Test Application" -contents $mainBox \
+#       -menuBar $menuBar
+
+proc showSource { } {
+   set file [lindex $::files $::no]
+   set txtWidg [gnocl::text -editable 0]
+   gnocl::window -title $file -child $txtWidg \
+         -defaultHeight 300 -defaultWidth 400
+   set fp [open $file]
+   set lines [read $fp]
+   $txtWidg insert end $lines
+   # while { [gets $fp line] >= 0 } {
+   #    $txtWidg insert end $line
+   #    $txtWidg insert end "\n"
+   # }
+   close $fp
+}
+
+proc loadFile { } {
+   global files
+   global no
+
+   set file [lindex $files $no]
+   catch {$::socket delete}
+   if { $::showInline } {
+      set ::socket [gnocl::socket]
+      $::socketBox add $::socket
+      $::socketBox configure -label $file
+      catch {exec ./$file [$::socket getID] &} ::pid
+   } else {
+      catch {exec ./$file &} ::pid
+   }
+   $::message configure -text $::pid
+   $::first configure -sensitive [expr {$no > 0}]
+   $::prev configure -sensitive [expr {$no > 0}]
+   $::next configure -sensitive [expr {$no < [llength $files] - 1}]
+   $::last configure -sensitive [expr {$no < [llength $files] - 1}]
+}
+
+loadFile
+
+gnocl::mainLoop
+
+# vim: syn=tcl

@@ -1,0 +1,374 @@
+# sed commands for gnocl documentation
+# 
+# (c) Peter G. Baum  http://www.dr-baum.net
+#
+s/CMD_DELETE/.CMD:       delete \
+.CMDDESCR:  Deletes the widget and the associated tcl command. \
+/
+s/CMD_CONFIGURE/.CMD:       configure .VAROPTS. \
+.CMDDESCR:  Configures the widget. Option may have any of \
+            the values accepted on creation of the widget. \
+/
+s/CMD_CGET/.CMD:       cget option \
+.CMDDESCR:  Returns the value for one option. The option may have any of \
+            the values accepted by configure. \
+/
+s/OPT_SENSITIVE/-sensitive; boolean; 1 \
+               Whether or not the item is sensitve to user input.\
+/
+s/OPT_VISIBLE/-visible; boolean; 1 \
+               Whether or not the item is visible.\
+/
+s/OPT_HASFOCUS/-hasFocus; 1; \
+               This sets the focus to the widget. To unset the focus it \
+               must be set to another widet. \
+/
+s/OPT_NAME/-name; string; \
+               Name of the widget, can be used to set options in an rc file.\
+/
+s/OPT_DATA/-data; string; \
+               User defined data which can be retrieved via the cget subcommand.\
+/
+s/OPT_TOOLTIP/-tooltip; string; \
+               Message that appear next to this widget when the mouse \
+               pointer is held over it for a short amount of time. \
+/
+s/OPT_NORMAL_BG/-normalBackgroundColor; COLOR \
+               Background color. DISCLAIMER_COLOR \
+/
+s/OPT_ACTIVE_BG/-activeBackgroundColor; COLOR \
+               Background color. DISCLAIMER_COLOR \
+/
+s/OPT_PRELIGHT_BG/-prelightBackgroundColor; COLOR \
+               Background color. DISCLAIMER_COLOR \
+/
+s/OPT_ON_REALIZE/-onRealize; string; "" \
+            Tcl command whih is executed in the global scope if  \
+            the widget has been realized.  \
+            Before evaluation the following percent strings are \
+            substituated: \
+            TABLE \
+            %% | %  \
+            %w | widget name. \
+            TABLE \
+/
+s/OPT_ON_SHOW_HELP/ -onShowHelp; string; "" \
+               Tcl command which is executed in the global scope \
+               if the "show-help" signal \
+               is recieved, which is normally the case if the user presses \
+               F1 or Ctrl-F1. \
+               Before evaluation the following percent strings are \
+               substituated \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               %h | help type: either "whatsThis" or "tooltip" \
+               TABLE \
+/
+s/OPT_ON_POPUP_MENU/-onPopupMenu; string; "" \
+               Tcl command which is executed if the "popup-menu" signal \
+               is recieved, which is normally the case if the user presses \
+               Shift-F10. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               %w by widget name. \
+/
+s/OPT_ON_ENTER/-onEnter; string; "" \
+               Tcl command which is executed if the mouse enters \
+               the widget. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               %x | x coordinate \
+               %y | y coordinate \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/OPT_ON_LEAVE/-onLeave; string; "" \
+               Tcl command which is executed if the mouse leaves \
+               the widget. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               %x | x coordinate \
+               %y | y coordinate \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/OPT_ON_MOTION/-onMotion; string; "" \
+               Tcl command which is executed if the mouse is moved inside \
+               the widget. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               %x | x coordinate \
+               %y | y coordinate \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/OPT_ON_BUTTON_PRESS/-onButtonPress; string; "" \
+               Tcl command which is executed if a mouse button is press \
+               inside the widget. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               %t | type of event: one of buttonPress, button2Press or button3Press \
+               %x | x coordinate \
+               %y | y coordinate \
+               %b | button number \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/OPT_ON_BUTTON_RELEASE/-onButtonRelease; string; "" \
+               Tcl command which is executed if a mouse button is released \
+               inside the widget. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               %t | type of event: always buttonRelease \
+               %x | x coordinate \
+               %y | y coordinate \
+               %b | button number \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/OPT_ON_KEY_PRESS/-onKeyPress; string; "" \
+               Tcl command which is executed if a key is pressed \
+               while the widget is having the focus. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               %k | key code as integer \
+               %K | key code as symbol \
+               %a | unicode unicode character, or the empty string if there is no corresponding character.  \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/OPT_ON_KEY_RELEASE/-onKeyRelease; string; "" \
+               Tcl command which is executed if a key is released \
+               while the widget is having the focus. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               %k | key code as integer \
+               %K | key code as symbol \
+               %a | unicode unicode character, or the empty string if there is no corresponding character.  \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/OPT_ON_MAP/-onMap; string; "" \
+               Tcl command which is executed if the widget is mapped to the \
+               screen, i.e. if it appears on the screen. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               TABLE \
+/
+s/OPT_ON_UNMAP/-onUnmap; string; "" \
+               Tcl command which is executed if the widget is unmapped, \
+               i.e. it disappears from the screen. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               TABLE \
+/
+s/OPT_ON_DELETE/-onDelete; string; "" \
+         Tcl command which is executed if the widget shall be deleted. \
+         If the command returns 0, the widget is not deleted. \
+         Before evaluation the \
+         following percent strings are substituated: \
+         TABLE \
+         %% | %\
+         %w | widget name. \
+         TABLE \
+/
+s/OPT_ON_DESTROY/-onDestroy; string; "" \
+         Tcl command which is executed if the widget is destroyed. \
+         Before evaluation the \
+         following percent strings are substituated: \
+         TABLE \
+         %% | %\
+         %w | widget name. \
+         TABLE \
+/
+s/OPT_TAGS/-tags; list; "" \
+         List of tags to be associated with this item. \
+         A tag must start with a alphabetic character which \
+         is followed by zero or more alphabetic or numeric characters. \
+/
+s/OPT_ITEM_DASH/-dash; list; "" \
+         Dash pattern used for this item. The list must contain an \
+         even number of integer. The odd elements of this list give \
+         the length in pixel of the line segements, the even elements \
+         give the length of the space between these line segements. \
+/
+s/OPT_ITEM_ON_MOTION/-onMotion; string; "" \
+               Tcl command which is executed if the mouse is moved inside \
+               the item. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | canvas name \
+               %i | item id \
+               %x | x coordinate \
+               %y | y coordinate \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/OPT_ON_RESIZE/-onResize; string; "" \
+               Tcl command which is executed if the widget resized. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               %x | x coordinate \
+               %y | y coordinate \
+               %W | new width \
+               %H | new height \
+               TABLE \
+/
+s/OPT_ITEM_ON_BUTTON_PRESS/-onButtonPress; string; "" \
+               Tcl command which is executed if a mouse button is press \
+               inside the item. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | canvas name \
+               %i | item id \
+               %t | type of event: one of buttonPress, button2Press or button3Press \
+               %x | x coordinate \
+               %y | y coordinate \
+               %b | button number \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/OPT_ITEM_ON_BUTTON_RELEASE/-onButtonRelease; string; "" \
+               Tcl command which is executed if a mouse button is released \
+               if it has been pressed inside the item. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | canvas name \
+               %i | item id \
+               %t | type of event: always buttonRelease \
+               %x | x coordinate \
+               %y | y coordinate \
+               %b | button number \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/OPT_ITEM_ON_ENTER/-onEnter; string; "" \
+               Tcl command which is executed if a mouse enters the item. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | canvas name \
+               %i | item id \
+               %x | x coordinate \
+               %y | y coordinate \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/OPT_ITEM_ON_LEAVE/-onLeave; string; "" \
+               Tcl command which is executed if a mouse enters the item. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | canvas name \
+               %i | item id \
+               %x | x coordinate \
+               %y | y coordinate \
+               %s | state of the buttons and modifiers (bitmask)  \
+               TABLE \
+/
+s/ALIGN_TYPE/a list of the horizontal and vertical alignment or one of topLeft, top, topRight, left, center, right, bottomLeft, bottom, or bottomRight/
+s/OPT_ON_DROP_DATA/-onDropData; string; "" \
+               Tcl command which is executed if data is dropped on the widget. \
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               %d | data \
+               %l | length of data \
+               %t | time \
+               %T | type of data \
+               %x | x coordinate \
+               %y | y coordinate \
+               TABLE \
+/
+s/OPT_ON_DRAG_DATA/-onDragData; string; "" \
+               Tcl command which is executed if data is draged from \
+               this the widget to another. This command must return \
+               the data to be draged.\
+               Before evaluation the \
+               following percent strings are substituated: \
+               TABLE \
+               %% | % \
+               %w | widget name \
+               %t | time \
+               %T | type of data \
+               TABLE \
+/
+s/OPT_DRAG_TARGETS/-dragTargets; list of strings \
+               List of source targets \
+               (e.g. text\/plain or application\/x-color) \
+               which are supported. \
+/
+s/OPT_DROP_TARGETS/-dropTargets; list of strings \
+               List of destination targets \
+               (e.g. text\/plain or application\/x-color) \
+               which are supported. \
+/
+s/OPT_WIDTH_GROUP/-widthGroup; string; "" \
+               widthGroup can be an arbitrary string. \
+               All widgets with the same widthGroup request the \
+               same width. If packed with the fill flag set, they \
+               will have nevertheless different widths. \
+/
+s/OPT_HEIGHT_GROUP/-heightGroup; string; "" \
+               heightGroup can be an arbitrary string. \
+               All widgets with the same heightGroup request the \
+               same height. If packed with the fill flag set, they \
+               will have nevertheless different heights. \
+/
+s/OPT_SIZE_GROUP/-sizeGroup; string; "" \
+               sizeGroup can be an arbitrary string. \
+               All widgets with the same sizeGroup request the \
+               same size. If packed with the fill flag set, they \
+               will have nevertheless different sizes. \
+/
+s/PADDING_TYPE/integer or one of small, normal or big/
+s/OPT_BORDERWIDTH/-borderWidth; integer or one of small, normal or big \
+            Space in pixel between the children and the border of the widget. \
+/
+s/OPT_CANV_PARENT/-parent;  tag-or-id;  \
+               This option sets the parent of the item. The parent must be \
+               a clipGroup item, which implements clipping for its \
+               children. \
+/
+

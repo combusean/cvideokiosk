@@ -1,0 +1,505 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>mime</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Gnome VFS"
+HREF="x351.html#AEN10027"><LINK
+REL="PREVIOUS"
+TITLE="file"
+HREF="r10031.html"><LINK
+REL="NEXT"
+TITLE="appletFactory"
+HREF="r10422.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r10031.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r10422.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="MIME"
+></A
+>mime</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN10270"
+></A
+><H2
+>Name</H2
+>mime&nbsp;--&nbsp;Retrieve information about files based on their 
+            MIME type.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN10273"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>mime</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>subcommand</I
+></TT
+>] [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10281"
+></A
+><H2
+>Description</H2
+><P
+>   The mime command retrieves information about files based on their MIME type.
+   </P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10284"
+></A
+><H2
+>Subcommands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+>mime</B
+>   getApplicationInfo  [application-ID] [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+>]</P
+>
+               <P
+><B
+CLASS="COMMAND"
+>mime</B
+>   getApplicationInfo  [application-ID] [<TT
+CLASS="REPLACEABLE"
+><I
+>-option
+                     </I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>                  In its first form the command returns information
+                  about the application with this ID. The option
+                  determine which information are retrieved. 
+               </P
+><P
+>                  In its second form the value of
+                  a given option must be the name of a global variable in which
+                  the corresponding information is stored. In this case
+                  the empty string is returned.
+               </P
+><P
+>                  Examples:
+                  <PRE
+CLASS="PROGRAMLISTING"
+>getApplicationInfo gimp-2.0 -canOpenMultipleFiles</PRE
+>
+                  returns whether the gimp-2.0 can open multiple files.
+                  <PRE
+CLASS="PROGRAMLISTING"
+>getApplicationInfo gimp-2.0 -canOpenMultipleFiles multiFiles -requiresTerminal terminal</PRE
+>
+                  returns the empty string. The value of the global variable
+                  <CODE
+CLASS="VARNAME"
+>multiFiles</CODE
+> is a boolean whether gimp-2.0
+                  can open multiple files and the value of the variable
+                  <CODE
+CLASS="VARNAME"
+>terminal</CODE
+> is a boolean whether it requires a
+                  terminal.
+               </P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-canOpenMultipleFiles</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+>Return whether the application can open multiple files.</P
+></DD
+><DT
+>-command</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+>Return the string to start the application.</P
+></DD
+><DT
+>-expectURIs</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+>Return whether the application expects URIs instead 
+                     of normal path names.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+>Return the name of the application.
+                     </P
+></DD
+><DT
+>-requiresTerminal</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+>Return whether the application requires
+                     a terminal.</P
+></DD
+><DT
+>-URISchemes</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+>Return a list of supported URI schemes.
+                     </P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>mime</B
+>   getApplicationList  [mime-type] [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>                  Return a list of IDs of applications, which are able to handle this
+                  MIME type.
+               </P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-all</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: false)
+                     </P
+><P
+>Return all applications instead of the preferred ones.
+                     </P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>mime</B
+>   getMimeInfo  [mime-type] [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>                  Return information about a MIME type.
+                  Options determine which information are retrieved. See
+                  getApplicationInfo for a detailed explanation.
+               </P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-canBeExecutable</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+>                     Return whether this MIME type can be executable.
+                     </P
+></DD
+><DT
+>-defaultAction</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+>                     Return "Application", "Component" or "None" depending
+                     on the default action for this MIME type.
+                     </P
+></DD
+><DT
+>-defaultApplication</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+>                     Return the application ID of the default application.
+                     </P
+></DD
+><DT
+>-description</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> </P
+><P
+>                     Return a description of this MIME type.
+                     </P
+></DD
+><DT
+>-icon</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> </P
+><P
+>                     Return the default icon of this MIME type.
+                     </P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>mime</B
+>   launch  [application-ID] [URI-list]</P
+></DT
+><DD
+><P
+>                  Launch the given application with the files given in the
+                  URI-list.
+               </P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r10031.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r10422.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>file</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN10027"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>appletFactory</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

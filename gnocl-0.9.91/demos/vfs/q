@@ -1,0 +1,23 @@
+set auto_path [linsert $auto_path 0 \
+      [file join [file dirname [info script]] ../../src]]
+package require GnoclVFS
+
+foreach el { "./qqq.tar#tar:vfs/" "./q.zip#zip:" "./q3.zip#zip:../vfs/" "./qqq.zip#zip" } {
+   puts "$el"
+   set ls [gnocl::file listDir $el]
+   puts [format "$el -> \"%s\"" $ls]
+   foreach file $ls {
+      set file "$el$file"
+      foreach inf {name fileType mimeType isLocal isSymlink size symlinkName} {
+      if { [catch {
+         puts [format "  %s: %s" $inf [gnocl::file info "file:$file" -$inf ""]]
+      } erg] } {
+         puts [format "  %s" $erg]
+      }
+   }
+ 
+   }
+   puts "nach $el"
+}
+
+

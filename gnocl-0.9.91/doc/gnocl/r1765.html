@@ -1,0 +1,526 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>scrolledWindow</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Container"
+HREF="x351.html#AEN1072"><LINK
+REL="PREVIOUS"
+TITLE="paned"
+HREF="r1656.html"><LINK
+REL="NEXT"
+TITLE="separator"
+HREF="r1926.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r1656.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r1926.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="SCROLLEDWINDOW"
+></A
+>scrolledWindow</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN1768"
+></A
+><H2
+>Name</H2
+>scrolledWindow&nbsp;--&nbsp;A window which adds scrollbars to its child.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN1771"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>scrolledWindow</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1777"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/scrolledWindow.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1781"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-borderWidth</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer or one of small, normal or big</SPAN
+>
+            </P
+><P
+>Space in pixel between the children and the border of the widget.</P
+></DD
+><DT
+>-child</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>widget-ID</SPAN
+>
+            </P
+><P
+>Widget ID of the child.</P
+></DD
+><DT
+>-data</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>User defined data which can be retrieved via the cget subcommand.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onDestroy</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the widget is destroyed.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+><DT
+>-scrollbar</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>always, never, automatic</SPAN
+> (default: automatic)
+            </P
+><P
+>When to show scrollbars. If the value is a list of
+two elements, the first value is for the horizontal
+scrollbar and the second value for the vertical scrollbar.</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-xLower</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+>
+            </P
+><P
+>This is a read-only option which returns the lower limit in
+horizontal direction.</P
+></DD
+><DT
+>-xPageSize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+>
+            </P
+><P
+>This is a read-only option which returns the page size
+horizontal direction.</P
+></DD
+><DT
+>-xUpper</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+>
+            </P
+><P
+>This is a read-only option which returns the upper limit in
+horizontal direction.</P
+></DD
+><DT
+>-xValue</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+>
+            </P
+><P
+>Value in horizontal direction.</P
+></DD
+><DT
+>-yLower</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+>
+            </P
+><P
+>The same as xLower, but in vertical direction.</P
+></DD
+><DT
+>-yPageSize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+>
+            </P
+><P
+>The same as xPageSize, but in vertical direction.</P
+></DD
+><DT
+>-yUpper</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+>
+            </P
+><P
+>The same as xUpper, but in vertical direction.</P
+></DD
+><DT
+>-yValue</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+>
+            </P
+><P
+>The same as xValue, but in vertical direction.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1880"
+></A
+><H2
+>Description</H2
+><P
+>The scrolledWindow widget adds scrollbar to its child.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1883"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cget   <TT
+CLASS="REPLACEABLE"
+><I
+>option</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the value for one option. The option may have any of
+the values accepted by configure.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1915"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set box [gnocl::box -orientation vertical]
+foreach el {1 2 3 4 5 6} {
+   $box add [gnocl::button -text "Button $el"]
+}
+set scrollWin [gnocl::scrolledWindow -child $box]
+gnocl::window -title "ScrolledWindow" -child $scrollWin -defaultWidth 200</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/scrolledWindow.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN1922"
+></A
+><H2
+>See also</H2
+><P
+>   <CODE
+CLASS="FUNCTION"
+>GtkScrolledWindow</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r1656.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r1926.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>paned</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN1072"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>separator</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

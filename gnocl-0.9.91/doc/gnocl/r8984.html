@@ -1,0 +1,468 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>canvas line</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Gnome Canvas Widget"
+HREF="x351.html#AEN8125"><LINK
+REL="PREVIOUS"
+TITLE="canvas image"
+HREF="r8902.html"><LINK
+REL="NEXT"
+TITLE="canvas polygon"
+HREF="r9102.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r8902.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r9102.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="CANVASLINE"
+></A
+>canvas line</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN8987"
+></A
+><H2
+>Name</H2
+>canvas line&nbsp;--&nbsp;A canvas line item. (in gnoclCanvas)</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN8990"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   create   line  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN8999"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-arrow</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF none, first, last, both</SPAN
+> (default: none)
+            </P
+><P
+>Sets at which ends the line has arrows.</P
+></DD
+><DT
+>-arrowShape</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list-of-3-floats</SPAN
+> (default: "5 10 5")
+            </P
+><P
+>Describes the shape of the arrow (if set) at the ends of the line.</P
+></DD
+><DT
+>-capStyle</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF notLast, but, round, projecting</SPAN
+>
+            </P
+><P
+>Defines the cap style.</P
+></DD
+><DT
+>-coords</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list-of-floats</SPAN
+>
+            </P
+><P
+>List of x and y coordinates, must be a multiple of 2 and at least 4.</P
+></DD
+><DT
+>-fill</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color with transparancy</SPAN
+></A
+> (default: black)
+            </P
+><P
+>Color of the line.</P
+></DD
+><DT
+>-joinStyle</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF miter, round, bevel</SPAN
+>
+            </P
+><P
+>Defines the join style.</P
+></DD
+><DT
+>-onButtonPress</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is press
+inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: one of buttonPress, button2Press or button3Press
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onButtonRelease</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is released
+if it has been pressed inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: always buttonRelease
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onEnter</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onLeave</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onMotion</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the mouse is moved inside
+the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-parent</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>tag-or-id</SPAN
+>
+            </P
+><P
+>This option sets the parent of the item. The parent must be
+a clipGroup item, which implements clipping for its
+children.</P
+></DD
+><DT
+>-pixelWidth</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Width of the line, does not change, if the line is scaled.</P
+></DD
+><DT
+>-tags</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list</SPAN
+> (default: "")
+            </P
+><P
+>List of tags to be associated with this item.
+A tag must start with a alphabetic character which
+is followed by zero or more alphabetic or numeric characters.</P
+></DD
+><DT
+>-width</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+>
+            </P
+><P
+>Width of the line, changes, if the line is scaled.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9093"
+></A
+><H2
+>Description</H2
+><P
+>A line is one or more connected straight lines between two
+or more points. The connection between these multiple segments
+can be changed via joinStyle. The line may have arrows at one
+or both ends.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9096"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r8563.html"
+><B
+CLASS="COMMAND"
+>canvas bPath</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GnomeCanvasLine</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r8902.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r9102.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>canvas image</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN8125"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>canvas polygon</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

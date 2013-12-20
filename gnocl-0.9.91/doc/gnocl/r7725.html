@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>list</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Tree and List Widgets"
+HREF="x351.html#AEN7004"><LINK
+REL="PREVIOUS"
+TITLE="tree"
+HREF="r7006.html"><LINK
+REL="NEXT"
+TITLE="eventBox"
+HREF="r7760.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r7006.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r7760.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="LIST"
+></A
+>list</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN7728"
+></A
+><H2
+>Name</H2
+>list&nbsp;--&nbsp;A widget which displays text or other items arranged in rows and columns.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN7731"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>list</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN7737"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/list.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN7741"
+></A
+><H2
+>Description</H2
+><P
+>The list widget is basically a tree widget where rows
+cannot have children. Therefor the list command has
+the same options as the tree command.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN7744"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set list [gnocl::list -titles {"bool" "string" "integer" "float"} -types {boolean string integer float} -children {{1 "box" 345 4.546} {0 "text" 123 5.79}}]
+$list add {{0 "list" -104 1.45} {1 "window" 3350 9.58}}
+$list columnConfigure 2 -onCellData "setColor %v"
+proc setColor { val } {
+   if { $val &#60; 0 } {
+      return "-foreground red"
+   }
+   return "-foreground blue"
+}
+gnocl::window -title "List" -child $list -defaultWidth 250 -defaultHeight 120</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/list.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN7751"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r7006.html"
+><B
+CLASS="COMMAND"
+>tree</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkListView</CODE
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkListStore</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r7006.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r7760.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>tree</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN7004"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>eventBox</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

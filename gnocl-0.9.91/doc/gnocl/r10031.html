@@ -1,0 +1,699 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>file</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Gnome VFS"
+HREF="x351.html#AEN10027"><LINK
+REL="PREVIOUS"
+TITLE="Commands"
+HREF="x351.html"><LINK
+REL="NEXT"
+TITLE="mime"
+HREF="r10267.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r10267.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="FILE"
+></A
+>file</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN10034"
+></A
+><H2
+>Name</H2
+>file&nbsp;--&nbsp;Implement virtual file system commands</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN10037"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>file</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>subcommand</I
+></TT
+>] [<TT
+CLASS="REPLACEABLE"
+><I
+>-option
+               </I
+></TT
+><TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10045"
+></A
+><H2
+>Description</H2
+><P
+>   The file command implements Gnome virtual file system commands.
+   </P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10048"
+></A
+><H2
+>Subcommands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+>file</B
+>   create  [file-name] [<TT
+CLASS="REPLACEABLE"
+><I
+>-option
+                     </I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>                  Create a new file. This command returns the name of a newly
+                  created command, which can be used to invoke various
+                  operations on the new file. See <B
+CLASS="COMMAND"
+>file open</B
+>.
+               </P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-random</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>bool</SPAN
+>(Default false)</P
+><P
+>Whether random access can be used.</P
+></DD
+><DT
+>-permission</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>(Default 0755)</P
+><P
+>Permission of the file</P
+></DD
+><DT
+>-force</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>bool</SPAN
+>(Default false)</P
+><P
+>Whether an existing file with the same name is
+                     overwritten.</P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>file</B
+>   exists  [file-name]</P
+></DT
+><DD
+><P
+>                  Returns a boolean whether file file-name exist.
+               </P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>file</B
+>   info  [file-name] [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+>]</P
+>
+               <P
+><B
+CLASS="COMMAND"
+>file</B
+>   info  [file-name] [<TT
+CLASS="REPLACEABLE"
+><I
+>-option
+                        </I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>                  In its first form, an information about a file is 
+                  returned. The option specifies, which information to return.
+               </P
+><P
+>                  In its second form the values of each option
+                  must be the name of a global variable in which the
+                  corresponding information is stored. In this case the 
+                  empty string is returned.
+               </P
+><P
+>               Example
+               <PRE
+CLASS="PROGRAMLISTING"
+>puts [gnocl::file info "file:///tmp/qqq.tcl" -mimeType]
+gnocl::file info "file:///tmp/qqq.tcl" -isSymlink isSymlink -size fileSize -fileType type
+               </PRE
+>
+               </P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-fileType</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+></P
+></DD
+><DT
+>-isLocal</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+></P
+></DD
+><DT
+>-isSymlink</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+></P
+></DD
+><DT
+>-mimeType</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+></P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+></P
+></DD
+><DT
+>-size</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+></P
+></DD
+><DT
+>-symlinkName</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+></P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>file</B
+>   listDir  [dir-name]</P
+></DT
+><DD
+><P
+>                  Returns a list of files in a directory. 
+               </P
+><P
+>               Example which lists all files starting with q, r, s or t
+               in the home directory of the current user.
+               <PRE
+CLASS="PROGRAMLISTING"
+>proc printFileInfo { name size } {
+   puts "$name: $size"
+}
+gnocl::file listDir "~" -matchName {^[q-t].*} -onMatch "printFileInfo %n %s"]
+               </PRE
+>
+               </P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-matchName</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+>List only those files matching the given regular
+                     expression</P
+></DD
+><DT
+>-onMatch</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+></P
+><P
+>Do not return a list of files, but execute the given
+                     Tcl command for each file.
+                     Before evaluation the following percent strings are 
+                     substituted:
+                     TABLE
+                     %% | %
+                     %n | name
+                     %t | type
+                     %l | boolean whether file is local
+                     %k | boolean whether file is symlink
+                     %K | symlink name
+                     %m | MIME type
+                     %s | file size
+                     TABLE
+                     </P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>file</B
+>   open  [file-name] [<TT
+CLASS="REPLACEABLE"
+><I
+>-option
+                     </I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+>                  This command opens a file and returns the name of a
+                  newly created command, which can be used to invoke various
+                  operations listed below on the file. 
+               </P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-random</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>bool</SPAN
+>(Default false)</P
+><P
+>Whether random access can be used.</P
+></DD
+><DT
+>-mode</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>one of read, r, write, w, readWrite,
+                        rw</SPAN
+>(Default read)</P
+><P
+>Open mode.</P
+></DD
+></DL
+></DIV
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>File operations</B
+></P
+><DL
+><DT
+>read num-bytes var</DT
+><DD
+><P
+>Read num-bytes bytes in the variable
+                     var. Returns the number of bytes read or -1
+                     if EOF is encountered.</P
+></DD
+><DT
+>write string</DT
+><DD
+><P
+>Write string.</P
+></DD
+><DT
+><P
+> seek position  [<TT
+CLASS="REPLACEABLE"
+><I
+>-origin
+                        </I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>org
+                        </I
+></TT
+>]</P
+></DT
+><DD
+><P
+>Set the file position indicator to position
+                           position. org must be one of start, current
+                           or end.</P
+></DD
+><DT
+>tell</DT
+><DD
+><P
+>Return current position of the file position
+                        indicator</P
+></DD
+><DT
+>close</DT
+><DD
+><P
+>Close the file. The command associated
+                     with this file becomes invalid.</P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>file</B
+>   makeDir  [dir-name]</P
+></DT
+><DD
+><P
+>                  Make a directory. 
+               </P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Options</B
+></P
+><DL
+><DT
+>-permission</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>(Default 0755)</P
+><P
+></P
+></DD
+></DL
+></DIV
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>file</B
+>   remove  [file-name]</P
+></DT
+><DD
+><P
+>                  Remove a file. 
+               </P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+>file</B
+>   removeDir  [dir-name]</P
+></DT
+><DD
+><P
+>                  Remove a directory. 
+               </P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN10263"
+></A
+><H2
+>Example</H2
+><P
+>   An example how to directly read in zip archives.
+   <PRE
+CLASS="PROGRAMLISTING"
+>set txtFp [gnocl::file create /tmp/VFS_test.txt -force 1]
+$txtFp write "Gnocl with Gnome VFS"
+$txtFp close
+exec zip -j /tmp/qqq.zip /tmp/VFS_test.txt
+set zipFp [gnocl::file open /tmp/qqq.zip#zip:VFS_test.txt]
+$zipFp read 1024 ll
+$zipFp close
+puts $ll  ;# will print "Gnocl with Gnome VFS" 
+   </PRE
+>
+   </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x351.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r10267.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Commands</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN10027"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>mime</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

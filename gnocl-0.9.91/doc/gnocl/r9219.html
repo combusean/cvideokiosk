@@ -1,0 +1,466 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>canvas rectangle</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Gnome Canvas Widget"
+HREF="x351.html#AEN8125"><LINK
+REL="PREVIOUS"
+TITLE="canvas polygon"
+HREF="r9102.html"><LINK
+REL="NEXT"
+TITLE="canvas richText"
+HREF="r9330.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r9102.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r9330.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="CANVASRECTANGLE"
+></A
+>canvas rectangle</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN9222"
+></A
+><H2
+>Name</H2
+>canvas rectangle&nbsp;--&nbsp;A canvas rectangle item. (in gnoclCanvas)</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN9225"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   create   rectangle  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9234"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-centerRadius</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the coordinates are a list of the top left and bottom
+right points, or a list of the coordinates of the center plus
+a radius.</P
+></DD
+><DT
+>-coords</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list-of-floats</SPAN
+>
+            </P
+><P
+>List of 4 (x1, y1, x2, y2) or, if centerRadius is set,
+3 (centerX, centerY, radius) coordinates</P
+></DD
+><DT
+>-dash</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list</SPAN
+> (default: "")
+            </P
+><P
+>Dash pattern used for this item. The list must contain an
+even number of integer. The odd elements of this list give
+the length in pixel of the line segements, the even elements
+give the length of the space between these line segements.</P
+></DD
+><DT
+>-fill</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color with transparancy</SPAN
+></A
+> (default: black)
+            </P
+><P
+>Fill color of the rectangle. The empty string means unfilled.</P
+></DD
+><DT
+>-tags</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list</SPAN
+> (default: "")
+            </P
+><P
+>List of tags to be associated with this item.
+A tag must start with a alphabetic character which
+is followed by zero or more alphabetic or numeric characters.</P
+></DD
+><DT
+>-onButtonPress</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is press
+inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: one of buttonPress, button2Press or button3Press
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onButtonRelease</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is released
+if it has been pressed inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: always buttonRelease
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onEnter</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onLeave</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onMotion</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the mouse is moved inside
+the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-parent</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>tag-or-id</SPAN
+>
+            </P
+><P
+>This option sets the parent of the item. The parent must be
+a clipGroup item, which implements clipping for its
+children.</P
+></DD
+><DT
+>-outline</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color with transparancy</SPAN
+></A
+> (default: black)
+            </P
+><P
+>Outline color of the rectangle.</P
+></DD
+><DT
+>-width</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float</SPAN
+>
+            </P
+><P
+>Width of the outline.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9317"
+></A
+><H2
+>Description</H2
+><P
+>A rectangle is define either by its top left and bottom
+right points, or by its center point and a radius. The
+rectangle can be filled, or only outlined.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9320"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r8563.html"
+><B
+CLASS="COMMAND"
+>canvas bPath</B
+></A
+>,
+   <A
+HREF="r8793.html"
+><B
+CLASS="COMMAND"
+>canvas ellipse</B
+></A
+>,
+   <A
+HREF="r8984.html"
+><B
+CLASS="COMMAND"
+>canvas line</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GnomeCanvasRE</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r9102.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r9330.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>canvas polygon</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN8125"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>canvas richText</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,419 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>image</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Display widgets"
+HREF="x351.html#AEN4256"><LINK
+REL="PREVIOUS"
+TITLE="label"
+HREF="r4259.html"><LINK
+REL="NEXT"
+TITLE="progressBar"
+HREF="r4533.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r4259.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r4533.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="IMAGE"
+></A
+>image</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN4426"
+></A
+><H2
+>Name</H2
+>image&nbsp;--&nbsp;A widget which shows an image.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN4429"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>image</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4435"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/image.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4439"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-image</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#PERCENTSTRING"
+><SPAN
+CLASS="TYPE"
+>percent-string</SPAN
+></A
+> (default: "")
+            </P
+><P
+>Image to be shown, can be either a file (prefix "%/")
+or a stock item (prefix "%#").</P
+></DD
+><DT
+>-stockSize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF menu smallToolBar largeToolBar button dnd dialog</SPAN
+> (default: button)
+            </P
+><P
+>Size of the image. This option is only valid for a stock
+image.</P
+></DD
+><DT
+>-align</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>a list of the horizontal and vertical alignment or one of topLeft, top, topRight, left, center, right, bottomLeft, bottom, or bottomRight</SPAN
+>
+            </P
+><P
+>Alignment of the image.</P
+></DD
+><DT
+>-xPad</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+> (default: 0)
+            </P
+><P
+>Horizontal padding.</P
+></DD
+><DT
+>-yPad</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+> (default: 0)
+            </P
+><P
+>Vertical padding.</P
+></DD
+><DT
+>-size</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer or list-of-two-integer</SPAN
+>
+            </P
+><P
+>Width and height in pixel. If only one value is
+given, both sizes are the same. The original image
+is not remembered, that means that if for example an
+image is first scaled by 0.5 (half size) and then scaled
+by 2 (double size) it does not look like the original one,
+since by decreasing its size information is lost which
+cannot be recovered.
+This option is only valid for pixbuf images,
+i.e. not animated images from file.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4497"
+></A
+><H2
+>Description</H2
+><P
+>An image widget shows an image. Different formats and
+animation are supported.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4500"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4522"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set img [gnocl::image -image "%#SaveAs" -stockSize dialog]
+gnocl::window -title "Image" -child $img</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/image.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4529"
+></A
+><H2
+>See also</H2
+><P
+>   <CODE
+CLASS="FUNCTION"
+>GtkImage</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r4259.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r4533.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>label</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN4256"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>progressBar</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

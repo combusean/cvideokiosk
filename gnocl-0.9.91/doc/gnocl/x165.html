@@ -1,0 +1,648 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Concepts</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+HREF="t118.html"><LINK
+REL="PREVIOUS"
+HREF="t118.html"><LINK
+REL="NEXT"
+TITLE="Commands"
+HREF="x351.html"></HEAD
+><BODY
+CLASS="SECTION"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="t118.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x351.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECTION"
+><H1
+CLASS="SECTION"
+><A
+NAME="AEN165"
+>2. Concepts</A
+></H1
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="PERCENTSTRING"
+>2.1. Percent String</A
+></H2
+><P
+>   Some widget options expect a percent string as value. A percent string
+   is a string which starts with a percent sign (%). The second character
+   determines the type of percent string. The following types are defined:
+
+   <P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Types of Percentstring</B
+></P
+><DL
+><DT
+>!</DT
+><DD
+><P
+>Simple string which is not further parsed.</P
+></DD
+><DT
+>%</DT
+><DD
+><P
+>Simple string which starts with a percent string and
+               which is not further parsed.</P
+></DD
+><DT
+>_ (underline)</DT
+><DD
+><P
+>The next underline is removed and the following
+            character is underlined and used as keyboard accelerator.</P
+></DD
+><DT
+>#</DT
+><DD
+><P
+>The following string is used as name of a stock
+            item. Dependent on the widget the name, accelerator and/or
+            image of the stock item is used.</P
+><P
+>Not every stock item is valid in every context. The 
+            following example shows all items which are valid as text
+            option of the button widget.
+<PRE
+CLASS="PROGRAMLISTING"
+>set table [gnocl::table -borderWidth 0 -rowSpacing 0 -columnSpacing 0]
+set items ""
+set stocks [lsort [gnocl::info allStockItems]]
+foreach el $stocks {
+   if { [catch {set but [gnocl::button -text "%#$el"]} ] == 0 } {
+      lappend items [gnocl::box -label "$el" -children $but -fill 1 -expand 1]
+      if { [llength $items] == 6 } {
+         $table addRow $items -fill 1
+         set items ""
+      }
+   }
+}
+if { [llength $items] &#62; 0 } {
+   $table addRow $items -fill 1
+}
+gnocl::window -title "Stock Buttons" -child $table</PRE
+>
+<P
+><IMG
+SRC="../pics/stockButtons.png"></P
+>
+         </P
+></DD
+><DT
+>&lt;</DT
+><DD
+><P
+>The following string is parsed as 
+                  <A
+HREF="x165.html#MARKUPSTRING"
+>markup string</A
+>.
+                  Additional the next underline is removed and the following
+                  character is underlined and used as keyboard accelerator.
+            </P
+></DD
+><DT
+>/</DT
+><DD
+><P
+>The following string is interpreted as file name.</P
+></DD
+></DL
+></DIV
+></P
+><P
+>Example:
+<PRE
+CLASS="PROGRAMLISTING"
+>set box [gnocl::box -orientation vertical]
+$box add [gnocl::button -text "Simple String"]
+$box add [gnocl::button -text "%!Another Simple String"]
+$box add [gnocl::button -text "%%Simple String which starts with %"]
+$box add [gnocl::button -text "%_Underlined _String"]
+$box add [gnocl::button -text "%#Quit"]
+$box add [gnocl::button -text "%&#60;n_ormal &#60;b&#62;bold&#60;/b&#62; &#60;big&#62;big&#60;/big&#62;"]
+$box add [gnocl::button -icon "%/./three.png" -text "%__Three"]
+gnocl::window -title "Percent String Example" -child $box</PRE
+>
+<P
+><IMG
+SRC="../pics/percentString.png"></P
+>&#13;</P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="MARKUPSTRING"
+>2.2. Markup String</A
+></H2
+><P
+>A markup string contains not only the text but also its formatting,
+which has huge advantages for internationalization of applications.</P
+><P
+>Copyright notice: the following two tables are copies of the Pango
+gtk documentation.</P
+><P
+>The most general markup tag is &lt;span&gt;, then there are some convenience tags.
+&lt;span&gt; has the following attributes:
+
+<P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>&lt;span&gt; attributes</B
+></P
+><DL
+><DT
+>font_desc</DT
+><DD
+><P
+>      A font description string, such as "Sans Italic 12"; note that any other
+      span attributes will override this description. So if you have "Sans
+      Italic" and also a style="normal" attribute, you will get Sans normal,
+      not italic.
+      </P
+></DD
+><DT
+>font_family</DT
+><DD
+><P
+> A font family name </P
+></DD
+><DT
+>face</DT
+><DD
+><P
+> Synonym for font_family </P
+></DD
+><DT
+>size</DT
+><DD
+><P
+>      Font size in 1000ths of a point, one of the absolute sizes 'xx-small',
+      'x-small', 'small', 'medium', 'large', 'x-large', 'xx-large', or one of
+      the relative sizes 'smaller' or 'larger'.
+      </P
+></DD
+><DT
+>style</DT
+><DD
+><P
+> One of 'normal', 'oblique', 'italic' </P
+></DD
+><DT
+>weight</DT
+><DD
+><P
+>      One of 'ultralight', 'light', 'normal', 'bold', 'ultrabold', 'heavy', or
+      a numeric weight
+      </P
+></DD
+><DT
+>variant</DT
+><DD
+><P
+> 'normal' or 'smallcaps' </P
+></DD
+><DT
+>stretch</DT
+><DD
+><P
+>      One of 'ultracondensed', 'extracondensed', 'condensed', 'semicondensed',
+      'normal', 'semiexpanded', 'expanded', 'extraexpanded', 'ultraexpanded'
+      </P
+></DD
+><DT
+>foreground</DT
+><DD
+><P
+>      An RGB color specification such as '#00FF00' or a color name such as 'red'
+      </P
+></DD
+><DT
+>background</DT
+><DD
+><P
+>      An RGB color specification such as '#00FF00' or a color name such as 'red'
+      </P
+></DD
+><DT
+>underline</DT
+><DD
+><P
+> One of 'single', 'double', 'low', 'none'
+      </P
+></DD
+><DT
+>rise</DT
+><DD
+><P
+>      Vertical displacement, in 10000ths of an em. Can be negative for
+      subscript, positive for superscript.
+      </P
+></DD
+><DT
+>strikethrough</DT
+><DD
+><P
+>      'true' or 'false' whether to strike through the text
+      </P
+></DD
+><DT
+>lang</DT
+><DD
+><P
+> A language code, indicating the text language
+      </P
+></DD
+></DL
+></DIV
+></P
+><P
+>The following convenience tags are provided:
+
+<P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Convenience tags</B
+></P
+><DL
+><DT
+>b</DT
+><DD
+><P
+>Bold</P
+></DD
+><DT
+>big</DT
+><DD
+><P
+>Makes font relatively larger, equivalent to 
+      <SPAN
+CLASS="MARKUP"
+>&lt;span size="larger"&gt;</SPAN
+></P
+></DD
+><DT
+>i</DT
+><DD
+><P
+>Italic</P
+></DD
+><DT
+>s</DT
+><DD
+><P
+>Strikethrough</P
+></DD
+><DT
+>sub</DT
+><DD
+><P
+>Subscript</P
+></DD
+><DT
+>sup</DT
+><DD
+><P
+>Superscript</P
+></DD
+><DT
+>small</DT
+><DD
+><P
+>Makes font relatively smaller, equivalent to 
+      <SPAN
+CLASS="MARKUP"
+>&lt;span size="smaller"&gt;</SPAN
+></P
+></DD
+><DT
+>tt</DT
+><DD
+><P
+>Monospace font</P
+></DD
+><DT
+>u</DT
+><DD
+><P
+>Underline</P
+></DD
+></DL
+></DIV
+></P
+></DIV
+><DIV
+CLASS="SECTION"
+><H2
+CLASS="SECTION"
+><A
+NAME="COLOR"
+>2.3. Colors</A
+></H2
+><P
+>Some widget options expect a color as value. A color can be given
+in several different formats.
+
+<P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Color formats</B
+></P
+><DL
+><DT
+>Color Name</DT
+><DD
+><P
+>A color name from <TT
+CLASS="FILENAME"
+>rgb.txt</TT
+> like
+         red, LightPink, or DarkKhaki</P
+></DD
+><DT
+>RGB values as integer</DT
+><DD
+><P
+>A list of the red, green and blue components. Each value
+         must be an integer between 0 and 65535. 
+         It may be convenient to use the hexadecimal format, in which
+         the maximum is 0xFFFF.</P
+></DD
+><DT
+>RGB values as float</DT
+><DD
+><P
+>A list of the red, green and blue components. Each value
+         must be an float between 0 and 1.
+         <DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="90%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>The values are tested first for an integer format. Only if
+         a value does not have an integer format, the float format is
+         tested. That means, that "1" is an integer with a value
+         corresponding to "0.000015", whereas "1." is interpreted
+         as a floating point number with a value corresponding to
+         integer 65535 </P
+></TD
+></TR
+></TABLE
+></DIV
+>
+         </P
+></DD
+></DL
+></DIV
+></P
+><P
+>Some widget options expect a color with transparency 
+(also called alpha blending) as value. An alpha value of 0 means that
+the color is completely transparent, 1.0 in float or 65535 as integer
+means it covers its background completely.
+The same formats than above are
+excepted, in which case the color has no transparency, plus the following
+ones.
+
+<P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><P
+><B
+>Color formats with transparency</B
+></P
+><DL
+><DT
+>Color Name plus transparency</DT
+><DD
+><P
+>A list of a color name from 
+         <TT
+CLASS="FILENAME"
+>rgb.txt</TT
+> 
+         and a transparency value between 0 and 65535 as integer
+         or 0 and 1.0 as float
+         like "red 32768", "LightPink 0x1000", or "DarkKhaki 0.9".
+         </P
+></DD
+><DT
+>RGBA values as integer</DT
+><DD
+><P
+>A list of the red, green, blue and alpha components. 
+         Each value must be an integer between 0 and 65535, for example
+         "3000 10000 20000 15000".
+         It may be convenient to use the hexadecimal format, in which
+         the maximum is 0xFFFF.</P
+></DD
+><DT
+>RGBA values as float</DT
+><DD
+><P
+>A list of the red, green, blue and alpha components. 
+         Each value must be an integer between 0 and 1.0, for example
+         "0.1 0.3 0.3 0.5".
+         <DIV
+CLASS="NOTE"
+><P
+></P
+><TABLE
+CLASS="NOTE"
+WIDTH="90%"
+BORDER="0"
+><TR
+><TD
+WIDTH="25"
+ALIGN="CENTER"
+VALIGN="TOP"
+><IMG
+SRC="../images/note.gif"
+HSPACE="5"
+ALT="Note"></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+><P
+>The values are tested first for an integer format. Only if
+         a value does not have an integer format, the float format is
+         tested. That means, that "1" is an integer with a value
+         corresponding to "0.000015", whereas "1." is interpreted
+         as a floating point number with a value corresponding to
+         integer 65535 </P
+></TD
+></TR
+></TABLE
+></DIV
+>
+         </P
+></DD
+><DT
+>Empty string</DT
+><DD
+><P
+>The empty string means full transparency.
+         </P
+></DD
+></DL
+></DIV
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="t118.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x351.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="t118.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Commands</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

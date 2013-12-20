@@ -1,0 +1,544 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>fileChooser</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Special Selectors"
+HREF="x351.html#AEN6224"><LINK
+REL="PREVIOUS"
+TITLE="colorSelection"
+HREF="r6423.html"><LINK
+REL="NEXT"
+TITLE="fontButton"
+HREF="r6702.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r6423.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r6702.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="FILECHOOSER"
+></A
+>fileChooser</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN6546"
+></A
+><H2
+>Name</H2
+>fileChooser&nbsp;--&nbsp;A standard dialog to choose a file</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN6549"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>fileChooser</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6555"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/fileChooser.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6559"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-action</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF open, save, openFolder, createFolder</SPAN
+> (default: open)
+            </P
+><P
+>Action to perform.</P
+></DD
+><DT
+>-currentName</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Current name in the file selector, as if entered by the user.
+This should be used for example in a "Save as" dialog to suggest
+a name.</P
+></DD
+><DT
+>-currentFilder</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Current folder.</P
+></DD
+><DT
+>-extraWidget</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>ID of a Gnocl widget, for extra options.</P
+></DD
+><DT
+>-filename</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Current filename.</P
+></DD
+><DT
+>-getURIs</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether to return URIs instead of file names.
+(This is not yet tested.)</P
+></DD
+><DT
+>-localOnly</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+>
+            </P
+><P
+>Whether only local files can be chosen.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-onDestroy</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the widget is destroyed.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | widget name.
+TABLE</P
+></DD
+><DT
+>-onUpdatePreview</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command to be executed, if the preview widget
+has to be updated.
+Before evaluation the
+following percent strings are substituted:
+TABLE
+%% | %
+%w | widget name
+/TABLE</P
+></DD
+><DT
+>-previewWidget</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>ID of a Gnocl widget to display a custom preview of the
+currently selected file.</P
+></DD
+><DT
+>-previewWidgetActive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>bool</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the preview widget is active.</P
+></DD
+><DT
+>-selectMultiple</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>bool</SPAN
+> (default: 0)
+            </P
+><P
+>Whether multiple files may be selected.</P
+></DD
+><DT
+>-showHidden</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>bool</SPAN
+> (default: 0)
+            </P
+><P
+>Whether hidden files are shown.</P
+></DD
+><DT
+>-title</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Title of the dialog.
+
+-visible; boolean; 1
+Whether or not the item is visible.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6652"
+></A
+><H2
+>Description</H2
+><P
+>This command is available since GTK+ 2.4.
+A fileChooser is used to let the user choose a directory
+or one or more files in a standardized way.
+The commands returns a list of files if multiple files
+can be chosen. Otherwise it returns directly the directory
+of file chosen.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6655"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   cget   <TT
+CLASS="REPLACEABLE"
+><I
+>option</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Returns the value for one option. The option may have any of
+the values accepted by configure.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6687"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>proc doPreview { widget file } {
+   set preview [$widget cget -previewWidget]
+   if { [catch {$preview configure -visible 1 -image %/$file} erg] } {
+      $preview configure -visible 0
+   } 
+   $widget configure -previewWidgetActive 1
+}
+set file [gnocl::fileChooser -title "Please choose a picture file" -previewWidget [gnocl::image] -onUpdatePreview "doPreview %w %f"]</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/fileChooser.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN6694"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r6423.html"
+><B
+CLASS="COMMAND"
+>colorSelection</B
+></A
+>,
+   <A
+HREF="r6897.html"
+><B
+CLASS="COMMAND"
+>fontSelection</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkFileChooser</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r6423.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r6702.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>colorSelection</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN6224"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>fontButton</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

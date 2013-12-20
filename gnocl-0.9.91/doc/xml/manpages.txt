@@ -1,0 +1,4289 @@
+# man pages for Gnocl commands
+# txt2xml.tcl converts this file to xml docBook-pages
+#
+# $Id: manpages.txt,v 1.44 2005/02/22 23:16:38 baum Exp $
+#
+# Copyright (c) 2001 - 2005 P.G. Baum
+#
+
+# comboBox ----
+.NAME:       comboBox
+.SHORTDESCR: A widget with which one of several alternatives can be chosen. 
+.SYNOPSIS:   comboBox .VAROPTS.
+.OPTIONS:
+            OPT_DATA
+            OPT_HASFOCUS
+
+            -items; list of strings; ""
+                  Creates for each element of this list a new item. The
+                  string value of the element is used as text and value
+                  of the item.
+
+            -itemValueList; list of two-element-lists;
+                  Creates for each element of this list a new item. The
+                  first element of each element is used as text and
+                  the second element is used as value of the item.
+
+            OPT_NAME
+
+            -onChanged; string; ""
+                  Tcl command which is executed if the value of the 
+                  option menu is changed via the GUI.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  %v | value of the active item
+                  TABLE
+                  This command is not called if the value is changed
+                  via the option -value.
+
+            OPT_ON_SHOW_HELP
+            OPT_ON_POPUP_MENU
+            OPT_ON_REALIZE
+            OPT_SENSITIVE
+            OPT_TOOLTIP
+
+            -value; string; 
+                  Value of the item which shall be activated
+
+            -variable; string; ""
+                  Name of a (global) variable which is changed whenever 
+                  the option menu is changed.
+
+            OPT_VISIBLE
+
+
+.DESCRIPTION: This command is available since GTK+ 2.4. 
+              An comboBox allows to choose from different possibilities.
+
+.CMD:       add text ?option?
+.CMDDESCR:  Adds the given text to the current item list.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onChanged
+.CMDDESCR:  Executes the command given by the -onChanged option.
+
+.EXAMPLE:
+set opt [gnocl::comboBox -itemList [list {"One" "1"} {"One One" "1 1"} {"Eleven" "eleven"}] -onChanged {puts "%v"}]
+gnocl::window -title "comboBox" -child $opt
+
+.SEEALSO:   comboEntry, GtkComboBox
+
+# comboEntry ------
+.NAME:       comboEntry
+.SHORTDESCR: A widget which allows to input a small amount of text.
+.SYNOPSIS:   comboEntry .VAROPTS.
+.OPTIONS:
+            OPT_DATA
+            OPT_HASFOCUS
+
+            -items; list of strings; ""
+                  Creates for each element of this list a new item. The
+                  string value of the element is used as text and value
+                  of the item.
+
+            -itemValueList; list of two-element-lists;
+                  Creates for each element of this list a new item. The
+                  first element of each element is used as text and
+                  the second element is used as value of the item.
+
+            OPT_NAME
+
+            -onChanged; string; ""
+                  Tcl command which is executed if the value of the 
+                  option menu is changed via the GUI.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  %v | value of the active item
+                  TABLE
+                  This command is not called if the value is changed
+                  via the option -value.
+
+            OPT_ON_SHOW_HELP
+            OPT_ON_POPUP_MENU
+            OPT_ON_REALIZE
+            OPT_SENSITIVE
+            OPT_TOOLTIP
+
+            -value; string; 
+                  Value of the item which shall be activated
+
+            -variable; string; ""
+                  Name of a (global) variable which is changed whenever 
+                  the option menu is changed.
+
+            OPT_VISIBLE
+
+
+.DESCRIPTION: This command is available since GTK+ 2.4. 
+              The comboEntry widget consists of a single-line text entry field 
+               and a drop-down list. The drop-down list is displayed 
+               when the user clicks on a small arrow button to the right 
+               of the entry field. Instead of a comboEntry widget with 
+               non-editable entry field, the use of the optionMenu
+               is recommended.
+
+.CMD:       add text ?option?
+.CMDDESCR:  Adds the given text to the current item list.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onChanged
+.CMDDESCR:  Executes the command given by the -onChanged option.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.EXAMPLE:
+set comboEntry [gnocl::comboEntry -variable var -items {"Cat" "Dog" "Bird"}]
+gnocl::window -title "ComboEntry" -child $comboEntry
+
+.SEEALSO:     comboBox, entry, text, spinButton, GtkComboBox
+
+# fileChooser -----
+.NAME:     fileChooser
+.SHORTDESCR: A standard dialog to choose a file
+.SYNOPSIS:  fileChooser .VAROPTS.
+.OPTIONS:
+         -action; ONEOF open, save, openFolder, createFolder; open
+            Action to perform.
+
+         -currentName; string; ""
+            Current name in the file selector, as if entered by the user. 
+            This should be used for example in a "Save as" dialog to suggest
+            a name.
+
+         -currentFilder; string; ""
+            Current folder.
+
+         -extraWidget; string; ""
+            ID of a Gnocl widget, for extra options.
+
+         -filename; string; ""
+            Current filename.
+
+         -getURIs; boolean; 0
+            Whether to return URIs instead of file names.
+            (This is not yet tested.)
+
+         -localOnly; boolean; 
+            Whether only local files can be chosen.
+
+         OPT_NAME
+         OPT_ON_DESTROY
+
+         -onUpdatePreview; string; ""
+            Tcl command to be executed, if the preview widget
+            has to be updated.
+            Before evaluation the
+            following percent strings are substituted:
+            TABLE
+            %% | % 
+            %w | widget name
+            /TABLE
+
+
+         -previewWidget; string; ""
+            ID of a Gnocl widget to display a custom preview of the 
+            currently selected file.
+
+         -previewWidgetActive; bool; 1
+            Whether the preview widget is active.
+
+         -selectMultiple; bool; 0
+            Whether multiple files may be selected.
+
+         -showHidden; bool; 0
+            Whether hidden files are shown.
+
+         -title; string; ""
+         Title of the dialog.
+            
+         OPT_VISIBLE
+
+CMD_DELETE
+CMD_CONFIGURE
+CMD_CGET
+
+.DESCRIPTION: This command is available since GTK+ 2.4. 
+               A fileChooser is used to let the user choose a directory
+               or one or more files in a standardized way. 
+               The commands returns a list of files if multiple files 
+               can be chosen. Otherwise it returns directly the directory
+               of file chosen.
+
+.EXAMPLE:
+proc doPreview { widget file } {
+   set preview [$widget cget -previewWidget]
+   if { [catch {$preview configure -visible 1 -image %/$file} erg] } {
+      $preview configure -visible 0
+   } 
+   $widget configure -previewWidgetActive 1
+}
+set file [gnocl::fileChooser -title "Please choose a picture file" -previewWidget [gnocl::image] -onUpdatePreview "doPreview %w %f"]
+
+.SEEALSO:      colorSelection, fontSelection, GtkFileChooser
+
+# canvas ---
+.NAME: canvas
+.SHORTDESCR: A widget which displays graphic objects (in gnoclCanvas).
+.SYNOPSIS:   canvas .VAROPTS.
+.OPTIONS:
+            -antialiased; boolean; 1
+            Whether the canvas is antialiased. This cannot be changed after
+            creation.
+
+            -background; COLOR;
+            Background color of the canvas.
+
+            -centerScroll; boolean
+             Whether to center the scrolling region in the canvas window when
+             it is smaller than the canvas' allocation.
+
+            OPT_DATA
+            OPT_HASFOCUS
+
+            -height; integer; 
+            Height of the widget.
+
+            OPT_NAME
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+            OPT_ON_ENTER
+            OPT_ON_KEY_PRESS
+            OPT_ON_KEY_RELEASE
+            OPT_ON_LEAVE
+            OPT_ON_MAP
+            OPT_ON_MOTION
+            OPT_ON_RESIZE
+            OPT_ON_UNMAP
+
+            -pixelPerUnit; float; 1.
+            Zoom factor of the canvas.
+
+            -scrollRegion; list-of-four-floats
+            Region in which the canvas will then be able to scroll. The view of
+            the canvas is adjusted as appropriate to display as much of the new
+            region as possible.
+
+            OPT_VISIBLE
+
+            -width; integer; 
+            Width of the widget.
+
+
+.CMD:       affine tag-or-id-expr list-of-coordinates 
+.CMDDESCR:  Makes and affine transformation of id. 
+            Length of list-of-coordinates 
+            must be 6. The new coordinates are calculated by
+               x_new = af[0] * x_old + af[2] * y_old + af[4];
+               y_new = af[1] * x_old + af[3] * y_old + af[5];
+
+.CMD:       canvasToWindow list-of-coordinates
+.CMDDESCR:  Converts canvas coordinates to window coordinates. This takes
+            scrollRegion and pixelPerUnit into account.
+
+CMD_CGET
+CMD_CONFIGURE
+
+.CMD:       create type .VAROPTS.
+.CMDDESCR:  Create a new item of type type. Type can be one of 
+            "line", "rectangle", "ellipse", "image", "bPath", "text", 
+            "richText", 
+            or "widget". Options are dependent on the type. Returns
+            a numerical id with which this item can be identified.
+            IDs are guaranteed to be unique during the lifetime of a canvas.
+
+CMD_DELETE
+
+.CMD:       findItemAt x y 
+.CMDDESCR:  Returns ID of item at the world coordinates x and y.
+
+.CMD:       findWithTag tag-or-id-expr
+.CMDDESCR:  Returns the IDs of items matching tag-or-id-expr.
+
+.CMD:       getBounds tag-or-id-expr 
+.CMDDESCR:  Returns the bounds (x1, y1, x2, y2) that enclose all items 
+            with tag-or-id-expr in world coordinates.
+
+.CMD:       getCurrentSize
+.CMDDESCR:  Returns the current size of the widget as list of 4 integer: 
+            x coordinate, y coordinate, width and height.
+
+.CMD:       isMapped
+.CMDDESCR:  Returns whether the canvas is mapped.
+
+.CMD:       itemCommand tag-or-id-expr cmd .VAROPTS.
+.CMDDESCR:  Calls a subcommand for all items with tag-or-id-expr. 
+            The subcommand and the options are dependent on the 
+            type of the items.
+
+.CMD:       itemConfigure tag-or-id-expr .VAROPTS.
+.CMDDESCR:  Configures all items with tag-or-id-expr. Valid options are 
+            dependent on the type of the items.
+
+.CMD:       itemCget tag-or-id-expr ?option?
+.CMDDESCR:  Returns the value of option for tag-or-id-expr. Valid options 
+            are dependent on the type of the items.
+
+.CMD:       itemDelete tag-or-id-expr
+.CMDDESCR:  Deletes all items with tag-or-id-expr.
+
+.CMD:       itemHide tag-or-id-expr
+.CMDDESCR:  Hides all items with tag-or-id-expr.
+
+.CMD:       itemShow tag-or-id-expr
+.CMDDESCR:  Shows all items with tag-or-id-expr.
+
+.CMD:       lower tag-or-id-expr ?level?
+.CMDDESCR:  Lowers tag-or-id-expr in the drawing stack. If no level is given,
+            tag-or-id-expr is lowered to the bottom.
+
+.CMD:       move tag-or-id-expr list-of-coordinates 
+.CMDDESCR:  Moves tag-or-id-expr. Length of list-of-coordinates must
+            be 2 (delta x and delta y).
+
+.CMD:       raise tag-or-id-expr ?level?
+.CMDDESCR:  Raises tag-or-id-expr in the drawing stack. If no level is given,
+            tag-or-id-expr is raised to the top.
+
+.CMD:       rotate tag-or-id-expr list-of-coordinates 
+.CMDDESCR:  Rotates tag-or-id-expr. Length of list-of-coordinates must
+            be 3 (center point and angle).
+
+.CMD:       scale tag-or-id-expr list-of-coordinates 
+.CMDDESCR:  Scales tag-or-id-expr. Length of list-of-coordinates must
+            be 3 (center point and scale) or 4 (center point, x scale, and 
+            y scale).
+
+.CMD:       update 
+.CMDDESCR:  Forces an immediate update and redraw of a canvas. This is
+            not needed by normal applications.
+
+.CMD:       windowToCanvas list-of-coordinates 
+.CMDDESCR:  Converts window coordinates to canvas coordinates. This takes
+            scrollRegion and pixelPerUnit into account.
+
+.DESCRIPTION: Canvas widgets implement structured graphics. A canvas
+            displays any number of items, which may be 
+            rectangles, circles, lines, text, bezier paths or standard
+            widgets. Items may be manipulated 
+            (e.g. moved, scaled, rotated or re-colored) and commands may be
+            associated with items with the bind
+            command. For example, a particular command may be associated 
+            with the &lt;button&gt;-event so that the command is invoked 
+            whenever 
+            a button is pressed with the mouse cursor over an item. This
+            means that items in a canvas can have behaviors defined by
+            the Tcl scripts bound to them.
+            Each canvas item has an integer value as uniq ID, which is
+            returned on item creation. Furthermore each item may
+            be associated with one or more tags. 
+            All canvas commands which operate on canvas items accept
+            a tag-or-id-expression. This expression may contain tags or IDs
+            combined with the operators (in descending order) ! (not), 
+            & (and), ^ (xor), | (or) and parenthezised subexpressions. E.g.
+            "t1|(t2^t3)" or "!t2".
+
+.EXAMPLE:
+set canv [gnocl::canvas -background white -antialiased 1]
+set coords {10 100 30 60 50 20 110 20 150 60 190 100}
+foreach {x y} $coords {
+   $canv create ellipse -coords [list $x $y 3] -centerRadius 1 -tags dots
+}
+$canv create bPath -coords {30 60 curveTo 50 20 110 20 150 60} -outline red -width 2 -tags "path t2"
+$canv create line -coords [lrange $coords 0 5] -fill blue
+$canv create line -coords [lrange $coords 6 11] -fill blue
+$canv create ellipse -coords {70 140 50} -centerRadius 1 -fill "" -outline mediumOrchid -width 3 -dash {16 4}
+$canv create rectangle -coords {90 110 180 180} -fill "blue 0.2" -outline green -width 3
+$canv create text -coords {105 80} -text "gnocl" -font "Utopia 14"
+$canv itemConfigure dots -fill darkgreen 
+$canv itemConfigure "dots|path" -onButtonPress "puts pressed" -onButtonRelease "puts released" 
+gnocl::window -title "Canvas" -child $canv -onDestroy exit
+
+.SEEALSO:   canvasLine, canvasRectangle, canvasEllipse, canvasText, canvasRichText, canvasWidget, GnomeCanvas
+
+# canvasBPath ---
+.NAME: canvasBPath
+.SHORTDESCR: A canvas item which consists of line and bezier segments. (in gnoclCanvas)
+.SYNOPSIS:  bPath .VAROPTS.
+.OPTIONS:
+            -capStyle; ONEOF notLast, but, round, projecting
+            Defines the cap style.
+
+            -coords; list-of-graphic-commands-and-floats
+            List of graphic commands and corresponding coordinates. Valid
+            graphic commands are "lineTo", "lineToMoving", "moveTo", 
+            "curveTo", "close" and "closeCurrent".
+            The list must start with either the "moveTo" graphic
+            command followed by an x and an y coordinate, or by
+            an x and an y coordinate.
+            "lineTo" must be followed by an x and an y coordinate. It draws
+            a straight line from the last point to (x,y). And makes (x,y) 
+            the current point.
+            "lineToMoving" is the same as "lineTo" apart from that
+            if several "lineToMoving" commands follow each other, only the
+            last one is actually drawn. This is for example usefull in
+            interactive drawing.
+            "moveTo" must be followed by an x and an y coordinate. It makes
+            (x,y) the current point.
+            "curveTo" must be followed by six coordinates. It draws a 
+            Bezier curve. And make the last point the current point.
+            "close" must not be followed by any coordinates. It closes the
+            current figure with a straight line to the last point set by
+            the "moveTo" command.
+            "closeCurrent" must not be followed by any coordinates. 
+            It closes the current figure by changing the current point to the 
+            last point set by the "moveTo" command.
+            A path may contain multiple "moveTo" and "close" commands,
+            so that it is possible to draw multiple figures with one
+            canvasBPath item.
+            Examples:
+            "100 100 lineTo 150 50 lineTo 200 100 close" draws a triangle;
+            "moveTo 10 120 curveTo 10 220 110 220 110 120" draws a Bezier curve.
+
+            OPT_ITEM_DASH
+
+            -fill; COLORA; black
+            Color of the curve.
+
+            -joinStyle; ONEOF miter, round, bevel
+            Defines the join style.
+
+            OPT_ITEM_ON_BUTTON_PRESS
+            OPT_ITEM_ON_BUTTON_RELEASE
+            OPT_ITEM_ON_ENTER
+            OPT_ITEM_ON_LEAVE
+            OPT_ITEM_ON_MOTION
+
+            -outline; COLORA; black
+            Outline color of the curve.
+
+            OPT_CANV_PARENT
+
+            -pixelWidth; integer;
+            Width of the line, does not change, if the line is scaled.
+
+            OPT_TAGS
+
+            -width; float; 
+            Width of the line, changes, if the line is scaled.
+
+.CMD:        appendCoords list-of-graphic-commands-and-floats
+.CMDDESCR:   Adds list-of-graphic-commands-and-floats to the existing
+             coordinates. See option "-coords" for a description of
+             valid graphic commands. This command is especially usefull
+             for interactive drawing, where the graphic command 
+             "lineToMoving" draws a line from the last current point
+             set by "lineTo", "curveTo" or "moveTo" and each appended
+             "lineToMoving" replaces its successor.
+
+.DESCRIPTION: A bezier path consists of one or more elements consisting 
+            of lines and bezier curves. The elements may be open or closed.
+            In the latter case they may be filled with a color.
+
+.SEEALSO:   canvasEllipse, canvasLine, canvasPolygon, canvasRectangle, GnomeCanvasBPath
+
+# canvasClipGroup ---
+.NAME: canvasClipGroup
+.SHORTDESCR: A canvas item which implements clipping. (in gnoclCanvas)
+.SYNOPSIS:  clipGroup .VAROPTS.
+.OPTIONS:
+
+            OPT_ITEM_ON_BUTTON_PRESS
+            OPT_ITEM_ON_BUTTON_RELEASE
+            OPT_ITEM_ON_ENTER
+            OPT_ITEM_ON_LEAVE
+            OPT_ITEM_ON_MOTION
+
+            -path; list-of-graphic-commands-and-floats
+            The path describing the bounds of the clipping region.
+            Its syntax is the same as for 
+            <link linkend="canvasBPath"><command>canvas bPath</command></link>.
+
+            OPT_TAGS
+
+.CMD:       appendPath list-of-graphic-commands-and-floats
+.CMDDESCR:  See command "appendCoords" of the 
+            <link linkend="canvasBPath"><command>canvas bPath</command></link>.
+
+.DESCRIPTION: A clip group implements clipping for its children.
+            A child is added to the clipg roup via its -parent option.
+
+.SEEALSO:   canvasBPath, GnomeCanvasClipGroup
+
+# canvasEllipse ---
+.NAME: canvasEllipse
+.SHORTDESCR: A canvas ellipse item. (in gnoclCanvas)
+.SYNOPSIS:  ellipse .VAROPTS.
+.OPTIONS:
+            -centerRadius; boolean; 1
+            Whether the coordinates are a list of the top left and bottom
+            right points, or a list of the coordinates of the center plus
+            a radius.
+
+            -coords; list-of-floats
+            List of 4 (x1, y1, x2, y2) or, if centerRadius is set,
+            3 (centerX, centerY, radius) coordinates 
+
+            OPT_ITEM_DASH
+
+            -fill; COLORA; black
+            Fill color of the ellipse. The empty string means unfilled.
+
+            OPT_ITEM_ON_BUTTON_PRESS
+            OPT_ITEM_ON_BUTTON_RELEASE
+            OPT_ITEM_ON_ENTER
+            OPT_ITEM_ON_LEAVE
+            OPT_ITEM_ON_MOTION
+            OPT_CANV_PARENT
+
+            -outline; COLORA; black
+            Outline color of the ellipse.
+
+            OPT_TAGS
+
+            -width; float; 
+            Width of the outline.
+
+
+.DESCRIPTION: An ellipse is define either by its top left and bottom 
+            right points, or by its center point and a radius. The 
+            rectangle can be filled, or only outlined.
+
+.SEEALSO:   canvasBPath, canvasRectangle, GnomeCanvasRE
+
+# canvasLine ---
+.NAME: canvasLine
+.SHORTDESCR: A canvas line item. (in gnoclCanvas)
+.SYNOPSIS:  line .VAROPTS.
+.OPTIONS:
+            -arrow; ONEOF none, first, last, both; none
+            Sets at which ends the line has arrows.
+
+            -arrowShape; list-of-3-floats; "5 10 5"
+            Describes the shape of the arrow (if set) at the ends of the line.
+
+            -capStyle; ONEOF notLast, but, round, projecting
+            Defines the cap style.
+
+            -coords; list-of-floats
+            List of x and y coordinates, must be a multiple of 2 and at least 4.
+
+            -fill; COLORA; black
+            Color of the line.
+
+            -joinStyle; ONEOF miter, round, bevel
+            Defines the join style.
+
+            OPT_ITEM_ON_BUTTON_PRESS
+            OPT_ITEM_ON_BUTTON_RELEASE
+            OPT_ITEM_ON_ENTER
+            OPT_ITEM_ON_LEAVE
+            OPT_ITEM_ON_MOTION
+            OPT_CANV_PARENT
+
+            -pixelWidth; integer;
+            Width of the line, does not change, if the line is scaled.
+
+            OPT_TAGS
+
+            -width; float; 
+            Width of the line, changes, if the line is scaled.
+
+
+.DESCRIPTION: A line is one or more connected straight lines between two
+            or more points. The connection between these multiple segments
+            can be changed via joinStyle. The line may have arrows at one
+            or both ends.
+
+.SEEALSO:   canvasBPath, GnomeCanvasLine
+
+# canvasImage ---
+.NAME: canvasImage
+.SHORTDESCR: A canvas item which shows an image. (in gnoclCanvas)
+.SYNOPSIS:  image .VAROPTS.
+.OPTIONS:
+            -anchor; ONEOF center, N, NW, NE, S, SW, SE, W, E; center
+            Position of the anchor relative to the widget.
+
+            -coords; list-of-floats
+            X and y coordinates of the item.
+
+            OPT_ITEM_ON_BUTTON_PRESS
+            OPT_ITEM_ON_BUTTON_RELEASE
+            OPT_ITEM_ON_ENTER
+            OPT_ITEM_ON_LEAVE
+            OPT_ITEM_ON_MOTION
+            OPT_CANV_PARENT
+            OPT_TAGS
+
+            -image; PERCENTSTRING;
+            Image to be shown.
+
+.DESCRIPTION: An image item shows an image in the canvas.
+
+# canvasPolygon ---
+.NAME: canvasPolygon
+.SHORTDESCR: A canvas polygon item. (in gnoclCanvas)
+.SYNOPSIS:  polygon .VAROPTS.
+.OPTIONS:
+            -coords; list-of-floats
+            List of x and y coordinates, must be a multiple of 2 and at least 4.
+
+            OPT_ITEM_DASH
+
+            -fill; COLORA; black
+            Color of the polygon.
+
+            -joinStyle; ONEOF miter, round, bevel
+            Defines the join style.
+
+            OPT_ITEM_ON_BUTTON_PRESS
+            OPT_ITEM_ON_BUTTON_RELEASE
+            OPT_ITEM_ON_ENTER
+            OPT_ITEM_ON_LEAVE
+            OPT_ITEM_ON_MOTION
+            OPT_CANV_PARENT
+
+            -outline; COLORA; black
+            Color of the outline.
+
+            -pixelWidth; integer;
+            Width of the outline; does not change, if the line is scaled.
+
+            OPT_TAGS
+
+            -width; float; 
+            Width of the outline; changes, if the line is scaled.
+
+
+.DESCRIPTION: A polygon is a closed figure with straight lines between 
+            three or more points. The connection between these lines
+            can be changed via joinStyle. 
+
+.SEEALSO:   canvasEllipse, canvasBPath, canvasRectangle, GnomeCanvasPolygon
+
+# canvasRectangle ---
+.NAME: canvasRectangle
+.SHORTDESCR: A canvas rectangle item. (in gnoclCanvas)
+.SYNOPSIS:  rectangle .VAROPTS.
+.OPTIONS:
+            -centerRadius; boolean; 0
+            Whether the coordinates are a list of the top left and bottom
+            right points, or a list of the coordinates of the center plus
+            a radius.
+
+            -coords; list-of-floats
+            List of 4 (x1, y1, x2, y2) or, if centerRadius is set,
+            3 (centerX, centerY, radius) coordinates 
+
+            OPT_ITEM_DASH
+
+            -fill; COLORA; black
+            Fill color of the rectangle. The empty string means unfilled.
+
+            OPT_TAGS
+            OPT_ITEM_ON_BUTTON_PRESS
+            OPT_ITEM_ON_BUTTON_RELEASE
+            OPT_ITEM_ON_ENTER
+            OPT_ITEM_ON_LEAVE
+            OPT_ITEM_ON_MOTION
+            OPT_CANV_PARENT
+
+            -outline; COLORA; black
+            Outline color of the rectangle.
+
+            -width; float; 
+            Width of the outline.
+
+
+.DESCRIPTION: A rectangle is define either by its top left and bottom 
+            right points, or by its center point and a radius. The 
+            rectangle can be filled, or only outlined.
+
+.SEEALSO:   canvasBPath, canvasEllipse, canvasLine, GnomeCanvasRE
+
+# canvasRichText ---
+.NAME: canvasRichText
+.SHORTDESCR: A canvas rich text item. (in gnoclCanvas)
+.SYNOPSIS:  richText .VAROPTS.
+.OPTIONS:
+            -coords; list-of-floats
+            X and y coordinates of the item.
+
+            -text; string; ""
+            Text to be displayed. 
+
+            -width; integer; 
+            Width of of the item in pixel.
+
+            -height; integer; 
+            Height of of the item in pixel.
+
+            -editable; boolean; 1
+            Whether the the text is editable.
+
+            -visible; boolean; 1
+            Whether the text is visible.
+
+            -cursorVisible; boolean; 1
+            Whether the cursor is visible.
+
+            -cursorBlink; boolean; 1
+            Whether the cursor is blinking.
+
+            -growHeight; boolean; 1
+            Whether the the height of the item should increase if there is
+            not enough space to display the whole text.
+
+            -wrapMode; ONEOF none, char, word;
+            Wrap mode used for the rendering of the cells.
+
+            -justify; ONEOF left, right, center, fill;
+            Justification of the lines in one cell.
+
+            -anchor; ONEOF center, N, NW, NE, S, SW, SE, W, E; center
+            Position of the anchor relative to the text.
+
+            -pixelsBelowLines; integer;
+            Pixels below lines.
+
+            -pixelsInsideWrap; integer;
+            Pixels between lines after wrap.
+
+            -pixelsAboveLines; integer;
+            Pixels above lines.
+
+            -leftMargin; integer; 0
+            Left margin of the text inside the item.
+
+            -rightMargin; integer; 0
+            Right margin of the text inside the item.
+
+            -indent; integer; 0
+            Indention
+
+            OPT_ITEM_ON_BUTTON_PRESS
+            OPT_ITEM_ON_BUTTON_RELEASE
+            OPT_ITEM_ON_ENTER
+            OPT_ITEM_ON_LEAVE
+            OPT_ITEM_ON_MOTION
+            OPT_TAGS
+
+.CMD:           erase startIndex ?endIndex?
+.CMDDESCR:      Removes all text between startIndex and endIndex. endIndex defaults to end.
+
+.CMD:           select startIndex ?endIndex?
+.CMDDESCR:      Select the text between startIndex and endIndex. endIndex defaults to end.
+
+.CMD:           get startIndex ?endIndex?
+.CMDDESCR:      Returns the text between startIndex and endIndex. endIndex defaults to end.
+
+.CMD:           cut
+.CMDDESCR:      Copies all text to the clipboard and removes it from the widget.
+
+.CMD:           copy
+.CMDDESCR:      Copies all text to the clipboard.
+
+.CMD:           paste
+.CMDDESCR:      Pastes text from the clipboard at the current cursor position.
+
+.CMD:           getLength
+.CMDDESCR:      Returns the number of characters in the widget.
+
+.CMD:           getCursor 
+.CMDDESCR:      Returns the position position of the cursor as list of its row and column.
+
+.CMD:           setCursor index
+.CMDDESCR:      Sets the cursor to position index.
+
+.CMD:           insert index text ?-tags taglist?
+.CMDDESCR:      Inserts and position indext the text text. If taglist is given the text is taged with each element of the list.
+
+.CMD:           tag create tagName .VAROPTS.
+.CMDDESCR:      Creates a tag with name tagName and configures it dependent of the options given. The options are the same as with tag configure.
+
+.CMD:           tag configure tagName .VAROPTS.
+.CMDDESCR:      Configures the existing tag tagName. See text for options.
+
+
+.DESCRIPTION: The richText item is the adaption of the text widget
+              to the canvas.
+
+.SEEALSO:      canvasText, text, GnomeCanvasRichText
+
+# canvasText ---
+.NAME: canvasText
+.SHORTDESCR: A canvas text item. (in gnoclCanvas)
+.SYNOPSIS:  text .VAROPTS.
+.OPTIONS:
+            -anchor; ONEOF center, N, NW, NE, S, SW, SE, W, E; center
+            Position of the anchor relative to the text.
+
+            -coords; list-of-2-floats
+            X and y coordinates of the item.
+
+            -fill; COLORA; black
+            Color of the text.
+
+            -font; FONT;
+            Font of the text.
+
+            -fontSize; integer;
+            Font size of the text.
+
+            -fontScale; float ORONEOF xx-small, x-small, small, medium, large, x-large, xx-large; normal
+            Font scale used.
+
+            -fontStretch; ONEOF ultraCondensed, extraCondensed, condensed, semiCondensed, normal, semiExpanded, expanded, extraExpanded, ultraExpanded; normal
+            Font stretch of the text.
+
+            -fontStyle; ONEOF normal, oblique, italic; normal
+            Font style of the text.
+
+            -fontVariant; ONEOF normal, smallCaps; normal
+            Font variant of the text.
+
+            -fontWeight; ONEOF ultralight, light, normal, bold, ultrabold, heavy; normal
+            Font weight of the text.
+
+            -justify; ONEOF left, right, center, fill; left
+            Justification of the text.
+
+            -offset; list-of-2-floats; {0 0}
+            X and y offset of the item.
+
+            OPT_ITEM_ON_BUTTON_PRESS
+            OPT_ITEM_ON_BUTTON_RELEASE
+            OPT_ITEM_ON_ENTER
+            OPT_ITEM_ON_LEAVE
+            OPT_ITEM_ON_MOTION
+            OPT_CANV_PARENT
+            OPT_TAGS
+
+            -text; string; ""
+            Text to be displayed. If the string starts with "%&lt;" the
+            rest of the string is interpreted as markup string.
+
+
+.DESCRIPTION: A text item should be used to display text where the hole text
+            has basically the same format. Via a markup string the format
+            can be changed, but for more complex formattig the richText 
+            item should be used.
+
+.SEEALSO:   canvasRichText, label, GnomeCanvasText
+
+# canvasWidget ---
+.NAME: canvasWidget
+.SHORTDESCR: A canvas item which shows a normal widget. (in gnoclCanvas)
+.SYNOPSIS:  widget .VAROPTS.
+.OPTIONS:
+            -anchor; ONEOF center, N, NW, NE, S, SW, SE, W, E; NW
+            Position of the anchor relative to the widget.
+
+            -coords; list-of-floats
+            X and y coordinates of the item.
+
+            -height; integer; 
+            Height of of the widget in pixel.
+
+            OPT_ITEM_ON_BUTTON_PRESS
+            OPT_ITEM_ON_BUTTON_RELEASE
+            OPT_ITEM_ON_ENTER
+            OPT_ITEM_ON_LEAVE
+            OPT_ITEM_ON_MOTION
+            OPT_TAGS
+
+            -widget; widget-ID;
+            Widget ID of the widget to be shown.
+
+            -width; integer; 
+            Width of of the widget in pixel.
+
+
+.DESCRIPTION: A widget item allows to display a normal widget inside a canvas.
+
+# separator ----
+.NAME:  separator
+.SHORTDESCR:    A widget which groups widgets horizontal or vertical.
+.SYNOPSIS:      separator .VAROPTS.
+.OPTIONS:
+            OPT_NAME
+
+            -orientation; ONEOF vertical, horizontal; horizontal
+            Orientation of the separator.
+            This cannot be changed after creation.
+
+            OPT_SENSITIVE
+            OPT_VISIBLE
+
+.DESCRIPTION:  A separator is a widget which groups widgets horizontal 
+            or vertical. This is similar to the frame of a box or table 
+            widget.
+
+.EXAMPLE:
+set box [gnocl::box -orientation vertical]
+$box add [gnocl::label -text "above"]
+$box add [gnocl::separator]
+$box add [gnocl::label -text "below"]
+gnocl::window -title "Separator" -child $box 
+
+.SEEALSO:      box, table, GtkSeparator
+
+# menuBar ---
+.NAME: menuBar
+.SHORTDESCR: A menu container widget.
+.SYNOPSIS:  menuBar .VAROPTS.
+.OPTIONS:
+            -children; list of widget-IDs; ""
+            List of menu items to be included in the menubar.
+
+            OPT_NAME
+            OPT_SENSITIVE
+            OPT_VISIBLE
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.CMD:       add list-of-widget-Ids 
+.CMDDESCR:  Add widgets to the menubar.
+
+.CMD:       addBegin list-of-widget-Ids 
+.CMDDESCR:  Synonym for add.
+
+.CMD:       addEnd list-of-widget-Ids 
+.CMDDESCR:  Add widgets at the end of the menubar. 
+
+.DESCRIPTION: A menubar is a container widget which is used normally at
+            the top of the main window.
+
+.EXAMPLE:
+set menuBar [gnocl::menuBar]
+set menu [gnocl::menu]
+$menu add [gnocl::menuItem -text "%#Quit" -onClicked exit]
+$menuBar add [gnocl::menuItem -text "%__File" -submenu $menu]
+set menu [gnocl::menu]
+$menu add [gnocl::menuItem -text "%__About" -onClicked {puts "About Gnocl"}]
+$menuBar add [gnocl::menuItem -text "%__Help" -submenu $menu]
+gnocl::window -title "MenuBar" -child $menuBar
+
+.SEEALSO: menuItem, menuCheckItem, menuRadioItem, menuSeparator, menu, GtkMenuBar
+
+# toolBar ---
+.NAME: toolBar
+.SHORTDESCR: A toolbar container widget.
+.SYNOPSIS:  toolBar .VAROPTS.
+.OPTIONS:
+            OPT_NAME
+
+            -orientation; ONEOF vertical, horizontal; horizontal
+            Orientation of the toolbar.
+
+            OPT_SENSITIVE
+
+            -style; ONEOF icons, text, both; both
+            Whether to show the icons of the items, their text or both.
+
+            OPT_VISIBLE
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.CMD:       add type .VAROPTS.
+.CMDDESCR:  Add a item of type type to the toolbar. Type can be one of
+            space, item, checkItem, radioItem or widget. The options are
+            dependent of the item type. Type space inserts additional space
+            between the items. It is not explained further
+            since it does not have any options.
+
+.CMD:       addBegin type .VAROPTS.
+.CMDDESCR:  Synonym for add.
+
+.CMD:       addEnd type .VAROPTS.
+.CMDDESCR:  Add widgets at the end of the toolbar.
+
+.DESCRIPTION: A toolbar is a container widget normally placed at the top
+               of the main window, directly below the menubar. It can 
+               contain special toolbar items or even normal widgets.
+
+.EXAMPLE:
+set toolBar [gnocl::toolBar]
+$toolBar add item -text "%#Quit" -onClicked exit
+$toolBar add space
+$toolBar add checkItem -text "%#Underline" -variable underline
+$toolBar add space
+$toolBar add radioItem -text "%#JustifyLeft" -variable justify -onValue left
+$toolBar add radioItem -text "%#JustifyRight" -variable justify -onValue right
+gnocl::window -title "ToolBar" -child $toolBar
+
+.SEEALSO: toolBarItem, toolBarCheckItem, toolBarRadioItem, GtkToolbar
+
+# toolBarItem ---
+.NAME: toolBarItem
+.SHORTDESCR: A button like item in a toolbar.
+.SYNOPSIS:  item .VAROPTS.
+.OPTIONS:
+            -icon; PERCENTSTRING; ""
+                  Icon of the item.
+
+            OPT_NAME
+
+            -onClicked; string; ""
+                  Tcl command to be executed if the button is clicked.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name
+                  /TABLE
+
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+            OPT_ON_POPUP_MENU
+            OPT_ON_SHOW_HELP
+            OPT_SENSITIVE
+
+            -text; PERCENTSTRING; ""
+                  Text or name of stock item.
+
+            OPT_TOOLTIP
+            OPT_VISIBLE
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.DESCRIPTION: A toolbar item executes a command on mouse click.
+
+.SEEALSO: toolBar, toolBarCheckItem, toolBarRadioItem, button
+
+# toolBarCheckItem ---
+.NAME: toolBarCheckItem
+.SHORTDESCR: A toolbar item which changes between two states when clicked.
+.SYNOPSIS:  checkItem .VAROPTS.
+.OPTIONS:
+            -active; boolean; 0
+                  Whether the widget is active.
+
+            OPT_DATA
+
+            -icon; PERCENTSTRING; ""
+                  Icon of the item.
+
+            OPT_NAME
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+            OPT_ON_POPUP_MENU
+            OPT_ON_SHOW_HELP
+
+            -onToggled; string; ""
+                  Tcl command to be executed if the radio button is
+                  toggled.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  %v | onValue or offValue depending of the state
+                  TABLE
+
+            -offValue; string; 0
+                  Value to store in the button's associated variable 
+                  whenever this button is not selected
+
+            -onValue; string; 1
+                  Value to store in the button's associated variable 
+                  whenever this button is selected
+
+            OPT_SENSITIVE
+
+            -text; PERCENTSTRING; ""
+                  Text or name of stock item.
+
+            OPT_TOOLTIP
+
+            -variable: string; 0
+                  Name of a (global) variable which is changed when the state 
+                  of the button changes. 
+
+            OPT_VISIBLE
+
+.DESCRIPTION: A check item has two states: on and off. If the state
+            is changed, it executes a command  and sets a tcl variable
+            appropriately.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onToggled
+.CMDDESCR:  Invoke  the  Tcl command associated with the check item if there 
+            is one. This command is ignored if the button's state is not 
+            sensitive.
+
+.SEEALSO: toolBar, toolBarItem, toolBarRadioItem, checkButton
+
+# toolBarRadioItem ---
+.NAME: toolBarRadioItem
+.SHORTDESCR: A toolbar item from which only one of a group can be selected.
+.SYNOPSIS:  radioItem .VAROPTS.
+.OPTIONS:
+            -active; boolean; 0
+                  Whether the widget is active. This overrides the value
+                  of the associated variable. If set to 1, the associated
+                  variable is set accordingly.
+
+            OPT_DATA
+
+            -icon; PERCENTSTRING; ""
+                  Icon of the item.
+
+            OPT_NAME
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+            OPT_ON_POPUP_MENU
+            OPT_ON_SHOW_HELP
+
+            -onToggled; string; ""
+                  Tcl command to be executed if the radio item is
+                  toggled.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  %v | value of the radio group
+                  TABLE
+
+            OPT_SENSITIVE
+
+            -text; PERCENTSTRING; ""
+                  Text or name of stock item.
+
+            OPT_TOOLTIP
+
+            -value; string; 
+                  (Required option)
+                  Value to store in the button's associated variable 
+                  whenever this button is selected.
+
+            -variable; string;
+                  (Required option)
+                  Name of a (global) variable which is changed when the state 
+                  of the button changes. All radio buttons with the
+                  same variable are in one group. If the variable does
+                  not exist and the option -active is not set to 0, 
+                  it is created and set to the value of the
+                  first button in the group. If the variable does exist
+                  and its value corresponds to the value of a button in
+                  this group, this button is selected. If the value of
+                  variable is set externally (e.g. via the set),
+                  the corresponding button in the group is selected and
+                  its associated command executed.
+
+            OPT_VISIBLE
+
+.DESCRIPTION: A radio item is like a check item, but in a group of 
+               radio items only one can be selected. All radio items of 
+               one group share one variable. This variable contains always 
+               the value of the active radio item.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onToggled
+.CMDDESCR:  Executes the command given by the -onToggled option of the 
+            active item in the group.
+
+.SEEALSO: toolBar, toolBarItem, toolBarCheckItem, radioButton
+
+# menu ---
+.NAME: menu
+.SHORTDESCR: A menu container widget.
+.SYNOPSIS:  menu .VAROPTS.
+.OPTIONS:
+            -children; list of widget-IDs; ""
+            List of menu items to be included in the menu.
+
+            OPT_NAME
+            OPT_SENSITIVE
+
+            -tearoff; boolean; 1
+            Whether the menu can be torn off.
+
+            -title; string; ""
+            Title of the menu.
+
+            OPT_VISIBLE
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.CMD:       add list-of-widget-Ids 
+.CMDDESCR:  Add widgets to the menu.
+
+.CMD:       addBegin list-of-widget-Ids 
+.CMDDESCR:  Synonym for add.
+
+.CMD:       addEnd list-of-widget-Ids 
+.CMDDESCR:  Add widgets at the end of the menu. 
+
+.DESCRIPTION: A menu is a container widget which is either used in
+              a menubar or as popup to get instantaneous user input.
+
+.EXAMPLE:
+set menu [gnocl::menu -title "menu"]
+$menu add [gnocl::menuItem -text "%#Save" -onClicked {puts "save"}]
+$menu add [gnocl::menuSeparator]
+$menu add [gnocl::menuItem -text "%#Quit" -onClicked exit]
+$menu popup
+
+.SEEALSO: menuItem, menuCheckItem, menuRadioItem, menuSeparator, menuBar, GtkMenu
+
+# menuItem ---
+.NAME:       menuItem
+.SHORTDESCR: A menu item which executes a command when clicked.
+.SYNOPSIS:  menuItem .VAROPTS.
+.OPTIONS:
+            -text; PERCENTSTRING; ""
+               Text or icon of the item.
+
+            -accelerator; string;
+               Accelerator for this item, like "&lt;Ctrl&gt;A" or "&lt;Shift&gt;&lt;Alt&gt;B".
+
+            -icon; string; ""
+                  Name of the icon TODO. 
+
+            -submenu; widget-ID; 
+                  Width-ID of a submenu.
+
+            -onClicked; string; ""
+                  Tcl command to be executed if the item is clicked.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  TABLE
+
+            OPT_SENSITIVE
+            OPT_TOOLTIP
+            OPT_NAME
+            OPT_VISIBLE
+
+.DESCRIPTION: A menu item executes a command when clicked. Additionally
+            another menu can be attached to a menu item, which is
+            automatically show, if the mouse moves to this item.
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.CMD:       onClicked
+.CMDDESCR:  Executes the command given by the -onClicked option.
+
+.EXAMPLE:
+set menu [gnocl::menu -title "menuItem"]
+$menu add [gnocl::menuItem -text "%_Use _Bird" -onClicked {puts "use bird"}]
+$menu add [gnocl::menuItem -text "%_Use _Dog" -onClicked {puts "use dog"}]
+$menu add [gnocl::menuItem -text "%#Quit" -onClicked exit]
+$menu popup
+
+.SEEALSO: menu, menuCheckItem, menuRadioItem, menuSeparator, GtkMenuItem
+
+# menuSeparator ---
+.NAME:       menuSeparator
+.SHORTDESCR: A menu item which visually separates different items.
+.SYNOPSIS:  menuSeparator .VAROPTS.
+.OPTIONS:
+            OPT_SENSITIVE
+            OPT_NAME
+            OPT_VISIBLE
+
+.DESCRIPTION: A menu separator visually separates different items.
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.EXAMPLE:
+set menu [gnocl::menu -title "menuSeparator"]
+$menu add [gnocl::menuItem -text "%#Save" -onClicked {puts "save"}]
+$menu add [gnocl::menuSeparator]
+$menu add [gnocl::menuItem -text "%#Quit" -onClicked exit]
+$menu popup
+
+.SEEALSO: menu, menuItem, menuCheckItem, menuRadioItem, GtkSeparatorMenuItem
+
+# menuCheckItem ---
+.NAME:       menuCheckItem
+.SHORTDESCR: A menu item which changes between two states when clicked.
+.SYNOPSIS:  menuCheckItem .VAROPTS.
+.OPTIONS:
+            -accelerator; string;
+               Accelerator for this item, like "&lt;Ctrl&gt;A" or "&lt;Shift&gt;&lt;Alt&gt;B".
+
+            -active; boolean; 0
+                  Whether the widget is active.
+
+            OPT_DATA
+
+            -inconsistent; boolean; 0
+                  Whether the widget state is rendered inconsistent, for
+                  example if multiple items in an application are
+                  selected which do not have all the same state.
+
+            OPT_NAME
+
+            -offValue; string; 0
+                  Value to store in the button's associated variable 
+                  whenever this button is not selected
+
+            -onToggled; string; ""
+                  Tcl command which is executed if the radio button is
+                  toggled.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  %v | value of the radio group
+                  TABLE
+
+            -onValue; string; 1
+                  Value to store in the button's associated variable 
+                  whenever this button is selected
+
+            OPT_SENSITIVE
+
+            -text; PERCENTSTRING; ""
+                  Text or icon of the item.
+
+            OPT_TOOLTIP
+
+            -variable; string;
+                  Name of a (global) variable which is changed when the state 
+                  of the item changes. 
+
+            OPT_VISIBLE
+
+.DESCRIPTION: A check item has two states: on and off. If the state
+            is changed, it executes a command  and sets a tcl variable
+            appropriately.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onToggled
+.CMDDESCR:  Executes the command.
+
+.EXAMPLE:
+set dog 1
+set cat 1
+set menu [gnocl::menu -title "menuCheckItem"]
+$menu add [gnocl::menuCheckItem -text "%_Has _Bird" -variable bird]
+$menu add [gnocl::menuCheckItem -text "%_Has _Dog" -variable dog]
+$menu add [gnocl::menuCheckItem -text "%_Has _Cat" -variable cat]
+$menu popup
+
+.SEEALSO: menu, menuItem, menuRadioItem, menuSeparator, GtkCheckMenuItem 
+
+# menuRadioItem ---
+.NAME:       menuRadioItem
+.SHORTDESCR: A menu item from which only one of a group can be selected.
+.SYNOPSIS:  menuRadioItem .VAROPTS.
+.OPTIONS:
+            -accelerator; string;
+               Accelerator for this item, like "&lt;Ctrl&gt;A" or "&lt;Shift&gt;&lt;Alt&gt;B".
+
+            -active; boolean; 0
+                  Whether the widget is active. This overrides the value
+                  of the associated variable. If set to 1, the associated
+                  variable is set accordingly.
+
+            OPT_DATA
+
+            -inconsistent; boolean; 0
+                  Whether the widget state is rendered inconsistent, for
+                  example if multiple items in an application are
+                  selected which do not have all the same state.
+
+            OPT_NAME
+
+            -onToggled; string; ""
+                  Tcl command which is executed if the radio button is
+                  toggled.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  %v | value of the radio group
+                  TABLE
+
+            OPT_SENSITIVE
+
+            -text; PERCENTSTRING; ""
+                  Text or icon of the button
+
+            OPT_TOOLTIP
+
+            -value; string; 
+                  (Required option)
+                  Value to store in the button's associated variable 
+                  whenever this button is selected.
+
+            -variable; string;
+                  (Required option)
+                  Name of a (global) variable which is changed when the state 
+                  of the item changes. All radio items with the
+                  same variable are in one group. If the variable does
+                  not exist and the option -active is not set to 0, 
+                  it is created and set to the value of the
+                  first item in the group. If the variable does exist
+                  and its value corresponds to the value of a button in
+                  this group, this button is selected. If the value of
+                  variable is set externally (e.g. via the set),
+                  the corresponding button in the group is selected and
+                  its associated command executed.
+
+            OPT_VISIBLE
+
+.DESCRIPTION: A radio item is like a check item, but in a group of 
+               radio items only one can be selected. All radio items of 
+               one group share one variable. This variable contains always 
+               the value of the active radio item.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onToggled
+.CMDDESCR:  Executes the command given by the -onToggled option of the 
+            active item in the group.
+
+.EXAMPLE:
+set animal dog
+set menu [gnocl::menu -title "menuRadioItem"]
+$menu add [gnocl::menuRadioItem -text "%_Has _Bird" -variable animal -onValue bird]
+$menu add [gnocl::menuRadioItem -text "%_Has _Dog" -variable animal -onValue dog]
+$menu add [gnocl::menuRadioItem -text "%_Has _Cat" -variable animal -onValue cat]
+$menu popup
+
+.SEEALSO: menu, menuItem, menuCheckItem, menuSeparator, GtkRadioMenuItem
+
+# statusBar -------------
+.NAME:         statusBar
+.SHORTDESCR:   A widget which reports messages of minor importance to the user.
+.SYNOPSIS:     statusBar .VAROPTS.
+.OPTIONS:
+            -resizeGrip; boolean; 0
+               Whether the the statusbar has a handle to resize the 
+               parent window.
+
+            OPT_VISIBLE
+            OPT_NAME
+
+.DESCRIPTION: A statusbar is usually placed at the bottom of a window
+               and reports messages of minor importance to the user.
+               The statusbar maintains several stacks, which are identified
+               by a context number, with messages. The message last pushed
+               will be visible. Via pop the last message pushed onto this
+               stack will be removed. If this message was the one to be
+               displayed, the message below it will be shown. 
+
+.CMD:           push text .VAROPTS.
+.CMDDESCR:      Pushes a new message onto a statusbar's stack. Returns an
+                integer as message ID.
+.CMDOPTIONS:
+               -context; integer; 0
+               Which stack is chosen.
+
+.CMD:           pop .VAROPTS.
+.CMDDESCR:      Pops the last message of a statusbar's stack.
+.CMDOPTIONS:
+               -context; integer; 0
+               Which stack is chosen.
+
+.CMD:           remove msgID .VAROPTS.
+.CMDDESCR:      Removes message ID msgID from a statusbar's stack.
+.CMDOPTIONS:
+               -context; integer; 0
+               Which stack is chosen.
+
+.CMD:       addBegin list-of-widget-Ids .VAROPTS.
+.CMDDESCR:  Add widgets at the left of the statusBar.
+.CMDOPTIONS:
+            -expand; boolean; 0
+            Whether the widgets allocate the horizontal free space.
+
+            -fill; boolean; 1
+            Determines whether the allocated space is actually used.
+
+            -padding; PADDING_TYPE; NORMAL
+            Space in pixel between the widgets. 
+
+.CMD:       add list-of-widget-Ids .VAROPTS.
+.CMDDESCR:  Synonym for addBegin.
+
+.CMD:       addEnd list-of-widget-Ids .VAROPTS.
+.CMDDESCR:  Add widgets at the right of the statusBar.
+            The same options as in the add command are valid.
+
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.EXAMPLE:
+set bar [gnocl::statusBar]
+$bar push "This is Gnocl"
+gnocl::window -title "StatusBar" -child $bar
+
+.SEEALSO:   GtkStatusbar
+
+# progressBar ---
+.NAME:  progressBar
+.SHORTDESCR: A widget which gives the user feedback of background work.
+.SYNOPSIS:   progressBar .VAROPTS.
+.OPTIONS:
+            -activityMode; boolean; 0
+            Whether the progressbar shows only, that an activity is going
+            on.
+
+            -fraction; float (0 lt fraction lt 1); 
+            Only if activityMode is false: fraction of the work done.
+
+            -pulseStep; float (0 lt pulseStep lt 1);
+            How much the block in activityMode moves in one step.
+
+            -orientation; ONEOF leftToRight, rightToLeft, bottomToTop, topToBottom; leftToRight
+            Direction of the progressbar.
+
+            -text; string; ""
+            Only if activityMode is false: text to be shown, mostly the
+            fraction of the work done.
+
+            -textAlign; ALIGN_TYPE; center
+            Alignment of the text.
+
+            -showText; boolean; 1
+            Whether to show the text.
+
+            OPT_NAME
+            OPT_VISIBLE
+            OPT_HEIGHT_GROUP
+            OPT_WIDTH_GROUP
+            OPT_SIZE_GROUP
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.CMD:       pulse
+.CMDDESCR:  In activityMode: moves the block by pulseStep.
+
+.DESCRIPTION: The progressbar gives the user feedback of background
+               work which takes some time. If the application knows
+               how long the work takes, it should set the activityMode
+               to false (the default) and inform the user in regular
+               intervals via -fraction and -text how long the work 
+               still takes. If the time span
+               cannot be estimated, activityMode can be set. By 
+               regularly calling 
+               the command pulse the user can be informed, that the 
+               application is still alive and work is going on.
+
+.EXAMPLE:
+set f 0.33
+set progress [gnocl::progressBar -fraction $f -text [format "%.0f %%" [expr {$f*100.}]]]
+gnocl::window -title "ProgressBar" -child $progress
+
+.SEEALSO:      GtkProgessBar
+
+# paned ----
+.NAME:  paned
+.SHORTDESCR:    A widget which allows to interactively resize two children.
+.SYNOPSIS:      paned .VAROPTS.
+.OPTIONS:
+            -orientation; ONEOF vertical, horizontal; horizontal
+            Orientation of the box, i.e. the placement of its children.
+            This cannot be changed after creation.
+
+            -children; list one or two widget-IDs; ""
+            List of IDs of widgets which are placed inside the panes. If
+            the widget-ID is the empty string this pane is skipped.
+
+            -resize; boolean or list of two booleans; 1
+            Whether this child are resized, if the paned widget is resized.
+
+            -shrink; boolean or list of two booleans; 1
+            Whether this child can be made smaller by the user than its 
+            requisition.
+
+            -position; integer;
+            Position of the slider.
+
+            OPT_NAME
+            OPT_VISIBLE
+            OPT_SENSITIVE
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.DESCRIPTION: The paned widget has two children which are placed side by
+              side either horizontally or vertically. The division between
+              the two children can be adjusted by the user.
+
+.EXAMPLE:
+set but1 [gnocl::button -text "Button left"]
+set but2 [gnocl::button -text "Button right"]
+set paned [gnocl::paned -orientation horizontal -children "$but1 $but2"]
+gnocl::window -title "Paned" -child $paned 
+
+.SEEALSO:      box, table, notebook, GtkPaned
+
+# table ----
+.NAME:  table
+.SHORTDESCR:    A widget which arranges its children in rows and columns.
+.SYNOPSIS:      table .VAROPTS.
+.OPTIONS:
+            -homogeneous; boolean; 1
+            Whether all children of the box are given equal space.
+
+            -rowSpacing; PADDING_TYPE; default
+            How many space in pixel are between rows.
+
+            -columnSpacing; PADDING_TYPE; default 
+            How many space in pixel are between columns.
+
+            OPT_BORDERWIDTH
+
+            -label; string; ""
+            Label of the frame.
+
+            -shadow; ONEOF none, in, out, etchedIn, etchedOut; none
+            Shadow type of the frame.
+
+            -labelAlign; float (0 lt xAlign lt 1) or one of left, center or right; 0
+            Alignment of the label.
+
+            OPT_DRAG_TARGETS
+            OPT_ON_DRAG_DATA
+            OPT_DROP_TARGETS
+            OPT_ON_DROP_DATA
+            OPT_TOOLTIP
+            OPT_ON_SHOW_HELP
+            OPT_ON_POPUP_MENU
+            OPT_NAME
+            OPT_VISIBLE
+            OPT_SENSITIVE
+            OPT_HEIGHT_GROUP
+            OPT_WIDTH_GROUP
+            OPT_SIZE_GROUP
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.CMD:       addRow list-of-widget-IDs .VAROPTS.
+.CMDDESCR:  Add widgets at a new row to the table. If a widet-ID is the 
+            empty string ("") the corresponding column is left empty.
+
+.CMDOPTIONS:
+            -expand; boolean or list of two boolean; {1 1}
+            Whether the widgets is to be given 
+            extra space allocated to table. The extra space will be 
+            divided evenly between all children of table.
+            If expand is a list, the first value is for the horizontal
+            and the second for the vertical expansion.
+
+            -fill; float or list of two floats ( 0 lt fill tl 1); {1 1} 
+            Determines whether the allocated space is actually used.
+            The values can range from 0 
+            (meaning the child uses its minimum size) to 1 (meaning 
+            the child fills all of the available space). If
+            fill is a list, the first value is for the horizontal
+            and the second for the vertical expansion.
+
+            -padding; PADDING_TYPE; 0
+            The number of pixels to put between the widgets.
+
+            -rowSpan; integer; 1
+            How many rows a widget should occupy.
+
+            -align; ALIGN_TYPE; center
+            Alignment of of the widget in the space allocated in the table.
+            This option has only an effect if the fill option is not 1.
+
+.CMD:       addColumn list-of-widget-Ids .VAROPTS.
+.CMDDESCR:  Same as add but adds a new column. 
+            If an widget-ID of the list is the empty string the 
+            corresponding row is left empty. Instead of -rowSpan
+            an option -columnSpan exists.
+
+.CMDOPTIONS:
+            -columnSpan; integer; 1
+            How many columns a widget should occupy.
+
+.CMD:       add widget-ID column row .VAROPTS.
+.CMDDESCR:  Adds the widget with the ID widget-ID at a given row and column.
+            Row and column must be either an integer or "end[+-offset]".
+            The first empty row or column is labeled "end", the row/column
+            before "end-1" etc.
+            All options of the addRow and addColumn command are valid.
+
+.DESCRIPTION: The Gnocl table widget is a combination of the GtkTable 
+              and, if necessary, the GtkFrame widget. 
+              The frame options can only changed via configure if at
+              least one frame option was given on creation of the table.
+              If the children are scaled or aligned each child is
+              embedded in a GtkAlignment widget.
+
+.EXAMPLE:
+set table [gnocl::table -homogeneous 1]
+$table addRow [list [gnocl::button -text "1"] "" [gnocl::button -text "2"]]
+$table addColumn [list [gnocl::button -text "3"] "" [gnocl::button -text "4"]]
+$table add [gnocl::button -text "5"] 1 0 -rowSpan 3
+$table add [gnocl::button -text "6"] 2 1 -columnSpan 2
+gnocl::window -title "Table" -child $table -defaultWidth 120 -defaultHeight 120 
+
+.SEEALSO:      box, paned, notebook, GtkTable, GtkFrame, GtkAlignment
+
+# box ----
+.NAME:  box
+.SHORTDESCR:    A widget which arranges its children horizontal or vertical.
+.SYNOPSIS:      box .VAROPTS.
+.OPTIONS:
+            -align; ALIGN_TYPE; center
+            This option influences only the widget given by -children.
+            Alignment of of the widgets given by the -children option
+            in the space allocated in the box.
+
+            OPT_BORDERWIDTH
+
+            -buttonType; boolean; false
+            Whether the box has button type.
+            This cannot be changed after creation.
+
+            -children; list-of-widget-IDs; ""
+            List of IDs of widgets which are placed inside the box. All
+            existing children are removed from the box.
+
+            OPT_DRAG_TARGETS
+            OPT_DROP_TARGETS
+
+            -expand; boolean; 0
+            This option influences only the widget given by -children.
+            Whether the widgets allocate the free space
+            in packing direction (vertical for vertical boxes, horizontal
+            for horizontal boxes ).
+
+            -fill; float or list of two floats ( 0 lt fill tl 1); {0 1} (horizontal), {1 0} vertical
+            This option influences only the widget given by -children.
+            Determines whether the allocated space is actually used.
+            The values can range from 0 
+            (meaning the child uses its minimum size) to 1 (meaning 
+            the child fills all of the available space). If
+            fill is a list, the first value is for the horizontal
+            and the second for the vertical expansion.
+
+            OPT_HEIGHT_GROUP
+
+            -homogeneous; boolean; 1
+            Whether all children of the box are given equal space. This
+            is only useful if the children are not scaled, i.e. a fill 
+            factor other than 0 or 1.
+
+            -label; string; ""
+            Label of the frame.
+
+            -labelAlign; float (0 lt xAlign lt 1) or one of left, center or right; 0
+            Alignment of the label.
+
+            -layout; ONEOF default, spread, edge, start or end; default
+            Layout of the buttons in a button box. This option is only
+            valid for boxes of buttonType.
+
+            OPT_NAME
+            OPT_ON_DRAG_DATA
+            OPT_ON_DROP_DATA
+            OPT_ON_POPUP_MENU
+            OPT_ON_SHOW_HELP
+
+            -orientation; ONEOF vertical, horizontal; horizontal
+            Orientation of the box, i.e. the placement of its children.
+            This cannot be changed after creation.
+
+            -padding; PADDING_TYPE; 0
+            This option influences only the widget given by -children.
+            Space in pixel between the children. This is
+            added to the global -spacing option. 
+
+            OPT_SENSITIVE
+
+            -shadow; ONEOF none, in, out, etchedIn, etchedOut; none
+            Shadow type of the frame.
+
+            OPT_SIZE_GROUP
+
+            -spacing; PADDING_TYPE; normal 
+            Space in pixel between the children of the box. This is added
+            to the -padding option, which can be set for each child
+            individually.
+
+            OPT_TOOLTIP
+            OPT_VISIBLE
+            OPT_WIDTH_GROUP
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.CMD:       addBegin list-of-widget-Ids .VAROPTS.
+.CMDDESCR:  Add widgets at the left, respectively top side of the box.
+.CMDOPTIONS:
+            -expand; boolean; 0
+            Whether the widgets allocate the free space
+            in packing direction (vertical for vertical boxes, horizontal
+            for horizontal boxes ).
+
+            -fill; float or list of two floats ( 0 lt fill tl 1); {0 1} (horizontal), {1 0} vertical
+            Determines whether the allocated space is actually used.
+            The values can range from 0 
+            (meaning the child uses its minimum size) to 1 (meaning 
+            the child fills all of the available space). If
+            fill is a list, the first value is for the horizontal
+            and the second for the vertical expansion.
+
+            -padding; PADDING_TYPE; 0
+            Space in pixel between the widgets. This is
+            added to the global -spacing option. 
+
+            -align; ALIGN_TYPE; center
+            Alignment of of the widgets in the space allocated in the box.
+
+.CMD:       add list-of-widget-Ids .VAROPTS.
+.CMDDESCR:  Synonym for addBegin.
+
+.CMD:       addEnd list-of-widget-Ids .VAROPTS.
+.CMDDESCR:  Add widgets at the right, respectively bottom side of the box. 
+            The same options as in the add command are valid.
+
+.DESCRIPTION: The Gnocl box widget is a combination of the GtkBox 
+              (or button box) and, if necessary, the GtkFrame widget. 
+              The frame options can only changed via configure if at
+              least one frame option was given on creation of the box.
+              If the children are scaled with the fill option by a factor
+              different then the default or 1, or aligned each child is
+              embedded in a GtkAlignment widget.
+
+.EXAMPLE:
+set box1 [gnocl::box -label "horizontal" -children [gnocl::button -text "1"]]
+set box2 [gnocl::box -label "vertical" -orientation vertical]
+$box1 add $box2
+$box2 add [list [gnocl::button -text "2"] [gnocl::button -text "3"]]
+gnocl::window -title "Box" -child $box1 -defaultWidth 100 -defaultHeight 100 
+
+.SEEALSO:   table, paned, notebook, GtkBox, GtkFrame, GtkAlignment
+
+# notebook -----
+.NAME:      notebook
+.SHORTDESCR: A widget which allows to interactively select which of its children is visible.
+.SYNOPSIS:  notebook .VAROPTS.
+.OPTIONS:
+            OPT_BORDERWIDTH
+
+            -children; list of page elements; ""
+                  Each page element consist of two or three elements:
+                  a widget-ID of a widget which is used as page content,
+                  a PERCENTSTRING which is used as page label, and
+                  optional a PERCENTSTRING which is used as page menu.
+
+            -onSwitchPage; string; ""
+               Tcl command which is executed if the page is changed.
+               Before evaluation the
+               following percent strings are substituted:
+               TABLE
+               %% | % 
+               %w | widget name.
+               %p | number of new chosen page
+               TABLE
+
+            -tabPosition; ONEOF left, right, top, or bottom; 
+                The edge at which the tabs for switching pages are drawn.
+
+            -showTabs; boolean; 1
+               Whether to show the tabs for switching pages.
+
+            -scrollable; boolean; 0
+               Whether the tabs are scrollable.
+
+            -enablePopup; boolean; 0
+               Whether the popup menu for switching pages is enabled.
+
+            -homogeneous; boolean; 0
+               Whether all tabs have the same size.
+
+            -showBorder; boolean; 1
+               Whether the border is shown if showTabs is false.
+
+            -page; integer; 0
+               Number of current page.
+
+            OPT_TOOLTIP
+            OPT_ON_SHOW_HELP
+            OPT_NAME
+            OPT_VISIBLE
+            OPT_SENSITIVE
+
+.DESCRIPTION: A notebook widget is a container widget whose children 
+               are pages that can be switched between using tab labels 
+               along one edge.
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.CMD:      addPage child label ?menu?
+.CMDDESCR: Adds a new page to the notebook. child is a widget-ID which
+            is used page content, label is a PERCENTSTRING which is 
+            used as page label, and optional a PERCENTSTRING which is
+            used as page menu. Returns the number of the added page.
+
+.CMD:       currentPage ?num?
+.CMDDESCR:  Switches to the page num if num is given.
+            Returns the number of the current page.
+
+.CMD:       nextPage ?count?
+.CMDDESCR:  Switches to the next or the actual plus count page. 
+            Returns the number of the current page.
+
+.CMD:       removePage num 
+.CMDDESCR:  Removes the page num.
+
+.EXAMPLE:
+set notebook [gnocl::notebook]
+$notebook addPage [gnocl::label -text "First Page"] "%__First"
+$notebook addPage [gnocl::label -text "Second Page"] "%__Second"
+gnocl::window -title "Notebook" -child $notebook
+
+.SEEALSO: box, table, paned, GtkNotebook
+
+# plug -----
+.NAME:     plug
+.SHORTDESCR: Toplevel to embed into another process
+.SYNOPSIS:  plug .VAROPTS.
+.OPTIONS:
+         -child; widget-ID;
+         Widget ID of the child.
+
+         -socketID; string; ""
+         ID of the window in which to embed. This cannot be changed
+         after creation.
+
+         OPT_VISIBLE
+         OPT_ON_DESTROY
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.CMD:      getID
+.CMDDESCR: Returns the window ID of the plug widget.
+
+.DESCRIPTION: 
+            With a plug widget a process can be embedded in another 
+            process using the XEMBED protocol. The GUI
+            of the other process does not have to be written in GTK+
+            or Gnocl. Qt, Tcl/Tk or pure X should work just fine.
+            If the other side uses Gnocl, it should use the socket
+            widget. The plug widget can either be embedded by setting
+            the -socketID option, or by setting the -plugID option
+            of the socket.
+            REMARK: embedding in Tk does not work. Any hint why is
+            appreciated.
+
+.SEEALSO:  socket, GtkPlug
+
+# socket -----
+.NAME:     socket
+.SHORTDESCR: Container for embedding windows of other processes
+.SYNOPSIS:  socket .VAROPTS.
+.OPTIONS:
+         -plugID; WindowID;
+         ID of the window to be embedded.
+
+         -onPlugAdded; string; ""
+         Tcl command which is executed if the plug window is added.
+         Before evaluation the
+         following percent strings are substituted:
+         TABLE
+         %% | % 
+         %w | widget name.
+         TABLE
+
+         -onPlugRemoved;
+         Tcl command which is executed if the plug window is removed.
+         Before evaluation the
+         following percent strings are substituted:
+         TABLE
+         %% | % 
+         %w | widget name.
+         TABLE
+
+         OPT_VISIBLE
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.CMD:      getID
+.CMDDESCR: Returns the window ID of the socket widget.
+
+.CMD:      getPlugID
+.CMDDESCR: Returns the window ID of the plug widget.
+
+.DESCRIPTION: A socket can embed a window from another process using
+            the XEMBED protocol. The GUI
+            of the other process does not have to be written in GTK+
+            or Gnocl. Qt, Tcl/Tk or pure X should work just fine.
+            If the other side uses Gnocl, it should use the plug
+            widget. The plug widget can either be embedded by setting
+            the -socketID option, or by setting the -plugID option
+            of the socket.
+
+.EXAMPLE:
+#!/bin/sh
+# the next line restarts using tclsh \
+exec wish "$0" "$@"
+   
+package require Gnocl
+wm state . withdrawn    ;# hide tk main window
+  
+set box [gnocl::box -orientation vertical]
+gnocl::window -title "Socket" -child $box 
+ 
+set menubar [gnocl::menuBar]
+set menu [gnocl::menu]
+$menu add [gnocl::menuItem -text "%#Quit" -onClicked exit]
+$menubar add [gnocl::menuItem -text "%__File" -submenu $menu]
+$box add $menubar -expand 0
+ 
+set socket [gnocl::socket]
+$box add $socket
+gnocl::update
+ 
+# embed a tk button in the Gnocl window
+toplevel .embed -use [format "0x%x" [$socket getID]]
+button .embed.but -text "tk in Gnocl" -command {puts "Hello tk!"}
+pack .embed.but
+# why is this necessary? How to do better?
+update 
+wm minsize .embed [winfo reqwidth .embed] [winfo reqheight .embed]
+
+.SEEALSO:  plug, GtkSocket
+
+# window -----
+.NAME:     window
+.SHORTDESCR: A standard top level window.
+.SYNOPSIS:  windows .VAROPTS.
+.OPTIONS:
+         -allowGrow; boolean;
+            Whether the window may be greater than its children
+            require.
+
+         -allowShrink; boolean;
+            Whether the window can be made smaller than the place that
+            its children require.
+
+         OPT_BORDERWIDTH
+
+         -child; widget-ID;
+            Widget ID of the child.
+
+         OPT_DATA
+
+         -decorated; boolean;
+            Whether the window should be decorated or not.
+
+         -defaultHeight; integer;
+            Default height of the window.
+
+         -defaultWidth; integer;
+            Default width of the window.
+
+         OPT_DRAG_TARGETS
+         OPT_DROP_TARGETS
+
+         -height; integer;
+         Height of the window.
+
+         -heightRequest; integer;
+         Requested height of the window.
+
+         -icon; PERCENTSTRING; ""
+            Sets the icon of the window which is shown, depending on
+            the window manager, in the window decoration, the window list, 
+            and/or if the window is iconified. This must be either a file
+                  name (prefix "%/") or empty.
+
+         OPT_NAME
+         OPT_ON_DELETE
+         OPT_ON_DESTROY
+         OPT_ON_DRAG_DATA
+         OPT_ON_DROP_DATA
+         OPT_ON_KEY_PRESS
+         OPT_ON_KEY_RELEASE
+         OPT_ON_POPUP_MENU
+         OPT_ON_REALIZE
+         OPT_ON_SHOW_HELP
+
+         -resizable; boolean; 1
+            Whether the user can change the size of the window.
+
+         OPT_SENSITIVE
+
+         -title; string; ""
+            Title of the window.
+
+         OPT_TOOLTIP
+
+         -modal; boolean; 0
+            Whether the window is modal, i.e. it grabs all GTK+ events.
+
+         OPT_VISIBLE
+
+         -width; integer;
+         Width of the window.
+
+         -widthRequest; integer;
+         Requested width of the window.
+
+         -x; integer;
+         X position of the window.
+
+         -y; integer;
+         Y position of the window.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       iconify ?state?
+.CMDDESCR:  Iconifies or deiconifies the window dependent on the value 
+            of state. The default value for state is true.
+
+.DESCRIPTION: To be visible each widget must be a direct or indirect 
+              children of a top level window. The window widget is the
+              standard top level window. Its appearance is dependent
+              of the window manager.
+
+.EXAMPLE:
+set label [gnocl::label -text "Simple Window"]
+gnocl::window -title "Window" -child $label -defaultWidth 200
+
+.SEEALSO:      dialog, GtkWindow
+
+# scrolledWindow -----
+.NAME:     scrolledWindow
+.SHORTDESCR: A window which adds scrollbars to its child.
+.SYNOPSIS:  scrolledWindow .VAROPTS.
+.OPTIONS:
+         OPT_BORDERWIDTH
+
+         -child; widget-ID;
+            Widget ID of the child.
+
+         OPT_DATA
+         OPT_NAME
+         OPT_ON_DESTROY
+
+         -scrollbar; always, never, automatic; automatic
+         When to show scrollbars. If the value is a list of
+         two elements, the first value is for the horizontal
+         scrollbar and the second value for the vertical scrollbar.
+
+         OPT_SENSITIVE
+         OPT_VISIBLE
+
+         -xLower; float
+         This is a read-only option which returns the lower limit in
+         horizontal direction.
+
+         -xPageSize; float
+         This is a read-only option which returns the page size
+         horizontal direction.
+
+         -xUpper; float
+         This is a read-only option which returns the upper limit in
+         horizontal direction.
+
+         -xValue; float;
+         Value in horizontal direction.
+
+         -yLower; float
+         The same as xLower, but in vertical direction.
+
+         -yPageSize; float
+         The same as xPageSize, but in vertical direction.
+
+         -yUpper; float
+         The same as xUpper, but in vertical direction.
+
+         -yValue; float
+         The same as xValue, but in vertical direction.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.DESCRIPTION: The scrolledWindow widget adds scrollbar to its child. 
+
+.EXAMPLE:
+set box [gnocl::box -orientation vertical]
+foreach el {1 2 3 4 5 6} {
+   $box add [gnocl::button -text "Button $el"]
+}
+set scrollWin [gnocl::scrolledWindow -child $box]
+gnocl::window -title "ScrolledWindow" -child $scrollWin -defaultWidth 200
+
+.SEEALSO:      GtkScrolledWindow
+
+# dialog -----
+.NAME:     dialog
+.SHORTDESCR: A top level window with standard layout.
+.SYNOPSIS:  dialog .VAROPTS.
+.OPTIONS:
+         -allowGrow; boolean;
+            Whether the window may be greater than its children
+            require.
+
+         -allowShrink; boolean;
+            Whether the window can be made smaller than the place that
+            its children require.
+
+         -buttons; list; %#Ok
+            List of buttons to be displayed. An element of the
+            list can be either the name of a stock button ("%#Cancel"),
+            pure text, a list of a button ID created via the 
+            gnocl::button command and a value which shall be returned
+            if this button is selected, or a list of text (either pure
+            text or a PERCENTSTRING) and a stock
+            icon ("%#Ok"), in which case the value of the stock icon
+            is returned, if the button is selected.
+
+         -child; widget-ID; 
+            The widget to be shown. This option or -text is required.
+
+         -defaultButton; integer; 
+            Selects the default button which can normally be chosen
+            by simply pressing return. The last button is selected
+            per default (see HIG).
+
+         -defaultHeight; integer;
+            Default height of the window.
+
+         -defaultWidth; integer;
+            Default width of the window.
+
+         OPT_DRAG_TARGETS
+         OPT_DROP_TARGETS
+
+         -icon; PERCENTSTRING; ""
+            Sets the icon of the dialog which is shown, depending on
+            the windowmanager, in the window decoration, the window list, 
+            and/or if the window is iconified. This must be either a file
+                  name (prefix "%/") or empty.
+
+         -modal; boolean; 1
+            Whether the window is modal, i.e. it grabs all GTK+ events.
+
+         OPT_NAME
+         OPT_ON_DELETE
+         OPT_ON_DESTROY
+         OPT_ON_DRAG_DATA
+         OPT_ON_DROP_DATA
+         OPT_ON_KEY_PRESS
+         OPT_ON_KEY_RELEASE
+         OPT_ON_POPUP_MENU
+         OPT_ON_REALIZE
+
+         -onResponse; string; "break"
+                  Tcl command which is executed if a button is chosen.
+                  If the command returns the return code TCL_BREAK,
+                  as it is the default, the dialog is closed.
+                  onResponse returns TCL_BREAK if either the last 
+                  command of onResponse
+                  is "break", or the tcl procedure which is called
+                  as last command in onResponse exits with
+                  "return -code break".
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %v | text of the button chosen, or "#NONE" or "#DELETE"
+                  TABLE
+
+         OPT_ON_SHOW_HELP
+
+         -resizable; boolean; 1
+            Whether the user can change the size of the window.
+
+         -text; string; 
+            The text to be shown. This option or -child is required.
+
+         -title; string; ""
+            Title of the dialog.
+
+         OPT_TOOLTIP
+
+         -type; ONEOF info warning question error; 
+            Type of the dialog. This determines the icon which is
+            displayed. If the option -text is given, the default is
+            info, if option -child is given, the default is to display
+            no icon.
+
+.DESCRIPTION: dialog is a top level window with an icon,
+         (which option -child is given, this is optional) 
+         some text or other widgets as content and one or more buttons. 
+         It could be created with
+         the Gnocl low level commands, but dialog makes it
+         very simple to inform the user with a standardized interface.
+         If dialog is modal, which is the default, the dialog command does 
+         not return a window ID. Instead it returns the text of the button 
+         chosen, or "#DELETE" if the window is deleted, for example by clicking
+         the close button in the window frame. If dialog is
+         not modal, a window ID is returned as in all other Gnocl widget
+         commands, and the button chosen can
+         be determined by the callback function onResponse.
+
+CMD_DELETE
+
+.EXAMPLE:
+proc responseProc { val } {
+   if { "Yes" == $val } {
+      return -code break
+   } else {
+      gnocl::dialog -type question -text "Are you sure?" -buttons %#No 
+   }
+}
+gnocl::dialog -type question -text "Do you like Gnocl?" -buttons "%#No {{%_I _like it} %#Yes}" -onResponse "responseProc %v"
+
+.SEEALSO:      window, GtkDialog, GtkMessageDialog
+
+# image -------------
+.NAME:         image
+.SHORTDESCR:   A widget which shows an image.
+.SYNOPSIS:     image .VAROPTS.
+.OPTIONS:
+            -image; PERCENTSTRING; ""
+                  Image to be shown, can be either a file (prefix "%/")
+                  or a stock item (prefix "%#").
+
+            -stockSize; ONEOF menu smallToolBar largeToolBar button dnd dialog; button
+                  Size of the image. This option is only valid for a stock
+                  image.
+
+            -align; ALIGN_TYPE
+                  Alignment of the image.
+
+            -xPad; integer; 0
+                  Horizontal padding.
+
+            -yPad; integer; 0
+                  Vertical padding.
+
+            -size; integer or list-of-two-integer; 
+               Width and height in pixel. If only one value is
+               given, both sizes are the same. The original image
+               is not remembered, that means that if for example an
+               image is first scaled by 0.5 (half size) and then scaled
+               by 2 (double size) it does not look like the original one,
+               since by decreasing its size information is lost which
+               cannot be recovered.
+               This option is only valid for pixbuf images,
+               i.e. not animated images from file.
+
+            OPT_VISIBLE
+            OPT_SENSITIVE
+            OPT_NAME
+
+.DESCRIPTION: An image widget shows an image. Different formats and
+               animation are supported.
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.EXAMPLE:
+set img [gnocl::image -image "%#SaveAs" -stockSize dialog]
+gnocl::window -title "Image" -child $img
+
+.SEEALSO:      GtkImage
+
+# label -------------
+.NAME:         label
+.SHORTDESCR:   A widget which shows a small amount of text.
+.SYNOPSIS:     label .VAROPTS.
+.OPTIONS:
+            -align; ALIGN_TYPE
+                  Alignment of the text.
+
+            OPT_DATA
+            OPT_HEIGHT_GROUP
+
+            -justify; ONEOF left, right, center, fill; left
+                  Determines the justification of the text lines. Has
+                  no effect if the label has only one line of text.
+
+            -maxWidthChars; integer; 
+                  The maximum size of the widget in characters. 
+                  This option is available since GTK+ 2.6.0
+
+            -mnemonicWidget; Wiget-ID; ""
+                  Widget which is activated for keyboard navigation.
+
+            -selectable; boolean; 0
+                  Whether the text can be selected.
+
+            OPT_SENSITIVE
+            OPT_SIZE_GROUP
+
+            -text; PERCENTSTRING; ""
+                  Text of the label.
+
+            OPT_VISIBLE
+            OPT_WIDTH_GROUP
+
+            -widthChars; integer; 
+                  Size of the widget in characters. 
+                  This option is available since GTK+ 2.6.0
+
+            -wrap; boolean; 0
+                  Whether the text should be automatically wrapped.
+
+            -xPad; integer; 0
+                  Horizontal padding.
+
+            -yPad; integer; 0
+                  Vertical padding.
+
+
+.DESCRIPTION: A label displays a small to medium amount of text. 
+               With the help of
+               embedded markup commands the text inside a label can even
+               have different fonts, colors etc.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.EXAMPLE:
+set label [gnocl::label -text {%<<span foreground="blue">Hello</span><span foreground="red">World</span>}]
+gnocl::window -title "Label" -child $label
+
+.SEEALSO:      text, GtkLabel
+
+# radioButton --------
+.NAME:       radioButton
+.SHORTDESCR: A widget from which only one of a group can be selected.
+.SYNOPSIS:   radioButton .VAROPTS.
+.OPTIONS:
+            -active; boolean; 
+                  This option sets the widget active. Since one button
+                  of the group must be active, a button can only set
+                  to non active by setting another button to active.
+                  This overrides the value
+                  of the associated variable. The associated
+                  variable is set accordingly. 
+
+            OPT_DATA
+            OPT_HASFOCUS
+
+            -indicatorOn; boolean; true
+                  Determines whether or not the toggle button is drawn 
+                  on screen
+
+            OPT_NAME
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+            OPT_ON_POPUP_MENU
+            OPT_ON_SHOW_HELP
+
+            -onToggled; string; ""
+                  Tcl command which is executed if the radio button is
+                  toggled.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  %v | value of the radio group
+                  TABLE
+
+            -onValue; string; 
+                  (Required option)
+                  Value to store in the button's associated variable 
+                  whenever this button is selected.
+
+            -relief; ONEOF normal, half, none; normal
+                  Relief of the button.
+
+            OPT_SENSITIVE
+
+            -text; PERCENTSTRING; ""
+                  Text or icon of the button
+
+            OPT_TOOLTIP
+
+            -variable; string;
+                  (Required option)
+                  Name of a (global) variable which is changed when the state 
+                  of the button changes. All radio buttons with the
+                  same variable are in one group. If the variable does
+                  not exist and the option -active is not set to 0, 
+                  it is created and set to the value of the
+                  first button in the group. If the variable does exist
+                  and its value corresponds to the value of a button in
+                  this group, this button is selected. If the value of
+                  variable is set externally (e.g. via the set),
+                  the corresponding button in the group is selected and
+                  its associated command executed.
+
+            OPT_VISIBLE
+
+.DESCRIPTION: A radio button is like a checkbutton, but in a group of 
+               radio buttons only one can be selected. All radio buttons 
+               which use the same variable form a group. The value of the
+               group is the value of the active radio button. 
+               The variable contains always the group value.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onToggled
+.CMDDESCR:  Executes the command given by the -onToggled option of the 
+            active item in the group.
+
+.EXAMPLE:
+set box [gnocl::box -orientation vertical]
+$box add [gnocl::radioButton -text "%__Cats" -onValue cats -variable animal -onToggled {puts "%v == $animal"}]
+$box add [gnocl::radioButton -text "%__Dogs" -onValue dogs -variable animal -onToggled {puts "%v == $animal"}]
+$box add [gnocl::radioButton -text "%__Birds" -onValue birds -variable animal -onToggled {puts "%v == $animal"}]
+gnocl::window -title "Radio Buttons" -child $box
+
+.SEEALSO:      button, checkButton, GtkRadioButton
+
+# checkButton --------
+.NAME:       checkButton
+.SHORTDESCR: A widget which changes between two states when clicked.
+.SYNOPSIS:   checkButton .VAROPTS.
+.OPTIONS:
+            -active; boolean; 0
+                  Whether the widget is active.
+
+            OPT_ACTIVE_BG
+            OPT_DATA
+            OPT_HASFOCUS
+
+            -indicatorOn; boolean; true
+                  Determines whether or not the toggle button is drawn 
+                  on screen
+
+            OPT_NAME
+            OPT_NORMAL_BG
+
+            -offValue; string; 0
+                  Value to store in the button's associated variable 
+                  whenever this button is not selected
+
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+            OPT_ON_POPUP_MENU
+            OPT_ON_SHOW_HELP
+
+            -onToggled; string; ""
+                  Tcl command which is executed if the radio button is
+                  toggled.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  %v | onValue or offValue depending of the state
+                  TABLE
+
+            -onValue; string; 1
+                  Value to store in the button's associated variable 
+                  whenever this button is selected
+
+            OPT_PRELIGHT_BG
+
+            -relief; ONEOF normal, half, none; normal
+                  Relief of the button.
+
+            OPT_SENSITIVE
+
+            -text; PERCENTSTRING; ""
+                  Text or icon of the button
+
+            OPT_TOOLTIP
+
+            -variable: string; 0
+                  Name of a (global) variable which is changed when the state 
+                  of the button changes. 
+
+            OPT_VISIBLE
+
+.DESCRIPTION: A check button widget has two states: on and off. If the state
+            is changed, it executes a command  and sets a tcl variable
+            appropriately.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onToggled
+.CMDDESCR:  Invoke  the  Tcl command associated with the check button if there 
+            is one. This command is ignored if the button's state is not 
+            sensitive.
+
+.EXAMPLE:
+set but [gnocl::checkButton -text "%__Status" -onValue "ok" -offValue "danger" -variable status]
+gnocl::window -title "Check Button" -child $but
+
+.SEEALSO:      button, radioButton, GtkCheckButton
+
+# scale -------------
+.NAME:       scale
+.SHORTDESCR: A slider widget for selecting a value from a range.
+.SYNOPSIS:   scale .VAROPTS.
+.OPTIONS:
+            OPT_DATA
+
+            -digits; integer; 1
+            The number of decimal places to display. If set to 0 the
+            value of the scale will be returned as integer.
+
+            -drawValue; boolean; 1
+            Whether to draw the value at one side of the slider.
+
+            OPT_HASFOCUS
+
+            -inverted; boolean; 1
+             Whether the minimum and maximum are swapped.
+
+            -lower; float; 0
+            The lower limit of the scale.
+
+            OPT_NAME
+            OPT_ON_REALIZE
+            OPT_ON_SHOW_HELP
+
+            -onValueChanged; string; ""
+            Tcl command which is executed if the scale changes its value.
+            Before evaluation the
+            following percent strings are substituted:
+            TABLE
+            %% | % 
+            %w | widget name
+            %v | current value
+            /TABLE
+
+            -orientation; ONEOF vertical, horizontal; vertical
+            Orientation of the slider. This cannot be changed after creation.
+
+            -pageInc; float; 10
+            The increment to use to make major changes to the value.
+
+            OPT_SENSITIVE
+
+            -stepInc; float; 1
+            The increment to use to make minor changes to the value.
+
+            OPT_TOOLTIP
+
+            -updatePolicy; ONEOF continuous discontinuous delayed; continuous
+            Determines when the associated variable is changed and command
+            executed.
+
+            -upper; float; 100
+            The upper limit of the scale.
+
+            -value; float; 0
+            The value of the scale.
+
+            -valuePos; ONEOF top, bottom, left, right; top
+            At which side of the slider the value is drawn.
+
+            -variable; string; ""
+                  Name of a (global) variable which is changed whenever 
+                  the scale is changed.
+
+            OPT_VISIBLE
+
+.DESCRIPTION: A scale widgets lets the user input numerical values.
+              If digits is zero, the value is an integer, else it is
+              a float.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:           onValueChanged
+.CMDDESCR:      Executes the associated command.
+
+.EXAMPLE:
+set scale [gnocl::scale -orientation horizontal -digits 0 -variable var -onValueChanged {puts "value is now %v == $var"} -value 32]
+gnocl::window -title "Scale" -child $scale
+
+.SEEALSO:   spinButton, GtkScale
+
+# spinButton -------------
+.NAME:       spinButton
+.SHORTDESCR: A widget which allows the user to input a number.
+.SYNOPSIS:   spinButton .VAROPTS.
+.OPTIONS:
+            OPT_DATA
+
+            -digits; integer; 1
+            The number of decimal places to display.
+
+            -editable; boolean; true
+                  Whether the the spinButton is editable.
+
+            OPT_HASFOCUS
+            OPT_HEIGHT_GROUP
+
+            -lower; float; 0
+            The lower limit of the spinButton.
+
+            -maxLength; integer; -1
+                  Maximum length of entry value (-1 means not limited).
+
+            OPT_NAME
+
+            -numeric; boolean; 1
+             Whether non-numeric characters should be ignored.
+
+            OPT_ON_SHOW_HELP
+
+            -onValueChanged; string; ""
+            Tcl command which is executed if the spinButton changes its value.
+            Before evaluation the
+            following percent strings are substituted:
+            TABLE
+            %% | % 
+            %w | widget name
+            %v | current value
+            /TABLE
+
+            -pageInc; float; 10
+            The increment to use to make major changes to the value.
+
+            OPT_SENSITIVE
+            OPT_SIZE_GROUP
+
+            -stepInc; float; 1
+            The increment to use to make minor changes to the value.
+
+            OPT_TOOLTIP
+
+            -upper; float; 100
+            The upper limit of the spinButton.
+
+            -value; float; 0
+            The value of the spinButton.
+
+            -variable; string; ""
+                  Name of a (global) variable which is changed whenever 
+                  the spinButton is changed.
+
+            OPT_VISIBLE
+            OPT_WIDTH_GROUP
+
+            -wrap; boolean; 0
+            Whether the spinButton wraps upon reaching its limits.
+
+
+.DESCRIPTION: A spinButton widgets lets the user input numerical values.
+              If digits is zero, the value is an integer, else it is
+              a float.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:           onValueChanged
+.CMDDESCR:      Executes the associated command.
+
+.EXAMPLE:
+set spin [gnocl::spinButton -upper 50 -variable var -onValueChanged {puts "value is now %v == $var"}]
+gnocl::window -title "SpinButton" -child $spin
+
+.SEEALSO:       entry, scale, GtkSpinButton
+
+# text --------
+.NAME:       text
+.SHORTDESCR: A widget for multi line formatted text editing.
+.SYNOPSIS:   text .VAROPTS.
+.OPTIONS:
+            -scrollbar; always, never, automatic; automatic
+            When to show scrollbars. If the value is a list of
+            two elements, the first value is for the horizontal
+            scrollbar and the second value for the vertical scrollbar.
+
+            -pixelsInsideWrap; integer
+            Pixels between lines after wrap.
+
+            -pixelsBelowLines; integer
+            Pixels below lines.
+
+            -pixelsAboveLines; integer
+            Pixels above lines.
+
+            -editable; boolean; 1
+            Whether the text in the widget is editable.
+
+            -wrapMode; ONEOF none, char, word;
+            Wrap mode used for the rendering of the cells.
+
+            -justify; ONEOF left, right, center, fill;
+            Justification of the lines in one cell.
+
+            -leftMargin; integer;
+
+            -rightMargin; integer;
+
+            -indent; integer;
+
+            -cursorVisible; boolean; 1
+            Whether the cursor is visible.
+
+            OPT_HASFOCUS
+            OPT_SENSITIVE
+            OPT_VISIBLE
+            OPT_NAME
+            OPT_ON_SHOW_HELP
+            OPT_TOOLTIP
+
+.DESCRIPTION: A text widget is used to input and show formatted text. Some 
+            text commands need an index as parameter. An index can be either 
+            a list of the row and the column, both starting at 0, for 
+            example "1 7", or a keyword like end, cursor, selectionStart, 
+            selectionEnd with an (without space) appended
+            character offset, for example "selectionStart+3".
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.CMD:           erase startIndex ?endIndex?
+.CMDDESCR:      Removes all text between startIndex and endIndex. endIndex defaults to end.
+
+.CMD:           select startIndex ?endIndex?
+.CMDDESCR:      Select the text between startIndex and endIndex. endIndex defaults to end.
+
+.CMD:           get startIndex ?endIndex?
+.CMDDESCR:      Returns the text between startIndex and endIndex. endIndex defaults to end.
+
+.CMD:           cut
+.CMDDESCR:      Copies all text to the clipboard and removes it from the widget.
+
+.CMD:           copy
+.CMDDESCR:      Copies all text to the clipboard.
+
+.CMD:           paste
+.CMDDESCR:      Pastes text from the clipboard at the current cursor position.
+
+.CMD:           getLength
+.CMDDESCR:      Returns the number of characters in the widget.
+
+.CMD:           getCursor 
+.CMDDESCR:      Returns the position position of the cursor as list of its row and column.
+
+.CMD:           setCursor index
+.CMDDESCR:      Sets the cursor to position index.
+
+.CMD:           insert index text ?-tags taglist?
+.CMDDESCR:      Inserts and position indext the text text. 
+                If taglist is given the text is taged with each element 
+                of the list.
+
+.CMD:           tag create tagName .VAROPTS.
+.CMDDESCR:      Creates a tag with name tagName and configures it dependent of the options given. The options are the same as with tag configure.
+
+.CMD:         scrollToPosition index .VAROPTS.
+.CMDDESCR:    Scrolls the widget so that the specified index is visible. 
+
+.CMDOPTIONS:
+               -align; ALIGN_TYPE;
+               Specifies where the index shall be shown.
+
+               -margin; 0 lt float lt 1;
+               Specifies the margin.
+
+.CMD:           tag configure tagName .VAROPTS.
+.CMDDESCR:      Configures the existing tag tagName.
+.CMDOPTIONS:
+               -background; COLOR;
+               Background color of the text.
+
+               -foreground; COLOR;
+               Foreground color of the text.
+
+               -font; FONT;
+               Font of the text.
+
+               -fontFamily; ;
+               Font family of the text.
+
+               -fontStyle; ONEOF normal, oblique, italic; normal
+               Font style of the text.
+
+               -fontVariant; ONEOF normal, smallCaps; normal
+               Font variant of the text.
+
+               -fontWeight; ONEOF ultralight, light, normal, bold, ultrabold, heavy; normal
+               Font weight of the text.
+
+               -fontRise; integer; 0
+               How many pixels the text should be risen.
+
+               -fontStretch; ONEOF ultraCondensed, extraCondensed, condensed, semiCondensed, normal, semiExpanded, expanded, extraExpanded, ultraExpanded; normal
+               Font stretch of the text.
+
+               -fontSize; integer;
+               Font size of the text.
+
+               -fontScale; float ORONEOF xx-small, x-small, small, medium, large, x-large, xx-large; normal
+               Font scale used.
+
+               -wrapMode; ONEOF none, char, word;
+               Wrap mode used.
+
+               -justify; ONEOF left, right, center, fill;
+               Justification of the lines.
+
+               -strikethrough; boolean; 0
+               Whether the text is struck through.
+
+               -underline; ONEOF none, single, double, low; none
+               How the text should be underlined.
+
+               -editable; boolean; 0
+               Whether the text can be edited.
+
+               -invisible; boolean; 0
+               Whether the text is invisible.
+
+.EXAMPLE:
+set text [gnocl::text]
+$text tag create bold -fontWeight bold -foreground blue
+$text insert end "This is "
+$text insert end "Gnocl" -tags bold
+$text insert end "!"
+gnocl::window -title "Text" -child $text
+
+.SEEALSO:   entry, label, GtkTextBuffer, GtkTextView
+
+
+# entry --------
+.NAME:       entry
+.SHORTDESCR: A widget which allows the user to input a small amount of text.
+.SYNOPSIS:   entry .VAROPTS.
+.OPTIONS:
+            OPT_DATA
+
+            -editable; boolean; true
+                  Whether the the entry is editable.
+
+            OPT_HASFOCUS
+            OPT_HEIGHT_GROUP
+
+            -maxLength; integer; -1
+                  Maximum length of entry value (-1 means not limited).
+
+            OPT_NAME
+
+            -onActivate; string; ""
+                  Tcl command which is executed if Enter is pressed in
+                  the entry.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  TABLE
+
+            -onChanged; string; ""
+                  Tcl command which is executed if the value of the 
+                  entry is changed via the GUI.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  %v | value of the active item
+                  TABLE
+                  This command is not called if the value is changed
+                  via the option -value.
+
+            OPT_ON_REALIZE
+            OPT_ON_SHOW_HELP
+            OPT_SENSITIVE
+            OPT_SIZE_GROUP
+            OPT_TOOLTIP
+
+            -textVisible; boolean; true
+                  Whether the text is visible.
+
+            -value; string; ""
+                  Text of the entry.
+
+            -variable; string; ""
+                  name of a (global) variable which is changed whenever 
+                  the entry is changed 
+
+            OPT_VISIBLE
+
+            -widthChars; integer; 
+                  Size of the widget in characters.
+
+            OPT_WIDTH_GROUP
+
+.DESCRIPTION: A entry widget lets the user input some text.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:           onChanged
+.CMDDESCR:      Executes the command given by the -onChanged option.
+
+.EXAMPLE:
+set entry [gnocl::entry -variable entryText -value foo]
+gnocl::window -title "Entry" -child $entry 
+
+.SEEALSO:   text, combo, spinButton, GtkEntry
+
+# button --------
+.NAME:       button
+.SHORTDESCR: A widget which executes a command when clicked.
+.SYNOPSIS:   button .VAROPTS.
+.OPTIONS:
+            OPT_ACTIVE_BG
+            OPT_DATA
+            OPT_HASFOCUS
+            OPT_HEIGHT_GROUP
+
+            -icon; PERCENTSTRING; ""
+                  Image to be shown, can be either a file (prefix "%/")
+                  or a stock item (prefix "%#").
+
+            OPT_NAME
+            OPT_NORMAL_BG
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+
+            -onClicked; string; ""
+                  Tcl command which is executed if the button is clicked.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  TABLE
+
+            OPT_ON_POPUP_MENU
+            OPT_ON_REALIZE
+            OPT_ON_SHOW_HELP
+            OPT_PRELIGHT_BG
+
+            -relief; ONEOF normal, half, none; normal
+                  Relief of the button.
+
+            OPT_SENSITIVE
+            OPT_SIZE_GROUP
+
+            -text; PERCENTSTRING; ""
+                  Text or stock item of the button.
+
+            OPT_TOOLTIP
+            OPT_VISIBLE
+            OPT_WIDTH_GROUP
+
+.DESCRIPTION: A button widget executes a command on mouse click.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onClicked
+.CMDDESCR:  Executes the Tcl command associated with the button if there 
+            is one. This command is ignored if the button's state is not 
+            sensitive.
+
+.EXAMPLE:
+set box [gnocl::box -buttonType 1]
+$box add [gnocl::button -text "%_Do_n't save" -icon "%#No"]
+$box add [gnocl::button -text "%#Cancel"]
+$box add [gnocl::button -text "%#Save"]
+gnocl::window -title "Buttons" -child $box
+
+.SEEALSO:      checkButton, radioButton, GtkButton
+
+# colorButton --------
+.NAME:       colorButton
+.SHORTDESCR: A button to launch a color selection dialog.
+.SYNOPSIS:   colorButton .VAROPTS.
+.OPTIONS:
+            -alpha; integer;
+            Alpha value to be used
+
+            -color; COLOR;
+            Color to be used.
+
+            OPT_DATA
+            OPT_HASFOCUS
+            OPT_HEIGHT_GROUP
+            OPT_NAME
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+
+            -onClicked; string; ""
+                  Tcl command which is executed if the button is clicked.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  TABLE
+
+            OPT_ON_POPUP_MENU
+            OPT_ON_REALIZE
+            OPT_ON_SHOW_HELP
+
+            -relief; ONEOF normal, half, none; normal
+                  Relief of the button.
+
+            OPT_SENSITIVE
+            OPT_SIZE_GROUP
+
+            -title; string;
+            Title of the font selection dialog.
+
+            OPT_TOOLTIP
+
+            -useAlpha; bool; false
+            Whether to use the alpha value.
+
+            OPT_VISIBLE
+            OPT_WIDTH_GROUP
+
+.DESCRIPTION: A button widget which launches a color selection dialog.
+            This command is available since GTK+ 2.4.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onClicked
+.CMDDESCR:  Executes the Tcl command associated with the button if there 
+            is one. This command is ignored if the button's state is not 
+            sensitive.
+
+.EXAMPLE:
+set button [gnocl::colorButton -title "Gnocl default color" -color "DarkSeaGreen"]
+gnocl::window -title "colorButton" -child $button
+
+.SEEALSO:      fontButton, GtkColorButton
+
+# fontButton --------
+.NAME:       fontButton
+.SHORTDESCR: A button to launch a font selection dialog.
+.SYNOPSIS:   fontButton .VAROPTS.
+.OPTIONS:
+            OPT_DATA
+
+            -font; FONT;
+            Font to be used.
+
+            OPT_HASFOCUS
+            OPT_HEIGHT_GROUP
+            OPT_NAME
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+
+            -onClicked; string; ""
+                  Tcl command which is executed if the button is clicked.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  TABLE
+
+            OPT_ON_POPUP_MENU
+            OPT_ON_REALIZE
+            OPT_ON_SHOW_HELP
+
+            -relief; ONEOF normal, half, none; normal
+                  Relief of the button.
+
+            OPT_SENSITIVE
+
+            -showSize; boolean; true
+            Whether to show the size of the font.
+
+            -showStyle; boolean; true
+            Whether to show the style of the font.
+
+            OPT_SIZE_GROUP
+
+            -title; string;
+            Title of the font selection dialog.
+
+            OPT_TOOLTIP
+            OPT_VISIBLE
+            OPT_WIDTH_GROUP
+
+.DESCRIPTION: A button widget which launches a font selection dialog.
+            This command is available since GTK+ 2.4.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onClicked
+.CMDDESCR:  Executes the Tcl command associated with the button if there 
+            is one. This command is ignored if the button's state is not 
+            sensitive.
+
+.EXAMPLE:
+set button [gnocl::fontButton -title "Gnocl default font" -font "Serif Sans 14"]
+gnocl::window -title "fontButton" -child $button
+
+.SEEALSO:      colorButton, GtkFontButton
+
+# tree ---------
+.NAME:          tree
+.SHORTDESCR:    A widget which displays text or other items arranged in a tree.
+.SYNOPSIS:      tree .VAROPTS.
+.OPTIONS:
+               -children; list; ""
+               List of rows. Each row consists of a list of cell entries.
+
+               -columns; integer; 
+               Number of columns
+
+            OPT_HASFOCUS
+
+               -headersClickable; boolean; true
+               Whether the headers are clickable.
+
+               -headersVisible; boolean; true
+               Whether to show the headers.
+
+            OPT_HEIGHT_GROUP
+
+               -heightRequest; int
+               Height which is requested in the parent widget. The actual
+               height can be larger.
+
+            OPT_NAME
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+            OPT_ON_POPUP_MENU
+
+               -onRowCollapsed; string; ""
+               Command to execute in the global scope if a row is collapsed.
+               Before evaluation the following percent strings
+               are substituted:
+               TABLE
+               %% | % 
+               %w | widget name
+               %p | list of paths of the collapsed row
+               /TABLE
+
+               -onRowExpanded; string; ""
+               Command to execute in the global scope if a row is expanded.
+               Before evaluation the following percent strings
+               are substituted:
+               TABLE
+               %% | % 
+               %w | widget name
+               %p | list of paths of the expanded row 
+               /TABLE
+
+               -onSelectionChanged; string; ""
+               Command to execute in the global scope if the selection 
+               could be changed. Occasionaly
+               it is executed, if the selection has not changed.
+               Therefor the "%p" parameter can also be the empty string,
+               which is not a valid path.
+               Before evaluation the following percent strings
+               are substituted:
+               TABLE
+               %% | % 
+               %w | widget name
+               %p | list of paths of the selection
+               /TABLE
+
+               -selectionMode; ONEOF single, browse, multiple, extended; 
+               Selection mode
+
+            OPT_SIZE_GROUP
+
+               -titles; string; ""
+               Titles of the columns
+
+               -types; ONEOF boolean, integer, float, string, markup, image; string
+               Types of column entries. If type is markup the cell content
+               is interpreted as 
+               <link linkend='markupString'><type>markup-string</type></link>. 
+               For special formatting of the other types the -onCellData
+               callback can be used.
+
+               -scrollbar; always, never, automatic; automatic
+               When to show scrollbars. If the value is a list of
+               two elements, the first value is for the horizontal
+               scrollbar and the second value for the vertical scrollbar.
+
+            OPT_VISIBLE
+            OPT_WIDTH_GROUP
+
+               -widthRequest; int
+               Width which is requested in the parent widget. The actual
+               width can be larger.
+
+.DESCRIPTION:  The tree command creates a new tree widget.
+               On creation at least on of the options 
+               <option>-columns</option>,
+               <option>-children</option>, 
+               <option>-titles</option> or
+               <option>-types</option> must be given. The number
+               of columns of the created tree is the maximum of
+               these four values. This number cannot be changed
+               after creation, but hiding columns should do the
+               job in most cases.
+               NEWPARA 
+               Each row can be identified by its path. A path
+               is a list of integers which describe recursively 
+               the position of the row relative to its parent:
+               the highest level rows have the path 0, 1 etc.;
+               the children of the second row the path {1 0}, {1 1},
+               {1 2} etc.; the children of the first child of the
+               second child of the second row have the path
+               {1 1 0 0}, {1 1 0 1}, {1 1 0 2} etc. The level
+               above the first level has the empty path {}. Each
+               element in a path may also be "end" which is equivalent
+               to the last element in this level.
+               A given path may point to different rows during the lifetime
+               of a tree, since the position of a row is dependent on the sort
+               order and changes if rows are inserted or deleted before
+               the referenced row.
+               NEWPARA
+               A path may be converted to a reference. A reference points
+               during the lifetime of the tree and the lifetime of the
+               referenced row to the same row, independent of sort order
+               or insertion or deletion. Since a reference has to be stored
+               inside the tree widget, it should be deleted if it is not
+               needed anymore.
+
+.CMD:          add pathOrReference row-list
+.CMDDESCR:     Add rows as children to the pathOrReference 
+               <option><replaceable>pathOrReference</replaceable></option>.
+               The new rows are placed behind existing rows.
+               Use the empty path {} to add toplevel rows. The 
+               command returns a list of paths to every new row.
+               If the column type is "image", the entry must be 
+               a percent string of type file which determines the
+               image file to be loaded (e.g. ("%/./gnocl.png")
+
+.CMDOPTIONS:
+               -singleRow; boolean; false
+               If set to true, row-list is not a list of rows but only
+               a list of elements for a single row. 
+               This option exists only to simplify
+               the addition of one single row.
+
+               -singleColumn; boolean; false
+               If set to true, row-list is not a list of rows but only
+               a list of one element for every row. 
+               This option exists only to simplify
+               the addition of one single column.
+
+.CMD:          addBegin pathOrReference row-list
+.CMDDESCR:     Same as <option>add</option>, but adds the new
+               rows before existing rows.
+
+.CMD:          addEnd pathOrReference row-list
+.CMDDESCR:     Same as <option>add</option>.
+
+.CMD:          cellConfigure pathOrReference column .VAROPTS.
+.CMDDESCR:     Configure a cell.
+.CMDOPTIONS:
+               -value;;
+               Value of the cell. The type must correspond to the
+               type of the column.
+
+               -visible; boolean; 1
+               Whether this cell is visible.
+
+.CMD:         collapse .VAROPTS.
+.CMDDESCR:    Collapse a row.
+.CMDOPTIONS:
+               -path; pathOrReference; 0
+               Which row to collapse.
+
+.CMD:          columnCget column option
+.CMDDESCR:     Returns the value for one column option. 
+               The option may have any of the values accepted 
+               by columnConfigure. 
+               TODO: not yet all options implemented.
+
+.CMD:          columnConfigure column .VAROPTS.
+.CMDDESCR:     Configure a column
+.CMDOPTIONS:
+               -autoResize; boolean; true
+               Whether the width of the column should automatically 
+               increase if necessary
+
+               -onCellData; string; ""
+               Command which is executed, before the content of a cell
+               is rendered. This can be used to configure the cells
+               dependent on their content. The command must return
+               valid row configuration options (e.g. "-foreground red").
+               Before evaluation the
+               following percent strings are substituted
+               TABLE
+               %% | % 
+               %w | widget name
+               %p | path of the cell
+               %v | value (content) of the cell
+               /TABLE
+
+               -onEdited; string; ""
+               Only valid for editable columns. Command which is 
+               executed, if a cell in this column is edited. 
+               Before evaluation the
+               following percent strings are substituted
+               TABLE
+               %% | % 
+               %w | widget name
+               %p | path of selected cell
+               %v | new text (value)
+               /TABLE
+
+               -onToggled; string; ""
+               Only valid for boolean columns. Command which is 
+               executed, if it a cell in this column is toggled. 
+               Before evaluation the
+               following percent strings are substituted
+               TABLE
+               %% | % 
+               %w | widget name
+               %p | path of selected cell
+               /TABLE
+
+               -visible; boolean; 1
+               Whether this column is visible. 
+
+               -clickable; boolean;
+               Whether it can be clicked on the column header and
+               sort this column.
+
+               -title; string; ""
+               Title of the column.
+
+               -resizable; boolean; 1
+               Whether the column can be resized by the user.
+
+               -reorderable
+               Whether the column can be moved to another place in the tree.
+
+               -minWidth; integer;
+               Minimum width of the column in pixel.
+
+               -maxWidth; integer;
+               Maximum width of the column in pixel.
+
+               -titleAlign; left, center, right or a float between 0 and 1
+               Horizontal alignment of the title.
+
+               -align; ALIGN_TYPE 
+               Alignment of the cells.
+
+               -width; integer;
+               Width of the cells.
+
+               -height; integer
+               Height of the cells.
+
+               -xPad; integer
+               Horizontal padding of the column.
+
+               -yPad; integer
+               Vertical padding of the column.
+
+               -background; COLOR;
+               Background color of the cells.
+
+               -foreground; COLOR;
+               Foreground color of the cells.
+
+               -font; FONT;
+               Font used for the rendering of the cells.
+
+               -fontFamily; ;
+               Font family used for the rendering of the cells.
+
+               -fontStyle; ONEOF normal, oblique, italic; normal
+               Font style used for the rendering of the cells.
+
+               -fontVariant; ONEOF normal, smallCaps; normal
+               Font variant used for the rendering of the cells.
+
+               -fontWeight; ONEOF ultralight, light, normal, bold, ultrabold, heavy; normal
+               Font weight used for the rendering of the cells.
+
+               -fontRise; integer; 0
+               How many pixels the text should be risen.
+
+               -fontStretch; ONEOF ultraCondensed, extraCondensed, condensed, semiCondensed, normal, semiExpanded, expanded, extraExpanded, ultraExpanded; normal
+               Font stretch used for the rendering of the cells.
+
+               -fontSize; integer;
+               Font size used for the rendering of the cells.
+
+               -fontScale; float ORONEOF xx-small, x-small, small, medium, large, x-large, xx-large; normal
+               Font scale used for the rendering of the cells.
+
+               -strikethrough; boolean; 0
+               Whether the text is struck through.
+
+               -underline; ONEOF none, single, float, low; none
+               How the text in the cells should be underlined.
+
+               -editable; boolean; 0
+               Whether the text in the cells can be edited.
+
+.CMD:          configure .VAROPTS.
+.CMDDESCR:     Configure the widget. Option may have any of
+               the values accepted by the tree command except from
+               <option>columns</option> and <option>-types</option>.
+
+.CMD:          coordsToPath x y
+.CMDDESCR:     Calculates from the given windows coordinates x and y
+               (for example aquired from the onButtonPress callback)
+               to a path. Returns a
+               list of four elements: a path, a column, x cell coordinate and
+               y cell coordinate.
+
+CMD_DELETE
+
+.CMD:          deleteReference reference
+.CMDDESCR:     Deletes a reference. The reference may not be used after
+               it has been deleted.
+
+.CMD:          erase startPathOrReference ?endPathOrReference?
+.CMDDESCR:     Deletes all rows between startPathOrReference and 
+               endPathOrReference. 
+               Deletes only one row if only startPathOrReference is given.
+               If endPathOrReference is "end" deletes all child rows of
+               the parent of startPathOrReference starting 
+               at startPathOrReference.
+               "erase 0 end" deletes all rows.
+
+.CMD:         expand .VAROPTS.
+.CMDDESCR:    Expand a row.
+.CMDOPTIONS:
+               -path; pathOrReference; 0
+               Which row to expand.
+
+               -recursive; boolean; 1
+               Whether to expand all children recursively.
+
+.CMD:          get pathOrReference column
+.CMDDESCR:     Get the value of one cell.
+
+.CMD:         getNumChildren ?pathOrReference?
+.CMDDESCR:    Returns the number of children for the given pathOrReference. If 
+              no pathOrReference is given the number of top level rows 
+              is returned.
+
+.CMD:          getReference path 
+.CMDDESCR:     Returns a reference to path.
+
+.CMD:          getSelection
+.CMDDESCR:     Returns a list of the paths of the selected rows.
+
+.CMD:          onSelectionChanged
+.CMDDESCR:     Executes the onSelectionChanged command, if there
+               is any. Otherwise does nothing.
+
+.CMD:          setSelection pathOrReference-list .VAROPTS.
+.CMDDESCR:     Selects each row that is given in pathOrReference-list.
+               The onSelectionChanged callback is not called. 
+               If pathOrReference is "all" all rows are selected.
+               To select more than one row, selectionMode must be
+               set to multiple or extended.
+.CMDOPTIONS:
+               -add; boolean; false
+               If set to true, the given rows are added to the
+               selection, else the selection contains only
+               the given rows.
+
+               -unselect; boolean; false
+               If set to true, the selection is removed from the given
+               rows.
+
+               -single; boolean; false
+               If set to true, pathOrReference-list is not a list of paths but only
+               one single pathOrReference. This option exists only to simplify
+               the selection of one single row.
+
+.CMD:          referenceToPath reference
+.CMDDESCR:     Returns the path of reference.
+
+.CMD:         scrollToPosition .VAROPTS.
+.CMDDESCR:    Scrolls the widget so that the specified row is visible. If
+              only "-column" is given, the widget is scrolled only horizontal
+              so that this column is visible. If neither "-column" nor
+              "-path" is given, the widget is scrolled to the last
+              expanded row.
+.CMDOPTIONS:
+               -align; ALIGN_TYPE;
+               Specifies where the row shall be shown.
+
+               -path; pathOrReference;
+               Specifies which row shall be shown.
+
+               -column; integer;
+               Specifies which column shall be shown.
+
+.CMD:         setCursor pathOrReference .VAROPTS.
+.CMDDESCR:    Sets the cursor to a specific row.
+.CMDOPTIONS:
+               -column; integer; 
+               Sets the cursor to a specific column in the row
+
+               -startEdit; boolean; 0
+               Whether to start editing the cell given by column and row.
+               The column has to be editable and the tree has to be realized.
+
+.EXAMPLE:
+set tree [gnocl::tree -types {string integer} -titles {"" "# of Legs"}]
+$tree add {} {Mamals Birds Bugs}
+$tree add 0 {{Cat 4} {Dog 4} {Human 2}}
+foreach {paro pred} [$tree add 1 {Parrots Predator}] break
+$tree add $paro {{Cockatoo 2} {Amazone 2}}
+$tree add $pred {{Hawk 2} {Eagle 2}}
+$tree expand -path "1" -recursive 1
+gnocl::window -title "Tree" -child $tree -defaultWidth 300 -defaultHeight 200
+
+.SEEALSO:      list, GtkTreeView, GtkTreeStore
+
+# list ---------
+.NAME:          list
+.SHORTDESCR:    A widget which displays text or other items arranged in rows and columns.
+.SYNOPSIS:      list .VAROPTS.
+.DESCRIPTION:  The list widget is basically a tree widget where rows
+               cannot have children. Therefor the list command has 
+               the same options as the tree command.
+
+.SEEALSO:      tree, GtkListView, GtkListStore
+.EXAMPLE:
+set list [gnocl::list -titles {"bool" "string" "integer" "float"} -types {boolean string integer float} -children {{1 "box" 345 4.546} {0 "text" 123 5.79}}]
+$list add {{0 "list" -104 1.45} {1 "window" 3350 9.58}}
+$list columnConfigure 2 -onCellData "setColor %v"
+proc setColor { val } {
+   if { $val < 0 } {
+      return "-foreground red"
+   }
+   return "-foreground blue"
+}
+gnocl::window -title "List" -child $list -defaultWidth 250 -defaultHeight 120
+
+# eventBox -----
+.NAME:     eventBox
+.SHORTDESCR: A widget which catches events for its child widget.
+.SYNOPSIS:  eventBox .VAROPTS.
+.OPTIONS:
+         -background; COLOR;
+         Background color of the widget.
+
+         -child; widget-ID;
+         Widget ID of the child.
+
+            OPT_DRAG_TARGETS
+            OPT_DROP_TARGETS
+            OPT_HASFOCUS
+            OPT_HEIGHT_GROUP
+            OPT_NAME
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+            OPT_ON_DESTROY
+            OPT_ON_DRAG_DATA
+            OPT_ON_DROP_DATA
+            OPT_ON_MOTION
+            OPT_ON_POPUP_MENU
+            OPT_ON_SHOW_HELP
+            OPT_SENSITIVE
+            OPT_SIZE_GROUP
+
+         -title; string; ""
+            Title of the window.
+
+            OPT_TOOLTIP
+            OPT_VISIBLE
+            OPT_WIDTH_GROUP
+
+CMD_DELETE
+CMD_CONFIGURE
+CMD_CGET
+
+.DESCRIPTION: Some widgets like label do not have an own window. This 
+            means that they cannot catch events and cannot set their
+            background color. If put inside an eventBox the latter can
+            handle all these tasks.
+
+.EXAMPLE:
+set label [gnocl::label -text "Some text"]
+set box [gnocl::eventBox -child $label -tooltip "Helpful hint" -background lightblue]
+gnocl::window -title "EventBox" -child $box 
+
+.SEEALSO:      GtkEventBox
+
+# expander -----
+.NAME:     expander
+.SHORTDESCR: A container, which can hide its child widget. 
+.SYNOPSIS:  expander .VAROPTS.
+.OPTIONS:
+         -child; widget-ID;
+         Widget ID of the child.
+
+         -expand; boolean; 0
+         Whether the child is expanded (shown).
+
+         -label; PERCENTSTRING; ""
+         Label of the expander.
+
+            OPT_ON_DESTROY
+            OPT_VISIBLE
+
+CMD_DELETE
+CMD_CONFIGURE
+CMD_CGET
+
+.DESCRIPTION: A expander widget allows the user to hide or show 
+            its child. This is for example useful to hide initially
+            advanced option in a dialog.
+            This command is available since GTK+ 2.4.
+
+.EXAMPLE:
+set child [gnocl::button -text "Button 1"]
+set expander [gnocl::expander -label "%_E_xpander" -child $child]
+set box [gnocl::box -orientation vertical]
+$box add [gnocl::button -text "Button 2"]
+$box add $expander
+gnocl::window -title "Expander" -child $box 
+
+.SEEALSO:      GtkExpander
+
+# colorSelection -----
+.NAME:     colorSelection
+.SHORTDESCR: A standard dialog to choose a color.
+.SYNOPSIS:  colorSelection .VAROPTS.
+.OPTIONS:
+         -title; string; ""
+            Title of the colorSelection.
+
+         -modal; boolean; 0
+            Whether the window is modal, i.e. it grabs all GTK+ events.
+            If the dialog is created modal, the command returns the
+            chosen color as list of rgba values or the empty string 
+            instead of the usual widget ID.
+
+         -palette; boolean; 1
+            Whether the dialog has a palette.
+
+         -opacity; boolean; 0
+            Whether the dialog has a control for opacity.
+
+         -color; COLOR; 
+            Default color for the dialog.
+
+         -alpha; integer; 
+            Default alpha value.
+
+         -onClicked; string; ""
+            Command to be executed in the global scope if the Ok or
+            Cancel button is chosen.
+            Before evaluation the following percent strings
+            are substituted:
+            TABLE
+            %% | % 
+            %w | widget name
+            %x | button chosen: OK or CANCEL
+            %r | red value
+            %g | green value
+            %b | blue value
+            %a | alpha value
+            /TABLE
+
+            OPT_VISIBLE
+            OPT_NAME
+            OPT_ON_DESTROY
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.DESCRIPTION: A colorSelection is used to let the user choose a color
+               in a standardized way. If the dialog
+               is created modal, the commands returns a list of the
+               red, blue, green and alpha, or the empty string if
+               Cancel is chosen. 
+               Otherwise it returns a widget ID in the
+               usual way. The files and buttons chosen can be retrieved
+               via the onClicked command.
+
+.EXAMPLE:
+set color [gnocl::colorSelection -title "Please choose a color" -modal 1 -color lightblue]
+
+.SEEALSO:      fileSelection, fontSelection, GtkColorSelectionDialog
+
+# fontSelection -----
+.NAME:     fontSelection
+.SHORTDESCR: A standard dialog to choose a font.
+.SYNOPSIS:  fontSelection .VAROPTS.
+.OPTIONS:
+         -title; string; ""
+            Title of the fontSelection.
+
+         -modal; boolean; 0
+            Whether the window is modal, i.e. it grabs all GTK+ events.
+            If the dialog is created modal, the command returns the
+            chosen color as list of rgba values or the empty string 
+            instead of the usual widget ID.
+
+         -font; FONT; 
+            Default font for the dialog.
+
+         -previewText; string; "abcdefghijk ABCDEFGHIJK"
+            Text which is used in the preview.
+
+         -onClicked; string; ""
+            Command to be executed in the global scope if the Ok or
+            Cancel button is chosen.
+            Before evaluation the following percent strings
+            are substituted:
+            TABLE
+            %% | % 
+            %x | button chosen: OK or CANCEL
+            %f | font chosen
+            /TABLE
+
+            OPT_VISIBLE
+            OPT_NAME
+            OPT_ON_DESTROY
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.DESCRIPTION: A fontSelection is used to let the user choose a font
+               in a standardized way. If the dialog
+               is created modal, the commands returns the font
+               or the empty string if Cancel is chosen. 
+               Otherwise it returns a widget ID in the
+               usual way. The font and buttons chosen can be retrieved
+               via the onClicked command.
+
+.EXAMPLE:
+set font [gnocl::fontSelection -title "Please choose a font" -modal 1 -font "Serif Bold 14"]
+
+.SEEALSO:      fileSelection, colorSelection, GtkFontSelectionDialog
+
+
+# appletFactory -----
+.NAME:     appletFactory
+.SHORTDESCR: A command which creates a Gnome panel applet.
+.SYNOPSIS:  appletFactory iid command
+.OPTIONS:
+         -background; COLOR;
+         Background color of the widget.
+
+         -child; widget-ID;
+         Widget ID of the child.
+
+            OPT_DRAG_TARGETS
+            OPT_DROP_TARGETS
+            OPT_NAME
+            OPT_ON_BUTTON_PRESS
+            OPT_ON_BUTTON_RELEASE
+
+         -onChangeOrientation; string; "" 
+            Command to be executed in the global scope if the panel including
+            the applet changes its orientation.
+            Before evaluation the
+            following percent strings are substituted:
+            TABLE
+            %% | % 
+            %w | widget name.
+            TABLE
+
+         -onChangeSize; string; "" 
+            Command to be executed in the global scope if the panel including
+            the applet changes its size.
+            Before evaluation the
+            following percent strings are substituted:
+            TABLE
+            %% | % 
+            %w | widget name.
+            TABLE
+
+            OPT_ON_DESTROY
+            OPT_ON_DRAG_DATA
+            OPT_ON_DROP_DATA
+            OPT_ON_MOTION
+            OPT_ON_POPUP_MENU
+            OPT_ON_REALIZE
+            OPT_ON_SHOW_HELP
+            OPT_SENSITIVE
+            OPT_TOOLTIP
+            OPT_VISIBLE
+
+.CMD:   addMenuItem .VAROPTS.
+.CMDDESCR: Adds an entry to the panel menu.
+
+.CMDOPTIONS:
+            -text; PERCENTSTRING; ""
+            Text or stock item of the entry.
+
+            -onClicked; string; ""
+            Command to be executed in the global scope if 
+            entry is chosen.
+            Before evaluation the following percent strings
+            are substituted:
+            TABLE
+            %% | % 
+            /TABLE
+
+.CMD:   addMenuSeparator
+.CMDDESCR: Adds a separator to the panel menu.
+
+.CMD:   getSize
+.CMDDESCR: Returns the size of the applet in pixel.
+
+.CMD:   getOrientation
+.CMDDESCR: Returns the orientation of the panel as one of 
+         up, down, left or right. The orientation is not the
+         same as the side on the screen the panel is on. 
+         If the panel is for
+         example on the right side of the screen, the orientation
+         is left.
+
+CMD_CONFIGURE
+CMD_DELETE
+
+.DESCRIPTION: The appletFactory creates a Gnome panel applet. An additional
+         matching Bonobo Activation server file is needed. The appletFactory
+         command has two parameters. iid is the ID which must correspond to
+         the oaf_server iid entry in the server file. command is executed
+         when gnome creates the applet. 
+         The following percent strings are substituted:
+            TABLE
+            %% | % 
+            %i | iid
+            %w | name of the newly created applet
+            /TABLE
+         The above widget commands and options are applicable to this newly
+         created applet.
+
+.EXAMPLE:
+namespace eval gnocl {
+   set appName "gnocl_test_applet"
+}
+package require gnoclGnome
+proc makeMenu { w } {
+   $w addMenuItem -text "%#About" -onClicked {gnocl::dialog -text "About"}
+}
+proc createApplet {w iid} {
+   set box [gnocl::box -orientation vertical]
+   $box add [gnocl::button -text "Hello, world!" -onClicked "puts onClicked"]
+   $w configure -child $box -onRealize "makeMenu %w"
+}
+gnocl::appletFactory OAFIID:gnocl_test_applet_factory {createApplet %w %i}
+
+# session -----
+.NAME:     session
+.SHORTDESCR: A command which implements an interface to the Gnome session manager.
+.SYNOPSIS:  session configure .VAROPTS.
+.OPTIONS:
+         -onConnect; string; "" 
+            Command to be executed in the global scope 
+         Before evaluation the following percent strings are 
+         substituted:
+            TABLE
+            %% | % 
+            %r | boolean whether the app has been restarted
+            /TABLE
+
+         -onDie; string; "" 
+            Command to be executed in the global scope 
+
+         -onDisconnect; string; "" 
+            Command to be executed in the global scope 
+
+         -onSaveComplete; string; "" 
+            Command to be executed in the global scope 
+
+         -onSaveYourself; string; "" 
+            Command to be executed in the global scope 
+         Before evaluation the following percent strings are 
+         substituted:
+            TABLE
+            %% | % 
+            %p | integer describing the phase
+            %s | boolean whether a shutdown is in progress
+            %f | boolean whether the safe process should be fast
+            /TABLE
+
+         -onShutdownCancelled; string; "" 
+            Not yet implemented
+
+         -restartCommand; string; "" 
+            Not yet implemented
+
+         -discardCommand; string; "" 
+            Not yet implemented
+
+         -currentDirectory; string; "" 
+            Current directory.
+
+         -environment; string; "" 
+            Not yet implemented
+
+         -saveDialog; string; "" 
+            Not yet implemented
+
+         -saveErrorDialog; string; "" 
+            Not yet implemented
+
+.DESCRIPTION: The session command implements an interface to the
+         Gnome session manager.
+
+# optionMenu ----
+.NAME:       optionMenu
+.SHORTDESCR: A widget with which one of several alternatives can be chosen. (DEPRECATED since GTK+ 2.4)
+.SYNOPSIS:   optionMenu .VAROPTS.
+.OPTIONS:
+            OPT_DATA
+            OPT_HASFOCUS
+
+            -items; list of strings; ""
+                  Creates for each element of this list a new item. The
+                  string value of the element is used as text and value
+                  of the item.
+
+            -itemList; list of two-element-lists;
+                  Creates for each element of this list a new item. The
+                  first element of each element is used as text and
+                  the second element is used as value of the item.
+                  (TODO: pixmap for each item)
+
+            OPT_NAME
+
+            -onChanged; string; ""
+                  Tcl command which is executed if the value of the 
+                  option menu is changed via the GUI.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  %v | value of the active item
+                  TABLE
+                  This command is not called if the value is changed
+                  via the option -value.
+
+            OPT_ON_SHOW_HELP
+            OPT_ON_POPUP_MENU
+            OPT_ON_REALIZE
+            OPT_SENSITIVE
+            OPT_TOOLTIP
+
+            -value; string; 
+                  Value of the item which shall be activated
+
+            -variable; string; ""
+                  Name of a (global) variable which is changed whenever 
+                  the option menu is changed.
+
+            OPT_VISIBLE
+
+
+.DESCRIPTION: An option menu allows to choose from different possibilities.
+               This widget is deprecated since GTK+ 2.4
+              Use <link linkend="comboBox"><command>comboBox</command>
+              </link> instead.
+
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.CMD:       onChanged
+.CMDDESCR:  Executes the command given by the -onChanged option.
+
+.EXAMPLE:
+set opt [gnocl::optionMenu -itemValueList [list {"One" "1"} {"One One" "1 1"} {"Eleven" "eleven"}] -onChanged {puts "%v"}]
+gnocl::window -title "Option Menu" -child $opt
+
+.SEEALSO:   combo, radioButton, GtkOptionMenu
+
+# combo ------
+.NAME:       combo
+.SHORTDESCR: A widget that allows the user to input a small amount of text. (DEPRECATED since GTK+ 2.4).
+.SYNOPSIS:   combo .VAROPTS.
+.OPTIONS:
+            -allowEmtpty; boolean; 1
+            Whether the entry may be empty.
+
+            -caseSensitive; boolean; 0
+            Whether the contents of the entry is matched case sensitive
+            to the elements of the drop down list.
+
+            OPT_DATA
+
+            -editable; boolean; 1
+            Whether the text in the entry is editable. To follow the Gnome 
+            Human Interface Guidelines (HIG) it is strongly recommended not
+            to use this option. Instead of a combo with non editable entry 
+            widget an optionMenu should be used.
+
+            -enableArrowsAlways; boolean; 0
+            Whether the arrow keys can be used to step through the items 
+            in the list even if the content of the entry does not match
+            to one of the items.
+
+            -enableArrowKeys; boolean; 1
+            Whether the arrow keys can be used to step through the items 
+            in the list.
+
+            OPT_HASFOCUS
+
+            -items; list of strings;
+            The entries of the drop down list.
+
+            -mustMatch; boolean; 0
+            Whether the contents of the entry must match one of the elements
+            of the drop down list.
+
+            OPT_NAME
+
+            -onChanged; string; ""
+                  Tcl command which is executed if the value of the 
+                  combo is changed via the GUI.
+                  Before evaluation the
+                  following percent strings are substituted:
+                  TABLE
+                  %% | % 
+                  %w | widget name.
+                  %v | value of the active item
+                  TABLE
+                  This command is not called if the value is changed
+                  via the option -value.
+
+            OPT_ON_SHOW_HELP
+            OPT_SENSITIVE
+            OPT_TOOLTIP
+
+            -value; string; 
+                  Value of the item which shall be activated
+
+            -variable; string; ""
+                  name of a (global) variable which is changed whenever 
+                  the entry is changed 
+
+            OPT_VISIBLE
+
+.DESCRIPTION: The combo widget consists of a single-line text entry field 
+               and a drop-down list. The drop-down list is displayed 
+               when the user clicks on a small arrow button to the right 
+               of the entry field. Instead of a combo widget with 
+               non-editable entry field, the use of the optionMenu
+               is recommended.
+               This widget is deprecated since GTK+ 2.4
+              Use <link linkend="comboEntry"><command>comboEntry</command>
+              </link> instead.
+CMD_CGET
+CMD_CONFIGURE
+CMD_DELETE
+
+.EXAMPLE:
+set combo [gnocl::combo -variable var -items {"Cat" "Dog" "Bird"}]
+gnocl::window -title "Combo" -child $combo
+
+.SEEALSO:     optionMenu, entry, text, spinButton, GtkCombo
+
+# fileSelection -----
+.NAME:     fileSelection
+.SHORTDESCR: A standard dialog to choose a file (DEPRECATED since GTK+ 2.4).
+.SYNOPSIS:  fileSelection .VAROPTS.
+.OPTIONS:
+         -title; string; ""
+            Title of the fileSelection.
+
+         -modal; boolean; 0
+            Whether the window is modal, i.e. it grabs all GTK+ events.
+            If the dialog is created modal, the command returns a 
+            list of chosen files instead of the usual widget ID.
+
+         -selectMultiple; boolean; 0
+            Whether one or more files can be selected.
+
+         -showFileOps; boolean; 1
+            Whether to show buttons for file operations.
+
+         -file; string; ""
+            Default file or path for the dialog.
+
+         -onClicked; string; ""
+            Command to execute in the global scope when the Ok or
+            Cancel button is chosen.
+            Before evaluation the following percent strings
+            are substituted:
+            TABLE
+            %% | % 
+            %w | widget name
+            %x | button chosen: OK or CANCEL
+            %f | list of files chosen
+            /TABLE
+
+            OPT_VISIBLE
+            OPT_ON_DESTROY
+
+CMD_DELETE
+CMD_CONFIGURE
+
+.DESCRIPTION: This command is deprecated since GTK+ 2.4. 
+              Use <link linkend="fileChooser"><command>fileChooser</command>
+              </link> instead.
+               A fileSelection is used to let the user choose a directory
+               or one or more files in a standardized way. If the dialog
+               is created modal, the commands returns a list of files. 
+               Otherwise it returns a widget ID in the
+               usual way. The files and buttons chosen can be retrieved
+               via the onClicked command.
+
+.EXAMPLE:
+set file [gnocl::fileSelection -title "Please choose a file" -modal 1 -file "/etc/host.conf"]
+
+.SEEALSO:      colorSelection, fontSelection, GtkFileSelection
+
+

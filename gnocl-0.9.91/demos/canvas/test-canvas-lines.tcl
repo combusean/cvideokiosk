@@ -1,0 +1,282 @@
+#!/bin/sh
+# the next line restarts using tclsh \
+exec tclsh "$0" "$@"
+
+# $Id: test-canvas-lines.tcl,v 1.15 2005/02/26 23:07:26 baum Exp $
+
+# ensure that "." is the decimal point
+unset -nocomplain env(LC_ALL)
+set ::env(LC_NUMERIC) "C"
+
+# an example with canvas lines
+set auto_path [linsert $auto_path 0 \
+      [file join [file dirname [info script]] ../../src]]
+package require GnoclCanvas
+
+set pi2 [expr {-2.*atan(1)}]
+
+set canvas [gnocl::canvas -antialiased 1 -background white]
+
+proc assert { opt val } {
+   set val2 [$::canvas itemCget $::line $opt]
+   if { $val != $val2 } {
+      error "$opt: $val != $val2"
+   }
+   puts "$opt: $val == $val2"
+}
+
+set line [$canvas create line]
+
+foreach val {"1.0 1.0 2.0 2.0" "1.0 2.0 3.0 4.0 5.0 6.0" "1.0 2.0 3.0 4.0"} {
+   $canvas itemConfigure $line -coords $val
+   puts [gnocl::update]
+   assert -coords $val
+}
+foreach opt {-onMotion -onEnter -onLeave -onButtonPress -onButtonRelease} {
+   foreach val {qqq "" "as asd" "asdf" "" ""} {
+      $canvas itemConfigure $line $opt $val
+      assert $opt $val
+   }
+}
+
+$canvas itemDelete $line
+
+puts "----- automatic tests done ------------"
+
+$canvas create text -coords "0 0" -anchor NW -text \
+      "Use left, middle and right mouse buttons to\
+      move, rotate and scale items\
+      \nShift left or right button raises or lowers an item by one positon\
+      \nShift double click raises to top, lowers to bottom respectively"
+
+# $canvas create line -coords "-10 -10 10 10" -width 2
+# $canvas create line -coords "-10 10 10 -10" -width 2
+
+# capStyle
+set x 200
+set y 420
+set tags "visibleTag"
+foreach cap {"notLast" "butt" "round" "projecting"} {
+   $canvas create line -coords [list $x $y $x [expr {$y+100}]] -width 10 \
+         -fill blue -capStyle $cap -tags $tags
+   set tx [expr {$x-15}]
+   set ty [expr {$y+50}]
+   set txt [$canvas create text -coords [list $tx $ty] -text "capStyle $cap"]
+   $canvas rotate $txt [list $tx $ty $pi2]
+   incr x 50
+   set tags ""
+}
+
+# joinStyle
+set x 250
+set y 90
+set tags "visibleTag"
+foreach joinStyle { "miter" "round" "bevel" } color {blue green orange} {
+   $canvas create line -tags $tags -coords \
+         [list  $x $y [expr {$x+130}] [expr {$y+20}] $x [expr {$y+40}] ] \
+         -width 10 -fill "$color 32000" -joinStyle $joinStyle
+   set tx [expr {$x+120}]
+   set ty $y
+   set txt [$canvas create text -coords [list $tx $ty] \
+         -text "joinStyle $joinStyle"]
+   $canvas rotate $txt [list $tx $ty [expr {atan2(20,130)}]]
+   incr y 50
+   set tags ""
+}
+
+# arrow side
+set x 30
+set y 310
+foreach arrow {"none" "first" "last" "both"} {
+   $canvas create line -coords [list $x $y $x [expr {$y+100}]] -width 5 \
+         -fill blue -arrow $arrow -arrowShape {5 10 5}
+   set tx [expr {$x-15}]
+   set ty [expr {$y+50}]
+   set txt [$canvas create text -coords [list $tx $ty] -text "arrow $arrow"]
+   $canvas rotate $txt [list $tx $ty $pi2]
+   incr x 50 
+}
+
+# arrow form
+set x 100
+set y 110
+foreach shape {{10 10 10} {20 10 10} {10 20 10} {10 10 20} } \
+      color {purple lightblue darkgreen darkorange} {
+   $canvas create line -coords [list $x $y [expr {$x+100}] $y] -width 5 \
+         -fill $color -arrow both -arrowShape $shape
+   $canvas create text -coords [list [expr {$x+50}] [expr {$y-20}]] \
+         -text "arrowShape $shape"
+   incr y 40
+}
+
+### #smooth # not yet implemented in gnome-canvas-line.c
+### set x 290
+### set y 220
+### $canvas create text -coords [list [expr {$x+80}] $y] -anchor S \
+###       -fill red -text "smooth does not work in GTK+!"
+### foreach smooth {1 0} {
+###    set x1 [expr {$x+100}]
+###    set dx 20
+###    $canvas create line -coords \
+###          [list  $x $y $x1 [expr {$y+$dx/2}] \
+###                $x [expr {$y+$dx}] $x1 [expr {$y+5*$dx/2}] \
+###                $x [expr {$y+5*$dx}]] \
+###          -smooth $smooth -splineSteps 100 -fill darkgreen 
+###    incr x 60
+### }
+
+set buttonPress -1
+set lastX 0
+set lastY 0
+set xCenter 0
+set yCenter 0
+
+proc moveItem { canv item x y } {
+   global lastX lastY
+   # puts [format "move: %.2f %.2f" [expr {$x-$lastX}] [expr {$y-$lastY}]]
+   $canv move $item [list [expr {$x-$lastX}] [expr {$y-$lastY}]] 
+   set lastX $x
+   set lastY $y
+}
+proc rotateItem { canv item x y } {
+   global lastX lastY xCenter yCenter
+   set a1 [expr {atan2($y-$yCenter,$x-$xCenter)}]
+   set a2 [expr {atan2($lastY-$yCenter,$lastX-$xCenter)}]
+   $canv rotate $item [list $xCenter $yCenter [expr {$a1-$a2}]]
+   set lastX $x
+   set lastY $y
+}
+
+proc scaleItem { canv item x y } {
+   global lastX lastY xCenter yCenter
+   set a1 [expr {pow($y-$yCenter,2)+pow($x-$xCenter,2)}]
+   set a2 [expr {pow($lastY-$yCenter,2)+pow($lastX-$xCenter,2)}]
+   if { $a1 > 1.e-5 && $a2 > 1.e-5 } {
+      $canv scale $item [list $xCenter $yCenter [expr {sqrt($a1/$a2)}]]
+      set lastX $x
+      set lastY $y
+   }
+}
+
+proc doOnButtonPress { canv type item x y but state } {
+   global buttonPress lastX lastY xCenter yCenter
+   if { $state & 1 } {
+      if { [string compare $type button2Press] } {
+         switch $but {
+            1 { $canv raise $item 1 }
+            3 { $canv lower $item 1 }
+         }
+      } else {
+         switch $but {
+            1 { $canv raise $item }
+            3 { $canv lower $item }
+         }
+      }
+   } elseif { $buttonPress < 0 } {
+      foreach {x0 y0 x1 y1} [$canv getBounds $item] break
+      set xCenter [expr {($x1+$x0)/2.}]
+      set yCenter [expr {($y1+$y0)/2.}]
+      # puts "$x0 $y0 $x1 $y1 $xCenter $yCenter"
+
+      set buttonPress $but
+      set lastX $x
+      set lastY $y
+      switch $but {
+         1 { set script moveItem }
+         2 { set script rotateItem }
+         3 { set script scaleItem }
+         default { return }
+      }
+      $canv itemConfigure $item -onMotion "$script %w %i %x %y"
+   }
+}
+
+proc doOnButtonRelease { canv item but } {
+   global buttonPress
+   if { $buttonPress == $but } {
+      $canv itemConfigure $item -onMotion ""
+      set buttonPress -1
+   }
+}
+
+proc printCoords { canv x y world win } {
+   $win configure -text   [format "window: %6.1f %6.1f" $x $y]
+   foreach {x y} [$canv windowToCanvas [list $x $y]] break
+   $world configure -text [format "canvas:  %6.1f %6.1f" $x $y]
+}
+
+proc clearCoords { world win } {
+   $win configure -text [format "window: %6s %6s" - -]
+   $world configure -text [format "canvas:  %6s %6s" - -]
+}
+
+proc printItem { label item enter } {
+   if { $enter } {
+      set txt "Entered item $item"
+   } else {
+      set txt "Left item $item"
+   }
+ 
+   $label configure -text $txt
+}
+set scrollWin [gnocl::scrolledWindow -child $canvas]
+set right [gnocl::box -orientation vertical]
+set winLabel [gnocl::label -align left]
+set worldLabel [gnocl::label -align left]
+set itemLabel [gnocl::label -align left]
+$right add $winLabel
+$right add $worldLabel
+$right add $itemLabel
+$right add [gnocl::checkButton -text "visible" -active 1 \
+      -onToggled "$canvas configure -visible %v"]
+$right add [gnocl::box -borderWidth 0 -children [list \
+      [gnocl::label -text "scrollbar" -align left -widthGroup labelWidth] \
+      [gnocl::optionMenu  -items "never always automatic" -value automatic \
+         -onChanged "$scrollWin configure -scrollbar %v" ]]] -expand 0
+$right add [gnocl::box -borderWidth 0 -children [list \
+      [gnocl::label -text "pixelPerUnit:" -align left -widthGroup labelWidth]  \
+      [gnocl::optionMenu -items "0.1 0.2 0.3 0.5 1.0 1.5 2.0 2.5 3.0 3.5" \
+         -value 1.0 \
+         -onChanged "$canvas configure -pixelPerUnit %v"]]] -expand 0
+$right add [gnocl::box -borderWidth 0 -children [list \
+      [gnocl::checkButton -text "visible" -value 1 \
+         -onToggled "$canvas itemConfigure visibleTag -visible %v" ]]] -expand 0
+
+set dir [file dirname [info script]]
+$canvas create image -coords {300 300} -image "%/$dir/../one.png"
+$canvas create image -coords {330 330} -image "%/$dir/../floppybuddy.gif" -tags image
+
+$canvas itemConfigure all \
+      -onEnter "printItem $itemLabel %i 1" \
+      -onLeave "printItem $itemLabel %i 0" \
+      -onButtonPress "doOnButtonPress %w %t %i %x %y %b %s" \
+      -onButtonRelease "doOnButtonRelease %w %i %b"
+$canvas configure \
+      -onMotion "printCoords %w %x %y $worldLabel $winLabel" \
+      -onLeave "clearCoords $worldLabel $winLabel" \
+      -onEnter {puts "Entering canvas at %x %y"} \
+      -scrollRegion {-100 -100 1000 1000} -centerScroll 0
+      # -scrollRegion {0 0 300 300} 
+
+set mainBox [gnocl::box -orientation horizontal -homogeneous 0 \
+      -children $scrollWin -fill 1 -expand 1]
+$mainBox add $right -expand 0
+
+set win [gnocl::window -title "Canvas Line Test" -child $mainBox \
+      -defaultWidth 500 -defaultHeight 500 -onDestroy exit]
+
+
+proc setImage { image } {
+   global canvas dir
+   if { $image == 1 } {
+      set image 2
+      $canvas itemConfigure image -image "%/$dir/../one.png"
+   } else {
+      set image 1
+      $canvas itemConfigure image -image "%/$dir/../floppybuddy.gif"
+   }
+   # after 100 "setImage $image"
+}
+after 100 "setImage 1"
+gnocl::mainLoop
+

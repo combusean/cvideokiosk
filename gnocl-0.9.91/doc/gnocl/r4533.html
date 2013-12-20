@@ -1,0 +1,478 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>progressBar</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Display widgets"
+HREF="x351.html#AEN4256"><LINK
+REL="PREVIOUS"
+TITLE="image"
+HREF="r4423.html"><LINK
+REL="NEXT"
+TITLE="statusBar"
+HREF="r4668.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r4423.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r4668.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PROGRESSBAR"
+></A
+>progressBar</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN4536"
+></A
+><H2
+>Name</H2
+>progressBar&nbsp;--&nbsp;A widget which gives the user feedback of background work.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN4539"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>progressBar</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4545"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/progressBar.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4549"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-activityMode</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 0)
+            </P
+><P
+>Whether the progressbar shows only, that an activity is going
+on.</P
+></DD
+><DT
+>-fraction</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float (0 lt fraction lt 1)</SPAN
+>
+            </P
+><P
+>Only if activityMode is false: fraction of the work done.</P
+></DD
+><DT
+>-pulseStep</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float (0 lt pulseStep lt 1)</SPAN
+>
+            </P
+><P
+>How much the block in activityMode moves in one step.</P
+></DD
+><DT
+>-orientation</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF leftToRight, rightToLeft, bottomToTop, topToBottom</SPAN
+> (default: leftToRight)
+            </P
+><P
+>Direction of the progressbar.</P
+></DD
+><DT
+>-text</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Only if activityMode is false: text to be shown, mostly the
+fraction of the work done.</P
+></DD
+><DT
+>-textAlign</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>a list of the horizontal and vertical alignment or one of topLeft, top, topRight, left, center, right, bottomLeft, bottom, or bottomRight</SPAN
+> (default: center)
+            </P
+><P
+>Alignment of the text.</P
+></DD
+><DT
+>-showText</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether to show the text.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+><DT
+>-heightGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>heightGroup can be an arbitrary string.
+All widgets with the same heightGroup request the
+same height. If packed with the fill flag set, they
+will have nevertheless different heights.</P
+></DD
+><DT
+>-widthGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>widthGroup can be an arbitrary string.
+All widgets with the same widthGroup request the
+same width. If packed with the fill flag set, they
+will have nevertheless different widths.</P
+></DD
+><DT
+>-sizeGroup</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>sizeGroup can be an arbitrary string.
+All widgets with the same sizeGroup request the
+same size. If packed with the fill flag set, they
+will have nevertheless different sizes.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4624"
+></A
+><H2
+>Description</H2
+><P
+>The progressbar gives the user feedback of background
+work which takes some time. If the application knows
+how long the work takes, it should set the activityMode
+to false (the default) and inform the user in regular
+intervals via -fraction and -text how long the work
+still takes. If the time span
+cannot be estimated, activityMode can be set. By
+regularly calling
+the command pulse the user can be informed, that the
+application is still alive and work is going on.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4627"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   pulse </P
+></DT
+><DD
+><P
+> In activityMode: moves the block by pulseStep.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4657"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set f 0.33
+set progress [gnocl::progressBar -fraction $f -text [format "%.0f %%" [expr {$f*100.}]]]
+gnocl::window -title "ProgressBar" -child $progress</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/progressBar.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4664"
+></A
+><H2
+>See also</H2
+><P
+>   <CODE
+CLASS="FUNCTION"
+>GtkProgessBar</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r4423.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r4668.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>image</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN4256"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>statusBar</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

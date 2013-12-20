@@ -1,0 +1,82 @@
+#!/bin/sh
+# The next line restarts using tclsh \
+exec tclsh "$0" ${1+"$@"}
+
+# $Id: gnocl-applet,v 1.4 2003/12/19 20:27:37 baum Exp $
+
+# These should match the IDs in gnocl_test_applet.server
+namespace eval gnocl {
+   set appName "gnocl_test_applet"
+}
+set Id "OAFIID:gnocl_test_applet_factory"
+
+package require GnoclGnome 
+
+proc log { txt } {
+   set fp [open /tmp/gnocl.log a]
+   puts $fp $txt
+   close $fp
+}
+
+proc onClicked { w iid } {
+   gnocl::dialog -text "This applet has id \"$iid\""
+}
+
+proc onSignal { widget sig } {
+   set txt "widget \"$widget\" received signal \"$sig\""
+   append txt [format "\nSize is %d" [$widget getSize]]
+   append txt [format "\nOrientation is %s" [$widget getOrientation]]
+
+   gnocl::dialog -text $txt
+}
+
+proc about { } {
+   set box [gnocl::box -orientation vertical]
+   $box add [gnocl::label -text \
+      "%<<span font_desc=\"Sans 22\" weight=\"bold\">Gnocl test applet</span>"]
+   $box add [gnocl::label -text \
+ "%<<span size=\"large\">An example how to program gnome applets with Tcl and Gnocl .</span>"]
+   $box add [gnocl::label -text "Using Gnocl version [gnocl::info version]"]
+   $box add [gnocl::label -text "(c) 2003 Peter G. Baum"]
+   gnocl::dialog -child $box -title "About Gnocl Test Applet" -resizable 0
+
+}
+
+proc makeMenu { w } {
+   # simple label
+   $w addMenuItem -text "Hello" -onClicked {gnocl::dialog -text "Hello"}
+   # label with xml characters
+   $w addMenuItem -text "H & M \"<>\"" -onClicked {gnocl::dialog -text "xml"}
+   $w addMenuSeparator 
+   # gtk stock item
+   $w addMenuItem -text "%#Preferences" \
+         -onClicked {gnocl::dialog -text "Preference"}
+   # gnome stock item
+   $w addMenuItem -text "%#About" -onClicked about
+}
+
+
+# Called by the factory
+proc createApplet {w iid} {
+   set box [gnocl::box -orientation vertical]
+   $box add [gnocl::button -text "Hello, world!" -onClicked "onClicked $w $iid"]
+   $w configure -child $box \
+         -onChangeOrientation "onSignal %w onChangeOrientation" \
+         -onChangeSize "onSignal %w onChangeSize" \
+         -onRealize "makeMenu %w"
+}
+
+proc bgerror { err } {
+   log "in bgerror: $err"
+   log $::errorInfo
+   gnocl::dialog -type error -text $::errorInfo
+}
+
+# disable logging
+proc log { txt } { }
+
+# For applets, this replaces gnocl::mainLoop. Substitutions performed for
+# the callback: %w is the applet window, %i is the applet ID
+gnocl::appletFactory $Id {createApplet %w %i}
+
+# vim: syn=tcl

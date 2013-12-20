@@ -1,0 +1,536 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>canvas text</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Gnome Canvas Widget"
+HREF="x351.html#AEN8125"><LINK
+REL="PREVIOUS"
+TITLE="canvas richText"
+HREF="r9330.html"><LINK
+REL="NEXT"
+TITLE="canvas widget"
+HREF="r9824.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r9330.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r9824.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="CANVASTEXT"
+></A
+>canvas text</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN9677"
+></A
+><H2
+>Name</H2
+>canvas text&nbsp;--&nbsp;A canvas text item. (in gnoclCanvas)</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN9680"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>canvasId</I
+></TT
+></B
+>   create   text  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9689"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-anchor</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF center, N, NW, NE, S, SW, SE, W, E</SPAN
+> (default: center)
+            </P
+><P
+>Position of the anchor relative to the text.</P
+></DD
+><DT
+>-coords</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list-of-2-floats</SPAN
+>
+            </P
+><P
+>X and y coordinates of the item.</P
+></DD
+><DT
+>-fill</DT
+><DD
+><P
+>type: <A
+HREF="x165.html#COLOR"
+><SPAN
+CLASS="TYPE"
+>color with transparancy</SPAN
+></A
+> (default: black)
+            </P
+><P
+>Color of the text.</P
+></DD
+><DT
+>-font</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>FONT</SPAN
+>
+            </P
+><P
+>Font of the text.</P
+></DD
+><DT
+>-fontSize</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>integer</SPAN
+>
+            </P
+><P
+>Font size of the text.</P
+></DD
+><DT
+>-fontScale</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>float ORONEOF xx-small, x-small, small, medium, large, x-large, xx-large</SPAN
+> (default: normal)
+            </P
+><P
+>Font scale used.</P
+></DD
+><DT
+>-fontStretch</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF ultraCondensed, extraCondensed, condensed, semiCondensed, normal, semiExpanded, expanded, extraExpanded, ultraExpanded</SPAN
+> (default: normal)
+            </P
+><P
+>Font stretch of the text.</P
+></DD
+><DT
+>-fontStyle</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF normal, oblique, italic</SPAN
+> (default: normal)
+            </P
+><P
+>Font style of the text.</P
+></DD
+><DT
+>-fontVariant</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF normal, smallCaps</SPAN
+> (default: normal)
+            </P
+><P
+>Font variant of the text.</P
+></DD
+><DT
+>-fontWeight</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF ultralight, light, normal, bold, ultrabold, heavy</SPAN
+> (default: normal)
+            </P
+><P
+>Font weight of the text.</P
+></DD
+><DT
+>-justify</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>ONEOF left, right, center, fill</SPAN
+> (default: left)
+            </P
+><P
+>Justification of the text.</P
+></DD
+><DT
+>-offset</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list-of-2-floats</SPAN
+> (default: {0 0})
+            </P
+><P
+>X and y offset of the item.</P
+></DD
+><DT
+>-onButtonPress</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is press
+inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: one of buttonPress, button2Press or button3Press
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onButtonRelease</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse button is released
+if it has been pressed inside the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%t | type of event: always buttonRelease
+%x | x coordinate
+%y | y coordinate
+%b | button number
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onEnter</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onLeave</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if a mouse enters the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-onMotion</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Tcl command which is executed if the mouse is moved inside
+the item.
+Before evaluation the
+following percent strings are substituated:
+TABLE
+%% | %
+%w | canvas name
+%i | item id
+%x | x coordinate
+%y | y coordinate
+%s | state of the buttons and modifiers (bitmask)
+TABLE</P
+></DD
+><DT
+>-parent</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>tag-or-id</SPAN
+>
+            </P
+><P
+>This option sets the parent of the item. The parent must be
+a clipGroup item, which implements clipping for its
+children.</P
+></DD
+><DT
+>-tags</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list</SPAN
+> (default: "")
+            </P
+><P
+>List of tags to be associated with this item.
+A tag must start with a alphabetic character which
+is followed by zero or more alphabetic or numeric characters.</P
+></DD
+><DT
+>-text</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Text to be displayed. If the string starts with "%&lt;" the
+rest of the string is interpreted as markup string.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9813"
+></A
+><H2
+>Description</H2
+><P
+>A text item should be used to display text where the hole text
+has basically the same format. Via a markup string the format
+can be changed, but for more complex formattig the richText
+item should be used.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN9816"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r9330.html"
+><B
+CLASS="COMMAND"
+>canvas richText</B
+></A
+>,
+   <A
+HREF="r4259.html"
+><B
+CLASS="COMMAND"
+>label</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GnomeCanvasText</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r9330.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r9824.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>canvas richText</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN8125"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>canvas widget</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

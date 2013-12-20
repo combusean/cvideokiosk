@@ -1,0 +1,333 @@
+2006-02-27: version 0.9.91
+      - set LC_NUMERIC=C before gtk_init is called
+      - dialog
+         - fixed a bug with stock button handling 
+         - fixed a bug when -type and -child is given
+      - window
+         - added -decorated option 
+         - added -heightRequest and -widthRequest
+      - label
+         - added -widthChars and -maxWidthChars (for GTK >= 2.6.0)
+      - tree / list
+         - fixed -children option
+
+2005-02-27: version 0.9.90
+      - added features from GTK 2.4:
+         - new widget fileChooser with extra and preview widget
+         - new widgets fontButton and colorButton
+         - new widget expander 
+         - new widgets comboBox and comboEntry
+      - added subcommand "iconify" to window
+
+2004-12-07: version 0.5.18
+      - new lib gnoclVFS with commands file and mime
+      - canvas
+         o allow expressions in tag identification (e.g. "t1|(t2^t3)")
+         o itemConfigure and itemCget work correctly with "-tags"
+         o new subcommand findWithTag
+         o added -dash option to bPath, ellipse, rectangle and polygon
+      - scrolledWindow
+         o added options -xValue, -yValue
+         o added read only options -[xy]Lower, -[xy]PageSize and -[xy]Upper
+      - Makefile
+         o added -fPIC since amd64 needs it
+      - toolBar
+         o fixed segfault
+
+2004-07-10: version 0.5.17
+      - Makefile
+         o removed DISABLE_DEPRECATED defines 
+      - canvas
+         o implemented alpha blending 
+         o new items "polygon", "image" and "clipGroup"
+         o item pBath knows now lines, bezier curves and closed figures
+         o renamed getCurSize to getCurrentSize
+         o renamed windowToWorld and worldToWindow to windowToCanvas, 
+           canvasToWindow respectively
+         o new options -onEnter and -onLeave
+         o new subcommands "update", "raise" and "lower"
+      - scrolledWindow
+         o fixed bug if child is canvas
+      - image
+         o fixed memleak in -size option
+      - dialog
+         o fixed bizarre bug related to focus handling if one button 
+            is a list of text plus icon
+
+2004-04-21: version 0.5.16
+      - canvas
+         o new subcommands itemCget, getCurSize, isMapped
+         o new option -onResize, -data
+      - clipboard
+         o added PRIMARY clipboard
+      - list and tree
+         o image may be file or stock icon
+         o improvements to setSelection subcommand
+         o new options -heightGroup, -widthGroup and -sizeGroup
+         o new options -heightRequest and -widthRequest
+      - scrolledWindow
+         o cleanups, added documentation and demo
+      - window 
+         o new option -onResize
+      - dialog
+         o new option -onResize
+         o default button is always the last one if not set otherwise
+         o button may be list of text plus stock icon
+      - Makefile
+         o 'make CFLAGS=xxx' works now
+
+2004-02-11: version 0.5.15
+      - Makefile
+         o added -ltclstub
+      - different widgets
+         o new option -onRealize
+         o new option -data
+         o fix of some mem leaks thanks to valgrind
+      - dialog and window
+         o new option -typeHint
+      - list and tree
+         o new option -onPopupMenu
+         o new subcommand columnCget
+      - doc
+         o reduced color depth of screenshots to decrease archive size
+
+2003-12-22: version 0.5.14
+      - Makefile
+         o really support Tcl stubs
+      - different widgets
+         o new options -sizeGroup, -widthGroup and -heightGroup
+      - notebook
+         o new options -borderWidth and -showBorder
+      - window
+         o new options -borderWidth, -onDelete, -x, -y, -width, -height
+         o new subcommand cget
+      - dialog
+         o new option -onDelete, -defaultHeight, -defaultWidth
+      - tree / list
+         o new column type "markup"
+         o boolean columns may be sortable
+         o changed column type "int" to "integer"
+         o introduction of reference to row
+      - optionMenu
+         o remove old items if new items are set via configure
+      - support for Gnome panel applet
+      - support for Gnome session (in statu nascendi)
+      - use argv of Tcl for initialisation of GTK and Gnome
+
+2003-11-10: version 0.5.13
+      - Makefile 
+         o target "install" does not test anymore
+         o new target "installAndTest"
+         o new "make DESTDIR=/foo/bar install" to ease rpm package
+      - table 
+         o changed default for -fill to {1 1}
+      - tree/list 
+         o fix for %w substitution in onButton*
+         o added getNumChildren, onRowExpanded and onRowCollapsed
+         o new default handling for -onEdited and -onToggled
+         o new subcommand setCursor
+         o paths may contain also "end" instead of an integer
+      - notebook 
+         o new optional parameter to subcommand "currentPage"
+         o new subcommand removePage 
+      - box/table
+         o changed padding and spacing values from "small default big" 
+            to "small normal big"
+      - statusBar
+         o new options "-homogeneous" and "-spacing"
+         o new subcommands "add", "addBegin" and "addEnd"
+      - dialog 
+         o fixed focus handling of buttons
+      - window/dialog/canvas 
+         o new callback functions onKeyPress and onKeyRelease
+      - documentation
+         o description of percent and markup string
+
+2003-09-29: version 0.5.12
+      - radioButton, menu radio item and toolBar radio item: 
+        renamed -value to -onValue 
+      - new subcommand cget for button, checkButton, combo, entry, label,
+        menu check and radio item, optionMenu, radioButton, scale,
+        spinButton and toolBar radio and check item
+      - button: renamed subcommand "invoke" to "onClicked"
+      - different widgets: removed subcommand getValue and setValue, 
+        use "cget -value", respectively "configure -value" instead
+      - new pkgIndex.tcl
+      - new make targets install and uninstall
+      - default compilation without debug information
+      - many new window options for dialog widget
+      - new options -onActivate and -widthChars for entry widget
+      - new options -onButtonPress and -onButtonRelease for list/tree
+
+2003-08-25: version 0.5.11
+      - new separate library for Gnome GConf
+      - added image to tree and list
+      - renamed the option -single to the add command of tree and list 
+        to -singleRow; added option -singleColumn
+      - added "small", "default" and "big" to padding and border width option,
+        default is now "default", to get the old behavior add
+        "-borderWidth 0 -spacing 0" to the options on creation of a box and
+        "-borderWidth 0" to the options on creation of a table
+      - changed type double to float in tree and list
+      - in callback of tree and list columns changed %t to %v for value, 
+            added %c 
+      - tree and list columns are resizable by default
+
+2003-07-21: version 0.5.10
+      - canvas moved to a separate library gnoclCanvas
+      - added separator widget
+      - added -child, -icon and -title to messageDialog, renamed it to dialog
+      - added -onButtonPress and -onButtonRelease to toolbar items and buttons
+      - added -onDestroy to plug widget
+      - added "-onDestroy exit" to plug widget in demo scripts
+      - fixed ANSI C compatibility bugs
+      - fixed bug in combo where callbacks are to often called
+      - fixed -visible in tree and list
+      - changed tests so that they work with LC_NUMERIC being something 
+        without the point as decimal sparator
+
+2003-06-16: version 0.5.9
+      - new callback -onCellData for tree and list
+      - fixed thinko in tcl/gtk event loop handling
+      - fixed bugs in table related to align, fill and expand options
+      - new command configure which allows setting globally tooltip and
+        default icon; removed command tooltip
+      - added -icon to window
+
+2003-04-16: version 0.5.8
+      - added callback, some work on event loops
+      - added subcommands collapse, expand, scrollToPosition, 
+        setSelection and option -single to subcommand add of 
+        tree and list widget
+      - added scrollToPosition to text widget
+      - image widget: renamed -size to -stockSize, added -size
+      - new option -hasFocus for many widgets
+      - added clipboard
+
+2003-03-03: version 0.5.7
+      - new image widget
+      - updated {file,color,font}Selection
+      - removed gnocl::dnd, dnd works now via 
+         -{drag,drop}Targets and -on{Drag,Drop}Data
+      - added "info allStockItems"
+      - added -icon to button
+      - messageDialog closes on return code break
+      - removed GnoclWidgetOptions and related functions 
+ 
+2003-02-11: version 0.5.6
+      - code cleanup for statusBar, eventBox, plug and socket
+      - dialog is replaced by messageDialog
+      - now three flavors of gnocl: pure gtk+, gtk+ and canvas
+        and gtk+, canvas and gnome
+
+2003-01-15: version 0.5.5
+      - code cleanup for scale, scrolledWindow, toolBar
+      - new options -value and -onChanged for entry widget 
+      - more common functions for all check items (button, menu and
+        toolBar) and for all radio items
+ 
+2002-12-12: version 0.5.4 aka "The Return Of The Canvas"
+      - canvas, appBar work with gnome 2.0
+      - new canvas item bPath and richText
+      - removed gnocl::bind, binding works now via -on{Button,Key,...}
+      - renamed -justification to -justify
+      - code cleanup for text widget
+
+2002-11-10: version 0.5.3
+      - Second part of the Big Code Cleanup: combo, paned, progressBar, 
+            optionMenu and menu widgets
+      - split menuItem in menu(Item|Sparator|CheckItem|RadioItem)
+      - renamed (menu|tool|status)bar to \1Bar
+      - changed some (char *) to (const char *) (update for Tcl 8.4)
+
+2002-10-03: version 0.5.2
+      - First part of the Big Code Cleanup:
+         - documentation in DocBook (html'ized version is also provided)
+         - more configuration options, for example -onShowHelp, -onPopupMenu
+         - less memory consumption
+         - some (few) options had to be renamed, for example -command to 
+            -onToggled or -onClicked
+         - box options -fill and -expand changed their default value
+      - new commands erase and getSelection for tree and list widget
+
+2002-07-30: version 0.5.1
+      - new tree widget
+      - list widget now based on GtkListStore and GtkTreeView
+      - new colorSelection and fontSelection
+      - fileSelection now works
+
+2002-05-21: version 0.5.0
+      - port to gtk 2.0
+      - new GtkTextView and GtkTextBuffer are supported
+
+2002-02-19: version 0.0.10
+      - new widget scrolledWindow
+      - bugfixes especially concerning widgets with "-command" and 
+            "-variable" option, and widgets with an "invoke" command
+
+2002-01-21: version 0.0.9
+      - drag and drop support
+      - many enhancements to table widget
+      - widgets can be aligned in table and box widgets
+      - new widget eventBox
+      - new command "invoke" for most widgets with "-command" option
+
+2001-12-21: version 0.0.8
+      - new pixmap widget
+      - app and window can set default height and width 
+      - toolbar, menuItem and optionMenu can have custom icons
+      - table is now a combination of gtk table and gtk frame
+      - padding and alignment of label can be set
+      - the columns of the list widget can be sorted via a tcl callback 
+            function and cell text retrieved
+      - binding on key and button event can have a parameter "detail" and
+            the correspondig callback functions have more percent 
+            substitutions
+      - experimental: remote activation via goad
+
+2001-11-18: version 0.0.7
+      - scale, optionMenu, socket and plug widget
+      - menu hints in appBar
+      - scrollbars for canvas widget
+      - accelerators for page change in notebook now work
+      - new option -layout for box of boxType
+ 
+2001-10-17: Version 0.0.6
+      - spinButton
+      - checkButton in menu
+      - underlined accelerators for menu items
+      - new command setValue, getValue for checkButton
+ 
+2001-09-07: Version 0.0.5
+      - gnome color and font picker
+      - new std option -sensitive
+      - %-substitution in command of checkButton
+      - more than one toolbar in an app
+      - entry widget now combination of gtk entry, gnome entry,
+        file, number, pixmap, and icon entry
+
+2001-07-23: Version 0.0.4
+      - list, text and paned widget
+      - keyboard accelerators
+      - demos only dependent on Tcl, no Tk needed
+      - updated documentation 
+
+2001-06-07: Version 0.0.3
+      - tooltips
+      - notebook and dialog widget
+      - rectangle, line, text, widget canvas item
+      - %-identification for strings
+
+2001-05-06: Version 0.0.2
+      - info command
+      - radio button widget
+      - gnome about dialog
+      - bind on canvas items
+      - much work on canvas
+      - box is now a combination of gtk box and gtk frame
+      - start of documentation
+      - connect to signal "destroy" for cleanups
+
+2001-04-03: Version 0.0.1
+      first official announced version
+

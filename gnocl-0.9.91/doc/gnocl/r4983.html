@@ -1,0 +1,471 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>menu</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="Gnocl"
+HREF="index.html"><LINK
+REL="UP"
+TITLE="Menu widgets"
+HREF="x351.html#AEN4861"><LINK
+REL="PREVIOUS"
+TITLE="menuBar"
+HREF="r4864.html"><LINK
+REL="NEXT"
+TITLE="menuItem"
+HREF="r5114.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Gnocl</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="r4864.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="r5114.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="MENU"
+></A
+>menu</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN4986"
+></A
+><H2
+>Name</H2
+>menu&nbsp;--&nbsp;A menu container widget.</DIV
+><DIV
+CLASS="REFSYNOPSISDIV"
+><A
+NAME="AEN4989"
+></A
+><H2
+>Synopsis</H2
+><P
+><B
+CLASS="COMMAND"
+>menu</B
+>  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4995"
+></A
+><H2
+>Screenshot</H2
+><P
+><IMG
+SRC="../pics/menu.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN4999"
+></A
+><H2
+>Options</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-children</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>list of widget-IDs</SPAN
+> (default: "")
+            </P
+><P
+>List of menu items to be included in the menu.</P
+></DD
+><DT
+>-name</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+>
+            </P
+><P
+>Name of the widget, can be used to set options in an rc file.</P
+></DD
+><DT
+>-sensitive</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is sensitve to user input.</P
+></DD
+><DT
+>-tearoff</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether the menu can be torn off.</P
+></DD
+><DT
+>-title</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>string</SPAN
+> (default: "")
+            </P
+><P
+>Title of the menu.</P
+></DD
+><DT
+>-visible</DT
+><DD
+><P
+>type: <SPAN
+CLASS="TYPE"
+>boolean</SPAN
+> (default: 1)
+            </P
+><P
+>Whether or not the item is visible.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5038"
+></A
+><H2
+>Description</H2
+><P
+>A menu is a container widget which is either used in
+a menubar or as popup to get instantaneous user input.</P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5041"
+></A
+><H2
+>Commands</H2
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   delete </P
+></DT
+><DD
+><P
+> Deletes the widget and the associated tcl command.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   configure  [<TT
+CLASS="REPLACEABLE"
+><I
+>-option</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+>...]</P
+></DT
+><DD
+><P
+> Configures the widget. Option may have any of
+the values accepted on creation of the widget.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   add   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-widget-Ids</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Add widgets to the menu.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   addBegin   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-widget-Ids</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Synonym for add.</P
+></DD
+><DT
+><P
+><B
+CLASS="COMMAND"
+><TT
+CLASS="REPLACEABLE"
+><I
+>id</I
+></TT
+></B
+>   addEnd   <TT
+CLASS="REPLACEABLE"
+><I
+>list-of-widget-Ids</I
+></TT
+> </P
+></DT
+><DD
+><P
+> Add widgets at the end of the menu.</P
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5093"
+></A
+><H2
+>Example</H2
+><P
+><PRE
+CLASS="PROGRAMLISTING"
+>set menu [gnocl::menu -title "menu"]
+$menu add [gnocl::menuItem -text "%#Save" -onClicked {puts "save"}]
+$menu add [gnocl::menuSeparator]
+$menu add [gnocl::menuItem -text "%#Quit" -onClicked exit]
+$menu popup</PRE
+></P
+><P
+>results in</P
+><P
+><IMG
+SRC="../pics/menu.png"></P
+></DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN5100"
+></A
+><H2
+>See also</H2
+><P
+>   <A
+HREF="r5114.html"
+><B
+CLASS="COMMAND"
+>menuItem</B
+></A
+>,
+   <A
+HREF="r5240.html"
+><B
+CLASS="COMMAND"
+>menuCheckItem</B
+></A
+>,
+   <A
+HREF="r5400.html"
+><B
+CLASS="COMMAND"
+>menuRadioItem</B
+></A
+>,
+   <A
+HREF="r5554.html"
+><B
+CLASS="COMMAND"
+>menuSeparator</B
+></A
+>,
+   <A
+HREF="r4864.html"
+><B
+CLASS="COMMAND"
+>menuBar</B
+></A
+>,
+   <CODE
+CLASS="FUNCTION"
+>GtkMenu</CODE
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="r4864.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="index.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="r5114.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>menuBar</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="x351.html#AEN4861"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>menuItem</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
