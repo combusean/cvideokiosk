@@ -12,7 +12,7 @@ control::control assert enabled 1
 # Setting plugs w/ setctl-p2p.sh
 exec /usr/local/kiosk/setctl-p2p.sh &
 
-set ::m [mysqlconnect -user root -password toyota -db cvk]
+set ::m [mysqlconnect -user root -password ###### -db cvk]
 
 set deckguid(1) 0x0000850001399440
 
